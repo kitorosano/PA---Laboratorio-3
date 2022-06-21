@@ -6,5 +6,10 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(PA___Laboratorio_3
+        main.cpp
         IUsuario.h
-        main.cpp UsuarioController.cpp UsuarioController.h)
+        UsuarioController.cpp UsuarioController.h
+        IVideojuego.h
+        VideojuegoController.cpp VideojuegoController.h
+        Gen_videojuego.h Gen_videojuego.cpp
+        Categoria.h Categoria.cpp )

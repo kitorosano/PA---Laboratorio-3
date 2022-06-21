@@ -9,6 +9,9 @@
 
 class UsuarioController: public IUsuario {
 public:
+    UsuarioController();
+    UsuarioController* getInstance();
+
     void registroUsuario(string mail, string password);
     void registroAdicionalDesarrollador(string empresa);
     void registroAdicionalJugador(string nickname, string descripcion);
@@ -24,6 +27,10 @@ public:
     void confirmarSuscripcion();
 
 private:
+    static UsuarioController* instance;
+    Usuario* usuarioSeleccionado;
+    Videojuego* videojuegoSeleccionado;
+    Suscripcion* suscripcionSeleccionada;
 };
 
 
