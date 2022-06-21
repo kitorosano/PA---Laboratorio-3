@@ -7,6 +7,12 @@
 
 
 class PartidaController {
+public:
+    PartidaController();
+    PartidaController * getInstance();
+
+    
+
 
 };
 

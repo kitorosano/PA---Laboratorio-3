@@ -17,5 +17,5 @@ add_executable(PA___Laboratorio_3
         Classes/Usuario.cpp Classes/Usuario.h Classes/Jugador.cpp Classes/Jugador.h
         Classes/Gen_videojuego.h Classes/Gen_videojuego.cpp
         Classes/Categoria.h Classes/Categoria.cpp
-        Classes/Suscripcion.cpp Classes/Suscripcion.h Classes/DatosSuscripcion.cpp Classes/DatosSuscripcion.h)
+        Classes/Suscripcion.cpp Classes/Suscripcion.h Classes/DatosSuscripcion.cpp Classes/DatosSuscripcion.h Controllers/PartidaController.cpp Controllers/PartidaController.h)
 
