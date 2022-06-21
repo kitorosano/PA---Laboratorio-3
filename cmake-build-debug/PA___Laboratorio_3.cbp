@@ -86,34 +86,58 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Categoria.cpp">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Categoria.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Categoria.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Categoria.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Gen_videojuego.cpp">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/DatosSuscripcion.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Gen_videojuego.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/DatosSuscripcion.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/IUsuario.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Gen_videojuego.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/IVideojuego.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Gen_videojuego.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/UsuarioController.cpp">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Jugador.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/UsuarioController.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Jugador.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/VideojuegoController.cpp">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Suscripcion.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/VideojuegoController.h">
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Suscripcion.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Usuario.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Classes/Usuario.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Controllers/UsuarioController.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Controllers/UsuarioController.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Controllers/VideojuegoController.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Controllers/VideojuegoController.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Interfaces/IUsuario.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/Interfaces/IVideojuego.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
 		<Unit filename="C:/Users/Admin/Documents/Documentos Joaco/Estudios/Tecnologo en informatica/3er semestre/Programacion avanzada ---/lab 3/Lab 3 proyecto/main.cpp">

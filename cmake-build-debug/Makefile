@@ -128,101 +128,197 @@ PA___Laboratorio_3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/build
 .PHONY : PA___Laboratorio_3/fast
 
-Categoria.obj: Categoria.cpp.obj
-.PHONY : Categoria.obj
+Classes/Categoria.obj: Classes/Categoria.cpp.obj
+.PHONY : Classes/Categoria.obj
 
 # target to build an object file
-Categoria.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Categoria.cpp.obj
-.PHONY : Categoria.cpp.obj
+Classes/Categoria.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.obj
+.PHONY : Classes/Categoria.cpp.obj
 
-Categoria.i: Categoria.cpp.i
-.PHONY : Categoria.i
+Classes/Categoria.i: Classes/Categoria.cpp.i
+.PHONY : Classes/Categoria.i
 
 # target to preprocess a source file
-Categoria.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Categoria.cpp.i
-.PHONY : Categoria.cpp.i
+Classes/Categoria.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.i
+.PHONY : Classes/Categoria.cpp.i
 
-Categoria.s: Categoria.cpp.s
-.PHONY : Categoria.s
+Classes/Categoria.s: Classes/Categoria.cpp.s
+.PHONY : Classes/Categoria.s
 
 # target to generate assembly for a file
-Categoria.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Categoria.cpp.s
-.PHONY : Categoria.cpp.s
+Classes/Categoria.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.s
+.PHONY : Classes/Categoria.cpp.s
 
-Gen_videojuego.obj: Gen_videojuego.cpp.obj
-.PHONY : Gen_videojuego.obj
+Classes/DatosSuscripcion.obj: Classes/DatosSuscripcion.cpp.obj
+.PHONY : Classes/DatosSuscripcion.obj
 
 # target to build an object file
-Gen_videojuego.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Gen_videojuego.cpp.obj
-.PHONY : Gen_videojuego.cpp.obj
+Classes/DatosSuscripcion.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.obj
+.PHONY : Classes/DatosSuscripcion.cpp.obj
 
-Gen_videojuego.i: Gen_videojuego.cpp.i
-.PHONY : Gen_videojuego.i
+Classes/DatosSuscripcion.i: Classes/DatosSuscripcion.cpp.i
+.PHONY : Classes/DatosSuscripcion.i
 
 # target to preprocess a source file
-Gen_videojuego.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Gen_videojuego.cpp.i
-.PHONY : Gen_videojuego.cpp.i
+Classes/DatosSuscripcion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.i
+.PHONY : Classes/DatosSuscripcion.cpp.i
 
-Gen_videojuego.s: Gen_videojuego.cpp.s
-.PHONY : Gen_videojuego.s
+Classes/DatosSuscripcion.s: Classes/DatosSuscripcion.cpp.s
+.PHONY : Classes/DatosSuscripcion.s
 
 # target to generate assembly for a file
-Gen_videojuego.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Gen_videojuego.cpp.s
-.PHONY : Gen_videojuego.cpp.s
+Classes/DatosSuscripcion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.s
+.PHONY : Classes/DatosSuscripcion.cpp.s
 
-UsuarioController.obj: UsuarioController.cpp.obj
-.PHONY : UsuarioController.obj
+Classes/Gen_videojuego.obj: Classes/Gen_videojuego.cpp.obj
+.PHONY : Classes/Gen_videojuego.obj
 
 # target to build an object file
-UsuarioController.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/UsuarioController.cpp.obj
-.PHONY : UsuarioController.cpp.obj
+Classes/Gen_videojuego.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.obj
+.PHONY : Classes/Gen_videojuego.cpp.obj
 
-UsuarioController.i: UsuarioController.cpp.i
-.PHONY : UsuarioController.i
+Classes/Gen_videojuego.i: Classes/Gen_videojuego.cpp.i
+.PHONY : Classes/Gen_videojuego.i
 
 # target to preprocess a source file
-UsuarioController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/UsuarioController.cpp.i
-.PHONY : UsuarioController.cpp.i
+Classes/Gen_videojuego.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.i
+.PHONY : Classes/Gen_videojuego.cpp.i
 
-UsuarioController.s: UsuarioController.cpp.s
-.PHONY : UsuarioController.s
+Classes/Gen_videojuego.s: Classes/Gen_videojuego.cpp.s
+.PHONY : Classes/Gen_videojuego.s
 
 # target to generate assembly for a file
-UsuarioController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/UsuarioController.cpp.s
-.PHONY : UsuarioController.cpp.s
+Classes/Gen_videojuego.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.s
+.PHONY : Classes/Gen_videojuego.cpp.s
 
-VideojuegoController.obj: VideojuegoController.cpp.obj
-.PHONY : VideojuegoController.obj
+Classes/Jugador.obj: Classes/Jugador.cpp.obj
+.PHONY : Classes/Jugador.obj
 
 # target to build an object file
-VideojuegoController.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/VideojuegoController.cpp.obj
-.PHONY : VideojuegoController.cpp.obj
+Classes/Jugador.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.obj
+.PHONY : Classes/Jugador.cpp.obj
 
-VideojuegoController.i: VideojuegoController.cpp.i
-.PHONY : VideojuegoController.i
+Classes/Jugador.i: Classes/Jugador.cpp.i
+.PHONY : Classes/Jugador.i
 
 # target to preprocess a source file
-VideojuegoController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/VideojuegoController.cpp.i
-.PHONY : VideojuegoController.cpp.i
+Classes/Jugador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.i
+.PHONY : Classes/Jugador.cpp.i
 
-VideojuegoController.s: VideojuegoController.cpp.s
-.PHONY : VideojuegoController.s
+Classes/Jugador.s: Classes/Jugador.cpp.s
+.PHONY : Classes/Jugador.s
 
 # target to generate assembly for a file
-VideojuegoController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/VideojuegoController.cpp.s
-.PHONY : VideojuegoController.cpp.s
+Classes/Jugador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.s
+.PHONY : Classes/Jugador.cpp.s
+
+Classes/Suscripcion.obj: Classes/Suscripcion.cpp.obj
+.PHONY : Classes/Suscripcion.obj
+
+# target to build an object file
+Classes/Suscripcion.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.obj
+.PHONY : Classes/Suscripcion.cpp.obj
+
+Classes/Suscripcion.i: Classes/Suscripcion.cpp.i
+.PHONY : Classes/Suscripcion.i
+
+# target to preprocess a source file
+Classes/Suscripcion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.i
+.PHONY : Classes/Suscripcion.cpp.i
+
+Classes/Suscripcion.s: Classes/Suscripcion.cpp.s
+.PHONY : Classes/Suscripcion.s
+
+# target to generate assembly for a file
+Classes/Suscripcion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.s
+.PHONY : Classes/Suscripcion.cpp.s
+
+Classes/Usuario.obj: Classes/Usuario.cpp.obj
+.PHONY : Classes/Usuario.obj
+
+# target to build an object file
+Classes/Usuario.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Usuario.cpp.obj
+.PHONY : Classes/Usuario.cpp.obj
+
+Classes/Usuario.i: Classes/Usuario.cpp.i
+.PHONY : Classes/Usuario.i
+
+# target to preprocess a source file
+Classes/Usuario.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Usuario.cpp.i
+.PHONY : Classes/Usuario.cpp.i
+
+Classes/Usuario.s: Classes/Usuario.cpp.s
+.PHONY : Classes/Usuario.s
+
+# target to generate assembly for a file
+Classes/Usuario.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Usuario.cpp.s
+.PHONY : Classes/Usuario.cpp.s
+
+Controllers/UsuarioController.obj: Controllers/UsuarioController.cpp.obj
+.PHONY : Controllers/UsuarioController.obj
+
+# target to build an object file
+Controllers/UsuarioController.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/UsuarioController.cpp.obj
+.PHONY : Controllers/UsuarioController.cpp.obj
+
+Controllers/UsuarioController.i: Controllers/UsuarioController.cpp.i
+.PHONY : Controllers/UsuarioController.i
+
+# target to preprocess a source file
+Controllers/UsuarioController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/UsuarioController.cpp.i
+.PHONY : Controllers/UsuarioController.cpp.i
+
+Controllers/UsuarioController.s: Controllers/UsuarioController.cpp.s
+.PHONY : Controllers/UsuarioController.s
+
+# target to generate assembly for a file
+Controllers/UsuarioController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/UsuarioController.cpp.s
+.PHONY : Controllers/UsuarioController.cpp.s
+
+Controllers/VideojuegoController.obj: Controllers/VideojuegoController.cpp.obj
+.PHONY : Controllers/VideojuegoController.obj
+
+# target to build an object file
+Controllers/VideojuegoController.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/VideojuegoController.cpp.obj
+.PHONY : Controllers/VideojuegoController.cpp.obj
+
+Controllers/VideojuegoController.i: Controllers/VideojuegoController.cpp.i
+.PHONY : Controllers/VideojuegoController.i
+
+# target to preprocess a source file
+Controllers/VideojuegoController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/VideojuegoController.cpp.i
+.PHONY : Controllers/VideojuegoController.cpp.i
+
+Controllers/VideojuegoController.s: Controllers/VideojuegoController.cpp.s
+.PHONY : Controllers/VideojuegoController.s
+
+# target to generate assembly for a file
+Controllers/VideojuegoController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Controllers/VideojuegoController.cpp.s
+.PHONY : Controllers/VideojuegoController.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -257,18 +353,30 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... PA___Laboratorio_3
-	@echo ... Categoria.obj
-	@echo ... Categoria.i
-	@echo ... Categoria.s
-	@echo ... Gen_videojuego.obj
-	@echo ... Gen_videojuego.i
-	@echo ... Gen_videojuego.s
-	@echo ... UsuarioController.obj
-	@echo ... UsuarioController.i
-	@echo ... UsuarioController.s
-	@echo ... VideojuegoController.obj
-	@echo ... VideojuegoController.i
-	@echo ... VideojuegoController.s
+	@echo ... Classes/Categoria.obj
+	@echo ... Classes/Categoria.i
+	@echo ... Classes/Categoria.s
+	@echo ... Classes/DatosSuscripcion.obj
+	@echo ... Classes/DatosSuscripcion.i
+	@echo ... Classes/DatosSuscripcion.s
+	@echo ... Classes/Gen_videojuego.obj
+	@echo ... Classes/Gen_videojuego.i
+	@echo ... Classes/Gen_videojuego.s
+	@echo ... Classes/Jugador.obj
+	@echo ... Classes/Jugador.i
+	@echo ... Classes/Jugador.s
+	@echo ... Classes/Suscripcion.obj
+	@echo ... Classes/Suscripcion.i
+	@echo ... Classes/Suscripcion.s
+	@echo ... Classes/Usuario.obj
+	@echo ... Classes/Usuario.i
+	@echo ... Classes/Usuario.s
+	@echo ... Controllers/UsuarioController.obj
+	@echo ... Controllers/UsuarioController.i
+	@echo ... Controllers/UsuarioController.s
+	@echo ... Controllers/VideojuegoController.obj
+	@echo ... Controllers/VideojuegoController.i
+	@echo ... Controllers/VideojuegoController.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
