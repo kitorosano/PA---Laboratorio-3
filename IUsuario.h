@@ -10,11 +10,11 @@ using namespace std;
 
 class IUsuario {
 public:
-    virtual void registroUsuario(string mail, string password) = 0;
+    virtual void registroUsuario(string email, string password) = 0;
     virtual void registroAdicionalDesarrollador(string empresa) = 0;
     virtual void registroAdicionalJugador(string nickname, string descripcion) = 0;
 //    virtual void cancelarRegistro() = 0;
-    virtual void iniciarSesion(string mail, string password) = 0;
+    virtual void iniciarSesion(string email, string password) = 0;
 //    virtual void cancelarIniciarSesion() = 0;
     virtual Set<Jugador> listarJugadores() = 0;
     virtual void seguirJugador(string nickname) = 0;

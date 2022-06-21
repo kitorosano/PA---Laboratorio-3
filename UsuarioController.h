@@ -12,11 +12,11 @@ public:
     UsuarioController();
     UsuarioController* getInstance();
 
-    void registroUsuario(string mail, string password);
+    void registroUsuario(string email, string password);
     void registroAdicionalDesarrollador(string empresa);
     void registroAdicionalJugador(string nickname, string descripcion);
 //    void cancelarRegistro();
-    void iniciarSesion(string mail, string password);
+    void iniciarSesion(string email, string password);
 //    void cancelarIniciarSesion();
     Set<Jugador> listarJugadores();
     void seguirJugador(string nickname);
@@ -26,6 +26,7 @@ public:
     void seleccionarSuscripcion(int tipo, int metodo_pago);
     void confirmarSuscripcion();
 
+    virtual ~UsuarioController();
 private:
     static UsuarioController* instance;
     Usuario* usuarioSeleccionado;

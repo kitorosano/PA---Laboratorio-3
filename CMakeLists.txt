@@ -7,9 +7,9 @@ include_directories(.)
 
 add_executable(PA___Laboratorio_3
         main.cpp
-        IUsuario.h
+        IUsuario.h Usuario.cpp Usuario.h
         UsuarioController.cpp UsuarioController.h
         IVideojuego.h
         VideojuegoController.cpp VideojuegoController.h
         Gen_videojuego.h Gen_videojuego.cpp
-        Categoria.h Categoria.cpp )
+        Categoria.h Categoria.cpp Jugador.cpp Jugador.h Suscripcion.cpp Suscripcion.h)
