@@ -4,5 +4,9 @@
 
 #ifndef LAB_3_PROYECTO_CATEGORIA_H
 #define LAB_3_PROYECTO_CATEGORIA_H
-
+#include <string>
+    class Categoria{
+        string nombre;
+        string desc;
+    };
 #endif //LAB_3_PROYECTO_CATEGORIA_H
