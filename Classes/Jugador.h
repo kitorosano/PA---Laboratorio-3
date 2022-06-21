@@ -5,6 +5,7 @@
 #ifndef PA___LABORATORIO_3_JUGADOR_H
 #define PA___LABORATORIO_3_JUGADOR_H
 #include "Usuario.h"
+#include "Suscripcion.h"
 #include <string>
 #include <iostream>
 #include <vector>
@@ -23,9 +24,12 @@ public:
 
     string getNickname();
     string getDescripcion();
+    DatosSuscripcion getDatosSuscripcion(int id);
 
     void setNickname(string nickname);
     void setDescripcion(string descripcion);
+    void agregarSuscripcion(Suscripcion suscripcion);
+    void eliminarSuscripcion(int id);
 };
 
 

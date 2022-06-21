@@ -5,7 +5,8 @@
 #ifndef PA___LABORATORIO_3_USUARIOCONTROLLER_H
 #define PA___LABORATORIO_3_USUARIOCONTROLLER_H
 
-#include "IUsuario.h"
+#include "Interfaces/IUsuario.h"
+#include "Classes/Jugador.h"
 
 class UsuarioController: public IUsuario {
 public:
