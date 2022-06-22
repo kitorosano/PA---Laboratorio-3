@@ -11,8 +11,8 @@ class Multijugador : public Partida {
 private:
     bool transmitidaEnVivo;
     double dur_total;
-    Set<DT_Time> hora_finalizacion;
-    //un atributo que indique el videojuego asociado?
+    Set<DT_Time> hora_finalizacion; //?
+
     //un atributo que tenga una lista de jugadores asociados?
 
 public:

@@ -17,6 +17,7 @@ private:
     string nickname;
     string descripcion;
     vector<Suscripcion> suscripciones;
+    // lista con las partidas jugadas finalizadas y no finalizadas ?
 
 public:
     Jugador(string email, string password, string nickname, string descripcion);

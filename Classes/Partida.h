@@ -16,6 +16,7 @@ private:
     DT_Time horaComienzo;
     double horasPartida;
     // atributo que tenga el puntaje de la partida ?
+    // un atributo que indique el videojuego asociado?
 
 public:
     Partida(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida);
