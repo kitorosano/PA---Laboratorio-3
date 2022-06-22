@@ -5,6 +5,7 @@
 #ifndef PA___LABORATORIO_3_IPARTIDA_H
 #define PA___LABORATORIO_3_IPARTIDA_H
 
+#include "Classes/Comentario.h"
 #include <string>
 using namespace std;
 

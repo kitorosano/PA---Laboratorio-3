@@ -6,6 +6,7 @@
 #define PA___LABORATORIO_3_PARTIDACONTROLLER_H
 
 #include "Interfaces/IPartida.h"
+#include "Classes/Partida.h"
 
 class PartidaController : public IPartida{
 public:
