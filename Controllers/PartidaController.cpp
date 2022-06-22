@@ -3,3 +3,9 @@
 //
 
 #include "PartidaController.h"
+
+PartidaController *PartidaController::getInstance() {
+    if(instance == NULL)
+        instance = new PartidaController;
+    return instance;
+}

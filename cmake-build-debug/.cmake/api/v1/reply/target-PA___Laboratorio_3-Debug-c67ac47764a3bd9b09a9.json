@@ -141,7 +141,8 @@
 				13,
 				16,
 				18,
-				20
+				20,
+				21
 			]
 		}
 	],
@@ -260,6 +261,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Controllers/PartidaController.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Interfaces/IPartida.h",
 			"sourceGroupIndex" : 1
 		}
 	],
