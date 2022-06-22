@@ -5,13 +5,10 @@
 #include <string>
 #include <iostream>
 
-Videojuego::Videojuego(int idVideojuego,string nombre,string descripcion,double total_horas_jugadas, double puntaje, int cantidad_votos){
-    this->idVideojuego=idVideojuego;
+Videojuego::Videojuego(string nombre,string descripcion, vector<Suscripcion> suscripciones) {
     this->nombre=nombre;
     this->descripcion=descripcion;
-    this->total_horas_jugadas=total_horas_jugadas;
-    this->puntaje=puntaje;
-    this->cantidad_votos=cantidad_votos;
+    this->suscripciones=suscripciones;
 }
 Videojuego::~Videojuego(){
 }
@@ -53,3 +50,18 @@ void Videojuego::setPuntaje(double puntaje){
 void Videojuego::setCantidad_votos(int cantidad_votos){
     this->cantidad_votos=cantidad_votos;
 }
+
+void Videojuego::agregarCategoria(Categoria * categorias){
+    this->categorias.push_back(categorias);
+}
+
+void Videojuego::agregarSuscripcion(Suscripcion suscripcion){
+    this->suscripciones.push_back(suscripcion);
+}
+
+void Videojuego::eliminarSuscripcion(Suscripcion suscripcion){
+    for(int i=0;i<this->suscripciones.size();i++){
+        if(this->suscripciones[i].getId()==suscripcion.getId()){
+            this->suscripciones.erase(this->suscripciones.begin()+i);
+        }
+    }

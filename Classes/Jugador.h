@@ -16,7 +16,6 @@ class Jugador: public Usuario {
 private:
     string nickname;
     string descripcion;
-    vector<Suscripcion> suscripciones;
 
 public:
     Jugador(string email, string password, string nickname, string descripcion);
@@ -24,12 +23,9 @@ public:
 
     string getNickname();
     string getDescripcion();
-    DatosSuscripcion getDatosSuscripcion(int id);
 
     void setNickname(string nickname);
     void setDescripcion(string descripcion);
-    void agregarSuscripcion(Suscripcion suscripcion);
-    void eliminarSuscripcion(int id);
 };
 
 

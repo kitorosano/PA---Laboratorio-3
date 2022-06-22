@@ -6,6 +6,10 @@
 #define PA___LABORATORIO_3_VIDEOJUEGO_H
 #include <string>
 #include <iostream>
+#include <vector>
+
+#include "Suscripcion.h"
+#include "Categoria.h"
 using namespace std;
 
 class Videojuego{
@@ -16,8 +20,11 @@ private:
     double total_horas_jugadas;
     double puntaje;
     int cantidad_votos;
+    vector<Categoria *> categorias;
+    vector<Suscripcion> suscripciones;
+
 public:
-    Videojuego(int idVideojuego,string nombre,string descripcion,double total_horas_jugadas, double puntaje, int cantidad_votos);
+    Videojuego(string nombre,string descripcion);
     virtual ~Videojuego();
 
     int getIdVideojuego();
@@ -33,5 +40,8 @@ public:
     void setTotal_horas_jugadas(double total_horas_jugadas);
     void setPuntaje(double puntaje);
     void setCantidad_votos(int cantidad_votos);
+    void agregarCategoria(Categoria * categorias);
+    void agregarSuscripcion(Suscripcion suscripcion);
+    void eliminarSuscripcion(Suscripcion suscripcion);
 };
 #endif //PA___LABORATORIO_3_VIDEOJUEGO_H

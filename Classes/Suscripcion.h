@@ -5,26 +5,21 @@
 #ifndef PA___LABORATORIO_3_SUSCRIPCION_H
 #define PA___LABORATORIO_3_SUSCRIPCION_H
 
-#include "DatosSuscripcion.h"
 
 class Suscripcion {
 private:
     int id;
     double costo;
-    bool activo;
-    DatosSuscripcion datos_suscripcion;
 
 public:
-    Suscripcion();
+    Suscripcion(double costo);
     virtual ~Suscripcion();
 
     int getId();
     double getCosto();
-    bool getActivo();
 
     void setId(int id);
     void setCosto(double costo);
-    void setActivo(bool activo);
 
 };
 
