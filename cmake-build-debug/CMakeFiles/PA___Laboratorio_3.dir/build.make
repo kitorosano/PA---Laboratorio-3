@@ -218,6 +218,66 @@ CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\CLionProjects\PA---Laboratorio-3\Controllers\PartidaController.cpp -o CMakeFiles\PA___Laboratorio_3.dir\Controllers\PartidaController.cpp.s
 
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/flags.make
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/includes_CXX.rsp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj: ../Classes/Partida.cpp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj -MF CMakeFiles\PA___Laboratorio_3.dir\Classes\Partida.cpp.obj.d -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Partida.cpp.obj -c D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Partida.cpp
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Partida.cpp > CMakeFiles\PA___Laboratorio_3.dir\Classes\Partida.cpp.i
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Partida.cpp -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Partida.cpp.s
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/flags.make
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/includes_CXX.rsp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj: ../Classes/Individual.cpp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj -MF CMakeFiles\PA___Laboratorio_3.dir\Classes\Individual.cpp.obj.d -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Individual.cpp.obj -c D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Individual.cpp
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Individual.cpp > CMakeFiles\PA___Laboratorio_3.dir\Classes\Individual.cpp.i
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Individual.cpp -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Individual.cpp.s
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/flags.make
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/includes_CXX.rsp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj: ../Classes/Multijugador.cpp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj -MF CMakeFiles\PA___Laboratorio_3.dir\Classes\Multijugador.cpp.obj.d -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Multijugador.cpp.obj -c D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Multijugador.cpp
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Multijugador.cpp > CMakeFiles\PA___Laboratorio_3.dir\Classes\Multijugador.cpp.i
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Multijugador.cpp -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Multijugador.cpp.s
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/flags.make
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/includes_CXX.rsp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj: ../Classes/Comentario.cpp
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj: CMakeFiles/PA___Laboratorio_3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj -MF CMakeFiles\PA___Laboratorio_3.dir\Classes\Comentario.cpp.obj.d -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Comentario.cpp.obj -c D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Comentario.cpp
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Comentario.cpp > CMakeFiles\PA___Laboratorio_3.dir\Classes\Comentario.cpp.i
+
+CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\CLionProjects\PA---Laboratorio-3\Classes\Comentario.cpp -o CMakeFiles\PA___Laboratorio_3.dir\Classes\Comentario.cpp.s
+
 # Object files for target PA___Laboratorio_3
 PA___Laboratorio_3_OBJECTS = \
 "CMakeFiles/PA___Laboratorio_3.dir/main.cpp.obj" \
@@ -229,7 +289,11 @@ PA___Laboratorio_3_OBJECTS = \
 "CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.obj" \
 "CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.obj" \
 "CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.obj" \
-"CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.obj"
+"CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.obj" \
+"CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj" \
+"CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj" \
+"CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj" \
+"CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj"
 
 # External object files for target PA___Laboratorio_3
 PA___Laboratorio_3_EXTERNAL_OBJECTS =
@@ -244,11 +308,15 @@ PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.obj
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.obj
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.obj
+PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj
+PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj
+PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj
+PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/build.make
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/linklibs.rsp
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/objects1.rsp
 PA___Laboratorio_3.exe: CMakeFiles/PA___Laboratorio_3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable PA___Laboratorio_3.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Document\CLionProjects\PA---Laboratorio-3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable PA___Laboratorio_3.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PA___Laboratorio_3.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

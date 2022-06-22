@@ -9,9 +9,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Categoria.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.obj.d"
+  "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Comentario.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/DatosSuscripcion.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/DatosSuscripcion.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Gen_videojuego.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.obj.d"
+  "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Individual.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Jugador.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.obj.d"
+  "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Multijugador.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj.d"
+  "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Partida.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Suscripcion.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Suscripcion.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Usuario.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Usuario.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Classes/Usuario.cpp.obj.d"
   "D:/Document/CLionProjects/PA---Laboratorio-3/Controllers/PartidaController.cpp" "CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.obj" "gcc" "CMakeFiles/PA___Laboratorio_3.dir/Controllers/PartidaController.cpp.obj.d"

@@ -152,6 +152,30 @@ Classes/Categoria.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Categoria.cpp.s
 .PHONY : Classes/Categoria.cpp.s
 
+Classes/Comentario.obj: Classes/Comentario.cpp.obj
+.PHONY : Classes/Comentario.obj
+
+# target to build an object file
+Classes/Comentario.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.obj
+.PHONY : Classes/Comentario.cpp.obj
+
+Classes/Comentario.i: Classes/Comentario.cpp.i
+.PHONY : Classes/Comentario.i
+
+# target to preprocess a source file
+Classes/Comentario.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.i
+.PHONY : Classes/Comentario.cpp.i
+
+Classes/Comentario.s: Classes/Comentario.cpp.s
+.PHONY : Classes/Comentario.s
+
+# target to generate assembly for a file
+Classes/Comentario.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Comentario.cpp.s
+.PHONY : Classes/Comentario.cpp.s
+
 Classes/DatosSuscripcion.obj: Classes/DatosSuscripcion.cpp.obj
 .PHONY : Classes/DatosSuscripcion.obj
 
@@ -200,6 +224,30 @@ Classes/Gen_videojuego.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Gen_videojuego.cpp.s
 .PHONY : Classes/Gen_videojuego.cpp.s
 
+Classes/Individual.obj: Classes/Individual.cpp.obj
+.PHONY : Classes/Individual.obj
+
+# target to build an object file
+Classes/Individual.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.obj
+.PHONY : Classes/Individual.cpp.obj
+
+Classes/Individual.i: Classes/Individual.cpp.i
+.PHONY : Classes/Individual.i
+
+# target to preprocess a source file
+Classes/Individual.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.i
+.PHONY : Classes/Individual.cpp.i
+
+Classes/Individual.s: Classes/Individual.cpp.s
+.PHONY : Classes/Individual.s
+
+# target to generate assembly for a file
+Classes/Individual.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Individual.cpp.s
+.PHONY : Classes/Individual.cpp.s
+
 Classes/Jugador.obj: Classes/Jugador.cpp.obj
 .PHONY : Classes/Jugador.obj
 
@@ -223,6 +271,54 @@ Classes/Jugador.s: Classes/Jugador.cpp.s
 Classes/Jugador.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Jugador.cpp.s
 .PHONY : Classes/Jugador.cpp.s
+
+Classes/Multijugador.obj: Classes/Multijugador.cpp.obj
+.PHONY : Classes/Multijugador.obj
+
+# target to build an object file
+Classes/Multijugador.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.obj
+.PHONY : Classes/Multijugador.cpp.obj
+
+Classes/Multijugador.i: Classes/Multijugador.cpp.i
+.PHONY : Classes/Multijugador.i
+
+# target to preprocess a source file
+Classes/Multijugador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.i
+.PHONY : Classes/Multijugador.cpp.i
+
+Classes/Multijugador.s: Classes/Multijugador.cpp.s
+.PHONY : Classes/Multijugador.s
+
+# target to generate assembly for a file
+Classes/Multijugador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Multijugador.cpp.s
+.PHONY : Classes/Multijugador.cpp.s
+
+Classes/Partida.obj: Classes/Partida.cpp.obj
+.PHONY : Classes/Partida.obj
+
+# target to build an object file
+Classes/Partida.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.obj
+.PHONY : Classes/Partida.cpp.obj
+
+Classes/Partida.i: Classes/Partida.cpp.i
+.PHONY : Classes/Partida.i
+
+# target to preprocess a source file
+Classes/Partida.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.i
+.PHONY : Classes/Partida.cpp.i
+
+Classes/Partida.s: Classes/Partida.cpp.s
+.PHONY : Classes/Partida.s
+
+# target to generate assembly for a file
+Classes/Partida.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PA___Laboratorio_3.dir\build.make CMakeFiles/PA___Laboratorio_3.dir/Classes/Partida.cpp.s
+.PHONY : Classes/Partida.cpp.s
 
 Classes/Suscripcion.obj: Classes/Suscripcion.cpp.obj
 .PHONY : Classes/Suscripcion.obj
@@ -380,15 +476,27 @@ help:
 	@echo ... Classes/Categoria.obj
 	@echo ... Classes/Categoria.i
 	@echo ... Classes/Categoria.s
+	@echo ... Classes/Comentario.obj
+	@echo ... Classes/Comentario.i
+	@echo ... Classes/Comentario.s
 	@echo ... Classes/DatosSuscripcion.obj
 	@echo ... Classes/DatosSuscripcion.i
 	@echo ... Classes/DatosSuscripcion.s
 	@echo ... Classes/Gen_videojuego.obj
 	@echo ... Classes/Gen_videojuego.i
 	@echo ... Classes/Gen_videojuego.s
+	@echo ... Classes/Individual.obj
+	@echo ... Classes/Individual.i
+	@echo ... Classes/Individual.s
 	@echo ... Classes/Jugador.obj
 	@echo ... Classes/Jugador.i
 	@echo ... Classes/Jugador.s
+	@echo ... Classes/Multijugador.obj
+	@echo ... Classes/Multijugador.i
+	@echo ... Classes/Multijugador.s
+	@echo ... Classes/Partida.obj
+	@echo ... Classes/Partida.i
+	@echo ... Classes/Partida.s
 	@echo ... Classes/Suscripcion.obj
 	@echo ... Classes/Suscripcion.i
 	@echo ... Classes/Suscripcion.s

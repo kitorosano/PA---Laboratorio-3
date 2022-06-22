@@ -90,6 +90,12 @@
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Categoria.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Comentario.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Comentario.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/DatosSuscripcion.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
@@ -102,10 +108,28 @@
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Gen_videojuego.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Individual.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Individual.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Jugador.cpp">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Jugador.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Multijugador.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Multijugador.h">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Partida.cpp">
+			<Option target="PA___Laboratorio_3"/>
+		</Unit>
+		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Partida.h">
 			<Option target="PA___Laboratorio_3"/>
 		</Unit>
 		<Unit filename="D:/Document/CLionProjects/PA---Laboratorio-3/Classes/Suscripcion.cpp">
