@@ -1,3 +1,0 @@
-C:/Users/esteban.rosano/CLionProjects/PA---Laboratorio-3/cmake-build-debug/CMakeFiles/PA___Laboratorio_3.dir
-C:/Users/esteban.rosano/CLionProjects/PA---Laboratorio-3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/esteban.rosano/CLionProjects/PA---Laboratorio-3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
