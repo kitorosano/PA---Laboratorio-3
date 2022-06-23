@@ -7,30 +7,39 @@
 
 #include "Interfaces/IPartida.h"
 #include "Classes/Partida.h"
+#include "vector"
+#include "Classes/Multijugador.h"
 
 class PartidaController : public IPartida{
 public:
     PartidaController();
     PartidaController * getInstance();
+    vector<Partida> partidas;
 
-    void seleccionarPartidaAContinuar(string idPartida);
+
+    void continuarPartidaIndividual(string idPartida);
     void nuevaPartidaIndividual();
-    void indicarTransmision();
+    void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
-    void confirmarRegistro();
-    Set<DT_Multijugador_Videojuego> listarPartidasMultijugadorUnidasNoFinalizadas();
+    void confirmarPartida();
+    vector<Multijugador> listarPartidasMultijugadorUnidasNoFinalizadas();
     void confirmarAbandonoPartida(string idPartida);
-    Set<DT_Partida_Videojuego> listarPartidasIniciadasNoFinalizadas();
-    void confirmarPartida(string idPartida);
+    vector<Multijugador> listarPartidasIniciadasNoFinalizadas();
+    void confirmarFinalizarPartida(string idPartida);
     void seleccionarPartida(string idPartida);
     Set<Comentario> listarComentariosDePartida();
-    void seleccionarComentarioAResponder(string idComentario);
+    void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
+    void ConfirmarComentario();
+    void listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
+    vector<DT_Multijugador_Videojuego>listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
 private:
     static PartidaController* instance;
-    Comentario* comentarioSeleccionado;
-    Partida* partidaSeleccionada;
+    // despues hacer un metodo que deje null estos dato:
+    Partida* partidaGuardada; // El controlador guarda la partida pi
+    Comentario* comentarioAResponder;
+    Comentario* nuevoComentario;
 
 };
 
