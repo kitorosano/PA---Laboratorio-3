@@ -26,6 +26,9 @@ public:
 
     void setNickname(string nickname);
     void setDescripcion(string descripcion);
+
+    void registroJugador(string, string);
+    void toString();
 };
 
 

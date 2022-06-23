@@ -29,3 +29,7 @@ void Jugador::setNickname(string nickname) {
 void Jugador::setDescripcion(string descripcion) {
     this->descripcion = descripcion;
 }
+
+void Jugador::registroJugador(string, string){}
+
+void Jugador::toString(){}
