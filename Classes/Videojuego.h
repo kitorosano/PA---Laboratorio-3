@@ -10,6 +10,7 @@
 
 #include "Suscripcion.h"
 #include "Categoria.h"
+#include "DataTypes/DT_NomDescVideojuego.h"
 using namespace std;
 
 class Videojuego{
@@ -20,8 +21,6 @@ private:
     double total_horas_jugadas;
     double puntaje;
     int cantidad_votos;
-    vector<Categoria *> categorias;
-    vector<Suscripcion> suscripciones;
 
 public:
     Videojuego(string nombre,string descripcion);
@@ -30,6 +29,7 @@ public:
     int getIdVideojuego();
     string getNombre();
     string getDescripcion();
+    DT_NomDescVideojuego getNomDescVideojuego();
     double getTotal_horas_jugadas();
     double getPuntaje();
     int getCantidad_votos();
@@ -40,8 +40,7 @@ public:
     void setTotal_horas_jugadas(double total_horas_jugadas);
     void setPuntaje(double puntaje);
     void setCantidad_votos(int cantidad_votos);
-    void agregarCategoria(Categoria * categorias);
-    void agregarSuscripcion(Suscripcion suscripcion);
-    void eliminarSuscripcion(Suscripcion suscripcion);
+
+    string toString();
 };
 #endif //PA___LABORATORIO_3_VIDEOJUEGO_H
