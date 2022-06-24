@@ -7,6 +7,7 @@
 
 #include "Suscripcion.h"
 #include "Jugador.h"
+#include "Data Types/DT_Date.h";
 
 class DatosSuscripcion {
 private:
