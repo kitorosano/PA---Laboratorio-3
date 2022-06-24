@@ -9,32 +9,32 @@
 #include "Jugador.h"
 #include "Data Types/DT_Date.h";
 #include "Data Types/DT_Time.h";
-#include "Controllers/DatosSuscripcionController.h"
+#include "Data Types/DT_MetodoPago.h"
 
 
 class DatosSuscripcion {
 private:
     Jugador *jugador;
     Suscripcion *suscripcion;
-    metodo_pago metodo_pago;
+    DT_MetodoPago metodo_pago;
     DT_Date fecha_suscripcion;
     DT_Time hora_suscripcion;
     bool activo = false;
 
 public:
-    DatosSuscripcion(Jugador *jugador, Suscripcion *suscripcion, metodo_pago metodo_pago, DT_Date fecha_suscripcion, DT_Time hora_suscripcion);
+    DatosSuscripcion(Jugador *jugador, Suscripcion *suscripcion, DT_MetodoPago metodo_pago, DT_Date fecha_suscripcion, DT_Time hora_suscripcion);
     virtual ~DatosSuscripcion();
 
     Jugador *getJugador();
     Suscripcion *getSuscripcion();
-    metodo_pago getMetodoPago();
+    DT_MetodoPago getMetodoPago();
     DT_Date getFechaSuscripcion();
     DT_Time getHoraSuscripcion();
     bool getActivo();
 
     void setJugador(Jugador *jugador);
     void setSuscripcion(Suscripcion *suscripcion);
-    void setMetodoPago(metodo_pago metodo_pago);
+    void setMetodoPago(DT_MetodoPago metodo_pago);
     void setFechaSuscripcion(DT_Date fecha_suscripcion);
     void setHoraSuscripcion(DT_Time hora_suscripcion);
     void setActivo(bool activo);

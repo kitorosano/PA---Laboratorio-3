@@ -13,7 +13,7 @@ class DatosSuscripcionController: public IDatosSuscripcion{
 private:
     static DatosSuscripcionController* instance;
     vector<Suscripcion*> suscripciones;
-    vector<DatosSuscripcion*> DatosSuscripciones;
+    //vector<DatosSuscripcion*> datosSuscripciones;
 public:
     DatosSuscripcionController();
     DatosSuscripcionController* getInstance();
