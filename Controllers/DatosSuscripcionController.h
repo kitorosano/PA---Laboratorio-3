@@ -7,6 +7,7 @@
 #include "Interfaces/IDatosSuscripcion.h"
 #include "Classes/Suscripcion.h"
 #include "Classes/DatosSuscripcion.h"
+#include "Data Types/DT_MetodoPago.h"
 #include <vector>
 class DatosSuscripcionController: public IDatosSuscripcion{
 private:

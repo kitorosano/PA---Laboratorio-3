@@ -5,9 +5,9 @@
 #ifndef PA___LABORATORIO_3_IDATOSSUSCRIPCION_H
 #define PA___LABORATORIO_3_IDATOSSUSCRIPCION_H
 #include <string>
+#include "Data Types/DT_MetodoPago.h"
 using namespace std;
 
-#endif //PA___LABORATORIO_3_IDATOSSUSCRIPCION_H
 
 class IDatosSuscripcion{
 
@@ -20,3 +20,5 @@ public:
     virtual void confirmarDatosSuscripcion()=0;
     virtual void listarNicknameJugadoresSuscritos()=0;
 };
+#endif //PA___LABORATORIO_3_IDATOSSUSCRIPCION_H
+
