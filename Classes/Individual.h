@@ -9,13 +9,15 @@
 
 class Individual : public Partida{
 private:
-    bool contPartAnterior;
+    Individual* partidaAContinuar;
 
 public:
-    Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, bool contPartAnterior);
+    Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador* jugador, Videojuego* videojuego, Individual* partidaAContinuar);
 
-    void setContPartAnterior(bool contPartAnterior);
-    bool getContPartAnterior();
+    Individual* getContPartAnterior();
+
+    void setContPartAnterior(Individual* partidaAContinuar);
+
 
 };
 
