@@ -3,6 +3,10 @@
 //
 #include "Categoria.h"
 #include <string>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 Categoria::Categoria(string nombre,string descripcion){
     this->nombre=nombre;
@@ -16,10 +20,23 @@ string Categoria::getNombre(){
 string Categoria::getDesc(){
     return this->descripcion;
 }
+E_tipoCategoria Categoria::getTipo(){
+    return this->tipo;
+}
 void Categoria::setNombre(string nombre){
     this->nombre=nombre;
 }
 void Categoria::setDescripcion(string descripcion){
     this->descripcion=descripcion;
 }
+void Categoria::setTipo(E_tipoCategoria tipo){
+    this->tipo=tipo;
+}
 
+string Categoria::toString(){
+    stringstream ss;
+    ss<<"Nombre: "<<this->nombre<<endl;
+    ss<<"Descripcion: "<<this->descripcion<<endl;
+    ss<<"Tipo: "<<Str_tipoCategoria[this->tipo]<<endl;
+    return ss.str();
+}

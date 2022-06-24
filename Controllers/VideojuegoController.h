@@ -15,8 +15,8 @@ private:
     static VideojuegoController* instance;
 
     Videojuego* videojuegoSeleccionado = nullptr;
-    vector<Videojuego> videojuegos;
-    vector<Videojuego> videojuegosJugador;
+    vector<Videojuego*> videojuegos;
+    vector<Videojuego*> videojuegosJugador;
 
 public:
     static VideojuegoController* getInstance();

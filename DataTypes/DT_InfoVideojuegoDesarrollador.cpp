@@ -6,7 +6,7 @@
 
 using namespace std;
 
-DT_InfoVideojuegoDesarrollador::DT_InfoVideojuegoDesarrollador(string nombre, vector<string> categorias, vector<Suscripcion> suscripciones, string empresa, double totalHorasJugadas) {
+DT_InfoVideojuegoDesarrollador::DT_InfoVideojuegoDesarrollador(string nombre, vector<string> categorias, vector<Suscripcion *> suscripciones, string empresa, double totalHorasJugadas) {
     this->nombre = nombre;
     this->categorias = categorias;
     this->suscripciones = suscripciones;
@@ -22,7 +22,7 @@ vector<string> DT_InfoVideojuegoDesarrollador::getCategorias() {
     return categorias;
 }
 
-vector<Suscripcion> DT_InfoVideojuegoDesarrollador::getSuscripciones() {
+vector<Suscripcion *> DT_InfoVideojuegoDesarrollador::getSuscripciones() {
     return suscripciones;
 }
 

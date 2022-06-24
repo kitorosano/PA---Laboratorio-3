@@ -16,16 +16,16 @@ class DT_InfoVideojuegoJugador {
 private:
     string nombre;
     vector<string> categorias;
-    vector<Suscripcion> suscripciones;
+    vector<Suscripcion *> suscripciones;
     string empresa;
     double puntaje;
 
 public:
-    DT_InfoVideojuegoJugador(string nombre, vector<string> categorias, vector<Suscripcion> suscripciones, string empresa, double puntaje);
+    DT_InfoVideojuegoJugador(string nombre, vector<string> categorias, vector<Suscripcion *> suscripciones, string empresa, double puntaje);
 
     string getNombre();
     vector<string> getCategorias();
-    vector<Suscripcion> getSuscripciones();
+    vector<Suscripcion *> getSuscripciones();
     string getEmpresa();
     double getPuntaje();
 

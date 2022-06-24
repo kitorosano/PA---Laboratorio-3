@@ -16,7 +16,7 @@ class DT_InfoVideojuegoDesarrollador {
 private:
     string nombre;
     vector<string> categorias;
-    vector<Suscripcion> suscripciones;
+    vector<Suscripcion *> suscripciones;
     string empresa;
     double totalHorasJugadas;
 
@@ -25,7 +25,7 @@ public:
 
     string getNombre();
     vector<string> getCategorias();
-    vector<Suscripcion> getSuscripciones();
+    vector<Suscripcion *> getSuscripciones();
     string getEmpresa();
     double getTotalHorasJugadas();
 
