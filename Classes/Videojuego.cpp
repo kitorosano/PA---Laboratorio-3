@@ -5,11 +5,11 @@
 #include <string>
 #include <iostream>
 
-Videojuego::Videojuego(string nombre,string descripcion, vector<Suscripcion> suscripciones) {
+Videojuego::Videojuego(string nombre,string descripcion) {
     this->nombre=nombre;
     this->descripcion=descripcion;
-    this->suscripciones=suscripciones;
 }
+
 Videojuego::~Videojuego(){
 }
 
@@ -31,7 +31,6 @@ double Videojuego::getPuntaje(){
 int Videojuego::getCantidad_votos(){
     return this->cantidad_votos;
 }
-
 void Videojuego::setIdVideojuego(int idVideojuego){
     this->idVideojuego=idVideojuego;
 }
@@ -51,17 +50,8 @@ void Videojuego::setCantidad_votos(int cantidad_votos){
     this->cantidad_votos=cantidad_votos;
 }
 
-void Videojuego::agregarCategoria(Categoria * categorias){
-    this->categorias.push_back(categorias);
+string Videojuego::toString(){
+    stringstream ss;
+    ss << "Videojuego: " << this->nombre << " - " << this->descripcion << endl;
+    return ss.str();
 }
-
-void Videojuego::agregarSuscripcion(Suscripcion suscripcion){
-    this->suscripciones.push_back(suscripcion);
-}
-
-void Videojuego::eliminarSuscripcion(Suscripcion suscripcion){
-    for(int i=0;i<this->suscripciones.size();i++){
-        if(this->suscripciones[i].getId()==suscripcion.getId()){
-            this->suscripciones.erase(this->suscripciones.begin()+i);
-        }
-    }
