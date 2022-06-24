@@ -14,7 +14,7 @@ class Categoria {
 private:
     string nombre;
     string descripcion;
-    E_tipoCategoria tipo;
+    E_TipoCategoria tipo;
 
 public:
     Categoria(string nombre,string descripcion);
@@ -22,11 +22,11 @@ public:
 
     string getNombre();
     string getDesc();
-    E_tipoCategoria getTipo();
+    E_TipoCategoria getTipo();
 
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
-    void setTipo(E_tipoCategoria tipo);
+    void setTipo(E_TipoCategoria tipo);
 
     string toString();
 

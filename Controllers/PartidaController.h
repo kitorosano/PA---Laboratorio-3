@@ -7,15 +7,26 @@
 
 #include "Interfaces/IPartida.h"
 #include "Classes/Partida.h"
-#include "vector"
 #include "Classes/Multijugador.h"
+#include "DataTypes/DT_MultijugadorVideojuego.h"
+#include "vector"
+#include <string>
 
-class PartidaController : public IPartida{
-public:
+using namespace std;
+
+class PartidaController: public IPartida{
+private:
+    static PartidaController* instance;
     PartidaController();
-    PartidaController * getInstance();
+
+    Partida* partidaSeleccionada; // El controlador guarda la partida pi
+    Comentario* comentarioAResponder;
+    Comentario* nuevoComentario;
     vector<Partida*> partidas;
 
+public:
+    static PartidaController * getInstance();
+    virtual ~PartidaController();
 
     void continuarPartidaIndividual(string idPartida);
     void nuevaPartidaIndividual();
@@ -30,16 +41,10 @@ public:
     vector<Comentario*> listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
-    void ConfirmarComentario();
+    void confirmarComentario();
     void listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
-    vector<DT_Multijugador_Videojuego>listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    vector<DT_MultijugadorVideojuego>listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
-private:
-    static PartidaController* instance;
-    // despues hacer un metodo que deje null estos dato:
-    Partida* partidaSeleccionada; // El controlador guarda la partida pi
-    Comentario* comentarioAResponder;
-    Comentario* nuevoComentario;
 
 };
 

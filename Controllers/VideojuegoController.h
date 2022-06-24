@@ -6,13 +6,12 @@
 #include "Interfaces/IVideojuego.h"
 #include <string>
 
-
 using namespace std;
 
 class VideojuegoController: public IVideojuego{
 private:
-    VideojuegoController();
     static VideojuegoController* instance;
+    VideojuegoController();
 
     Videojuego* videojuegoSeleccionado = nullptr;
     vector<Videojuego*> videojuegos;
@@ -20,6 +19,7 @@ private:
 
 public:
     static VideojuegoController* getInstance();
+    virtual ~VideojuegoController();
 
     void datosNuevoVideojuego(string nombre, string descripcion, int costoMensual, int costoTrimestral, int costoAnual, int costoVitalicia);
     void confirmarVideojuego();

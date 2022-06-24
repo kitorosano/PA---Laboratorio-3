@@ -21,7 +21,7 @@ private:
     double totalHorasJugadas;
 
 public:
-    DT_InfoVideojuegoDesarrollador(string nombre, vector<string> categorias, vector<Suscripcion> suscripciones, string empresa, double totalHorasJugadas);
+    DT_InfoVideojuegoDesarrollador(string nombre, vector<string> categorias, vector<Suscripcion *> suscripciones, string empresa, double totalHorasJugadas);
 
     string getNombre();
     vector<string> getCategorias();

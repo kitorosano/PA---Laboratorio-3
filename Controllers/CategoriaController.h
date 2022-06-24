@@ -7,23 +7,27 @@
 
 #include "Interfaces/ICategoria.h"
 #include <vector>
+#include <string>
 
 
-class CategoriaController {
+class CategoriaController: public ICategoria {
 private:
-    Categoria* categoriaSeleccionada = nullptr;
+    static CategoriaController* instance;
+    CategoriaController();
+
+    Categoria* categoriaSeleccionada;
     vector<Categoria *> categorias;
 
 public:
-    CategoriaController();
     static CategoriaController* getInstance();
+    virtual ~CategoriaController();
 
     Categoria* getCategoriaSeleccionada();
-    vector<Categoria> listadoCategorias();
+    vector<Categoria*> listadoCategorias();
 
     void seleccionarCategoria(string nombre);
 
-    void agregarCategoria(string nombre, string descripcinon, E_tipoCategoria tipo);
+    void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo);
     void confirmarCategoria();
     void cancelarCategoria();
 

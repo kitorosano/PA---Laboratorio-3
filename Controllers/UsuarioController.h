@@ -8,27 +8,31 @@
 #include "Interfaces/IUsuario.h"
 #include "Classes/Jugador.h"
 #include <vector>
+#include <string>
 #include <iostream>
 using namespace std;
 
 class UsuarioController: public IUsuario {
 private:
     static UsuarioController* instance;
+    UsuarioController();
+
+    Jugador* usuarioLogeado;
     vector<Jugador*> jugadores;
 public:
-    UsuarioController();
+    static UsuarioController* getInstance();
     virtual ~UsuarioController();
-    UsuarioController* getInstance();
-     void registroJugador(string mail,string password,string nickname,string descripcion);
-     void registroDesarrollador(string mail,string password,string empresa);
-     void confirmarRegistro();
-     void cancelarRegistro();
-     void iniciarSesion(string mail,string password);
-     Usuario getUsuarioLogeado();
-     void seguirJugador(string nickname);
-     vector<Jugador*> listarJugadores();
 
+    Usuario getUsuarioLogeado();
+    vector<Jugador*> listarJugadores();
 
+    void registroJugador(string email,string password,string nickname,string descripcion);
+    void registroDesarrollador(string email,string password,string empresa);
+    void confirmarRegistro();
+    void cancelarRegistro();
+
+    void iniciarSesion(string mail,string password);
+    void seguirJugador(string nickname);
 
 };
 

@@ -4,6 +4,14 @@
 
 #include "Comentario.h"
 
+Comentario::Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Jugador *jugador) {
+    this->idComentario = idComentario;
+    this->fecha_envio = fecha_envio;
+    this->hora_envio = hora_envio;
+    this->contenido = contenido;
+    this->jugador = jugador;
+}
+
 Comentario::Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido,
                        Comentario *comentarioAResponder, Jugador *jugador) {
     this->idComentario = idComentario;

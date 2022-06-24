@@ -8,14 +8,17 @@
 #include "string"
 #include <iostream>
 #include "Classes/Jugador.h"
+#include "DataTypes/DT_Time.h"
 
 class JugadorMultijugador {
 private:
-    DT_TIME hora_finalizacion;
+    DT_Time hora_finalizacion;
     Jugador* jugador;
 
 public:
-    JugadorMultijugador(DT_TIME hora_finalizacion, Jugador* jugador);
+    JugadorMultijugador(Jugador* jugador);
+
+    void setHoraFinalizacion(DT_Time hora_finalizacion);
 };
 
 

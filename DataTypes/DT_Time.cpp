@@ -3,6 +3,7 @@
 //
 #include "DT_Time.h"
 #include <iomanip>
+using namespace std;
 
 DT_Time::DT_Time(){
 

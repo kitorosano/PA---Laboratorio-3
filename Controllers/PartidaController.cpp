@@ -3,6 +3,18 @@
 //
 
 #include "PartidaController.h"
+using namespace std;
+
+PartidaController* PartidaController::instance = NULL;
+
+PartidaController::PartidaController() {
+    partidas = vector<Partida *>();
+    partidaSeleccionada = NULL;
+    comentarioAResponder = NULL;
+    nuevoComentario = NULL;
+}
+
+PartidaController::~PartidaController(){}
 
 PartidaController *PartidaController::getInstance() {
     if(instance == NULL)

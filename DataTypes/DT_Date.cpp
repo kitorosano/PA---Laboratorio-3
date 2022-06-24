@@ -4,6 +4,8 @@
 #include "DT_Date.h"
 #include <iomanip>
 
+using namespace std;
+
 DT_Date::DT_Date(){
     stringstream ssDate;
     auto t = std::time(nullptr);
@@ -14,6 +16,6 @@ DT_Date::DT_Date(){
 
 DT_Date::~DT_Date(){}
 
-string Dt_Date::getDate(){
+string DT_Date::getDate(){
     return this->date;
 }

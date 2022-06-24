@@ -15,11 +15,11 @@ using namespace std;
 
 class ICategoria {
 public:
-    virtual void agregarCategoria(string nombre, string descripcinon, E_tipoCategoria tipo) = 0;
+    virtual void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo) = 0;
     virtual vector<string> listadoNombreCategorias() = 0;
     virtual void confirmarCategoria() = 0;
     virtual void cancelarCategoria() = 0;
-    virtual vector<Categoria> listadoCategorias() = 0;
+    virtual vector<Categoria*> listadoCategorias() = 0;
     virtual void seleccionarCategoria(string nombre) = 0;
     virtual void agregarVideojuegoACategoria(Videojuego videojuego) = 0;
 

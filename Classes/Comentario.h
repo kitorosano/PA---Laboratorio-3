@@ -5,7 +5,8 @@
 #ifndef PA___LABORATORIO_3_COMENTARIO_H
 #define PA___LABORATORIO_3_COMENTARIO_H
 
-#include "Classes/Comentario.h"
+#include "DataTypes/DT_Date.h"
+#include "DataTypes/DT_Time.h"
 #include "Classes/Jugador.h"
 #include "string"
 #include <iostream>
@@ -21,6 +22,7 @@ private:
     Jugador* jugador;
 
 public:
+    Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Jugador* jugador);
     Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Comentario* comentarioAResponder, Jugador* jugador);
 
     int getIdComentario();

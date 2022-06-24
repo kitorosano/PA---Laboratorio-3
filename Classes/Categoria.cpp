@@ -20,7 +20,7 @@ string Categoria::getNombre(){
 string Categoria::getDesc(){
     return this->descripcion;
 }
-E_tipoCategoria Categoria::getTipo(){
+E_TipoCategoria Categoria::getTipo(){
     return this->tipo;
 }
 void Categoria::setNombre(string nombre){
@@ -29,7 +29,7 @@ void Categoria::setNombre(string nombre){
 void Categoria::setDescripcion(string descripcion){
     this->descripcion=descripcion;
 }
-void Categoria::setTipo(E_tipoCategoria tipo){
+void Categoria::setTipo(E_TipoCategoria tipo){
     this->tipo=tipo;
 }
 
@@ -37,6 +37,6 @@ string Categoria::toString(){
     stringstream ss;
     ss<<"Nombre: "<<this->nombre<<endl;
     ss<<"Descripcion: "<<this->descripcion<<endl;
-    ss<<"Tipo: "<<Str_tipoCategoria[this->tipo]<<endl;
+    ss << "Tipo: " << Str_TipoCategoria[this->tipo] << endl;
     return ss.str();
 }

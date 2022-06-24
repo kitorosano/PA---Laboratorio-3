@@ -4,6 +4,7 @@
 #include "Videojuego.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 Videojuego::Videojuego(string nombre,string descripcion) {
     this->nombre=nombre;

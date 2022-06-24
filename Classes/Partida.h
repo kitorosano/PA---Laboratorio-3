@@ -9,6 +9,9 @@
 #include <iostream>
 #include "Classes/Jugador.h"
 #include "Classes/Videojuego.h"
+#include "DataTypes/DT_Date.h"
+#include "DataTypes/DT_Time.h"
+
 using namespace std;
 
 class Partida {
@@ -36,7 +39,7 @@ public:
     void setHoraComienzo(DT_Time horaCominezo);
     void setHorasPartida(double horasPartida);
     void setJugador(Jugador* jugador);
-    void setVideojuego(Videojuego* videojuego;
+    void setVideojuego(Videojuego* videojuego);
 
 
 };

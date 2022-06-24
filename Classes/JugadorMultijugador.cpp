@@ -4,7 +4,10 @@
 
 #include "JugadorMultijugador.h"
 
-JugadorMultijugador::JugadorMultijugador(DT_TIME hora_finalizacion, Jugador *jugador) {
-    this->hora_finalizacion = hora_finalizacion;
+JugadorMultijugador::JugadorMultijugador(Jugador *jugador) {
     this->jugador = jugador;
+}
+
+void JugadorMultijugador::setHoraFinalizacion(DT_Time hora_finalizacion) {
+    this->hora_finalizacion = hora_finalizacion;
 }

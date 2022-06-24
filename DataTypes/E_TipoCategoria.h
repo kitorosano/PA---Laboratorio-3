@@ -6,13 +6,13 @@
 #define PA___LABORATORIO_3_E_TIPOCATEGORIA_H
 
 
-enum E_tipoCategoria {
+enum E_TipoCategoria {
     PLATAFORMA,
     GENERO,
     OTRO
 };
 
-static const char *Str_tipoCategoria[] = {
+static const char *Str_TipoCategoria[] = {
         "PLATAFORMA",
         "GENERO",
         "OTRO"
