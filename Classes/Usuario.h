@@ -22,7 +22,9 @@ public:
 
     void setEmail(string email);
     void setPassword(string password);
-
+    void confirmarRegistro();
+    void cancelarRegistro();
+    bool verificarContraseña(string password);
 
 };
 
