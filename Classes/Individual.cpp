@@ -4,15 +4,20 @@
 
 #include "Individual.h"
 
-Individual::Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida,
-                       bool contPartAnterior) : Partida(idPartida, fecha, horaComienzo, horasPartida) {
-    this->contPartAnterior = contPartAnterior;
+Individual::Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador *jugador,
+                       Videojuego *videojuego, Individual *partidaAContinuar) : Partida(idPartida, fecha, horaComienzo, horasPartida, jugador, videojuego) {
+    this->partidaAContinuar = partidaAContinuar;
 }
 
-void Individual::setContPartAnterior(bool contPartAnterior) {
-    this->contPartAnterior = contPartAnterior;
+Individual *Individual::getContPartAnterior() {
+    return this->partidaAContinuar;
 }
 
-bool Individual::getContPartAnterior() {
-    return this->contPartAnterior;
+void Individual::setContPartAnterior(Individual* partidaAContinuar) {
+    this->partidaAContinuar = partidaAContinuar;
 }
+
+
+
+
+

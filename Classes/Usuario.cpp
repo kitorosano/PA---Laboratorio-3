@@ -29,3 +29,9 @@ void Usuario::setEmail(string email) {
 void Usuario::setPassword(string password) {
     this->password = password;
 }
+
+void Usuario::confirmarRegistro(){}
+
+void Usuario::cancelarRegistro(){}
+
+bool Usuario::verificarContraseña(string password){}

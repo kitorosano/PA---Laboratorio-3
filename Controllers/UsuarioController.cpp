@@ -20,28 +20,18 @@ UsuarioController* UsuarioController::getInstance() {
     return instance;
 }
 
-void UsuarioController::registroUsuario(string mail, string password){}
+void UsuarioController::registroJugador(string mail,string password,string nickname,string descripcion){}
 
-void UsuarioController::registroAdicionalDesarrollador(string empresa){}
+void UsuarioController::registroDesarrollador(string mail,string password,string empresa){}
 
-void UsuarioController::registroAdicionalJugador(string nickname, string descripcion){}
+void UsuarioController::confirmarRegistro(){}
 
-//    void UsuarioController::cancelarRegistro(){}
+void UsuarioController::cancelarRegistro(){}
 
-void UsuarioController::iniciarSesion(string mail, string password){}
+void UsuarioController::iniciarSesion(string mail,string password){}
 
-//    void UsuarioController::cancelarIniciarSesion(){}
-
-Set<Jugador> UsuarioController::listarJugadores(){}
+Usuario UsuarioController::getUsuarioLogeado(){}
 
 void UsuarioController::seguirJugador(string nickname){}
 
-void UsuarioController::asignarPuntaje(string videojuego, int puntaje){}
-
-Set<DT_SuscripcionVideojuego> UsuarioController::listarSuscripciones(){}
-
-void UsuarioController::seleccionarVideojuego(string videojuego){}
-
-void UsuarioController::seleccionarSuscripcion(int tipo, int metodo_pago){}
-
-void UsuarioController::confirmarSuscripcion(){}
+vector<Jugador*> UsuarioController::listarJugadores(){}
