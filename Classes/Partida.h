@@ -7,6 +7,8 @@
 
 #include "string"
 #include <iostream>
+#include "Classes/Jugador.h"
+#include "Classes/Videojuego.h"
 using namespace std;
 
 class Partida {
@@ -15,21 +17,27 @@ private:
     DT_Date fecha;
     DT_Time horaComienzo;
     double horasPartida;
-    // atributo que tenga el puntaje de la partida ?
-    // un atributo que indique el videojuego asociado?
+    Jugador* jugador;
+    Videojuego* videojuego;
+
 
 public:
-    Partida(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida);
-
-    void setIdPartida(string idPartida);
-    void setFecha(DT_Date fecha);
-    void setHoraComienzo(DT_Time horaCominezo);
-    void setHorasPartida(double horasPartida);
+    Partida(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador* jugador, Videojuego* videojuego);
 
     string getIdPartida();
     DT_Date getFecha();
     DT_Time getHoraComienzo();
     double getHorasPartida();
+    Jugador* getJugador();
+    Videojuego* getVideojuego();
+
+    void setIdPartida(string idPartida);
+    void setFecha(DT_Date fecha);
+    void setHoraComienzo(DT_Time horaCominezo);
+    void setHorasPartida(double horasPartida);
+    void setJugador(Jugador* jugador);
+    void setVideojuego(Videojuego* videojuego;
+
 
 };
 

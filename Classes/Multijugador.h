@@ -6,20 +6,18 @@
 #define PA___LABORATORIO_3_MULTIJUGADOR_H
 
 #include "Classes/Partida.h"
+#include "Classes/JugadorMultijugador.h"
+#include "Classes/Comentario.h"
 
 class Multijugador : public Partida {
 private:
     bool transmitidaEnVivo;
     double dur_total;
-    Set<DT_Time> hora_finalizacion; //?
-
-    //un atributo que tenga una lista de jugadores asociados?
+    vector<JugadorMultijugador> jugadoresEnLaPartida;
+    vector<Comentario> comentarios;
 
 public:
 
-
-
 };
-
 
 #endif //PA___LABORATORIO_3_MULTIJUGADOR_H

@@ -14,7 +14,7 @@ class PartidaController : public IPartida{
 public:
     PartidaController();
     PartidaController * getInstance();
-    vector<Partida> partidas;
+    vector<Partida*> partidas;
 
 
     void continuarPartidaIndividual(string idPartida);
@@ -22,12 +22,12 @@ public:
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    vector<Multijugador> listarPartidasMultijugadorUnidasNoFinalizadas();
+    vector<Multijugador*> listarPartidasMultijugadorUnidasNoFinalizadas();
     void confirmarAbandonoPartida(string idPartida);
-    vector<Multijugador> listarPartidasIniciadasNoFinalizadas();
+    vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(string idPartida);
     void seleccionarPartida(string idPartida);
-    Set<Comentario> listarComentariosDePartida();
+    vector<Comentario*> listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void ConfirmarComentario();
@@ -37,7 +37,7 @@ public:
 private:
     static PartidaController* instance;
     // despues hacer un metodo que deje null estos dato:
-    Partida* partidaGuardada; // El controlador guarda la partida pi
+    Partida* partidaSeleccionada; // El controlador guarda la partida pi
     Comentario* comentarioAResponder;
     Comentario* nuevoComentario;
 
