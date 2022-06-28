@@ -33,4 +33,4 @@ add_executable(PA___Laboratorio_3
         DataTypes/DT_MultijugadorVideojuego.cpp DataTypes/DT_MultijugadorVideojuego.h
 
         DataTypes/E_TipoCategoria.h
-        DataTypes/E_MetodoPago.h )
+        DataTypes/E_MetodoPago.h main.h UseCases/AltaUsuario.cpp UseCases/AltaUsuario.h UseCases/IniciarSesion.cpp UseCases/IniciarSesion.h UseCases/CargarDatosDePrueba.cpp UseCases/CargarDatosDePrueba.h UseCases/AgregarCategoria.cpp UseCases/AgregarCategoria.h UseCases/PublicarVideojuego.cpp UseCases/PublicarVideojuego.h UseCases/EliminarVideojuego.cpp UseCases/EliminarVideojuego.h UseCases/VerInformacionDeVideojuego.cpp UseCases/VerInformacionDeVideojuego.h UseCases/SuscribirseAVideojuego.cpp UseCases/SuscribirseAVideojuego.h UseCases/AsignarPuntajeAVideojuego.cpp UseCases/AsignarPuntajeAVideojuego.h UseCases/IniciarPartida.cpp UseCases/IniciarPartida.h UseCases/AbandonarPartidaMultijugador.cpp UseCases/AbandonarPartidaMultijugador.h UseCases/FinalizarPartida.cpp UseCases/FinalizarPartida.h UseCases/RealizarComentario.cpp UseCases/RealizarComentario.h UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h)

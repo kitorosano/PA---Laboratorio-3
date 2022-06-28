@@ -2,81 +2,150 @@
 // Created by esteban.rosano on 20/6/2022.
 //
 
+#include "UseCases/AltaUsuario.h"
+#include "UseCases/IniciarSesion.h"
+#include "UseCases/CargarDatosDePrueba.h"
+#include "UseCases/AgregarCategoria.h"
+#include "UseCases/PublicarVideojuego.h"
+#include "UseCases/EliminarVideojuego.h"
+#include "UseCases/VerInformacionDeVideojuego.h"
+#include "UseCases/SuscribirseAVideojuego.h"
+#include "UseCases/AsignarPuntajeAVideojuego.h"
+#include "UseCases/IniciarPartida.h"
+#include "UseCases/AbandonarPartidaMultijugador.h"
+#include "UseCases/FinalizarPartida.h"
+#include "UseCases/RealizarComentario.h"
+#include "UseCases/SeguirJugador.h"
 #include <iostream>
 using namespace std;
 
-void menu() {
+void menuPrincipal() {
     cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                 MENU DE SISTEMA                |"<<endl;
+    cout<<"|                 MENU PRINCIPAL                 |"<<endl;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"| 1. Alta usuario                                |"<<endl;
     cout<<"| 2. Iniciar sesion                              |"<<endl;
-    cout<<"| 3. Agregar categoria                           |"<<endl;
-    cout<<"| 4. Publicar videojuego                         |"<<endl;
-    cout<<"| 5. Suscribirse a videojuego                    |"<<endl;
-    cout<<"| 6. Asignar puntaje a videojuego                |"<<endl;
-    cout<<"| 7. Iniciar partida                             |"<<endl;
-    cout<<"| 8. Abandonar partida multijugador              |"<<endl;
-    cout<<"| 9. Finalizar partida                           |"<<endl;
-    cout<<"| 10. Realizar comentario                        |"<<endl;
-    cout<<"| 11. Ver informacion de videojuego              |"<<endl;
-    cout<<"| 12. Seguir jugador                             |"<<endl;
-    cout<<"| 13. Eliminar videojuego                        |"<<endl;
+    cout<<"| 3. Cargar datos de prueba                      |"<<endl;
+    cout<<"| 0. Salir                                       |"<<endl;
+    cout<<"|------------------------------------------------|"<<endl<<endl;
+    cout<<"Ingrese una opcion:";
+}
+void menuDesarrollador() {
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"|              MENU DE DESARROLLADOR             |"<<endl;
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"| 1. Agregar categoria                           |"<<endl;
+    cout<<"| 2. Publicar videojuego                         |"<<endl;
+    cout<<"| 3. Eliminar videojuego                         |"<<endl;
+    cout<<"| 4. Ver informacion de videojuego               |"<<endl;
+    cout<<"| 0. Salir                                       |"<<endl;
+    cout<<"|------------------------------------------------|"<<endl<<endl;
+    cout<<"Ingrese una opcion:";
+}
+void menuJugador() {
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"|                 MENU DE JUGADOR                |"<<endl;
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"| 1. Suscribirse a videojuego                    |"<<endl;
+    cout<<"| 2. Asignar puntaje a videojuego                |"<<endl;
+    cout<<"| 3. Iniciar partida                             |"<<endl;
+    cout<<"| 4. Abandonar partida multijugador              |"<<endl;
+    cout<<"| 5. Finalizar partida                           |"<<endl;
+    cout<<"| 6. Ver informacion de videojuego               |"<<endl;
+    cout<<"| 7. Realizar comentario                         |"<<endl;
+    cout<<"| 8. Seguir jugador                              |"<<endl;
     cout<<"| 0. Salir                                       |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
     cout<<"Ingrese una opcion:";
 }
 
-
-int main() {
-    int opcion;
+int mainPrincipal() {
+    int opPrincipal;
     do {
-        menu();
-        cin >> opcion;
-        switch (opcion) {
+        menuPrincipal();
+        cin >> opPrincipal;
+        switch (opPrincipal) {
             case 1:
-
+                AltaUsuario();
                 break;
             case 2:
-
+                IniciarSesion();
+                // MANEJAR LOS OTROS MENU
                 break;
             case 3:
+                CargarDatosDePrueba();
+                break;
+            default: break;
+        }
+    }while (opPrincipal != 4);
 
+    cout << "Gracias por usar el sistema! Hasta luego..." << endl;
+    return 0;
+}
+
+int mainDesarrollador() {
+    int opDesarrollador;
+    do {
+        menuDesarrollador();
+        cin >> opDesarrollador;
+        switch (opDesarrollador) {
+            case 1:
+                AgregarCategoria();
+                break;
+            case 2:
+                PublicarVideojuego();
+                break;
+            case 3:
+                EliminarVideojuego();
                 break;
             case 4:
+                VerInformacionDeVideojuego();
+                break;
+            default: break;
+        }
+    }while (opDesarrollador != 5);
 
+    return 0;
+}
+
+int mainJugador() {
+    int opJugador;
+    do {
+        menuJugador();
+        cin >> opJugador;
+        switch (opJugador) {
+            case 1:
+                SuscribirseAVideojuego();
+                break;
+            case 2:
+                AsignarPuntajeAVideojuego();
+                break;
+            case 3:
+                IniciarPartida();
+                break;
+            case 4:
+                AbandonarPartidaMultijugador();
                 break;
             case 5:
-
+                FinalizarPartida();
                 break;
             case 6:
-
+                VerInformacionDeVideojuego();
                 break;
             case 7:
-
+                RealizarComentario();
                 break;
             case 8:
-
+                SeguirJugador();
                 break;
-            case 9:
-
-                break;
-            case 10:
-
-                break;
-            case 11:
-
-                break;
-            case 12:
-
-                break;
-            case 13:
-
-                break;
-            default:
-                break;
+            default: break;
         }
-    }while (opcion != 0);
+    }while (opJugador != 9);
 
+    return 0;
+}
+
+int main() {
+    mainPrincipal();
     return 0;
 }
