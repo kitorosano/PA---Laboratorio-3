@@ -35,3 +35,7 @@ void Usuario::confirmarRegistro(){}
 void Usuario::cancelarRegistro(){}
 
 bool Usuario::verificarContraseña(string password){}
+
+string Usuario::toString() {
+    return "Usuario: " + email + " password: " + password;
+}

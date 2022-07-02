@@ -3,6 +3,7 @@
 //
 
 #include "Jugador.h"
+#include <sstream>
 
 using namespace std;
 
@@ -32,4 +33,10 @@ void Jugador::setDescripcion(string descripcion) {
 
 void Jugador::registroJugador(string, string){}
 
-void Jugador::toString(){}
+string Jugador::toString(){
+    stringstream ss;
+    ss << "Jugador: " << endl;
+    ss << "Nickname: " << this->getNickname() << endl;
+    ss << "Descripcion: " << this->getDescripcion() << endl;
+    return ss.str();
+}

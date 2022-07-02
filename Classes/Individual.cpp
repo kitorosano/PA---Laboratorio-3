@@ -4,9 +4,14 @@
 
 #include "Individual.h"
 
-Individual::Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador *jugador,
-                       Videojuego *videojuego, Individual *partidaAContinuar) : Partida(idPartida, fecha, horaComienzo, horasPartida, jugador, videojuego) {
+Individual::Individual() {
+}
+
+Individual::Individual(Jugador *jugador, Videojuego *videojuego, Individual *partidaAContinuar) : Partida(jugador, videojuego) {
     this->partidaAContinuar = partidaAContinuar;
+}
+
+Individual::~Individual() {
 }
 
 Individual *Individual::getContPartAnterior() {
@@ -17,7 +22,11 @@ void Individual::setContPartAnterior(Individual* partidaAContinuar) {
     this->partidaAContinuar = partidaAContinuar;
 }
 
-
+string Individual::toString() {
+    stringstream ss;
+    ss << "Partida: " << Partida::toString() << " - " << "Partida a Continuar: " << this->getContPartAnterior()->toString();
+    return ss.str();
+}
 
 
 

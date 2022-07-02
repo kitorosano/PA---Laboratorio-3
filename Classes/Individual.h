@@ -7,18 +7,20 @@
 
 #include "Classes/Partida.h"
 
-class Individual : public Partida{
+class Individual : public Partida {
 private:
     Individual* partidaAContinuar;
 
 public:
-    Individual(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador* jugador, Videojuego* videojuego, Individual* partidaAContinuar);
+    Individual();
+    Individual(Jugador* jugador, Videojuego* videojuego);
+    Individual(Jugador* jugador, Videojuego* videojuego, Individual* partidaAContinuar);
+    virtual ~Individual();
 
     Individual* getContPartAnterior();
-
     void setContPartAnterior(Individual* partidaAContinuar);
 
-
+    string toString();
 };
 
 

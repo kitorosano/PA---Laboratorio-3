@@ -3,15 +3,19 @@
 //
 
 #include "Partida.h"
+#include <sstream>
+using namespace std;
 
-Partida::Partida(string idPartida, DT_Date fecha, DT_Time horaComienzo, double horasPartida, Jugador *jugador,
-                 Videojuego *videojuego) {
-    this->idPartida = idPartida;
-    this->fecha = fecha;
-    this->horaComienzo = horaComienzo;
-    this->horasPartida = horasPartida;
+Partida::Partida() {
+}
+
+Partida::Partida(Jugador *jugador, Videojuego *videojuego) {
+//    setear id
     this->jugador = jugador;
     this->videojuego = videojuego;
+}
+
+Partida::~Partida() {
 }
 
 string Partida::getIdPartida() {
@@ -38,10 +42,6 @@ Videojuego *Partida::getVideojuego() {
     return this->videojuego;
 }
 
-void Partida::setIdPartida(string idPartida) {
-    this->idPartida = idPartida;
-}
-
 void Partida::setFecha(DT_Date fecha) {
     this->fecha = fecha;
 }
@@ -62,7 +62,14 @@ void Partida::setVideojuego(Videojuego *videojuego) {
     this->videojuego = videojuego;
 }
 
-
-
-
+string Partida::toString() {
+    stringstream ss;
+    ss << "Partida: " << this->getIdPartida() << endl;
+    ss << "Jugador: " << this->getJugador()->toString() << endl;
+    ss << "Videojuego: " << this->getVideojuego()->toString() << endl;
+    ss << "Fecha: " << this->getFecha().getDate() << endl;
+    ss << "Hora de comienzo: " << this->getHoraComienzo().getTime() << endl;
+    ss << "Horas de partida: " << this->getHorasPartida() << endl;
+    return ss.str();
+}
 

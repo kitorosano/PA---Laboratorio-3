@@ -5,6 +5,9 @@
 #ifndef PA___LABORATORIO_3_DATOSSUSCRIPCION_H
 #define PA___LABORATORIO_3_DATOSSUSCRIPCION_H
 
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "ColeccionesG/IDictionary.h"
 #include "Suscripcion.h"
 #include "Jugador.h"
 #include "DataTypes/DT_Date.h"
@@ -12,7 +15,7 @@
 #include "DataTypes/E_MetodoPago.h"
 
 
-class DatosSuscripcion {
+class DatosSuscripcion: public ICollectible {
 private:
     Jugador *jugador;
     Suscripcion *suscripcion;
@@ -22,6 +25,7 @@ private:
     bool activo = false;
 
 public:
+    DatosSuscripcion();
     DatosSuscripcion(Jugador *jugador, Suscripcion *suscripcion, E_MetodoPago metodo_pago, DT_Date fecha_suscripcion, DT_Time hora_suscripcion);
     virtual ~DatosSuscripcion();
 
@@ -30,7 +34,7 @@ public:
     E_MetodoPago getMetodoPago();
     DT_Date getFechaSuscripcion();
     DT_Time getHoraSuscripcion();
-    bool getActivo();
+    bool isActivo();
 
     void setJugador(Jugador *jugador);
     void setSuscripcion(Suscripcion *suscripcion);
@@ -39,6 +43,7 @@ public:
     void setHoraSuscripcion(DT_Time hora_suscripcion);
     void setActivo(bool activo);
 
+    string toString();
 };
 
 

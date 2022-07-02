@@ -8,7 +8,11 @@
 
 using namespace std;
 
+Categoria::Categoria() {
+}
+
 Categoria::Categoria(string nombre,string descripcion){
+//    setear id
     this->nombre=nombre;
     this->descripcion=descripcion;
 }
@@ -17,7 +21,7 @@ Categoria::~Categoria(){
 string Categoria::getNombre(){
     return this->nombre;
 }
-string Categoria::getDesc(){
+string Categoria::getDescription(){
     return this->descripcion;
 }
 E_TipoCategoria Categoria::getTipo(){
@@ -35,8 +39,8 @@ void Categoria::setTipo(E_TipoCategoria tipo){
 
 string Categoria::toString(){
     stringstream ss;
-    ss<<"Nombre: "<<this->nombre<<endl;
-    ss<<"Descripcion: "<<this->descripcion<<endl;
+    ss<<"Nombre: "<<this->getNombre()<<endl;
+    ss<<"Descripcion: "<<this->getDescription()<<endl;
     ss << "Tipo: " << Str_TipoCategoria[this->tipo] << endl;
     return ss.str();
-}
+}r

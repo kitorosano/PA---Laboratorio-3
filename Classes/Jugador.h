@@ -8,7 +8,6 @@
 #include "Suscripcion.h"
 #include <string>
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -28,7 +27,7 @@ public:
     void setDescripcion(string descripcion);
 
     void registroJugador(string, string);
-    void toString();
+    string toString();
 };
 
 

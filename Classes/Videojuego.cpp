@@ -6,7 +6,12 @@
 #include <iostream>
 #include <sstream>
 
+using namespace std;
+
+Videojuego::Videojuego() {}
+
 Videojuego::Videojuego(string nombre,string descripcion) {
+//    setear id
     this->nombre=nombre;
     this->descripcion=descripcion;
 }
@@ -32,9 +37,7 @@ double Videojuego::getPuntaje(){
 int Videojuego::getCantidad_votos(){
     return this->cantidad_votos;
 }
-void Videojuego::setIdVideojuego(int idVideojuego){
-    this->idVideojuego=idVideojuego;
-}
+
 void Videojuego::setNombre(string nombre){
     this->nombre=nombre;
 }
