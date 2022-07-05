@@ -4,34 +4,40 @@
 
 #include "Comentario.h"
 
-Comentario::Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Jugador *jugador) {
-    this->idComentario = idComentario;
-    this->fecha_envio = fecha_envio;
-    this->hora_envio = hora_envio;
-    this->contenido = contenido;
-    this->jugador = jugador;
+Comentario::Comentario() {
 }
 
-Comentario::Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido,
-                       Comentario *comentarioAResponder, Jugador *jugador) {
-    this->idComentario = idComentario;
-    this->fecha_envio = fecha_envio;
-    this->hora_envio = hora_envio;
+Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido) {
+//    setear id
+    this->fechaEnvio = fechaEnvio;
+    this->horaEnvio = horaEnvio;
+    this->contenido = contenido;
+    this->escritor = escritor;
+}
+
+Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido,
+                       Comentario *comentarioAResponder) {
+    //    setear id
+    this->fechaEnvio = fechaEnvio;
+    this->horaEnvio = horaEnvio;
     this->contenido = contenido;
     this->comentarioAResponder = comentarioAResponder;
-    this->jugador = jugador;
+    this->escritor = escritor;
+}
+
+Comentario::~Comentario() {
 }
 
 int Comentario::getIdComentario() {
     return this->idComentario;
 }
 
-DT_Date Comentario::getFecha_envio() {
-    return this->fecha_envio;
+DT_Date Comentario::getFechaEnvio() {
+    return this->fechaEnvio;
 }
 
-DT_Time Comentario::getHora_envio() {
-    return this->hora_envio;
+DT_Time Comentario::getHoraEnvio() {
+    return this->horaEnvio;
 }
 
 string Comentario::getContenido() {
@@ -42,20 +48,20 @@ Comentario *Comentario::getComentarioAResponder() {
     return this->comentarioAResponder;
 }
 
-Jugador *Comentario::getJugador() {
-    return this->jugador;
+Jugador *Comentario::getEscritor() {
+    return this->escritor;
 }
 
 void Comentario::setIdComentario(int idComentario) {
     this->idComentario = idComentario;
 }
 
-void Comentario::setFecha_envio(DT_Date fecha_envio) {
-    this->fecha_envio = fecha_envio;
+void Comentario::setFechaEnvio(DT_Date fechaEnvio) {
+    this->fechaEnvio = fechaEnvio;
 }
 
-void Comentario::sethora_envio(DT_Time hora_envio) {
-    this->hora_envio = hora_envio;
+void Comentario::sethoraEnvio(DT_Time horaEnvio) {
+    this->horaEnvio = horaEnvio;
 }
 
 void Comentario::setContenido(string contenido) {
@@ -66,6 +72,13 @@ void Comentario::setComentarioAResponder(Comentario *comentarioAResponder) {
     this->comentarioAResponder = comentarioAResponder;
 }
 
-void Comentario::setJugador(Jugador *jugador) {
-    this->jugador = jugador;
+void Comentario::setEscritor(Jugador *escritor) {
+    this->escritor = escritor;
+}
+
+string Comentario::toString() {
+    stringstream ss;
+    ss << "Comentario: " << this->idComentario << " Escrito por: " << this->escritor->getNickname() << " Fecha: "
+       << this->fechaEnvio.getDate() << " Hora: " << this->horaEnvio.getTime() << " Contenido: " << this->contenido;
+    return ss.str();
 }

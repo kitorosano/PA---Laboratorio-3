@@ -5,6 +5,9 @@
 #ifndef PA___LABORATORIO_3_COMENTARIO_H
 #define PA___LABORATORIO_3_COMENTARIO_H
 
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "ColeccionesG/IDictionary.h"
 #include "DataTypes/DT_Date.h"
 #include "DataTypes/DT_Time.h"
 #include "Classes/Jugador.h"
@@ -12,32 +15,36 @@
 #include <iostream>
 using namespace std;
 
-class Comentario {
+class Comentario : public ICollectible {
 private:
     int idComentario;
-    DT_Date fecha_envio;
-    DT_Time hora_envio;
+    Jugador* escritor;
+    DT_Date fechaEnvio;
+    DT_Time horaEnvio;
     string contenido;
     Comentario* comentarioAResponder;
-    Jugador* jugador;
 
 public:
-    Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Jugador* jugador);
-    Comentario(int idComentario, DT_Date fecha_envio, DT_Time hora_envio, string contenido, Comentario* comentarioAResponder, Jugador* jugador);
+    Comentario();
+    Comentario(Jugador* escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido);
+    Comentario(Jugador* escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido, Comentario* comentarioAResponder);
+    ~Comentario();
 
     int getIdComentario();
-    DT_Date getFecha_envio();
-    DT_Time getHora_envio();
+    DT_Date getFechaEnvio();
+    DT_Time getHoraEnvio();
     string getContenido();
     Comentario* getComentarioAResponder();
-    Jugador* getJugador();
+    Jugador* getEscritor();
 
     void setIdComentario(int idComentario);
-    void setFecha_envio(DT_Date fecha_envio);
-    void sethora_envio(DT_Time hora_envio);
+    void setFechaEnvio(DT_Date fechaEnvio);
+    void sethoraEnvio(DT_Time horaEnvio);
     void setContenido(string contenido);
     void setComentarioAResponder(Comentario* comentarioAResponder);
-    void setJugador(Jugador* jugador);
+    void setEscritor(Jugador* escritor);
+
+    string toString();
 
 };
 

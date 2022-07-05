@@ -5,18 +5,23 @@
 #ifndef PA___LABORATORIO_3_JUGADORMULTIJUGADOR_H
 #define PA___LABORATORIO_3_JUGADORMULTIJUGADOR_H
 
-#include "string"
-#include <iostream>
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "ColeccionesG/IDictionary.h"
 #include "Classes/Jugador.h"
 #include "DataTypes/DT_Time.h"
+#include <string>
+#include <iostream>
 
-class JugadorMultijugador {
+class JugadorMultijugador: ICollectible {
 private:
-    DT_Time hora_finalizacion;
     Jugador* jugador;
+    DT_Time hora_finalizacion;
 
 public:
+    JugadorMultijugador();
     JugadorMultijugador(Jugador* jugador);
+    ~JugadorMultijugador();
 
     void setHoraFinalizacion(DT_Time hora_finalizacion);
 };

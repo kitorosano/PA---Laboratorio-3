@@ -4,8 +4,16 @@
 
 #include "JugadorMultijugador.h"
 
+using namespace std;
+
+JugadorMultijugador::JugadorMultijugador() {
+}
+
 JugadorMultijugador::JugadorMultijugador(Jugador *jugador) {
     this->jugador = jugador;
+}
+
+JugadorMultijugador::~JugadorMultijugador() {
 }
 
 void JugadorMultijugador::setHoraFinalizacion(DT_Time hora_finalizacion) {

@@ -7,6 +7,9 @@
 Individual::Individual() {
 }
 
+Individual::Individual(Jugador *jugador, Videojuego *videojuego) : Partida(jugador, videojuego) {
+}
+
 Individual::Individual(Jugador *jugador, Videojuego *videojuego, Individual *partidaAContinuar) : Partida(jugador, videojuego) {
     this->partidaAContinuar = partidaAContinuar;
 }
