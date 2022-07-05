@@ -20,3 +20,15 @@ DatosSuscripcionController* DatosSuscripcionController::getInstance(){
     }
     return instance;
 }
+
+vector<Suscripcion*> DatosSuscripcionController::listarSuscripciones(){}
+vector<Suscripcion*> DatosSuscripcionController::obtenerSuscripcionesVideojuego(string nombre_videojuego){}
+
+
+vector<string> DatosSuscripcionController::listarNombreVideojuegosSuscritos(){}
+void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){}
+
+void DatosSuscripcionController::crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago){}
+void DatosSuscripcionController::confirmarDatosSuscripcion(){}
+
+vector<string> DatosSuscripcionController::listarNicknameJugadoresSuscritos(){}

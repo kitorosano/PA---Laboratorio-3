@@ -21,3 +21,15 @@ CategoriaController* CategoriaController::getInstance() {
     }
     return instance;
 }
+
+Categoria* CategoriaController::getCategoriaSeleccionada(){}
+vector<Categoria*> CategoriaController::listadoCategorias(){}
+
+void CategoriaController::seleccionarCategoria(string nombre){}
+
+void CategoriaController::agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo){}
+void CategoriaController::confirmarCategoria(){}
+void CategoriaController::cancelarCategoria(){}
+
+vector<string> CategoriaController::listadoNombreCategorias(){}
+void CategoriaController::agregarVideojuegoACategoria(Videojuego videojuego){}
