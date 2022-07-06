@@ -77,7 +77,6 @@ void UsuarioController::listarJugadores(){
     delete iter;
 }
 void UsuarioController::seguirJugador(string nickname) {
-    KeyString *key_nickname = new KeyString(nickname);
     if (!this->usuarios){
         throw invalid_argument("No hay usuarios ingresados en el sistema");
     return;
@@ -91,8 +90,10 @@ void UsuarioController::seguirJugador(string nickname) {
     while(iter->hasNext()){
         Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
         if(jugador->getNickname()==nickname){
-            Jugador* jug_l=dynamic_cast<Jugador*>(usuarioLogeado);
 
+            Jugador* jug_l=dynamic_cast<Jugador*>(usuarioLogeado);
+            KeyString* key = new KeyString(nickname);
+            jug_l->getjugadores_seguidos()->add(this->controller_memory,key);
             break;
         }
     }

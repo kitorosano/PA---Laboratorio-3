@@ -25,7 +25,9 @@ string Jugador::getNickname() {
 string Jugador::getDescripcion() {
     return descripcion;
 }
-
+IDictionary* Jugador::getjugadores_seguidos(){
+    return this->jugadores_seguidos;
+}
 void Jugador::setNickname(string nickname) {
     this->nickname = nickname;
 }

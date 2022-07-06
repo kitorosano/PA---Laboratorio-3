@@ -23,10 +23,11 @@ public:
 
     string getNickname();
     string getDescripcion();
-
+    IDictionary* getjugadores_seguidos();
     void setNickname(string nickname);
     void setDescripcion(string descripcion);
     void registroJugador(string, string);
+
     string toString();
 };
 
