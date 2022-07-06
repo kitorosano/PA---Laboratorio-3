@@ -20,7 +20,7 @@ Suscripcion::Suscripcion(Videojuego *videojuego, E_PeriodoValidez periodoValidez
 Suscripcion::~Suscripcion(){
 }
 
-string Suscripcion::getId(){
+int Suscripcion::getId(){
     return id;
 }
 

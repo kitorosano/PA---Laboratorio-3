@@ -17,7 +17,7 @@ private:
     static UsuarioController* instance;
     UsuarioController();
 
-    Jugador* usuarioLogeado;
+    Usuario* usuarioLogeado;
     vector<Jugador*> jugadores;
 public:
     static UsuarioController* getInstance();

@@ -15,6 +15,7 @@ private:
 
     Videojuego* videojuegoSeleccionado = NULL;
     IDictionary* videojuegos;
+    IDictionary* puntuaciones;
     IDictionary* suscripciones;
 
 public:
@@ -24,13 +25,13 @@ public:
     IDictionary* listarSuscripciones();
     void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
     void confirmarVideojuego();
-    void seleccionarVideoJuego(string id);
+    void seleccionarVideoJuego(int id);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
-    IDictionary* listarNomDescVideoJuegos();
+    void listarNomDescVideoJuegos();
     void asignarPuntaje(string nombreVideojuego, int puntaje);
-    IDictionary* listarNombreVideojuegos();
-    DT_InfoVideojuegoJugador verVideojuego(string idVideojuego);
-    DT_InfoVideojuegoDesarrollador verVideojuegoDesarrollador(string idVideojuego);
-    IDictionary* listaJuegosPublicadosFinalizados();
+    void listarNombreVideojuegos();
+    DT_InfoVideojuego verVideojuego(int idVideojuego);
+    DT_InfoVideojuego verVideojuegoDesarrollador(int idVideojuego);
+    void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H

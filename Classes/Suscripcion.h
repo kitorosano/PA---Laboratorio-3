@@ -16,7 +16,7 @@ using namespace std;
 
 class Suscripcion: public ICollectible {
 private:
-    string id;
+    int id;
     Videojuego* videojuego;
     E_PeriodoValidez periodoValidez;
     double costo;
@@ -26,7 +26,7 @@ public:
     Suscripcion(Videojuego* videojuego, E_PeriodoValidez periodoValidez,double costo);
     virtual ~Suscripcion();
 
-    string getId();
+    int getId();
     double getCosto();
     E_PeriodoValidez getPeriodoValidez();
     Videojuego* getVideojuego();
@@ -34,7 +34,6 @@ public:
     void setCosto(double costo);
 
     string toString();
-
 };
 
 #endif //PA___LABORATORIO_3_SUSCRIPCION_H

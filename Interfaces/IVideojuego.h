@@ -10,8 +10,7 @@
 #include "Classes/Categoria.h"
 #include "Classes/Videojuego.h"
 #include "DataTypes/DT_NomDescVideojuego.h"
-#include "DataTypes/DT_InfoVideojuegoJugador.h"
-#include "DataTypes/DT_InfoVideojuegoDesarrollador.h"
+#include "DataTypes/DT_InfoVideojuego.h"
 #include <string>
 using namespace std;
 
@@ -22,11 +21,11 @@ public:
     virtual void confirmarVideojuego() = 0;
     virtual void seleccionarVideoJuego(string id) = 0;
     virtual Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego) = 0;
-    virtual IDictionary* listarNomDescVideoJuegos() = 0;
+    virtual void listarNomDescVideoJuegos() = 0;
     virtual void asignarPuntaje(string nombreVideojuego, int puntaje) = 0;
-    virtual IDictionary* listarNombreVideojuegos() = 0;
-    virtual DT_InfoVideojuegoJugador verVideojuego(string idVideojuego) = 0;
-    virtual DT_InfoVideojuegoDesarrollador verVideojuegoDesarrollador(string idVideojuego) = 0;
-    virtual IDictionary* listaJuegosPublicadosFinalizados() = 0;
+    virtual void listarNombreVideojuegos() = 0;
+    virtual DT_InfoVideojuego verVideojuego(string idVideojuego) = 0;
+    virtual DT_InfoVideojuego verVideojuegoDesarrollador(string idVideojuego) = 0;
+    virtual void listaJuegosPublicadosFinalizados() = 0;
 };
 #endif //LAB_3_PROYECTO_IVIDEOJUEGO_H

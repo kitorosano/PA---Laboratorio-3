@@ -10,16 +10,16 @@ using namespace std;
 
 Videojuego::Videojuego() {}
 
-Videojuego::Videojuego(string nombre,string descripcion) {
-//    setear id
-    this->nombre=nombre;
-    this->descripcion=descripcion;
+Videojuego::Videojuego(string nombre,string descripcion, Desarrollador *desarrollador) {
+    //    setear id
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->desarrollador = desarrollador;
 }
-
 Videojuego::~Videojuego(){
 }
 
-string Videojuego::getIdVideojuego(){
+int Videojuego::getIdVideojuego(){
     return this->idVideojuego;
 }
 string Videojuego::getNombre(){
@@ -28,7 +28,7 @@ string Videojuego::getNombre(){
 string Videojuego::getDescripcion(){
     return this->descripcion;
 }
-double Videojuego::getTotal_horas_jugadas(){
+double Videojuego::getTotalHorasJugadas(){
     return this->total_horas_jugadas;
 };
 double Videojuego::getPuntaje(){
@@ -38,13 +38,17 @@ int Videojuego::getCantidad_votos(){
     return this->cantidad_votos;
 }
 
+string Videojuego::getNombreEmpresa() {
+    return this->desarrollador->getNombreEmpresa();
+}
+
 void Videojuego::setNombre(string nombre){
     this->nombre=nombre;
 }
 void Videojuego::setDescripcion(string descripcion){
     this->descripcion=descripcion;
 }
-void Videojuego::setTotal_horas_jugadas(double total_horas_jugadas){
+void Videojuego::setTotalHorasJugadas(double total_horas_jugadas){
     this->total_horas_jugadas=total_horas_jugadas;
 }
 void Videojuego::setPuntaje(double puntaje){
@@ -53,9 +57,6 @@ void Videojuego::setPuntaje(double puntaje){
 void Videojuego::setCantidad_votos(int cantidad_votos){
     this->cantidad_votos=cantidad_votos;
 }
-
-string Videojuego::toString(){
-    stringstream ss;
-    ss << "Videojuego: " << this->nombre << " - " << this->descripcion << endl;
-    return ss.str();
+void Videojuego::setDesarrollador(Desarrollador* desarrollador){
+    this->desarrollador=desarrollador;
 }
