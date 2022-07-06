@@ -15,6 +15,7 @@ class Jugador: public Usuario {
 private:
     string nickname;
     string descripcion;
+    IDictionary* jugadores_seguidos;
 
 public:
     Jugador(string email, string password, string nickname, string descripcion);
@@ -25,7 +26,6 @@ public:
 
     void setNickname(string nickname);
     void setDescripcion(string descripcion);
-
     void registroJugador(string, string);
     string toString();
 };
