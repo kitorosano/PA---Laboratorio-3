@@ -19,7 +19,7 @@ Videojuego::Videojuego(string nombre,string descripcion) {
 Videojuego::~Videojuego(){
 }
 
-int Videojuego::getIdVideojuego(){
+string Videojuego::getIdVideojuego(){
     return this->idVideojuego;
 }
 string Videojuego::getNombre(){

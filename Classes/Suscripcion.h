@@ -10,10 +10,13 @@
 #include "ColeccionesG/IDictionary.h"
 #include "DataTypes/E_PeriodoValidez.h"
 #include "Videojuego.h"
+#include <string>
+
+using namespace std;
 
 class Suscripcion: public ICollectible {
 private:
-    int id;
+    string id;
     Videojuego* videojuego;
     E_PeriodoValidez periodoValidez;
     double costo;
@@ -23,7 +26,7 @@ public:
     Suscripcion(Videojuego* videojuego, E_PeriodoValidez periodoValidez,double costo);
     virtual ~Suscripcion();
 
-    int getId();
+    string getId();
     double getCosto();
     E_PeriodoValidez getPeriodoValidez();
     Videojuego* getVideojuego();

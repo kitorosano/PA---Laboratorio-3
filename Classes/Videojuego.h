@@ -17,7 +17,7 @@ using namespace std;
 
 class Videojuego: public ICollectible{
 private:
-    int idVideojuego;
+    string idVideojuego;
     string nombre;
     string descripcion;
     double total_horas_jugadas;
@@ -29,7 +29,7 @@ public:
     Videojuego(string nombre,string descripcion);
     virtual ~Videojuego();
 
-    int getIdVideojuego();
+    string getIdVideojuego();
     string getNombre();
     string getDescripcion();
     DT_NomDescVideojuego getNomDescVideojuego();
