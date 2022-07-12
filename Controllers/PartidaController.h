@@ -7,16 +7,9 @@
 
 #include "Interfaces/IPartida.h"
 #include "Classes/Partida.h"
-#include "Classes/Individual.h"
 #include "Classes/Multijugador.h"
-#include "Classes/Jugador.h"
-#include "Classes/Usuario.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
-#include "Controllers/VideoJuegoController.h"
-#include "Controllers/UsuarioController.h"
-#include "ColeccionesG/IDictionary.h"
-#include "ColeccionesG/ListaDicc.h"
-#include "ColeccionesG/KeyString.h"
+#include "vector"
 #include <string>
 
 using namespace std;
@@ -29,9 +22,7 @@ private:
     Partida* partidaSeleccionada; // El controlador guarda la partida pi
     Comentario* comentarioAResponder;
     Comentario* nuevoComentario;
-    IDictionary* partidas;
-    Individual* partidaAContinuar;
-    int idpartida;
+    vector<Partida*> partidas;
 
 public:
     static PartidaController * getInstance();
@@ -42,17 +33,17 @@ public:
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
+    vector<Multijugador*> listarPartidasMultijugadorUnidasNoFinalizadas();
     void confirmarAbandonoPartida(string idPartida);
-    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(string idPartida);
     void seleccionarPartida(string idPartida);
-    IDictionary* listarComentariosDePartida();
+    vector<Comentario*> listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
     void listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
-    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    vector<DT_MultijugadorVideojuego>listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
 
 };
