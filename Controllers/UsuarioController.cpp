@@ -33,6 +33,19 @@ void UsuarioController::registroJugador(string email,string password,string nick
 void UsuarioController::registroDesarrollador(string email,string password,string empresa){
     this->controller_memory= new Desarrollador(email,password,empresa);
 }
+bool UsuarioController::verificarNickname(string nickname){
+    IIterator* iter = usuarios->getIteratorObj();
+    if(!this->usuarios)
+        return true;
+    else if(this->usuarios){
+        while (iter->hasNext()) {
+            Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
+            if(nickname==jugador->getNickname())
+                return false;
+        }
+    }
+    return true;
+}
 void UsuarioController::confirmarRegistro(){
     if(this->controller_memory) {
         KeyString* key = new KeyString(controller_memory->getEmail());
@@ -49,8 +62,10 @@ void UsuarioController::cancelarRegistro(){
 
 void UsuarioController::iniciarSesion(string mail,string password){
     KeyString* key_mail = new KeyString(mail);
-    if(!this->usuarios)
+    if(!this->usuarios) {
+        throw invalid_argument("No hay usuarios en el sistema");
         return;
+    }
     Usuario * aux = (Usuario *) (this->usuarios->find(key_mail));
     if (!aux) {
         throw invalid_argument("El usuario no existe en el sistema");
