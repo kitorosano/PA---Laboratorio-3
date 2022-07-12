@@ -31,7 +31,7 @@ public:
     Partida(Jugador* jugador, Videojuego* videojuego);
     virtual ~Partida();
 
-    string getIdPartida();
+    string getIdPartida();;
     Videojuego* getVideojuego();
     DT_Date getFecha();
     DT_Time getHoraComienzo();
@@ -43,7 +43,6 @@ public:
     void setFecha(DT_Date fecha);
     void setHoraComienzo(DT_Time horaCominezo);
     void setHorasPartida(double horasPartida);
-    void setIdPartida(string idpartida);
 
     string toString();
 };

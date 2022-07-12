@@ -11,7 +11,6 @@
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
-#include "ColeccionesG/KeyString.h"
 
 class Multijugador : public Partida {
 private:
