@@ -8,6 +8,7 @@
 #include <string>
 #include "Classes/Usuario.h"
 #include "Classes/Jugador.h"
+#include <vector>
 using namespace std;
 
 class IUsuario {

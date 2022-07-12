@@ -3,6 +3,8 @@
 //
 
 #include "Jugador.h"
+#include "ColeccionesG/KeyString.h"
+#include "ColeccionesG/ListaDicc.h"
 #include <sstream>
 
 using namespace std;
@@ -10,6 +12,7 @@ using namespace std;
 Jugador::Jugador(string email, string password, string nickname, string descripcion) : Usuario(email, password) {
     this->nickname = nickname;
     this->descripcion = descripcion;
+    this->jugadores_seguidos= new ListDicc();
 }
 
 Jugador::~Jugador() {
@@ -22,7 +25,9 @@ string Jugador::getNickname() {
 string Jugador::getDescripcion() {
     return descripcion;
 }
-
+IDictionary* Jugador::getjugadores_seguidos(){
+    return this->jugadores_seguidos;
+}
 void Jugador::setNickname(string nickname) {
     this->nickname = nickname;
 }

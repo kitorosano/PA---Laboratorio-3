@@ -7,7 +7,7 @@
 
 #include "Interfaces/IUsuario.h"
 #include "Classes/Jugador.h"
-#include <vector>
+#include "Classes/Desarrollador.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -18,20 +18,22 @@ private:
     UsuarioController();
 
     Usuario* usuarioLogeado;
-    vector<Jugador*> jugadores;
+    Usuario* controller_memory;
+    IDictionary* usuarios; //clave correo
 public:
     static UsuarioController* getInstance();
-    virtual ~UsuarioController();
+     ~UsuarioController();
 
     Usuario getUsuarioLogeado();
-    vector<Jugador*> listarJugadores();
 
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);
+    bool verificarNickname(string nickname);
     void confirmarRegistro();
     void cancelarRegistro();
 
     void iniciarSesion(string mail,string password);
+    void listarJugadores();
     void seguirJugador(string nickname);
 
 };
