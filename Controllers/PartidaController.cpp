@@ -10,10 +10,9 @@ PartidaController* PartidaController::instance = NULL;
 PartidaController::PartidaController() {
     partidas = new ListDicc();
     partidaSeleccionada = NULL;
-    partidaAContinuar = NULL;
     comentarioAResponder = NULL;
     nuevoComentario = NULL;
-    idpartida = 0;
+    idpartida = 1;
 }
 
 PartidaController::~PartidaController(){}
@@ -32,9 +31,9 @@ void PartidaController::continuarPartidaIndividual(string idPartida){
         partidaAContinuar = dynamic_cast<Individual *>(it->getCurrent());
         if(partidaAContinuar){
             if(partidaAContinuar->getIdPartida() == idPartida){
-                Individual* nuevaPartidaQueContinuara = new Individual(partidaAContinuar->getJugador(),partidaAContinuar->getVideojuego());
-                this->partidaSeleccionada = nuevaPartidaQueContinuara; // guardo a la partida nueva que es la que sera la continuacion de la otra que se busco con el ID
-                this->partidaAContinuar = partidaAContinuar; // guardo la partida a la cual van a continuar
+                Individual* nuevaPartida = new Individual(partidaAContinuar->getJugador(),partidaAContinuar->getVideojuego());
+                nuevaPartida->setContPartAnterior(partidaAContinuar); // Se establece de quien continuara la partida nueva
+                this->partidaSeleccionada = nuevaPartida; // El controlador recuerda la partida nueva que sera una continuacion de la anterior
                 return;
             }
         }
@@ -45,63 +44,76 @@ void PartidaController::continuarPartidaIndividual(string idPartida){
 
 void PartidaController::nuevaPartidaIndividual(){
 
+
     VideojuegoController* videojuegoController;
     Videojuego* videojuegoSeleccionado = videojuegoController->getInstance()->getVideojuegoSeleccionado();
 
+
+     // Obtener el usuario logeado!! Necesito que el getUsuarioLogeado() Devuelva un puntero
     UsuarioController* usuarioController;
     Jugador *jugadorlogeado = dynamic_cast<Jugador *>(usuarioController->getInstance()->getUsuarioLogeado());
 
     Individual* nuevaPartidaIndividual = new Individual(jugadorlogeado, videojuegoSeleccionado);
     this->partidaSeleccionada = nuevaPartidaIndividual; // el controlador recuerda la partida
+
+
 }
 
 void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
+
+
+
+    // Obtener el videojuego que se selecciona, mas arriba en el caso de uso Iniciar partida
     VideojuegoController* videojuegoController;
     Videojuego* videojuegoSeleccionado = videojuegoController->getInstance()->getVideojuegoSeleccionado();
 
+
+    // Obtener el usuario logeado!! Necesito que el getUsuarioLogeado() Devuelva un puntero
     UsuarioController* usuarioController;
     Jugador *jugadorlogeado = dynamic_cast<Jugador *>(usuarioController->getInstance()->getUsuarioLogeado());
+
 
     Multijugador* nuevaPartidaMulti = new Multijugador(jugadorlogeado, videojuegoSeleccionado, transmitidaEnVivo);
     this->partidaSeleccionada = nuevaPartidaMulti; // el controlador recuerda la partida
 
+
 }
 
 void PartidaController::ingresarNicknameALaPartida(string nickname){
+
+
     UsuarioController* usuarioController;
-    Jugador *jugadorDeLaPartida = dyamica_cast<Jugador * > (usuarioController->getInstance()->ObtenerUsuario(nickname));
-    //ObtenerUsuario(nickname) me tedria que dar un puntero al usuario con ese nickname
+    Jugador *jugadorDeLaPartida = dyamica_cast<Jugador * > (usuarioController->getInstance()->BuscarUsuario(nickname));
+
 
     // Agregar el puntero del jugador a la lista de jugadores que tiene esta partida multijugador
     Multijugador *multi = dynamic_cast<Multijugador *>(partidaSeleccionada);
     multi->unirNicknameAPartida(jugadorDeLaPartida);
+    this->partidaSeleccionada = multi; // El controlador recurda la partida
+    */
 }
 
 void PartidaController::confirmarPartida(){
-    // Para la parte de continuar partida individual
-    if(partidaAContinuar == NULL){
-        Individual *partidaQueContinuara = dynamic_cast<Individual*>(this->partidaSeleccionada);
-        partidaAContinuar->setContPartAnterior(partidaQueContinuara);
-    }
 
-    // id para la partida
-    string idPartida = to_string(idpartida++);
+        // Asignar la Referencia para la partida
+    string idPartida = "P";
+    idPartida += to_string(idpartida++);
     this->partidaSeleccionada->setIdPartida(idPartida);
 
-    // fecha  para la partida
+    // Asignar la Fecha para la partida
     DT_Date *fecha = new DT_Date();
     this->partidaSeleccionada->setFecha(*fecha);
 
-    // hora de comienzo de la partida
+    // Asignar la hora de comienzo de la partida
     DT_Time *horaComienzo = new DT_Time();
     this->partidaSeleccionada->setHoraComienzo(*horaComienzo);
 
-    // add partidaseleccionada;
+    // Agregar a la collecion la nueva partida;
     partidas->add(partidaSeleccionada,new KeyString(idPartida));
 
-    // borrar datos guardados
+    // Borrar los datos que el controlador guardo
     this->partidaSeleccionada = NULL;
-    this->partidaAContinuar = NULL;
+
 }
 IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){}
 void PartidaController::confirmarAbandonoPartida(string idPartida){}
@@ -112,5 +124,32 @@ IDictionary* PartidaController::listarComentariosDePartida(){}
 void PartidaController::seleccionarComentarioAResponder(int idComentario){}
 void PartidaController::enviarComentario(string comentario){}
 void PartidaController::confirmarComentario(){}
-void PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){} // lugar 9
+
+IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
+
+
+    // Obtener el usuario logeado!! Necesito que el getUsuarioLogeado() Devuelva un puntero
+    UsuarioController* usuarioController;
+    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(usuarioController->getInstance()->getUsuarioLogeado());
+
+
+    // Comparar el usuario por cada partida y tamibien si es finalizada
+    IIterator *it = this->partidas->getIteratorObj();
+    Individual *partida = NULL;
+    IDictionary* listadepartidas = new ListDicc();
+    while(it->hasNext()){
+        partida = dynamic_cast<Individual *>(it->getCurrent());
+        if(partida){
+            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->getFinalizada())){
+                // Guardar todo en una coleccion y retorna esa coleccion
+                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFecha().getDate(), partida->getHoraComienzo().getTime(), partida->getHorasPartida());
+                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyString(dt_partida->getIdPartida()));
+            }
+        }
+        it->next();
+    }
+    return listadepartidas;
+
+
+}
 IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){} // lugar 1

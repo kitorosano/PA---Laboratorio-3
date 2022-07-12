@@ -12,6 +12,7 @@
 #include "Classes/Jugador.h"
 #include "Classes/Usuario.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
+#include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
 #include "Controllers/VideoJuegoController.h"
 #include "Controllers/UsuarioController.h"
 #include "ColeccionesG/IDictionary.h"
@@ -30,7 +31,6 @@ private:
     Comentario* comentarioAResponder;
     Comentario* nuevoComentario;
     IDictionary* partidas;
-    Individual* partidaAContinuar;
     int idpartida;
 
 public:
@@ -51,7 +51,7 @@ public:
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
-    void listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
+    IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
 
