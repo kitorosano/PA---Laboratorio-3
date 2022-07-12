@@ -27,7 +27,6 @@ add_executable(PA___Laboratorio_3
 
         DataTypes/DT_Date.cpp DataTypes/DT_Date.h
         DataTypes/DT_Time.cpp DataTypes/DT_Time.h
-        DataTypes/DT_NomDescVideojuego.cpp DataTypes/DT_NomDescVideojuego.h
         DataTypes/DT_InfoVideojuego.cpp DataTypes/DT_InfoVideojuego.h
         DataTypes/DT_MultijugadorVideojuego.cpp DataTypes/DT_MultijugadorVideojuego.h
 

@@ -34,7 +34,6 @@ public:
     int getIdVideojuego();
     string getNombre();
     string getDescripcion();
-    DT_NomDescVideojuego getNomDescVideojuego();
     double getTotalHorasJugadas();
     double getPuntaje();
     int getCantidad_votos();
@@ -42,7 +41,7 @@ public:
 
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
-    void setTotal_horas_jugadas(double totalHorasJugadas);
+    void setTotalHorasJugadas(double totalHorasJugadas);
     void setPuntaje(double puntaje);
     void setCantidad_votos(int cantidad_votos);
     void setDesarrollador(Desarrollador* desarrollador);

@@ -22,6 +22,9 @@ public:
     static VideojuegoController* getInstance();
     virtual ~VideojuegoController();
 
+    Videojuego* getVideojuegoSeleccionado();
+    void setVideojuegoSeleccionado(Videojuego* videojuego);
+
     IDictionary* listarSuscripciones();
     void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
     void confirmarVideojuego();

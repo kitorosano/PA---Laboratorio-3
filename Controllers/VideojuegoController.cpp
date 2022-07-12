@@ -31,13 +31,20 @@ VideojuegoController* VideojuegoController::getInstance() {
     return instance;
 }
 
+Videojuego* VideojuegoController::getVideojuegoSeleccionado() {
+    return videojuegoSeleccionado;
+}
+void VideojuegoController::setVideojuegoSeleccionado(Videojuego* videojuego) {
+    this->videojuegoSeleccionado = videojuego;
+}
+
 IDictionary* VideojuegoController::listarSuscripciones(){}
 void VideojuegoController::datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia) {
-    // TODO implementar la fabrica para acceder al desarrollador logeado
-    videojuegoSeleccionado = new Videojuego(nombre, descripcion, );
+//    TODO implementar la fabrica para acceder al desarrollador logeado
+//    videojuegoSeleccionado = new Videojuego(nombre, descripcion, );
 
-    // TODO FIX:
-    Suscripcion* suscripcionMensual = new Suscripcion(videojuegoSeleccionado ,E_PeriodoValidez::MENSUAL, costoMensual);
+//    TODO FIX:
+//    Suscripcion* suscripcionMensual = new Suscripcion(videojuegoSeleccionado ,E_PeriodoValidez::MENSUAL, costoMensual);
 }
 void VideojuegoController::confirmarVideojuego(){
     videojuegos->add(this->videojuegoSeleccionado, new KeyInt(this->videojuegoSeleccionado->getIdVideojuego()));
@@ -69,7 +76,6 @@ void VideojuegoController::listarNomDescVideoJuegos(){
 
     while(it->hasNext()){
         videojuego = dynamic_cast<Videojuego *>(it->getCurrent());
-        //TODO borrar DT_NomDescVideojuego ya que no lo estoy usando
         cout << videojuego->getNombre() << " - " << videojuego->getDescripcion() << endl;
         it->next();
     }
@@ -95,10 +101,10 @@ DT_InfoVideojuego VideojuegoController::verVideojuego(int idVideojuego){
     if(videojuego != NULL) {
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(videojuego->getNombre());
-        //TODO: obtener las categorias del videojuego
-        info->setCategorias( );
-        //TODO: obtener las suscripciones del videojuego
-        info->setSuscripciones( );
+//        TODO: obtener las categorias del videojuego
+//        info->setCategorias( );
+//        TODO: obtener las suscripciones del videojuego
+//        info->setSuscripciones( );
         info->setEmpresa(videojuego->getNombreEmpresa());
         info->setPuntaje(videojuego->getPuntaje());
 
@@ -112,10 +118,10 @@ DT_InfoVideojuego VideojuegoController::verVideojuegoDesarrollador(int idVideoju
     if(videojuego != NULL) {
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(videojuego->getNombre());
-        //TODO: obtener las categorias del videojuego
-        info->setCategorias( );
-        //TODO: obtener las suscripciones del videojuego
-        info->setSuscripciones( );
+//        TODO: obtener las categorias del videojuego
+//        info->setCategorias( );
+//        TODO: obtener las suscripciones del videojuego
+//        info->setSuscripciones( );
         info->setEmpresa(videojuego->getNombreEmpresa());
         info->setPuntaje(videojuego->getPuntaje());
         info->setTotalHorasJugadas(videojuego->getTotalHorasJugadas());
@@ -125,6 +131,4 @@ DT_InfoVideojuego VideojuegoController::verVideojuegoDesarrollador(int idVideoju
     } else
         throw std::invalid_argument("El idenficador no corresponde a un videojuego en el sistema");
 }
-void VideojuegoController::listaJuegosPublicadosFinalizados(){
-    //TODO Depende de las partidas de este videojuego
-}
+//void VideojuegoController::listaJuegosPublicadosFinalizados(){}
