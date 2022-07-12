@@ -10,6 +10,9 @@
 #include "ColeccionesG/IDictionary.h"
 #include "DataTypes/E_PeriodoValidez.h"
 #include "Videojuego.h"
+#include <string>
+
+using namespace std;
 
 class Suscripcion: public ICollectible {
 private:
@@ -31,7 +34,6 @@ public:
     void setCosto(double costo);
 
     string toString();
-
 };
 
 #endif //PA___LABORATORIO_3_SUSCRIPCION_H

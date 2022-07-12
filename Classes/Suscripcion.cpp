@@ -8,14 +8,13 @@
 #include <sstream>
 using namespace std;
 
-Suscripcion::Suscripcion() {
-}
+Suscripcion::Suscripcion() {}
 
-Suscripcion::Suscripcion(Videojuego* videojuego, E_PeriodoValidez periodoValidez, double costo) {
+Suscripcion::Suscripcion(Videojuego *videojuego, E_PeriodoValidez periodoValidez, double costo) {
     //    setear id
     this->videojuego = videojuego;
     this->periodoValidez = periodoValidez;
-    this->costo = 0;
+    this->costo = costo;
 }
 
 Suscripcion::~Suscripcion(){
