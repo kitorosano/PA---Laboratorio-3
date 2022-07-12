@@ -7,10 +7,7 @@
 
 #include "Interfaces/IPartida.h"
 #include "Classes/Partida.h"
-#include "Classes/Individual.h"
 #include "Classes/Multijugador.h"
-#include "Classes/Jugador.h"
-#include "Classes/Usuario.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
 #include "Controllers/VideoJuegoController.h"
@@ -30,6 +27,7 @@ private:
     Partida* partidaSeleccionada; // El controlador guarda la partida pi
     Comentario* comentarioAResponder;
     Comentario* nuevoComentario;
+
     IDictionary* partidas;
     int idpartida;
 
@@ -42,18 +40,17 @@ public:
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
+    vector<Multijugador*> listarPartidasMultijugadorUnidasNoFinalizadas();
     void confirmarAbandonoPartida(string idPartida);
-    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(string idPartida);
     void seleccionarPartida(string idPartida);
-    IDictionary* listarComentariosDePartida();
+    vector<Comentario*> listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
-
 
 };
 

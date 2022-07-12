@@ -13,23 +13,28 @@ private:
     static VideojuegoController* instance;
     VideojuegoController();
 
-    Videojuego* videojuegoSeleccionado = nullptr;
-    vector<Videojuego*> videojuegos;
-    vector<Videojuego*> videojuegosJugador;
+    Videojuego* videojuegoSeleccionado = NULL;
+    IDictionary* videojuegos;
+    IDictionary* puntuaciones;
+    IDictionary* suscripciones;
 
 public:
     static VideojuegoController* getInstance();
     virtual ~VideojuegoController();
 
-    void datosNuevoVideojuego(string nombre, string descripcion, int costoMensual, int costoTrimestral, int costoAnual, int costoVitalicia);
+    Videojuego* getVideojuegoSeleccionado();
+    void setVideojuegoSeleccionado(Videojuego* videojuego);
+
+    IDictionary* listarSuscripciones();
+    void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
     void confirmarVideojuego();
     void seleccionarVideoJuego(int id);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
-    vector<DT_NomDescVideojuego> listarNomDescVideoJuegos();
+    void listarNomDescVideoJuegos();
     void asignarPuntaje(string nombreVideojuego, int puntaje);
-    vector<string> listarNombreVideojuegos();
-    DT_InfoVideojuegoJugador verVideojuego(int idVideojuego);
-    DT_InfoVideojuegoDesarrollador verVideojuegoDesarrollador(int idVideojuego);
-    vector<string> listaJuegosPublicadosFinalizados();
+    void listarNombreVideojuegos();
+    DT_InfoVideojuego verVideojuego(int idVideojuego);
+    DT_InfoVideojuego verVideojuegoDesarrollador(int idVideojuego);
+    void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H

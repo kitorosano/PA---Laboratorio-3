@@ -34,7 +34,12 @@ void Usuario::confirmarRegistro(){}
 
 void Usuario::cancelarRegistro(){}
 
-bool Usuario::verificarContraseña(string password){}
+bool Usuario::verificarContraseña(string password){ //se podria darle la responsabilidad al controlador
+    if(password==this->password)
+        return true;
+    else
+        return false;
+}
 
 string Usuario::toString() {
     return "Usuario: " + email + " password: " + password;

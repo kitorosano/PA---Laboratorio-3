@@ -9,7 +9,9 @@
 #include "Classes/Suscripcion.h"
 #include "Classes/DatosSuscripcion.h"
 #include "DataTypes/E_MetodoPago.h"
-#include <vector>
+#include "../ColeccionesG/ICollectible.h"
+#include "../ColeccionesG/ICollection.h"
+#include "../ColeccionesG/IDictionary.h"
 #include <string>
 
 using namespace std;
@@ -19,23 +21,21 @@ private:
     static DatosSuscripcionController* instance;
     DatosSuscripcionController();
 
-    vector<Suscripcion*> suscripciones;
-    vector<DatosSuscripcion*> datosSuscripciones;
+    IDictionary* datosSuscripciones;
 
 public:
     static DatosSuscripcionController* getInstance();
     virtual ~DatosSuscripcionController();
 
-    vector<Suscripcion*> listarSuscripciones();
-    vector<Suscripcion*> obtenerSuscripcionesVideojuego(string nombre_videojuego);
+    IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego);
 
 
-    vector<string> listarNombreVideojuegosSuscritos();
+    IDictionary* listarNombreVideojuegosSuscritos();
     void cancelarSuscripcionActiva(int idSuscripcion);
 
     void crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago);
     void confirmarDatosSuscripcion();
 
-    vector<string> listarNicknameJugadoresSuscritos();
+    IDictionary* listarNicknameJugadoresSuscritos();
 };
 #endif //PA___LABORATORIO_3_DATOSSUSCRIPCIONCONTROLLER_H

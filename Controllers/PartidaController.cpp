@@ -8,7 +8,7 @@ using namespace std;
 PartidaController* PartidaController::instance = NULL;
 
 PartidaController::PartidaController() {
-    partidas = new ListDicc();
+    partidas = vector<Partida *>();
     partidaSeleccionada = NULL;
     comentarioAResponder = NULL;
     nuevoComentario = NULL;
@@ -117,10 +117,10 @@ void PartidaController::confirmarPartida(){
 }
 IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){}
 void PartidaController::confirmarAbandonoPartida(string idPartida){}
-IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){}
+vector<Multijugador*> PartidaController::listarPartidasIniciadasNoFinalizadas(){}
 void PartidaController::confirmarFinalizarPartida(string idPartida){}
 void PartidaController::seleccionarPartida(string idPartida){}
-IDictionary* PartidaController::listarComentariosDePartida(){}
+vector<Comentario*> PartidaController::listarComentariosDePartida(){}
 void PartidaController::seleccionarComentarioAResponder(int idComentario){}
 void PartidaController::enviarComentario(string comentario){}
 void PartidaController::confirmarComentario(){}
