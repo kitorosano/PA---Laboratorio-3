@@ -23,13 +23,17 @@ void AltaUsuario(){
     cout<<"|------------------------------------------------|"<<endl<<endl;
     cout<<"Ingrese la contraseña:"<<endl;
     cin>>password;
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                 ALTA DE USUARIO                |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"| 1. Registrarse como desarrollador              |"<<endl;
-    cout<<"| 2. Registrarse como Jugador                    |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cin>>opcion;
+    do {
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|                 ALTA DE USUARIO                |" << endl;
+        cout << "|------------------------------------------------|" << endl;
+        cout << "| 1. Registrarse como desarrollador              |" << endl;
+        cout << "| 2. Registrarse como Jugador                    |" << endl;
+        cout << "|------------------------------------------------|" << endl << endl;
+        cin >> opcion;
+        if(opcion !=1 && opcion !=2)
+            throw invalid_argument("Debe ingresar una opcion!");
+    }while(opcion !=1 && opcion !=2);
     if(opcion==1) {
         do {
             cout << "|------------------------------------------------|" << endl;
@@ -65,27 +69,25 @@ void AltaUsuario(){
         cin >> empresa;
         fabrica->getInstance()->getInterfaceU->registroDesarrollador(email,password,empresa);
     }
-    else{
-        cout<<"|------------------------------------------------|"<<endl;
-        cout<<"|                 ALTA DE USUARIO                |"<<endl;
-        cout<<"|------------------------------------------------|"<<endl<<endl;
-        cout<<"Debe ingresar una opcion"<<endl;
-    }
-    cout << "|------------------------------------------------|" << endl;
-    cout << "|                 ALTA DE USUARIO                |" <<endl;
-    cout << "|------------------------------------------------|" << endl;
-    cout << "| 1. Confirmar Registro                          |" <<endl;
-    cout << "| 2. Cancelar  registro                          |" <<endl;
-    cout << "|------------------------------------------------|" <<endl<<endl;
-    cin>>opcion;
+
+    do {
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|                 ALTA DE USUARIO                |" << endl;
+        cout << "|------------------------------------------------|" << endl;
+        cout << "| 1. Confirmar Registro                          |" << endl;
+        cout << "| 2. Cancelar  registro                          |" << endl;
+        cout << "|------------------------------------------------|" << endl << endl;
+        cin >> opcion;
+        if(opcion !=1 && opcion !=2)
+            throw invalid_argument("Debe ingresar una opcion!");
+
+    }while(opcion!=1 && opcion !=2);
     if(opcion==1){
         fabrica->getInstance()->getInterfaceU->confirmarRegistro();
     }
     else if(opcion==2){
         fabrica->getInstance()->getInterfaceU->cancelarRegistro();
     }
-    else{
-        throw invalid_argument("Debe ingresar una opcion");
-    }
+
 
 }
