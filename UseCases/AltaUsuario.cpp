@@ -1,14 +1,14 @@
 //
 // Created by esteban.rosano on 27/6/2022.
 //
-
+#include "/Factory/Factory.h"
 #include "AltaUsuario.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 void AltaUsuario(){
-    Fabrica * fabrica;
+    Factory * factory;
     string email,password,nickname,descripcion,empresa;
     int opcion;
     int deseaReingresar=0;
@@ -46,7 +46,7 @@ void AltaUsuario(){
             cout << "|------------------------------------------------|" << endl << endl;
             cout << "Ingrese una descripcion:" << endl;
             cin >> descripcion;
-            if (!fabrica->getInstance()->getInterfaceU->verificarNickname(nickname)) {
+            if (!factory->getInstance()->getInterfaceU->verificarNickname(nickname)) {
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
                 cout << "|------------------------------------------------|" << endl;
@@ -58,7 +58,7 @@ void AltaUsuario(){
                     return;
             }
         }while(deseaReingresar==1);
-        fabrica->getInstance()->getInterfaceU->registroJugador(email,password,nickname,descripcion);
+        factory->getInstance()->getInterfaceU->registroJugador(email,password,nickname,descripcion);
 
     }
     else if(opcion==2){
@@ -67,7 +67,7 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl<<endl;
         cout << "Ingrese el nombre de la empresa:" <<endl;
         cin >> empresa;
-        fabrica->getInstance()->getInterfaceU->registroDesarrollador(email,password,empresa);
+        factory->getInstance()->getInterfaceU->registroDesarrollador(email,password,empresa);
     }
 
     do {
@@ -83,10 +83,10 @@ void AltaUsuario(){
 
     }while(opcion!=1 && opcion !=2);
     if(opcion==1){
-        fabrica->getInstance()->getInterfaceU->confirmarRegistro();
+        factory->getInstance()->getInterfaceU->confirmarRegistro();
     }
     else if(opcion==2){
-        fabrica->getInstance()->getInterfaceU->cancelarRegistro();
+        factory->getInstance()->getInterfaceU->cancelarRegistro();
     }
 
 
