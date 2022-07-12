@@ -9,7 +9,12 @@
 #include "Classes/Partida.h"
 #include "Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
-#include "vector"
+#include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
+#include "Controllers/VideoJuegoController.h"
+#include "Controllers/UsuarioController.h"
+#include "ColeccionesG/IDictionary.h"
+#include "ColeccionesG/ListaDicc.h"
+#include "ColeccionesG/KeyString.h"
 #include <string>
 
 using namespace std;
@@ -22,7 +27,9 @@ private:
     Partida* partidaSeleccionada; // El controlador guarda la partida pi
     Comentario* comentarioAResponder;
     Comentario* nuevoComentario;
-    vector<Partida*> partidas;
+
+    IDictionary* partidas;
+    int idpartida;
 
 public:
     static PartidaController * getInstance();
@@ -42,9 +49,8 @@ public:
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
-    void listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
-    vector<DT_MultijugadorVideojuego>listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
-
+    IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
+    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
 };
 

@@ -13,6 +13,7 @@ Partida::Partida(Jugador *jugador, Videojuego *videojuego) {
 //    setear id
     this->jugador = jugador;
     this->videojuego = videojuego;
+    this->finalizada = false;
 }
 
 Partida::~Partida() {
@@ -40,6 +41,18 @@ Jugador *Partida::getJugador() {
 
 Videojuego *Partida::getVideojuego() {
     return this->videojuego;
+}
+
+DT_Date Partida::getFechaFin() {
+    return this->fechaFin;
+}
+
+DT_Time Partida::getHoraFin() {
+    return this->horaFin;
+}
+
+bool Partida::getFinalizada() {
+    return this->finalizada;
 }
 
 void Partida::setFecha(DT_Date fecha) {

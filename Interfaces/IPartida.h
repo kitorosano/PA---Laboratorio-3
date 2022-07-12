@@ -42,7 +42,7 @@ public:
 
     virtual void confirmarComentario() = 0;
 
-    virtual void listarHistorialPartidasFinalizadasCronologicamente() = 0;
+    virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
 
     virtual vector<DT_MultijugadorVideojuego> listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
 };

@@ -25,6 +25,9 @@ private:
     DT_Date fecha;
     DT_Time horaComienzo;
     double horasPartida;
+    DT_Date fechaFin; //NUEVO, preguntar?
+    DT_Time horaFin; // NUEVO, preguntar?
+    bool finalizada; // NUEVO, preguntar?
 
 public:
     Partida();
@@ -37,12 +40,20 @@ public:
     DT_Time getHoraComienzo();
     double getHorasPartida();
     Jugador* getJugador();
+    DT_Date getFechaFin(); //NUEVO, preguntar?
+    DT_Time getHoraFin(); // NUEVO, preguntar?
+    bool getFinalizada(); // NUEVO, preguntar?
+
 
     void setJugador(Jugador* jugador);
     void setVideojuego(Videojuego* videojuego);
     void setFecha(DT_Date fecha);
     void setHoraComienzo(DT_Time horaCominezo);
     void setHorasPartida(double horasPartida);
+    void setIdPartida(string idpartida);
+    void setFechaFin(DT_Date getFechaFin); //NUEVO, preguntar?
+    void setHoraFin(DT_Time getHoraFin); // NUEVO, preguntar?
+    void setFinalizada(bool getFinalizada); // NUEVO, preguntar?
 
     string toString();
 };
