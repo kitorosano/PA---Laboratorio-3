@@ -62,6 +62,10 @@ void Partida::setVideojuego(Videojuego *videojuego) {
     this->videojuego = videojuego;
 }
 
+void Partida::setIdPartida(string idpartida){
+    this->idPartida = idpartida;
+}
+
 string Partida::toString() {
     stringstream ss;
     ss << "Partida: " << this->getIdPartida() << endl;
