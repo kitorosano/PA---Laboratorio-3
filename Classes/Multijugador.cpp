@@ -34,13 +34,25 @@ void Multijugador::setIsTransmitidaEnVivo(bool transmitidaEnVivo) {
 void Multijugador::setDuracionTotal(double duracionTotal) {
     this->duracionTotal = duracionTotal;
 }
-
+Comentario* Multijugador::obtenerComentario(int idComentario){
+    if(this->comentarios){
+        KeyInt* key_id = new KeyInt(idComentario);
+        Comentario* comentario = (Comentario*) (this->comentarios->find(key_id));
+        if(!comentario){
+            throw invalid_argument("El comentario no existe en la partida");
+            return NULL;
+        }
+        else{
+            return comentario;
+        }
+    }
+}
 IDictionary* Multijugador::obtenerComentariosDePartida(){
     IIterator *it = this->comentarios->getIteratorObj();
     IDictionary* comentarios_multijugador = new ListDicc();
     while(it->hasNext()){
         Comentario* comentario= dynamic_cast<Comentario*>(it->getCurrent());
-                DT_Comentario *dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getHoraEnvio(),comentario->getEscritor(),comentario->getContenido());
+                DT_Comentario *dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getHoraEnvio(),comentario->getEscritor()->getNickname(),comentario->getContenido());
                 comentarios_multijugador->add(dt_comentario, new KeyInt(comentario->getIdComentario()));
         it->next();
     }
@@ -48,5 +60,5 @@ IDictionary* Multijugador::obtenerComentariosDePartida(){
 }
 
 void Multijugador::agregarComentario(Comentario* comentario){
-
+    this->comentarios->add(comentario,new KeyInt(comentario->getIdComentario()));
 }

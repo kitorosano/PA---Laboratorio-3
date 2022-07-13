@@ -6,6 +6,7 @@
 #include "/Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_Comentario.h"
+#include "/Factory/Factory.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -158,7 +159,7 @@ void PartidaController::seleccionarPartida(int idPartida){
 }
 
 IDictionary* PartidaController::listarComentariosDePartida(){
-    IDictionary* comentarios_multijugador = new ListDicc();
+    IDictionary* comentarios_multijugador = NULL;
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
     if(multijugador_recordada){
         comentarios_multijugador=multijugador_recordada->obtenerComentariosDePartida();
@@ -168,17 +169,51 @@ IDictionary* PartidaController::listarComentariosDePartida(){
 }
 
 void PartidaController::seleccionarComentarioAResponder(int idComentario){
-
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada){
+       if(multijugador_recordada->obtenerComentario(idComentario)){
+           this->comentarioAResponder=multijugador_recordada->obtenerComentario(idComentario);
+       }
+    }
 }
 
-void PartidaController::enviarComentario(string comentario){}
+void PartidaController::enviarComentario(string contenido){
+    Factory* factory;
+    string autor;
+    Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+    Jugador* jugador = dynamic_cast<Jugador*>(usuario_logueado);
+    if(jugador){
+        if(this->comentarioAResponder){
+            //respuesta
+            DT_Date fechaRespuesta = DT_Date();
+            DT_Time horaRespuesta = DT_Time();
+            this->nuevoComentario= new Comentario(usuario_logueado,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
+            this->comentarioAResponder=NULL;
+        }
+        else{
+            //envio
+            DT_Date fechaEnvio = DT_Date();
+            DT_Time horaEnvio = DT_Time();
+            this->nuevoComentario= new Comentario(usuario_logueado,fechaEnvio,horaEnvio,contenido);
+        }
+    }
+}
 
 void PartidaController::confirmarComentario(){
     //aca se setea el id del comentario
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada && this->nuevoComentario){
+        multijugador_recordada->agregarComentario(this->nuevoComentario);
+        this->nuevoComentario=NULL;
+    }
 }
 
 void PartidaController::cancelarComentario(){
     //aca se setea el id del comentario
+    if(this->nuevoComentario){
+        delete nuevoComentario;
+        nuevoComentario=NULL;
+    }
 }
 
 IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){

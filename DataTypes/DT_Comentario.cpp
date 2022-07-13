@@ -5,7 +5,7 @@
 
 
 using namespace std;
-DT_Comentario::DT_Comentario(int idComentario,DT_Date fechaEnvio,DT_Time horaEnvio,Jugador* escritor, string contenido){
+DT_Comentario::DT_Comentario(int idComentario,DT_Date fechaEnvio,DT_Time horaEnvio,string escritor, string contenido){
     this->idComentario=idComentario;
     this->fechaEnvio = fechaEnvio;
     this->horaEnvio = horaEnvio;
@@ -24,7 +24,7 @@ DT_Date DT_Comentario::getFechaEnvio(){
 DT_Time DT_Comentario::getHoraEnvio(){
     return this->horaEnvio;
 }
-Jugador* DT_Comentario::getEscritor(){
+string DT_Comentario::getEscritor(){
     return this->escritor;
 }
 string DT_Comentario::getContenido(){

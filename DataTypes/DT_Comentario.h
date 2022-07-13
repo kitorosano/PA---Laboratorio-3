@@ -14,15 +14,15 @@ private:
     int idComentario;
     DT_Date fechaEnvio;
     DT_Time horaEnvio;
-    Jugador* escritor;
+    string escritor;
     string contenido;
 public:
-    DT_Comentario(int idComentario,DT_Date fechaEnvio,DT_Time horaEnvio,Jugador* escritor, string contenido);
+    DT_Comentario(int idComentario,DT_Date fechaEnvio,DT_Time horaEnvio,string escritor, string contenido);
     ~DT_Comentario();
     int getIdComentario();
     DT_Date getFechaEnvio();
     DT_Time getHoraEnvio();
-    Jugador* getEscritor();
+    string getEscritor();
     string getContenido();
 };
 #endif //MAIN_CPP_DT_COMENTARIO_H
