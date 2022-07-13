@@ -3,10 +3,10 @@
 //
 
 #include "PartidaController.h"
-#include "/Classes/Multijugador.h"
+#include "Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
-#include "DataTypes/DT_Comentario.h"
-#include "/Factory/Factory.h"
+#include "Classes/Comentario.h"
+#include "Factory/Factory.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -409,7 +409,6 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
     }
     return listadepartidas;
 }
-IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){}
 
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
