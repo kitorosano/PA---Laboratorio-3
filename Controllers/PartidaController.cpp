@@ -206,14 +206,74 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
             DT_Time *horaFin = new DT_Time();
             partida->setHoraFin(*horaFin);
             partida->setFinalizada(true);
-            // Falta calcular la hora de duración de la partida:
-            /*
-            if (partida->getFecha().getDate() == fechaFin->getDate()){
-                double horacomienzo;
-                string horacom = partida->getHoraComienzo().getTime();
-                horacomienzo = stod(horacom);
-                        //double num_double = std::stod(str);
-            }*/
+
+            // calcular la hora de duración de la partida:
+            string valor;
+
+            // Separar en partes la Fecha y hora de Comienzo
+            string fechacom = partida->getFecha().getDate();
+            int valoresFechacom[3];
+            stringstream input_stringstream(fechacom);
+            for(int i = 0; getline(input_stringstream, valor, '-'); i++){
+                // convertir a int cada parte
+                valoresFechacom[i] = stoi(valor);
+            }
+
+            string horacom = partida->getHoraComienzo().getTime();
+            int valoresHoracom[3];
+            stringstream input_stringstream2(horacom);
+            for(int i = 0; getline(input_stringstream2, valor, ':'); i++){
+                // convertir a int cada parte
+                valoresHoracom[i] = stoi(valor);
+            }
+
+
+            // Separar en partes la Fecha y hora de Finalización
+            cout<<"----------------------------- FIN"<<endl;
+            string fechafin = partida->getFechaFin().getDate();
+            int valoresFechafin[3];
+            stringstream input_stringstream3(fechafin);
+            for(int i = 0; getline(input_stringstream3, valor, '-'); i++){
+                // convertir a int cada parte
+                valoresFechafin[i] = stoi(valor);
+            }
+
+
+            string horafin = partida->getHoraFin().getTime();
+            int valoresHorafin[3];
+            stringstream input_stringstream4(horafin);
+            for(int i = 0; getline(input_stringstream4, valor, ':'); i++){
+                // convertir a int cada parte
+                valoresHorafin[i] = stoi(valor);
+            }
+
+            // Restar el tiempo de comienzo con el tiempo de Finalizacion con la funcion difftime()
+            time_t now;
+            struct tm comienzo;
+            struct tm fin;
+            double seconds;
+            time(&now);  // get current time; same as: now = time(NULL)
+            comienzo = *localtime(&now);
+            fin = *localtime(&now);
+            // fechaComienzo de la partida
+            comienzo.tm_hour = valoresHoracom[0];
+            comienzo.tm_min = valoresHoracom[1];
+            comienzo.tm_sec = valoresHoracom[2];
+            comienzo.tm_mday = valoresFechacom[0]; // itn - day of the month	1-31
+            comienzo.tm_mon = valoresFechacom[1]-1;  // int - months since January	0-11
+
+            // fechafinal de la partida
+            fin.tm_hour = valoresHorafin[0];
+            fin.tm_min = valoresHorafin[1];
+            fin.tm_sec = valoresHorafin[2];
+            fin.tm_mday = valoresFechafin[0]; // itn - day of the month	1-31
+            fin.tm_mon = valoresFechafin[1]-1;  // int - months since January	0-11
+
+            seconds = difftime(mktime(&fin),mktime(&comienzo));
+            double totalhorasJugadas = seconds/3600;
+            //cout<<"Horas jugadas: "<<totalhorasJugadas<<endl;
+            partida->setHorasPartida(totalhorasJugadas);
+
             multijugador = dynamic_cast<Multijugador *>(partida);
         }
         if (multijugador){

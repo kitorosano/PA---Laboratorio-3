@@ -23,6 +23,7 @@
 #include "ColeccionesG/ICollection.h"
 
 #include "Classes/JugadorMultijugador.h"
+#include <time.h>  /* time_t, struct tm, difftime, time, mktime */
 using namespace std;
 
 class PartidaController: public IPartida{
