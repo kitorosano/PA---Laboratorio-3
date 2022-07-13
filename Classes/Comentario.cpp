@@ -7,7 +7,7 @@
 Comentario::Comentario() {
 }
 
-Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido) {
+Comentario::Comentario(Jugador *escritor, DT_Date* fechaEnvio, DT_Time* horaEnvio, string contenido) {
 //    setear id
     this->fechaEnvio = fechaEnvio;
     this->horaEnvio = horaEnvio;
@@ -15,7 +15,7 @@ Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio,
     this->escritor = escritor;
 }
 
-Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido,Comentario *comentarioAResponder) {
+Comentario::Comentario(Jugador *escritor, DT_Date* fechaEnvio, DT_Time* horaEnvio, string contenido,Comentario *comentarioAResponder) {
     //    setear id
     this->fechaEnvio = fechaEnvio;
     this->horaEnvio = horaEnvio;
@@ -31,11 +31,11 @@ int Comentario::getIdComentario() {
     return this->idComentario;
 }
 
-DT_Date Comentario::getFechaEnvio() {
+DT_Date* Comentario::getFechaEnvio() {
     return this->fechaEnvio;
 }
 
-DT_Time Comentario::getHoraEnvio() {
+DT_Time* Comentario::getHoraEnvio() {
     return this->horaEnvio;
 }
 
@@ -55,11 +55,11 @@ void Comentario::setIdComentario(int idComentario) {
     this->idComentario = idComentario;
 }
 
-void Comentario::setFechaEnvio(DT_Date fechaEnvio) {
+void Comentario::setFechaEnvio(DT_Date* fechaEnvio) {
     this->fechaEnvio = fechaEnvio;
 }
 
-void Comentario::sethoraEnvio(DT_Time horaEnvio) {
+void Comentario::sethoraEnvio(DT_Time* horaEnvio) {
     this->horaEnvio = horaEnvio;
 }
 
@@ -78,6 +78,6 @@ void Comentario::setEscritor(Jugador *escritor) {
 string Comentario::toString() {
     stringstream ss;
     ss << "Comentario: " << this->idComentario << " Escrito por: " << this->escritor->getNickname() << " Fecha: "
-       << this->fechaEnvio.getDate() << " Hora: " << this->horaEnvio.getTime() << " Contenido: " << this->contenido;
+       << this->fechaEnvio->getDate() << " Hora: " << this->horaEnvio->getTime() << " Contenido: " << this->contenido;
     return ss.str();
 }
