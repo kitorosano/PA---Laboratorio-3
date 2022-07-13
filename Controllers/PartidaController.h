@@ -46,10 +46,11 @@ public:
     vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(string idPartida);
     void seleccionarPartida(int idPartida);
-    vector<Comentario*> listarComentariosDePartida();
+    IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
+    void cancelarComentario();
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
 
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadasEnVivo(); // lugar 1

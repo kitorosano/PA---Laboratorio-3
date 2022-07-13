@@ -34,7 +34,7 @@ public:
 
     virtual void seleccionarPartida(string idPartida) = 0;
 
-    virtual vector<Comentario *> listarComentariosDePartida() = 0;
+    virtual  IDictionary* listarComentariosDePartida() = 0;
 
     virtual void seleccionarComentarioAResponder(int idComentario) = 0;
 

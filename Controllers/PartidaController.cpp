@@ -3,7 +3,9 @@
 //
 
 #include "PartidaController.h"
+#include "/Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
+#include "DataTypes/DT_Comentario.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -155,15 +157,29 @@ void PartidaController::seleccionarPartida(int idPartida){
     this->partidaSeleccionada=aux;
 }
 
-vector<Comentario*> PartidaController::listarComentariosDePartida(){
+IDictionary* PartidaController::listarComentariosDePartida(){
+    IDictionary* comentarios_multijugador = new ListDicc();
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada){
+        comentarios_multijugador=multijugador_recordada->obtenerComentariosDePartida();
+        return comentarios_multijugador;
+    }
+    return NULL;
+}
+
+void PartidaController::seleccionarComentarioAResponder(int idComentario){
 
 }
 
-void PartidaController::seleccionarComentarioAResponder(int idComentario){}
-
 void PartidaController::enviarComentario(string comentario){}
 
-void PartidaController::confirmarComentario(){}
+void PartidaController::confirmarComentario(){
+    //aca se setea el id del comentario
+}
+
+void PartidaController::cancelarComentario(){
+    //aca se setea el id del comentario
+}
 
 IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
 

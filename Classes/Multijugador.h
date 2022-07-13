@@ -8,6 +8,7 @@
 #include "Classes/Partida.h"
 #include "Classes/JugadorMultijugador.h"
 #include "Classes/Comentario.h"
+#include "DataTypes/DT_Comentario.h"
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
@@ -28,7 +29,7 @@ public:
     double getDuracionTotal();
     IDictionary* getJugadoresEnLaPartida();
     IDictionary* obtenerComentariosDePartida();
-    Comentario* obtenerComentario(string idComentario);
+    Comentario* obtenerComentario(int idComentario);
 
 
 
