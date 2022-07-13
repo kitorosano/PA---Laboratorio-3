@@ -3,10 +3,12 @@
 //
 
 #include "PartidaController.h"
-#include "/Classes/Multijugador.h"
+#include "VideojuegoController.h"
+#include "Classes/Multijugador.h"
+#include "Interfaces/IVideojuego.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_Comentario.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -82,7 +84,7 @@ void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
 void PartidaController::ingresarNicknameALaPartida(string nickname){
     Factory* fabrica;
     // Busco al jugador que quiero agregar a la partida
-    Jugador *jugador = dyamica_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->BuscarUsuario(nickname));
+    Jugador *jugador = dyamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->BuscarUsuario(nickname));
     if(jugador){
         // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
         JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
@@ -409,7 +411,7 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
     }
     return listadepartidas;
 }
-IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){}
+
 
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
