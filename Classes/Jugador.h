@@ -5,7 +5,6 @@
 #ifndef PA___LABORATORIO_3_JUGADOR_H
 #define PA___LABORATORIO_3_JUGADOR_H
 #include "Usuario.h"
-#include "Suscripcion.h"
 #include <string>
 #include <iostream>
 

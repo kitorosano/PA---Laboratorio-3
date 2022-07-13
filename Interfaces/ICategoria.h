@@ -19,7 +19,7 @@ public:
     virtual void seleccionarCategoria(string nombre) = 0;
     virtual void listarCategorias() = 0;
     virtual void listarNombreCategorias() = 0;
-
+    virtual IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego) = 0;
 };
 
 #endif //PA___LABORATORIO_3_ICATEGORIA_H

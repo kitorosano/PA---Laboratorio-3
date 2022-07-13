@@ -15,16 +15,17 @@ using namespace std;
 
 class IVideojuego{
 public:
-    virtual IDictionary* listarSuscripciones()=0;
+    virtual IDictionary* getSuscripciones()=0;
     virtual void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia) = 0;
     virtual void confirmarVideojuego() = 0;
+    virtual void cancelarVideojuego() = 0;
     virtual void seleccionarVideoJuego(int id) = 0;
     virtual Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego) = 0;
     virtual void listarNomDescVideoJuegos() = 0;
     virtual void asignarPuntaje(string nombreVideojuego, int puntaje) = 0;
     virtual void listarNombreVideojuegos() = 0;
-    virtual DT_InfoVideojuego verVideojuego(int idVideojuego) = 0;
-    virtual DT_InfoVideojuego verVideojuegoDesarrollador(int idVideojuego) = 0;
+    virtual void verVideojuego(int idVideojuego) = 0;
+    virtual void verVideojuegoDesarrollador(int idVideojuego) = 0;
     virtual void listaJuegosPublicadosFinalizados() = 0;
 };
 #endif //LAB_3_PROYECTO_IVIDEOJUEGO_H

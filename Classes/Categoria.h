@@ -31,6 +31,7 @@ public:
     string getDescription();
     E_TipoCategoria getTipo();
     IDictionary* getVideojuegos();
+    bool tieneVideojuego(string nombreVideojuego);
 
     void setNombre(string nombre);
     void setDescripcion(string descripcion);

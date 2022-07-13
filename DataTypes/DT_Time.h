@@ -4,13 +4,16 @@
 
 #ifndef PA___LABORATORIO_3_DT_TIME_H
 #define PA___LABORATORIO_3_DT_TIME_H
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "ColeccionesG/IDictionary.h"
 #include <string>
 #include <iostream>
 #include <sstream>
 
 using namespace std;
 
-class DT_Time {
+class DT_Time: public ICollectible {
 private:
     string time;
 public:

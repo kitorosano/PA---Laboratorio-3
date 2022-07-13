@@ -32,6 +32,7 @@ void CategoriaController::agregarCategoria(string nombre, string descripcion, E_
 
 void CategoriaController::confirmarCategoria(){
     this->categorias->add(this->categoriaSeleccionada, new KeyString(this->categoriaSeleccionada->getNombre()));
+    this->categoriaSeleccionada = NULL;
 }
 
 void CategoriaController::cancelarCategoria(){
@@ -67,4 +68,17 @@ void CategoriaController::listarNombreCategorias(){
         cout<<categoria->getNombre()<<endl;
     }
     delete it;
+}
+
+IDictionary* CategoriaController::obtenerCategoriasVideojuego(string nombre_videojuego){
+    IDictionary* categorias_videojuego = new ListDicc();
+    IIterator* it = this->categorias->getIteratorObj();
+    while(it->hasNext()){
+        Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
+        if(categoria->tieneVideojuego(nombre_videojuego)){
+            categorias_videojuego->add(categoria, new KeyString(categoria->getNombre()));
+        }
+    }
+    delete it;
+    return categorias_videojuego;
 }

@@ -14,34 +14,32 @@
 #include "DataTypes/DT_Time.h"
 #include "DataTypes/E_MetodoPago.h"
 
-
 class DatosSuscripcion: public ICollectible {
 private:
-    Jugador *jugador;
+    int id;
+    string nickname;
     Suscripcion *suscripcion;
     E_MetodoPago metodo_pago;
-    DT_Date fecha_suscripcion;
-    DT_Time hora_suscripcion;
+    DT_Date* fecha_suscripcion;
+    DT_Time* hora_suscripcion;
     bool activo = false;
 
 public:
     DatosSuscripcion();
-    DatosSuscripcion(Jugador *jugador, Suscripcion *suscripcion, E_MetodoPago metodo_pago, DT_Date fecha_suscripcion, DT_Time hora_suscripcion);
+    DatosSuscripcion(string nickname, Suscripcion *suscripcion, E_MetodoPago metodo_pago);
     virtual ~DatosSuscripcion();
 
-    Jugador *getJugador();
+    int getId();
+    void setId(int id);
+
+    string getNickName();
     Suscripcion *getSuscripcion();
     E_MetodoPago getMetodoPago();
-    DT_Date getFechaSuscripcion();
-    DT_Time getHoraSuscripcion();
+    DT_Date* getFechaSuscripcion();
+    DT_Time* getHoraSuscripcion();
     bool isActivo();
 
-    void setJugador(Jugador *jugador);
-    void setSuscripcion(Suscripcion *suscripcion);
-    void setMetodoPago(E_MetodoPago metodo_pago);
-    void setFechaSuscripcion(DT_Date fecha_suscripcion);
-    void setHoraSuscripcion(DT_Time hora_suscripcion);
-    void setActivo(bool activo);
+    void marcarExpirado();
 
     string toString();
 };

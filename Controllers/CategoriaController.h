@@ -32,6 +32,8 @@ public:
     void listarCategorias();
     void listarNombreCategorias();
 
+    IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego);
+
 };
 
 

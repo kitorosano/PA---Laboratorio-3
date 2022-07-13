@@ -32,6 +32,17 @@ E_TipoCategoria Categoria::getTipo(){
 IDictionary* Categoria::getVideojuegos(){
     return this->videojuegos;
 }
+bool Categoria::tieneVideojuego(string nombreVideojuego){
+    IIterator* iter = this->videojuegos->getIteratorObj();
+    while(iter->hasNext()){
+        Videojuego* videojuego = dynamic_cast<Videojuego*>(iter->getCurrent());
+        if(videojuego->getNombre() == nombreVideojuego){
+            return true;
+        }
+    }
+    delete iter;
+    return false;
+}
 
 void Categoria::setNombre(string nombre){
     this->nombre=nombre;
@@ -52,4 +63,4 @@ string Categoria::toString(){
     ss<<"Descripcion: "<<this->getDescription()<<endl;
     ss << "Tipo: " << Str_TipoCategoria[this->tipo] << endl;
     return ss.str();
-}r
+};

@@ -11,6 +11,7 @@ DT_Date::DT_Date(){
     auto t = std::time(nullptr);
     auto tm = *localtime(&t);
     ssDate<<put_time(&tm, "%d-%m-%Y");
+
     this->date = ssDate.str();
 }
 

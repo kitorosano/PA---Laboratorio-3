@@ -9,6 +9,7 @@
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
 #include "Classes/Suscripcion.h"
+#include "Classes/Categoria.h"
 #include <string>
 
 using namespace std;
@@ -41,7 +42,8 @@ public:
     void setTotalHorasJugadas(double totalHorasJugadas);
 
     string toString();
-
+    string categoriasToString();
+    string suscripcionesToString();
 };
 
 
