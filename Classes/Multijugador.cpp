@@ -31,3 +31,8 @@ void Multijugador::setIsTransmitidaEnVivo(bool transmitidaEnVivo) {
 void Multijugador::setDuracionTotal(double duracionTotal) {
     this->duracionTotal = duracionTotal;
 }
+
+void Multijugador::unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador) {
+    this->jugadoresEnLaPartida->add(jugadorMultijugador, new KeyString(jugadorMultijugador->getJugador()->getNickname()));
+    // reinterpret_cast<ICollectible *>(jugadorMultijugador)
+}

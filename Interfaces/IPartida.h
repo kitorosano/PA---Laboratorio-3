@@ -9,12 +9,13 @@
 #include "Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include <string>
-#include "vector"
+
+
 using namespace std;
 
 class IPartida {
 public:
-    virtual void continuarPartidaIndividual(string idPartida) = 0;
+    virtual void continuarPartidaIndividual(int idPartida) = 0;
 
     virtual void nuevaPartidaIndividual() = 0;
 
@@ -24,17 +25,17 @@ public:
 
     virtual void confirmarPartida() = 0;
 
-    virtual vector<Multijugador *> listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
+    virtual IDictionary *  listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
 
-    virtual void confirmarAbandonoPartida(string idPartida) = 0;
+    virtual void confirmarAbandonoPartida(int idPartida) = 0;
 
-    virtual vector<Multijugador *> listarPartidasIniciadasNoFinalizadas() = 0;
+    virtual IDictionary *  listarPartidasIniciadasNoFinalizadas() = 0;
 
-    virtual void confirmarFinalizarPartida(string idPartida) = 0;
+    virtual void confirmarFinalizarPartida(int idPartida) = 0;
 
-    virtual void seleccionarPartida(string idPartida) = 0;
+    virtual void seleccionarPartida(int idPartida) = 0;
 
-    virtual vector<Comentario *> listarComentariosDePartida() = 0;
+    virtual IDictionary *  listarComentariosDePartida() = 0;
 
     virtual void seleccionarComentarioAResponder(int idComentario) = 0;
 
@@ -44,6 +45,6 @@ public:
 
     virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
 
-    virtual vector<DT_MultijugadorVideojuego> listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
+    virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
 };
 #endif //PA___LABORATORIO_3_IPARTIDA_H
