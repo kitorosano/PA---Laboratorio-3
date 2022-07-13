@@ -10,11 +10,12 @@
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include <string>
 
+
 using namespace std;
 
 class IPartida {
 public:
-    virtual void continuarPartidaIndividual(string idPartida) = 0;
+    virtual void continuarPartidaIndividual(int idPartida) = 0;
 
     virtual void nuevaPartidaIndividual() = 0;
 
@@ -26,13 +27,13 @@ public:
 
     virtual IDictionary *  listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
 
-    virtual void confirmarAbandonoPartida(string idPartida) = 0;
+    virtual void confirmarAbandonoPartida(int idPartida) = 0;
 
     virtual IDictionary *  listarPartidasIniciadasNoFinalizadas() = 0;
 
-    virtual void confirmarFinalizarPartida(string idPartida) = 0;
+    virtual void confirmarFinalizarPartida(int idPartida) = 0;
 
-    virtual void seleccionarPartida(string idPartida) = 0;
+    virtual void seleccionarPartida(int idPartida) = 0;
 
     virtual IDictionary *  listarComentariosDePartida() = 0;
 

@@ -4,8 +4,8 @@
 
 #ifndef MAIN_CPP_DT_PARTIDASINDIVIDUALESFINALIZADAS_H
 #define MAIN_CPP_DT_PARTIDASINDIVIDUALESFINALIZADAS_H
-#include "DT_Date.h"
-#include "DT_Time.h"
+
+
 #include "string"
 #include <iostream>
 

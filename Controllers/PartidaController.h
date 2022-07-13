@@ -19,7 +19,10 @@
 #include "Classes/Individual.h"
 #include "Factory/Factory.h"
 #include "ColeccionesG/ListaDicc.h"
-
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "DataTypes/DT_MultijugadorUnidosNoFinalizados.h"
+#include "Classes/JugadorMultijugador.h"
 using namespace std;
 
 class PartidaController: public IPartida{
@@ -54,6 +57,7 @@ public:
     void confirmarComentario();
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    void cancelarIniciarPartida();
 
 };
 

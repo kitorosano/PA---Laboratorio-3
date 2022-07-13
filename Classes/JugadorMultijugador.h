@@ -13,17 +13,19 @@
 #include <string>
 #include <iostream>
 
-class JugadorMultijugador: ICollectible {
+class JugadorMultijugador: public ICollectible {
 private:
     Jugador* jugador;
-    DT_Time hora_finalizacion;
+    DT_Time* hora_finalizacion;
 
 public:
     JugadorMultijugador();
     JugadorMultijugador(Jugador* jugador);
     ~JugadorMultijugador();
 
-    void setHoraFinalizacion(DT_Time hora_finalizacion);
+    void setHoraFinalizacion(DT_Time* hora_finalizacion);
+    Jugador* getJugador();
+    DT_Time* getHora_finalizacion();
 };
 
 

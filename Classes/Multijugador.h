@@ -35,7 +35,7 @@ public:
 
     void setIsTransmitidaEnVivo(bool transmitidaEnVivo);
     void setDuracionTotal(double duracionTotal);
-    void unirNicknameAPartida(Jugador* jugador);
+    void unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador);
     void nicknameAbandonaPartida(string nickname);
     void agregarComentario(Comentario* comentario);
 

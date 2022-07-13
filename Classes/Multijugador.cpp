@@ -32,6 +32,7 @@ void Multijugador::setDuracionTotal(double duracionTotal) {
     this->duracionTotal = duracionTotal;
 }
 
-void Multijugador::unirNicknameAPartida(Jugador *jugador) {
-    this->jugadoresEnLaPartida->add(jugador, KeyString(jugador->getNickname()))
+void Multijugador::unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador) {
+    this->jugadoresEnLaPartida->add(jugadorMultijugador, new KeyString(jugadorMultijugador->getJugador()->getNickname()));
+    // reinterpret_cast<ICollectible *>(jugadorMultijugador)
 }
