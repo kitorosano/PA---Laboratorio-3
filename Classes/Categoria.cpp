@@ -2,8 +2,9 @@
 // Created by Admin on 20/06/2022.
 //
 #include "Categoria.h"
-#include <string>
-#include <iostream>
+#include "ColeccionesG/ListaDicc.h"
+#include "ColeccionesG/KeyInt.h"
+#include "ColeccionesG/IIterator.h"
 #include <sstream>
 
 using namespace std;
@@ -11,10 +12,11 @@ using namespace std;
 Categoria::Categoria() {
 }
 
-Categoria::Categoria(string nombre,string descripcion){
-//    setear id
-    this->nombre=nombre;
-    this->descripcion=descripcion;
+Categoria::Categoria(string nombre,string descripcion, E_TipoCategoria tipo){
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->tipo = tipo;
+    this->videojuegos = new ListDicc();
 }
 Categoria::~Categoria(){
 }
@@ -27,6 +29,10 @@ string Categoria::getDescription(){
 E_TipoCategoria Categoria::getTipo(){
     return this->tipo;
 }
+IDictionary* Categoria::getVideojuegos(){
+    return this->videojuegos;
+}
+
 void Categoria::setNombre(string nombre){
     this->nombre=nombre;
 }
@@ -35,6 +41,9 @@ void Categoria::setDescripcion(string descripcion){
 }
 void Categoria::setTipo(E_TipoCategoria tipo){
     this->tipo=tipo;
+}
+void Categoria::agregarVideojuego(Videojuego* videojuego){
+    this->videojuegos->add(videojuego, new KeyInt(videojuego->getId()));
 }
 
 string Categoria::toString(){

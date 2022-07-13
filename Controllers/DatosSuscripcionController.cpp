@@ -21,13 +21,13 @@ DatosSuscripcionController* DatosSuscripcionController::getInstance(){
     return instance;
 }
 
-IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string nombre_videojuego){}
-
-
-IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){}
-void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){}
-
-void DatosSuscripcionController::crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago){}
-void DatosSuscripcionController::confirmarDatosSuscripcion(){}
-
-IDictionary* DatosSuscripcionController::listarNicknameJugadoresSuscritos(){}
+//IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string nombre_videojuego){}
+//
+//
+//IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){}
+//void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){}
+//
+//void DatosSuscripcionController::crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago){}
+//void DatosSuscripcionController::confirmarDatosSuscripcion(){}
+//
+//IDictionary* DatosSuscripcionController::listarNicknameJugadoresSuscritos(){}

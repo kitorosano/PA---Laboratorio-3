@@ -6,9 +6,7 @@
 #define PA___LABORATORIO_3_CATEGORIACONTROLLER_H
 
 #include "Interfaces/ICategoria.h"
-#include <vector>
 #include <string>
-
 
 class CategoriaController: public ICategoria {
 private:
@@ -16,23 +14,23 @@ private:
     CategoriaController();
 
     Categoria* categoriaSeleccionada;
-    vector<Categoria *> categorias;
+    IDictionary* categorias;
 
 public:
     static CategoriaController* getInstance();
     virtual ~CategoriaController();
 
     Categoria* getCategoriaSeleccionada();
-    vector<Categoria*> listadoCategorias();
 
-    void seleccionarCategoria(string nombre);
-
-    void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo);
+    void agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo);
     void confirmarCategoria();
     void cancelarCategoria();
 
-    vector<string> listadoNombreCategorias();
-    void agregarVideojuegoACategoria(Videojuego videojuego);
+    void agregarVideojuegoACategoria(Videojuego* videojuego);
+    void seleccionarCategoria(string nombre);
+
+    void listarCategorias();
+    void listarNombreCategorias();
 
 };
 
