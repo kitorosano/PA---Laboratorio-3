@@ -131,22 +131,8 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
                     JugadorMultijugador* jugadorMultijugador = dynamic_cast<JugadorMultijugador *>(multijugador->getJugadoresEnLaPartida()->find(
                             nickName));
                     if (jugadorMultijugador->getHora_finalizacion() == NULL){
-                        // Guardo todo esos atributos en un Data Type para despues mostrarlos
-                        int idpartida = multijugador->getIdPartida();
-                        string fecha = multijugador->getFecha().getDate();
-                        string horaComienzo = multijugador->getHoraComienzo().getTime();
-                        string nomVideojuego = multijugador->getVideojuego()->getNombre();
-                        bool transmitidaEnVivo = multijugador->isTransmitidaEnVivo();
-                        string jugadorIniciador = multijugador->getJugador()->getNickname();
-                        IDictionary *jugadoresEnLaPartida = multijugador->getJugadoresEnLaPartida();
-                        // Se crea el DT que tenga los datos que se piden en el caso de uso y se guarda en la coleccion para despues devolver esa coleccion
-                        DT_MultijugadorUnidosNoFinalizados *dt = new DT_MultijugadorUnidosNoFinalizados(idpartida, fecha,
-                                                                                                        horaComienzo,
-                                                                                                        nomVideojuego,
-                                                                                                        transmitidaEnVivo,
-                                                                                                        jugadorIniciador,
-                                                                                                        jugadoresEnLaPartida)
-                        listadepartidasMulti->add(dt, new KeyString(to_string(idpartida)));
+                        // agrego la partida multijugador a la coleccion para que despues se muestre
+                        listadepartidasMulti->add(multijugador, new KeyString(to_string(idpartida)));
                     }
 
                 }
