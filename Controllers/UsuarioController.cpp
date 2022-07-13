@@ -23,8 +23,8 @@ UsuarioController* UsuarioController::getInstance() {
     return instance;
 }
 
-Usuario UsuarioController::getUsuarioLogeado(){
-    return *this->usuarioLogeado;
+Usuario* UsuarioController::getUsuarioLogeado(){
+    return this->usuarioLogeado;
 }
 
 void UsuarioController::registroJugador(string email,string password,string nickname,string descripcion){
@@ -81,7 +81,7 @@ void UsuarioController::iniciarSesion(string mail,string password){
 void UsuarioController::listarJugadores(){
     IIterator* iter = usuarios->getIteratorObj();
     if(!usuarios)
-       return;
+        return;
 
     while (iter->hasNext()) {
         //Usuario* usuario = (Usuario*) (iter->getCurrent());
@@ -94,7 +94,7 @@ void UsuarioController::listarJugadores(){
 void UsuarioController::seguirJugador(string nickname) {
     if (!this->usuarios){
         throw invalid_argument("No hay usuarios ingresados en el sistema");
-    return;
+        return;
     }
     Desarrollador* dev=dynamic_cast<Desarrollador*>(usuarioLogeado);
     if(dev)

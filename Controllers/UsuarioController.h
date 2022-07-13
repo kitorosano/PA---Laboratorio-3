@@ -22,9 +22,9 @@ private:
     IDictionary* usuarios; //clave correo
 public:
     static UsuarioController* getInstance();
-     ~UsuarioController();
+    ~UsuarioController();
 
-    Usuario getUsuarioLogeado();
+    Usuario* getUsuarioLogeado();
 
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);

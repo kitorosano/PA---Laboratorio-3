@@ -34,6 +34,7 @@ void Multijugador::setIsTransmitidaEnVivo(bool transmitidaEnVivo) {
 void Multijugador::setDuracionTotal(double duracionTotal) {
     this->duracionTotal = duracionTotal;
 }
+
 Comentario* Multijugador::obtenerComentario(int idComentario){
     if(this->comentarios){
         KeyInt* key_id = new KeyInt(idComentario);
@@ -47,6 +48,7 @@ Comentario* Multijugador::obtenerComentario(int idComentario){
         }
     }
 }
+
 IDictionary* Multijugador::obtenerComentariosDePartida(){
     IIterator *it = this->comentarios->getIteratorObj();
     IDictionary* comentarios_multijugador = new ListDicc();
@@ -61,4 +63,9 @@ IDictionary* Multijugador::obtenerComentariosDePartida(){
 
 void Multijugador::agregarComentario(Comentario* comentario){
     this->comentarios->add(comentario,new KeyInt(comentario->getIdComentario()));
+}
+
+void Multijugador::unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador) {
+    this->jugadoresEnLaPartida->add(jugadorMultijugador, new KeyString(jugadorMultijugador->getJugador()->getNickname()));
+    // reinterpret_cast<ICollectible *>(jugadorMultijugador)
 }

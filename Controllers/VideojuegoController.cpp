@@ -6,10 +6,7 @@
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyInt.h"
 #include "ColeccionesG/IIterator.h"
-#include "DataTypes/E_PeriodoValidez.h"
-#include "DataTypes/DT_InfoVideojuego.h"
-#include "Classes/Suscripcion.h"
-
+#include "Factory/Factory.h"
 
 using namespace std;
 
@@ -38,16 +35,65 @@ void VideojuegoController::setVideojuegoSeleccionado(Videojuego* videojuego) {
     this->videojuegoSeleccionado = videojuego;
 }
 
-IDictionary* VideojuegoController::listarSuscripciones(){}
-void VideojuegoController::datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia) {
-//    TODO implementar la fabrica para acceder al desarrollador logeado
-//    videojuegoSeleccionado = new Videojuego(nombre, descripcion, );
+int VideojuegoController::getNuevoIdVideojuego() {
+    return contadorIdVideojuego++;
+}
+int VideojuegoController::getNuevoIdSuscripcion() {
+    return contadorIdSuscripcion++;
+}
 
-//    TODO FIX:
-//    Suscripcion* suscripcionMensual = new Suscripcion(videojuegoSeleccionado ,E_PeriodoValidez::MENSUAL, costoMensual);
+IDictionary* VideojuegoController::getSuscripciones(){
+    return suscripciones;
+}
+
+void VideojuegoController::datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia) {
+    Factory* fabrica;
+    Desarrollador* desarrolladorLogeado = dynamic_cast<Desarrollador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+
+    Videojuego* videojuego = new Videojuego(nombre, descripcion, desarrolladorLogeado);
+
+    Suscripcion* SMensual = new Suscripcion(videojuego, E_PeriodoValidez::MENSUAL, costoMensual);
+    suscripcionesEnMemoria->add(SMensual);
+
+    Suscripcion* STrimestral = new Suscripcion(videojuego, E_PeriodoValidez::TRIMESTRAL, costoTrimestral);
+    suscripcionesEnMemoria->add(STrimestral);
+
+    Suscripcion* SAnual = new Suscripcion(videojuego, E_PeriodoValidez::ANUAL, costoAnual);
+    suscripcionesEnMemoria->add(SAnual);
+
+    Suscripcion* SVitalicia = new Suscripcion(videojuego, E_PeriodoValidez::VITALICIA, costoVitalicia);
+    suscripcionesEnMemoria->add(SVitalicia);
+
+
+
+    setVideojuegoSeleccionado(videojuego);
 }
 void VideojuegoController::confirmarVideojuego(){
-    videojuegos->add(this->videojuegoSeleccionado, new KeyInt(this->videojuegoSeleccionado->getIdVideojuego()));
+    //Iterar por cada suscripcion en memoria y almacenarla en coleccion de suscripciones con su key
+    IIterator* iter = suscripcionesEnMemoria->iterator();
+    while (iter->hasNext()) {
+        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->getCurrent());
+        suscripcion->setId(this->getNuevoIdSuscripcion());
+        KeyInt* key = new KeyInt(suscripcion->getId());
+        suscripciones->add(suscripcion, key);
+    }
+    delete iter;
+
+    this->videojuegoSeleccionado->setId(this->getNuevoIdVideojuego());
+    videojuegos->add(this->videojuegoSeleccionado, new KeyInt(this->videojuegoSeleccionado->getId()));
+    this->videojuegoSeleccionado = NULL;
+}
+void VideojuegoController::cancelarVideojuego(){
+    // Iterar por cada suscripcion en memoria y eliminarlas
+    IIterator* iter = suscripcionesEnMemoria->iterator();
+    while (iter->hasNext()) {
+        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->getCurrent());
+        suscripcionesEnMemoria->remove(suscripcion);
+    }
+    delete iter;
+
+    delete this->videojuegoSeleccionado;
+    this->videojuegoSeleccionado = NULL;
 }
 void VideojuegoController::seleccionarVideoJuego(int id){
     Videojuego* videojuego = dynamic_cast<Videojuego *>(this->videojuegos->find(new KeyInt(id)));
@@ -83,7 +129,7 @@ void VideojuegoController::listarNomDescVideoJuegos(){
 }
 void VideojuegoController::asignarPuntaje(string nombreVideojuego, int puntaje){
     Videojuego* videojuego = this->obtenerVideojuegoPorNombre(nombreVideojuego);
-    this->puntuaciones->add(videojuego, new KeyInt(videojuego->getIdVideojuego()));
+    this->puntuaciones->add(videojuego, new KeyInt(videojuego->getId()));
 }
 void VideojuegoController::listarNombreVideojuegos(){
     IIterator *it = this->videojuegos->getIteratorObj();
@@ -96,39 +142,47 @@ void VideojuegoController::listarNombreVideojuegos(){
     }
     delete it;
 }
-DT_InfoVideojuego VideojuegoController::verVideojuego(int idVideojuego){
+void VideojuegoController::verVideojuego(int idVideojuego){
+    Factory* fabrica;
     Videojuego* videojuego = dynamic_cast<Videojuego *>(this->videojuegos->find(new KeyInt(idVideojuego)));
     if(videojuego != NULL) {
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(videojuego->getNombre());
-//        TODO: obtener las categorias del videojuego
-//        info->setCategorias( );
-//        TODO: obtener las suscripciones del videojuego
-//        info->setSuscripciones( );
+
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuego->getNombre()));
+
+        info->setSuscripciones(this->getSuscripciones());
+
         info->setEmpresa(videojuego->getNombreEmpresa());
         info->setPuntaje(videojuego->getPuntaje());
 
         cout << info->toString();
         delete info;
-    } else
+    } else {
         throw std::invalid_argument("El idenficador no corresponde a un videojuego en el sistema");
+    }
 }
-DT_InfoVideojuego VideojuegoController::verVideojuegoDesarrollador(int idVideojuego){
+void VideojuegoController::verVideojuegoDesarrollador(int idVideojuego){
+    Factory* fabrica;
     Videojuego* videojuego = dynamic_cast<Videojuego *>(this->videojuegos->find(new KeyInt(idVideojuego)));
     if(videojuego != NULL) {
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(videojuego->getNombre());
-//        TODO: obtener las categorias del videojuego
-//        info->setCategorias( );
-//        TODO: obtener las suscripciones del videojuego
-//        info->setSuscripciones( );
+
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuego->getNombre()));
+
+        info->setSuscripciones(this->getSuscripciones());
+
         info->setEmpresa(videojuego->getNombreEmpresa());
         info->setPuntaje(videojuego->getPuntaje());
         info->setTotalHorasJugadas(videojuego->getTotalHorasJugadas());
 
         cout << info->toString();
         delete info;
-    } else
+    } else {
         throw std::invalid_argument("El idenficador no corresponde a un videojuego en el sistema");
+    }
 }
+
+//TODO: DEPENDE DE LAS PARTIDAS
 //void VideojuegoController::listaJuegosPublicadosFinalizados(){}

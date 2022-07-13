@@ -4,6 +4,8 @@
 #ifndef LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H
 #define LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H
 #include "Interfaces/IVideojuego.h"
+#include "DataTypes/DT_InfoVideojuego.h"
+#include "Classes/Suscripcion.h"
 #include <string>
 
 using namespace std;
@@ -13,7 +15,12 @@ private:
     static VideojuegoController* instance;
     VideojuegoController();
 
+    int contadorIdVideojuego = 1;
+    int contadorIdSuscripcion = 1;
+
     Videojuego* videojuegoSeleccionado = NULL;
+    ICollection* suscripcionesEnMemoria;
+
     IDictionary* videojuegos;
     IDictionary* puntuaciones;
     IDictionary* suscripciones;
@@ -22,19 +29,23 @@ public:
     static VideojuegoController* getInstance();
     virtual ~VideojuegoController();
 
+    int getNuevoIdVideojuego();
+    int getNuevoIdSuscripcion();
     Videojuego* getVideojuegoSeleccionado();
     void setVideojuegoSeleccionado(Videojuego* videojuego);
 
-    IDictionary* listarSuscripciones();
+    IDictionary* getSuscripciones();
+
     void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
     void confirmarVideojuego();
+    void cancelarVideojuego();
     void seleccionarVideoJuego(int id);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
     void listarNomDescVideoJuegos();
     void asignarPuntaje(string nombreVideojuego, int puntaje);
     void listarNombreVideojuegos();
-    DT_InfoVideojuego verVideojuego(int idVideojuego);
-    DT_InfoVideojuego verVideojuegoDesarrollador(int idVideojuego);
+    void verVideojuego(int idVideojuego);
+    void verVideojuegoDesarrollador(int idVideojuego);
     void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H

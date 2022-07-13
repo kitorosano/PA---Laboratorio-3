@@ -6,12 +6,6 @@
 #define PA___LABORATORIO_3_DATOSSUSCRIPCIONCONTROLLER_H
 
 #include "Interfaces/IDatosSuscripcion.h"
-#include "Classes/Suscripcion.h"
-#include "Classes/DatosSuscripcion.h"
-#include "DataTypes/E_MetodoPago.h"
-#include "../ColeccionesG/ICollectible.h"
-#include "../ColeccionesG/ICollection.h"
-#include "../ColeccionesG/IDictionary.h"
 #include <string>
 
 using namespace std;
@@ -21,21 +15,26 @@ private:
     static DatosSuscripcionController* instance;
     DatosSuscripcionController();
 
+    int contadorIdDatosSuscripcion = 1;
+    DatosSuscripcion* controller_memory;
     IDictionary* datosSuscripciones;
 
 public:
     static DatosSuscripcionController* getInstance();
     virtual ~DatosSuscripcionController();
 
+    int getNuevoIdDatosSuscripcion();
+    IDictionary* getDatosSuscripciones();
+
     IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego);
 
-
-    IDictionary* listarNombreVideojuegosSuscritos();
+    void listarNombreVideojuegosSuscritos();
     void cancelarSuscripcionActiva(int idSuscripcion);
 
     void crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago);
     void confirmarDatosSuscripcion();
+    void cancelarDatosSuscripcion();
 
-    IDictionary* listarNicknameJugadoresSuscritos();
+    void listarNicknameJugadoresSuscritos();
 };
 #endif //PA___LABORATORIO_3_DATOSSUSCRIPCIONCONTROLLER_H

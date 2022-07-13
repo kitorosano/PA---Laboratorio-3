@@ -12,11 +12,12 @@
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
+#include "ColeccionesG/KeyString.h"
 
 class Multijugador : public Partida {
 private:
     bool transmitidaEnVivo;
-    double duracionTotal;
+    double duracionTotal; // Creo que es lo mismo que el atributo de horasPartida en Partida.h
     IDictionary* jugadoresEnLaPartida;
     IDictionary* comentarios;
 
@@ -35,7 +36,7 @@ public:
 
     void setIsTransmitidaEnVivo(bool transmitidaEnVivo);
     void setDuracionTotal(double duracionTotal);
-    void unirNicknameAPartida(Jugador* jugador);
+    void unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador);
     void nicknameAbandonaPartida(string nickname);
     void agregarComentario(Comentario* comentario);
 

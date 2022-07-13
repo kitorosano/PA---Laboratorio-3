@@ -10,14 +10,19 @@
 #include "Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
-#include "Controllers/VideoJuegoController.h"
-#include "Controllers/UsuarioController.h"
+
 #include "ColeccionesG/IDictionary.h"
 #include "ColeccionesG/ListaDicc.h"
-#include "ColeccionesG/KeyString.h"
 #include "ColeccionesG/KeyInt.h"
 #include <string>
+#include "Classes/Individual.h"
+#include "Factory/Factory.h"
+#include "ColeccionesG/ListaDicc.h"
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
 
+#include "Classes/JugadorMultijugador.h"
+#include <time.h>  /* time_t, struct tm, difftime, time, mktime */
 using namespace std;
 
 class PartidaController: public IPartida{
@@ -36,25 +41,29 @@ public:
     static PartidaController * getInstance();
     virtual ~PartidaController();
 
-    void continuarPartidaIndividual(string idPartida);
+    void continuarPartidaIndividual(int idPartida);
     void nuevaPartidaIndividual();
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    vector<Multijugador*> listarPartidasMultijugadorUnidasNoFinalizadas();
-    void confirmarAbandonoPartida(string idPartida);
-    vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
-    void confirmarFinalizarPartida(string idPartida);
+    void cancelarIniciarPartida();
+    
+    void confirmarAbandonoPartida(int idPartida);
+    void confirmarFinalizarPartida(int idPartida);
     void seleccionarPartida(int idPartida);
+    
     IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
     void cancelarComentario();
+    
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
-
+    
+    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadasEnVivo(); // lugar 1
-    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo();
+    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H

@@ -4,6 +4,7 @@
 
 #include "DT_InfoVideojuego.h"
 #include "ColeccionesG/ListaDicc.h"
+#include <sstream>
 
 using namespace std;
 
@@ -65,11 +66,35 @@ void DT_InfoVideojuego::setTotalHorasJugadas(double totalHorasJugadas) {
     this->totalHorasJugadas = totalHorasJugadas;
 }
 
+string DT_InfoVideojuego::categoriasToString(){
+    stringstream ss;
+    ss << "Categorias: ";
+    IIterator* it = this->categorias->getIteratorObj();
+    while(it->hasNext()){
+        Categoria* categoria = dynamic_cast<Categoria*>(it->next());
+        ss << categoria->getNombre() << " ";
+    }
+    delete it;
+    return ss.str();
+}
+
+string DT_InfoVideojuego::suscripcionesToString(){
+    stringstream ss;
+    ss << "Suscripciones: ";
+    IIterator* it = this->suscripciones->getIteratorObj();
+    while(it->hasNext()){
+        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(it->next());
+        ss << Str_PeriodoValidez[suscripcion->getPeriodoValidez()] << " - " << suscripcion->getCosto() << endl;
+    }
+    delete it;
+    return ss.str();
+}
+
 string DT_InfoVideojuego::toString() {
     stringstream ss;
     ss << "Nombre: " << nombre << endl;
-    ss << "Categorias: " << categorias->toString() << endl;
-    ss << "Suscripciones: " << suscripciones->toString() << endl;
+    ss << "Categorias: " << this->categoriasToString() << endl;
+    ss << "Suscripciones: " << this->suscripcionesToString() << endl;
     ss << "Empresa: " << empresa << endl;
     ss << "Puntaje: " << puntaje << endl;
     ss << "Total de horas jugadas: " << totalHorasJugadas << endl;
