@@ -19,7 +19,7 @@ Partida::Partida(Jugador *jugador, Videojuego *videojuego) {
 Partida::~Partida() {
 }
 
-string Partida::getIdPartida() {
+int Partida::getIdPartida() {
     return this->idPartida;
 }
 
@@ -85,4 +85,21 @@ string Partida::toString() {
     ss << "Horas de partida: " << this->getHorasPartida() << endl;
     return ss.str();
 }
+
+void Partida::setIdPartida(int idpartida) {
+    this->idPartida = idpartida;
+}
+
+void Partida::setFechaFin(DT_Date fechaFin) {
+    this->fechaFin = fechaFin;
+}
+
+void Partida::setHoraFin(DT_Time horaFin) {
+    this->horaFin = horaFin;
+}
+
+void Partida::setFinalizada(bool finalizada) {
+    this->finalizada = finalizada;
+}
+
 

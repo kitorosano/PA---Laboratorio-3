@@ -10,12 +10,15 @@
 #include "Classes/Multijugador.h"
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
-#include "Controllers/VideoJuegoController.h"
-#include "Controllers/UsuarioController.h"
+
+
 #include "ColeccionesG/IDictionary.h"
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyString.h"
 #include <string>
+#include "Classes/Individual.h"
+#include "Factory/Factory.h"
+#include "ColeccionesG/ListaDicc.h"
 
 using namespace std;
 
@@ -35,17 +38,17 @@ public:
     static PartidaController * getInstance();
     virtual ~PartidaController();
 
-    void continuarPartidaIndividual(string idPartida);
+    void continuarPartidaIndividual(int idPartida);
     void nuevaPartidaIndividual();
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    vector<Multijugador*> listarPartidasMultijugadorUnidasNoFinalizadas();
-    void confirmarAbandonoPartida(string idPartida);
-    vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
-    void confirmarFinalizarPartida(string idPartida);
-    void seleccionarPartida(string idPartida);
-    vector<Comentario*> listarComentariosDePartida();
+    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
+    void confirmarAbandonoPartida(int idPartida);
+    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    void confirmarFinalizarPartida(int idPartida);
+    void seleccionarPartida(int idPartida);
+    IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
