@@ -19,7 +19,7 @@ Partida::Partida(Jugador *jugador, Videojuego *videojuego) {
 Partida::~Partida() {
 }
 
-string Partida::getIdPartida() {
+int Partida::getIdPartida() {
     return this->idPartida;
 }
 

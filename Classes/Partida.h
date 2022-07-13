@@ -19,7 +19,7 @@ using namespace std;
 
 class Partida: public ICollectible {
 private:
-    string idPartida;
+    int idPartida;
     Jugador* jugador;
     Videojuego* videojuego;
     DT_Date fecha;
@@ -34,7 +34,7 @@ public:
     Partida(Jugador* jugador, Videojuego* videojuego);
     virtual ~Partida();
 
-    string getIdPartida();;
+    int getIdPartida();;
     Videojuego* getVideojuego();
     DT_Date getFecha();
     DT_Time getHoraComienzo();

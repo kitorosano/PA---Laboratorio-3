@@ -44,6 +44,6 @@ public:
 
     virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
 
-    virtual vector<DT_MultijugadorVideojuego> listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
+    virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
 };
 #endif //PA___LABORATORIO_3_IPARTIDA_H

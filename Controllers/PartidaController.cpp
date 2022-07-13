@@ -3,6 +3,7 @@
 //
 
 #include "PartidaController.h"
+#include "DataTypes/DT_MultijugadorVideojuego.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -115,14 +116,53 @@ void PartidaController::confirmarPartida(){
     this->partidaSeleccionada = NULL;
 
 }
-IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){}
+
+IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadasEnVivo(){
+
+}
+
 void PartidaController::confirmarAbandonoPartida(string idPartida){}
+
 vector<Multijugador*> PartidaController::listarPartidasIniciadasNoFinalizadas(){}
+
 void PartidaController::confirmarFinalizarPartida(string idPartida){}
-void PartidaController::seleccionarPartida(string idPartida){}
-vector<Comentario*> PartidaController::listarComentariosDePartida(){}
+
+
+IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){
+    IIterator *it = this->partidas->getIteratorObj();
+    Multijugador *partida = NULL;
+    IDictionary* listadepartidas_multijugador = new ListDicc();
+    while(it->hasNext()){
+        partida = dynamic_cast<Multijugador *>(it->getCurrent());
+        if(partida){
+            if((partida->getFinalizada()==false && partida->isTransmitidaEnVivo()==true)){
+                // Guardar todo en una coleccion y retorna esa coleccion
+                //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
+                DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
+                listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
+            }
+        }
+        it->next();
+    }
+    return listadepartidas_multijugador;
+} // lugar 1
+
+
+void PartidaController::seleccionarPartida(int idPartida){
+    KeyInt* key_idPartida = new KeyInt(idPartida);
+    Multijugador* partida;
+    Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
+    this->partidaSeleccionada=aux;
+}
+
+vector<Comentario*> PartidaController::listarComentariosDePartida(){
+
+}
+
 void PartidaController::seleccionarComentarioAResponder(int idComentario){}
+
 void PartidaController::enviarComentario(string comentario){}
+
 void PartidaController::confirmarComentario(){}
 
 IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
@@ -152,4 +192,3 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
 
 
 }
-IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){} // lugar 1

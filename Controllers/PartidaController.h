@@ -15,6 +15,7 @@
 #include "ColeccionesG/IDictionary.h"
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyString.h"
+#include "ColeccionesG/KeyInt.h"
 #include <string>
 
 using namespace std;
@@ -44,14 +45,15 @@ public:
     void confirmarAbandonoPartida(string idPartida);
     vector<Multijugador*> listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(string idPartida);
-    void seleccionarPartida(string idPartida);
+    void seleccionarPartida(int idPartida);
     vector<Comentario*> listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
-    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
 
+    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadasEnVivo(); // lugar 1
+    IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo();
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H

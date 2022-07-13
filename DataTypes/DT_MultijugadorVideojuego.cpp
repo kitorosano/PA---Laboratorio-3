@@ -6,25 +6,29 @@
 
 using namespace std;
 
-DT_MultijugadorVideojuego::DT_MultijugadorVideojuego(string nombreVideojuego, Jugador* jugadorIniciador, vector<Jugador*> jugadoresUnidos, Multijugador* multijugador) {
+DT_MultijugadorVideojuego::DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador) {
+    this->idPartida=idPartida;
     this->nombreVideojuego = nombreVideojuego;
     this->jugadorIniciador = jugadorIniciador;
     this->jugadoresUnidos = jugadoresUnidos;
     this->multijugador = multijugador;
 }
+int DT_MultijugadorVideojuego::getIdPartida(){
+    return this->idPartida;
+}
 
 string DT_MultijugadorVideojuego::getNombreVideojuego() {
-    return nombreVideojuego;
+    return this->nombreVideojuego;
 }
 
 Jugador* DT_MultijugadorVideojuego::getJugadorIniciador() {
-    return jugadorIniciador;
+    return this->jugadorIniciador;
 }
 
-vector<Jugador*> DT_MultijugadorVideojuego::getJugadoresUnidos() {
-    return jugadoresUnidos;
+IDictionary* DT_MultijugadorVideojuego::getJugadoresUnidos() {
+    return this->jugadoresUnidos;
 }
 
 Multijugador* DT_MultijugadorVideojuego::getMultijugador() {
-    return multijugador;
+    return this->multijugador;
 }

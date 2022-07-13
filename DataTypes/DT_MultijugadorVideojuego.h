@@ -10,19 +10,20 @@
 #include <string>
 using namespace std;
 
-class DT_MultijugadorVideojuego {
+class DT_MultijugadorVideojuego : public ICollectible {
 private:
+    int idPartida;
     string nombreVideojuego;
     Jugador* jugadorIniciador;
-    vector<Jugador*> jugadoresUnidos;
+    IDictionary* jugadoresUnidos;
     Multijugador* multijugador;
 
 public:
-    DT_MultijugadorVideojuego(string nombreVideojuego, Jugador* jugadorIniciador, vector<Jugador*> jugadoresUnidos, Multijugador* multijugador);
-
+    DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
+    int getIdPartida();
     string getNombreVideojuego();
     Jugador* getJugadorIniciador();
-    vector<Jugador*> getJugadoresUnidos();
+    IDictionary* getJugadoresUnidos();
     Multijugador* getMultijugador();
 };
 
