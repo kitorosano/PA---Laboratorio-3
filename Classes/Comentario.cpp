@@ -15,8 +15,7 @@ Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio,
     this->escritor = escritor;
 }
 
-Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido,
-                       Comentario *comentarioAResponder) {
+Comentario::Comentario(Jugador *escritor, DT_Date fechaEnvio, DT_Time horaEnvio, string contenido,Comentario *comentarioAResponder) {
     //    setear id
     this->fechaEnvio = fechaEnvio;
     this->horaEnvio = horaEnvio;

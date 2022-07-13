@@ -35,7 +35,7 @@ public:
 
     virtual void seleccionarPartida(int idPartida) = 0;
 
-    virtual IDictionary *  listarComentariosDePartida() = 0;
+    virtual  IDictionary* listarComentariosDePartida() = 0;
 
     virtual void seleccionarComentarioAResponder(int idComentario) = 0;
 

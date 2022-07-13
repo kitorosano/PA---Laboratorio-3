@@ -3,6 +3,10 @@
 //
 
 #include "PartidaController.h"
+#include "/Classes/Multijugador.h"
+#include "DataTypes/DT_MultijugadorVideojuego.h"
+#include "DataTypes/DT_Comentario.h"
+#include "/Factory/Factory.h"
 using namespace std;
 
 PartidaController* PartidaController::instance = NULL;
@@ -45,10 +49,10 @@ void PartidaController::continuarPartidaIndividual(int idPartida){
 void PartidaController::nuevaPartidaIndividual(){
     Factory* fabrica;
     // Obtener el videojuego seleccionado!!
-    Videojuego* videojuegoSeleccionado = fabrica->getInterfaceV()->getVideojuegoSeleccionado();
+    Videojuego* videojuegoSeleccionado = fabrica->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
 
      // Obtener el usuario logeado!!
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
     if(jugadorlogeado){
         Individual* nuevaPartidaIndividual = new Individual(jugadorlogeado, videojuegoSeleccionado);
         this->partidaSeleccionada = nuevaPartidaIndividual; // el controlador recuerda la partida
@@ -62,10 +66,10 @@ void PartidaController::nuevaPartidaIndividual(){
 void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
     Factory* fabrica;
     // Obtener videojuego seleccionado
-    Videojuego* videojuegoSeleccionado = fabrica->getInterfaceV()->getVideojuegoSeleccionado();
+    Videojuego* videojuegoSeleccionado = fabrica->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
 
     // Obtener el usuario logeado!!
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
     if(jugadorlogeado){
         Multijugador* nuevaPartidaMultijugador = new Multijugador(jugadorlogeado, videojuegoSeleccionado, transmitidaEnVivo);
         this->partidaSeleccionada = nuevaPartidaMultijugador; // el controlador recuerda la partida
@@ -78,7 +82,7 @@ void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
 void PartidaController::ingresarNicknameALaPartida(string nickname){
     Factory* fabrica;
     // Busco al jugador que quiero agregar a la partida
-    Jugador *jugador = dyamica_cast<Jugador *> (fabrica->getInterfaceU()->BuscarUsuario(nickname));
+    Jugador *jugador = dyamica_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->BuscarUsuario(nickname));
     if(jugador){
         // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
         JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
@@ -107,24 +111,111 @@ void PartidaController::confirmarPartida(){
     this->partidaSeleccionada->setHoraComienzo(*horaComienzo);
 
     // Agregar a la colección la nueva partida;
-    partidas->add(partidaSeleccionada, new KeyString(to_string(idPartida)));
+    partidas->add(partidaSeleccionada, new KeyInt(idPartida));
 
     // Borrar los datos que el controlador guardo
     this->partidaSeleccionada = NULL;
 
 }
+
+IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){
+    IIterator *it = this->partidas->getIteratorObj();
+    Multijugador *partida = NULL;
+    IDictionary* listadepartidas_multijugador = new ListDicc();
+    while(it->hasNext()){
+        partida = dynamic_cast<Multijugador *>(it->getCurrent());
+        if(partida){
+            if((partida->getFinalizada()==false && partida->isTransmitidaEnVivo()==true)){
+                // Guardar todo en una coleccion y retorna esa coleccion
+                //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
+                DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
+                listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
+            }
+        }
+        it->next();
+    }
+    return listadepartidas_multijugador;
+} // lugar 1
+
+
+void PartidaController::seleccionarPartida(int idPartida){
+    KeyInt* key_idPartida = new KeyInt(idPartida);
+    Multijugador* partida;
+    Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
+    this->partidaSeleccionada=aux;
+}
+
+IDictionary* PartidaController::listarComentariosDePartida(){
+    IDictionary* comentarios_multijugador = NULL;
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada){
+        comentarios_multijugador=multijugador_recordada->obtenerComentariosDePartida();
+        return comentarios_multijugador;
+    }
+    return NULL;
+}
+
+void PartidaController::seleccionarComentarioAResponder(int idComentario){
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada){
+       if(multijugador_recordada->obtenerComentario(idComentario)){
+           this->comentarioAResponder=multijugador_recordada->obtenerComentario(idComentario);
+       }
+    }
+}
+
+void PartidaController::enviarComentario(string contenido){
+    Factory* factory;
+    string autor;
+    Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+    Jugador* jugador = dynamic_cast<Jugador*>(usuario_logueado);
+    if(jugador){
+        if(this->comentarioAResponder){
+            //respuesta
+            DT_Date fechaRespuesta = DT_Date();
+            DT_Time horaRespuesta = DT_Time();
+            this->nuevoComentario= new Comentario(usuario_logueado,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
+            this->comentarioAResponder=NULL;
+        }
+        else{
+            //envio
+            DT_Date fechaEnvio = DT_Date();
+            DT_Time horaEnvio = DT_Time();
+            this->nuevoComentario= new Comentario(usuario_logueado,fechaEnvio,horaEnvio,contenido);
+        }
+    }
+}
+
+void PartidaController::confirmarComentario(){
+    //aca se setea el id del comentario
+    Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
+    if(multijugador_recordada && this->nuevoComentario){
+        nuevoComentario->setIdComentario(1); //TODO: Utilizar contador en el controlador
+        multijugador_recordada->agregarComentario(this->nuevoComentario);
+        this->nuevoComentario=NULL;
+    }
+}
+
+void PartidaController::cancelarComentario(){
+    //aca se setea el id del comentario
+    if(this->nuevoComentario){
+        delete nuevoComentario;
+        nuevoComentario=NULL;
+    }
+}
+
 IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
     Factory* fabrica;
     IIterator *it = this->partidas->getIteratorObj();
     Multijugador *multijugador = NULL;
     IDictionary* listadepartidasMulti = new ListDicc();
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
     if(jugadorlogeado){
         while(it->hasNext()){
             multijugador = dynamic_cast<Multijugador *>(it->getCurrent());
             if(multijugador) {
                 // verificar que no este finalizado
-                // obtener la lista de jugadores de esa partida multijugador y verificar si el nickanme del jugador logeado esta alli esta alli
+                // obtener la lista de jugadores de esa partida multijugador y verificar si el nickanme del jugador logeado esta alli
                 KeyString *nickName = new KeyString(jugadorlogeado->getNickname());
                 if ((multijugador->getFinalizada() == false) &&
                     (multijugador->getJugadoresEnLaPartida()->member(nickName))) {
@@ -133,7 +224,7 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
                             nickName));
                     if (jugadorMultijugador->getHora_finalizacion() == NULL){
                         // agrego la partida multijugador a la coleccion para que despues se muestre
-                        listadepartidasMulti->add(multijugador, new KeyString(to_string(idpartida)));
+                        listadepartidasMulti->add(multijugador, new KeyInt(idpartida));
                     }
 
                 }
@@ -147,12 +238,12 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
 }
 
 void PartidaController::confirmarAbandonoPartida(int idPartida){
-    KeyString* idpartida = new KeyString(to_string(idPartida));
+    KeyInt* idpartida = new KeyInt(idPartida);
     Multijugador* partidaAAbandonar = dynamic_cast<Multijugador *>(this->partidas->find(idpartida));
     JugadorMultijugador *jugadorUnido = NULL;
     if(partidaAAbandonar){
         Factory* fabrica;
-        Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+        Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
         if(jugadorlogeado){
             IIterator *it = partidaAAbandonar->getJugadoresEnLaPartida()->getIteratorObj();
             while(it->hasNext()){
@@ -174,14 +265,14 @@ IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
     IIterator *it = this->partidas->getIteratorObj();
     Partida *partida = NULL;
     IDictionary* listadepartidasSinFinalizar = new ListDicc();
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
     if(jugadorlogeado){
         while(it->hasNext()) {
             partida = dynamic_cast<Partida *>(it->getCurrent());
             if (partida) {
                 if ((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) &&
                     (!partida->getFinalizada())) {
-                    listadepartidasSinFinalizar->add(partida, new KeyString(to_string(partida->getIdPartida())));
+                    listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
                 }
             }
             it->next();
@@ -189,18 +280,21 @@ IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
     }
     return listadepartidasSinFinalizar; // retorno una coleccion de partidas
 }
+
 void PartidaController::confirmarFinalizarPartida(int idPartida){
     // buscar la partida
     Factory* fabrica;
     IIterator *it = this->partidas->getIteratorObj();
     Partida *partida = NULL;
 
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
     if(jugadorlogeado){
-        KeyString* idpartida = new KeyString(to_string(idPartida));
+        KeyInt* idpartida = new KeyInt(idPartida);
         partida = dynamic_cast<Partida *>(this->partidas->find(idpartida));
         Multijugador* multijugador = NULL;
         if(partida){
+           //VER SI ES POSIBLE MOVER ESTO COMO UN METODO DE UTILIDAD PARA NO SOBRECARGAR ESTE METODO DEL CONTROLADOR??
+        
             DT_Date *fechaFin = new DT_Date();
             partida->setFechaFin(*fechaFin);
             DT_Time *horaFin = new DT_Time();
@@ -292,16 +386,11 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
 
     }
 }
-void PartidaController::seleccionarPartida(int idPartida){}
-IDictionary* PartidaController::listarComentariosDePartida(){}
-void PartidaController::seleccionarComentarioAResponder(int idComentario){}
-void PartidaController::enviarComentario(string comentario){}
-void PartidaController::confirmarComentario(){}
 
 IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
     // Obtener el usuario logeado!!
     Factory* fabrica;
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInterfaceU()->getUsuarioLogeado());
+    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     // Comparar si el usuario jugador le pertenece la partida y si es finalizada
     IIterator *it = this->partidas->getIteratorObj();
@@ -313,7 +402,7 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
             if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->getFinalizada())){
                 // Guardar todo en una coleccion y retorna esa coleccion
                 DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFecha().getDate(), partida->getHoraComienzo().getTime(), partida->getHorasPartida());
-                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyString(to_string(dt_partida->getIdPartida())));
+                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
             }
         }
         it->next();
@@ -323,7 +412,8 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
 IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){}
 
 void PartidaController::cancelarIniciarPartida() {
+    Factory* fabrica;
     this->partidaSeleccionada = NULL;
-    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego
+    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego, ->probablemnte un metodo en la interface para setear eso en null o utilizar el cancelarVideojuego con otro nombre??
 }
 // lugar 1

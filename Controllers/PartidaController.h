@@ -11,10 +11,9 @@
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
 
-
 #include "ColeccionesG/IDictionary.h"
 #include "ColeccionesG/ListaDicc.h"
-#include "ColeccionesG/KeyString.h"
+#include "ColeccionesG/KeyInt.h"
 #include <string>
 #include "Classes/Individual.h"
 #include "Factory/Factory.h"
@@ -47,19 +46,24 @@ public:
     void nuevaPartidaMultijugador(bool transmitidaEnVivo);
     void ingresarNicknameALaPartida(string nickname);
     void confirmarPartida();
-    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
+    void cancelarIniciarPartida();
+    
     void confirmarAbandonoPartida(int idPartida);
-    IDictionary* listarPartidasIniciadasNoFinalizadas();
     void confirmarFinalizarPartida(int idPartida);
     void seleccionarPartida(int idPartida);
+    
     IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
     void enviarComentario(string comentario);
     void confirmarComentario();
+    void cancelarComentario();
+    
     IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
+    
+    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
+    IDictionary* listarPartidasMultijugadorUnidasNoFinalizadasEnVivo(); // lugar 1
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
-    void cancelarIniciarPartida();
-
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H
