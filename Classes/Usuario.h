@@ -21,6 +21,7 @@ public:
     Usuario(string email, string password);
     virtual ~Usuario();
 
+
     string getEmail();
     string getPassword();
 

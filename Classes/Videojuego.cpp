@@ -11,16 +11,18 @@ using namespace std;
 Videojuego::Videojuego() {}
 
 Videojuego::Videojuego(string nombre,string descripcion, Desarrollador *desarrollador) {
-    //    setear id
     this->nombre = nombre;
     this->descripcion = descripcion;
     this->desarrollador = desarrollador;
+    this->puntaje = 0;
+    this->total_horas_jugadas = 0;
+    this->cantidad_votos = 0;
 }
 Videojuego::~Videojuego(){
 }
 
-int Videojuego::getIdVideojuego(){
-    return this->idVideojuego;
+int Videojuego::getId(){
+    return this->id;
 }
 string Videojuego::getNombre(){
     return this->nombre;
@@ -42,6 +44,9 @@ string Videojuego::getNombreEmpresa() {
     return this->desarrollador->getNombreEmpresa();
 }
 
+void Videojuego::setId(int idVideojuego) {
+    this->id = idVideojuego;
+}
 void Videojuego::setNombre(string nombre){
     this->nombre=nombre;
 }

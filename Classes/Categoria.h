@@ -5,10 +5,11 @@
 #ifndef LAB_3_PROYECTO_CATEGORIA_H
 #define LAB_3_PROYECTO_CATEGORIA_H
 
+#include "ColeccionesG/ICollectible.h"
+#include "ColeccionesG/ICollection.h"
+#include "ColeccionesG/IDictionary.h"
 #include "DataTypes/E_TipoCategoria.h"
-#include "../ColeccionesG/ICollectible.h"
-#include "../ColeccionesG/ICollection.h"
-#include "../ColeccionesG/IDictionary.h"
+#include "Classes/Videojuego.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -19,18 +20,23 @@ private:
     string descripcion;
     E_TipoCategoria tipo;
 
+    IDictionary* videojuegos;
+
 public:
     Categoria();
-    Categoria(string nombre,string descripcion);
+    Categoria(string nombre,string descripcion, E_TipoCategoria tipo);
     virtual ~Categoria();
 
     string getNombre();
     string getDescription();
     E_TipoCategoria getTipo();
+    IDictionary* getVideojuegos();
+    bool tieneVideojuego(string nombreVideojuego);
 
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
     void setTipo(E_TipoCategoria tipo);
+    void agregarVideojuego(Videojuego* videojuego);
 
     string toString();
 

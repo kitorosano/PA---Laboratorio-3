@@ -7,18 +7,14 @@
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
-#include "Suscripcion.h"
-#include "Categoria.h"
-#include "DataTypes/DT_NomDescVideojuego.h"
 #include "Classes/Desarrollador.h"
-
 #include <string>
 #include <iostream>
 using namespace std;
 
 class Videojuego: public ICollectible{
 private:
-    int idVideojuego;
+    int id;
     string nombre;
     string descripcion;
     double total_horas_jugadas;
@@ -31,7 +27,7 @@ public:
     Videojuego(string nombre,string descripcion, Desarrollador *desarrollador);
     virtual ~Videojuego();
 
-    int getIdVideojuego();
+    int getId();
     string getNombre();
     string getDescripcion();
     double getTotalHorasJugadas();
@@ -39,6 +35,7 @@ public:
     int getCantidad_votos();
     string getNombreEmpresa();
 
+    void setId(int idVideojuego);
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
     void setTotalHorasJugadas(double totalHorasJugadas);
