@@ -203,6 +203,7 @@ void PartidaController::confirmarComentario(){
     //aca se setea el id del comentario
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
     if(multijugador_recordada && this->nuevoComentario){
+        nuevoComentario->setIdComentario(1);
         multijugador_recordada->agregarComentario(this->nuevoComentario);
         this->nuevoComentario=NULL;
     }
