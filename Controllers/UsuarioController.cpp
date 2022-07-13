@@ -60,6 +60,19 @@ void UsuarioController::cancelarRegistro(){
     }
 }
 
+Usuario* UsuarioController::buscarUsuario(string mail){
+    if (!this->usuarios)
+        return NULL;
+    KeyString* key_mail = new KeyString(mail);
+    Usuario * aux = (Usuario *) (this->usuarios->find(key_mail));
+     if (!aux)
+        return NULL;
+
+     else{
+         return aux;
+     }
+}
+
 void UsuarioController::iniciarSesion(string mail,string password){
     KeyString* key_mail = new KeyString(mail);
     if(!this->usuarios) {

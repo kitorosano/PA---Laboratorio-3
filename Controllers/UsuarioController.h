@@ -25,6 +25,7 @@ public:
     ~UsuarioController();
 
     Usuario* getUsuarioLogeado();
+    Usuario* buscarUsuario(string email);
 
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);
