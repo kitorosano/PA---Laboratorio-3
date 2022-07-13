@@ -157,7 +157,7 @@ void PartidaController::confirmarAbandonoPartida(int idPartida){
             while(it->hasNext()){
                 jugadorUnido = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
                 if(jugadorlogeado->getNickname() == jugadorUnido->getJugador()->getNickname()){
-                    DT_Time* horafinal = New DT_Time();
+                    DT_Time* horafinal = new DT_Time();
                     jugadorUnido->setHoraFinalizacion(horafinal);
                 }
                 it->next();
@@ -165,11 +165,7 @@ void PartidaController::confirmarAbandonoPartida(int idPartida){
         }else{
             throw std::invalid_argument("Usted no es un Jugador");
         }
-
-
-        }
     }
-
 }
 IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){}
 void PartidaController::confirmarFinalizarPartida(int idPartida){}
