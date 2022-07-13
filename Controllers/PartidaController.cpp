@@ -176,14 +176,14 @@ void PartidaController::enviarComentario(string contenido){
             //respuesta
             DT_Date fechaRespuesta = DT_Date();
             DT_Time horaRespuesta = DT_Time();
-            this->nuevoComentario= new Comentario(usuario_logueado,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
+            this->nuevoComentario= new Comentario(jugador,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
             this->comentarioAResponder=NULL;
         }
         else{
             //envio
             DT_Date fechaEnvio = DT_Date();
             DT_Time horaEnvio = DT_Time();
-            this->nuevoComentario= new Comentario(usuario_logueado,fechaEnvio,horaEnvio,contenido);
+            this->nuevoComentario= new Comentario(jugador,fechaEnvio,horaEnvio,contenido);
         }
     }
 }
@@ -411,7 +411,6 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
     }
     return listadepartidas;
 }
-
 
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
