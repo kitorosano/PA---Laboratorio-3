@@ -32,7 +32,7 @@ add_executable(PA___Laboratorio_3
         DataTypes/DT_MultijugadorVideojuego.cpp DataTypes/DT_MultijugadorVideojuego.h
         DataTypes/DT_PartidasIndividualesFinalizadas.cpp DataTypes/DT_PartidasIndividualesFinalizadas.h
         DataTypes/DT_Comentario.cpp DataTypes/DT_Comentario.h
-        DataTypes/DT_NombreCategoria.cpp DataTypes/DT_NombreCategoria.h
+        DataTypes/DT_NombreDescripcion.cpp DataTypes/DT_NombreDescripcion.h
 
         DataTypes/E_TipoCategoria.h
         DataTypes/E_MetodoPago.h main.h

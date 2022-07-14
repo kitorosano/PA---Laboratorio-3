@@ -188,5 +188,4 @@ void VideojuegoController::verVideojuegoDesarrollador(){
 
 }
 
-//TODO: DEPENDE DE LAS PARTIDAS
-//void VideojuegoController::listaJuegosPublicadosFinalizados(){}
+void VideojuegoController::listaJuegosPublicadosFinalizados(){}

@@ -3,7 +3,7 @@
 //
 
 #include "VerInformacionDeVideojuego.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include "DataTypes/DT_NombreDescripcion.h"
 #include <iostream>
 #include <string>
