@@ -14,6 +14,14 @@ UsuarioController::UsuarioController() {
     this->controller_memory=NULL;
     this->usuarios = new ListDicc();
 }
+int UsuarioController::tipoUsuario(Usuario* user){
+    Jugador* jugador=dynamic_cast<Jugador*>(user);
+    if(jugador)
+        return 1;
+    Desarrollador* desarrollador=dynamic_cast<Desarrollador*>(user);
+    if(desarrollador)
+        return 0;
+}
 
 UsuarioController::~UsuarioController(){}
 
