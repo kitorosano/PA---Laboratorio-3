@@ -10,7 +10,7 @@ using namespace std;
 void AltaUsuario(){
     Factory * factory;
     string email,password,nickname,descripcion,empresa;
-    int opcion, opcion2;
+    int opcion;
     int deseaReingresar=0;
 
     cout<<"|------------------------------------------------|"<<endl;
@@ -32,9 +32,9 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
         if(opcion !=1 && opcion !=2)
-            cout<<"Debe ingresar una opcion!"<<endl;
+            throw invalid_argument("Debe ingresar una opcion!");
     }while(opcion !=1 && opcion !=2);
-    if(opcion==2) {
+    if(opcion==1) {
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
@@ -61,7 +61,7 @@ void AltaUsuario(){
         factory->getInstance()->getInterfaceU()->registroJugador(email,password,nickname,descripcion);
 
     }
-    else if(opcion==1){
+    else if(opcion==2){
         cout << "|------------------------------------------------|" << endl;
         cout << "|        REGISTRO ADICIONAL DESARROLLADOR        |" << endl;
         cout << "|------------------------------------------------|" << endl<<endl;
@@ -77,15 +77,15 @@ void AltaUsuario(){
         cout << "| 1. Confirmar Registro                          |" << endl;
         cout << "| 2. Cancelar  registro                          |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
-        cin >> opcion2;
-        if(opcion2 !=1 && opcion2 !=2)
-            cout<<"Debe ingresar una opcion!"<<endl;
+        cin >> opcion;
+        if(opcion !=1 && opcion !=2)
+            throw invalid_argument("Debe ingresar una opcion!");
 
-    }while(opcion2!=1 && opcion2 !=2);
-    if(opcion2==1){
+    }while(opcion!=1 && opcion !=2);
+    if(opcion==1){
         factory->getInstance()->getInterfaceU()->confirmarRegistro();
     }
-    else if(opcion2==2){
+    else if(opcion==2){
         factory->getInstance()->getInterfaceU()->cancelarRegistro();
     }
 
