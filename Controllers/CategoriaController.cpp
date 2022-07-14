@@ -48,7 +48,10 @@ Categoria* CategoriaController::getCategoriaSeleccionada(){
 }
 
 void CategoriaController::seleccionarCategoria(string nombre){
-    this->categoriaSeleccionada = dynamic_cast<Categoria*>(this->categorias->find(new KeyString(nombre)));
+    ICollectible* categoria = this->categorias->find(new KeyString(nombre));
+    if(!categoria)
+      throw invalid_argument("Categoria no existe");
+    this->categoriaSeleccionada = dynamic_cast<Categoria*>(categoria);
 }
 
 void CategoriaController::agregarVideojuegoACategoria(){

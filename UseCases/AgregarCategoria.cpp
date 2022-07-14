@@ -4,6 +4,7 @@
 
 #include "AgregarCategoria.h"
 #include "Factory/Factory.h"
+#include "DataTypes/DT_NombreDescripcion.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -19,18 +20,26 @@ void AgregarCategoria() {
 
     IIterator *iterador = nombresCategoria->iterator();
     while(iterador->hasNext()) {
-        cout << "|  " << iterador->next() <<endl;
+        DT_NombreDescripcion* nombre = dynamic_cast<DT_NombreDescripcion*>(iterador->next());
+        cout << "|  " << nombre->getNombre() <<endl;
     }
 
     cout<<"|------------------------------------------------|"<<endl<<endl;
-
-
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                AGREGAR CATEGORÍA               |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese el nombre de la nueva categoría:"<<endl;
-    string nombreCategoria;
-    cin>>nombreCategoria;
+  
+  bool duplicado = false;
+  string nombreCategoria;
+    do {
+      cout<<"|------------------------------------------------|"<<endl;
+      cout<<"|                AGREGAR CATEGORÍA               |"<<endl;
+      cout<<"|------------------------------------------------|"<<endl<<endl;
+      cout<<"Ingrese el nombre de la nueva categoría:"<<endl;
+      cin>>nombreCategoria;
+  
+      duplicado = factory->getInstance()->getInterfaceC()->listarNombreCategorias()->iterator();
+      if(duplicado) {
+        cout << "Esa categoria ya existe, ingrese otra";
+      }
+    } while(duplicado);
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                AGREGAR CATEGORÍA               |"<<endl;

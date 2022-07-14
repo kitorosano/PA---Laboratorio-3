@@ -57,6 +57,7 @@ void PublicarVideojuego() {
     IDictionary *categorias_plataforma = fabrica->getInstance()->getInterfaceC()->listarCategoriasPlataforma();
 
     char seguirAgregandoPlataforma = 's';
+    categoriaInexistente:
     do {
         // MUESTRO LAS CATEGORIAS DE PLATAFORMA Y MEDIANTE SU NOMBRE SELECCIONO UNA DE ELLAS
         cout<<"|------------------------------------------------|"<<endl;
@@ -75,7 +76,13 @@ void PublicarVideojuego() {
         cin>>nombre_categoria;
 
         // SELECCIONO LA CATEGORIA INGRESADA Y LE AGREGO EL VIDEOJUEGO
-        fabrica->getInstance()->getInterfaceC()->seleccionarCategoria(nombre_categoria);
+        try {
+          fabrica->getInstance()->getInterfaceC()->seleccionarCategoria(nombre_categoria);
+        } catch (exception &e) {
+            cout << e.what() << endl;
+            goto categoriaInexistente;
+        }
+        
         try {
             fabrica->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
             cout << "|------------------------------------------------|" << endl<<endl;
@@ -145,9 +152,6 @@ void PublicarVideojuego() {
     char seguirAgregandoOtro = 's';
     do {
         // MUESTRO LAS CATEGORIAS EXTRAS Y MEDIANTE SU NOMBRE SELECCIONO UNA DE ELLAS
-        cout<<"|------------------------------------------------|"<<endl;
-        cout<<"|                 OTRAS CATEGORÍAS               |"<<endl;
-        cout<<"|------------------------------------------------|"<<endl<<endl;
         cout<<"Desea agregar alguna OTRA categoría?(s/n): ";
         cin>>seguirAgregandoOtro;
 
@@ -201,7 +205,7 @@ void PublicarVideojuego() {
     IIterator *iterCat = fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuegoEnProceso->getNombre())->getIteratorObj();
     while (iterCat->hasNext()) {
         Categoria *categoria = dynamic_cast<Categoria*>(iterCat->next());
-        cout << "\t*" << categoria->getNombre() << endl;
+        cout << "- " << categoria->getNombre() << endl;
     }
     delete iterCat;
 

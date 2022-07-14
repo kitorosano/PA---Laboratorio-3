@@ -74,9 +74,9 @@ int main() {
 
                 switch (tipoUsuario) {
                     case 0: {
-                        menuDesarrollador();
-                        int opDesarrollador;
+                      int opDesarrollador;
                         do {
+                          menuDesarrollador();
                             cin >> opDesarrollador;
                             switch (opDesarrollador) {
                                 case 1:
@@ -102,9 +102,9 @@ int main() {
                         break;
                     }
                     case 1: {
-                        menuJugador();
                         int opJugador;
                         do {
+                          menuJugador();
                             cin >> opJugador;
                             switch (opJugador) {
                                 case 1:
