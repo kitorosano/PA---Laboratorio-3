@@ -147,7 +147,7 @@ int main() {
                 }
             }
             case 3:
-              //  CargarDatosDePrueba();
+              CargarDatosDePrueba();
                 break;
             default: break;
         }
