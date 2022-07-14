@@ -46,5 +46,7 @@ public:
     virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
 
     virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
+
+    virtual void cancelarIniciarPartida() = 0;
 };
 #endif //PA___LABORATORIO_3_IPARTIDA_H

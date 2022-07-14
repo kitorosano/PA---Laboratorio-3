@@ -84,7 +84,7 @@ void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
 void PartidaController::ingresarNicknameALaPartida(string nickname){
     Factory* fabrica;
     // Busco al jugador que quiero agregar a la partida
-    Jugador *jugador = dyamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->BuscarUsuario(nickname));
+    Jugador *jugador = dynamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->buscarUsuario(nickname));
     if(jugador){
         // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
         JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
@@ -415,6 +415,7 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
     this->partidaSeleccionada = NULL;
-    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego, ->probablemnte un metodo en la interface para setear eso en null o utilizar el cancelarVideojuego con otro nombre??
+    fabrica->getInterfaceV()->setVideojuegoSeleccionado(NULL);
+    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego
 }
 // lugar 1

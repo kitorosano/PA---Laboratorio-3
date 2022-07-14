@@ -22,6 +22,7 @@ public:
     virtual Usuario* getUsuarioLogeado()=0;
     virtual void listarJugadores()=0;
     virtual void seguirJugador(string nickname)=0;
+    virtual Usuario* buscarUsuario(string email)=0;
 };
 
 #endif //PA_LABORATORIO_3_IUSUARIO_H
