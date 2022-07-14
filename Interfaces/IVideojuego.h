@@ -28,5 +28,6 @@ public:
     virtual void verVideojuegoDesarrollador(int idVideojuego) = 0;
     virtual void listaJuegosPublicadosFinalizados() = 0;
     virtual Videojuego* getVideojuegoSeleccionado() = 0;
+    virtual void setVideojuegoSeleccionado(Videojuego* videojuego) = 0;
 };
 #endif //LAB_3_PROYECTO_IVIDEOJUEGO_H

@@ -28,3 +28,7 @@ Jugador *JugadorMultijugador::getJugador() {
 DT_Time *JugadorMultijugador::getHora_finalizacion() {
     return this->hora_finalizacion;
 }
+
+void JugadorMultijugador::setfecha_finalizacion(DT_Date* fecha_finalizacion) {
+    this->fecha_finalizacion = fecha_finalizacion;
+}
