@@ -17,8 +17,8 @@ public:
     virtual void cancelarCategoria() = 0;
     virtual void agregarVideojuegoACategoria(Videojuego* videojuego) = 0;
     virtual void seleccionarCategoria(string nombre) = 0;
-    virtual void listarCategorias() = 0;
-    virtual void listarNombreCategorias() = 0;
+    virtual IDictionary* listarCategorias() = 0;
+    virtual ICollection* listarNombreCategorias() = 0;
     virtual IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego) = 0;
 };
 

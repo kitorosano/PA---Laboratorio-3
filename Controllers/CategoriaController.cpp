@@ -4,9 +4,11 @@
 //
 
 #include "CategoriaController.h"
+#include "ColeccionesG/Lista.h"
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyString.h"
 #include "ColeccionesG/IIterator.h"
+#include "DataTypes/DT_NombreCategoria.h"
 
 using namespace std;
 
@@ -31,12 +33,12 @@ void CategoriaController::agregarCategoria(string nombre, string descripcion, E_
 }
 
 void CategoriaController::confirmarCategoria(){
-    this->categorias->add(this->categoriaSeleccionada, new KeyString(this->categoriaSeleccionada->getNombre()));
+this->categorias->add(this->categoriaSeleccionada, new KeyString(this->categoriaSeleccionada->getNombre()));
     this->categoriaSeleccionada = NULL;
 }
 
 void CategoriaController::cancelarCategoria(){
-    delete this->categoriaSeleccionada;
+delete this->categoriaSeleccionada;
     this->categoriaSeleccionada = NULL;
 }
 
@@ -53,21 +55,24 @@ void CategoriaController::agregarVideojuegoACategoria(Videojuego* videojuego){
 }
 
 
-void CategoriaController::listarCategorias(){
-    IIterator* it = this->categorias->getIteratorObj();
-    while(it->hasNext()){
-        Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
-        cout<<categoria->toString()<<endl;
-    }
-    delete it;
+IDictionary* CategoriaController::listarCategorias(){
+    return this->categorias;
 }
-void CategoriaController::listarNombreCategorias(){
+
+ICollection* CategoriaController::listarNombreCategorias(){
+    ICollection* nombres = new Lista();
+
     IIterator* it = this->categorias->getIteratorObj();
     while(it->hasNext()){
         Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
-        cout<<categoria->getNombre()<<endl;
+        DT_NombreCategoria* nombre = new DT_NombreCategoria(categoria->getNombre());
+        nombres->add(nombre);
+
+        it->next();
     }
     delete it;
+
+    return nombres;
 }
 
 IDictionary* CategoriaController::obtenerCategoriasVideojuego(string nombre_videojuego){
