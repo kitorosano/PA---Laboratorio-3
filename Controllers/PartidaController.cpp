@@ -253,6 +253,8 @@ void PartidaController::confirmarAbandonoPartida(int idPartida){
                 if(jugadorlogeado->getNickname() == jugadorUnido->getJugador()->getNickname()){
                     DT_Time* horafinal = new DT_Time();
                     jugadorUnido->setHoraFinalizacion(horafinal);
+                    DT_Date* fechaFinal = new DT_Date();
+                    jugadorUnido->setfecha_finalizacion(fechaFinal);
                 }
                 it->next();
             }
