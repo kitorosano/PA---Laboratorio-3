@@ -11,7 +11,7 @@ JugadorMultijugador::JugadorMultijugador() {
 
 JugadorMultijugador::JugadorMultijugador(Jugador *jugador) {
     this->jugador = jugador;
-    this->hora_finalizacion = NULL
+    this->hora_finalizacion = NULL;
 }
 
 JugadorMultijugador::~JugadorMultijugador() {

@@ -19,6 +19,7 @@ PartidaController::PartidaController() {
     comentarioAResponder = NULL;
     nuevoComentario = NULL;
     idpartida = 1;
+    idComentario = 1;
 }
 
 PartidaController::~PartidaController(){}
@@ -174,15 +175,15 @@ void PartidaController::enviarComentario(string contenido){
     if(jugador){
         if(this->comentarioAResponder){
             //respuesta
-            DT_Date fechaRespuesta = DT_Date();
-            DT_Time horaRespuesta = DT_Time();
+            DT_Date* fechaRespuesta =new DT_Date();
+            DT_Time* horaRespuesta = new DT_Time();
             this->nuevoComentario= new Comentario(jugador,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
             this->comentarioAResponder=NULL;
         }
         else{
             //envio
-            DT_Date fechaEnvio = DT_Date();
-            DT_Time horaEnvio = DT_Time();
+            DT_Date* fechaEnvio = new DT_Date();
+            DT_Time* horaEnvio = new DT_Time();
             this->nuevoComentario= new Comentario(jugador,fechaEnvio,horaEnvio,contenido);
         }
     }
@@ -192,7 +193,7 @@ void PartidaController::confirmarComentario(){
     //aca se setea el id del comentario
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
     if(multijugador_recordada && this->nuevoComentario){
-        nuevoComentario->setIdComentario(1); //TODO: Utilizar contador en el controlador
+        nuevoComentario->setIdComentario(this->idComentario++); //TODO: Utilizar contador en el controlador
         multijugador_recordada->agregarComentario(this->nuevoComentario);
         this->nuevoComentario=NULL;
     }

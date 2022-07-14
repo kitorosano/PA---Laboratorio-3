@@ -21,7 +21,12 @@ DatosSuscripcion::~DatosSuscripcion() {
 string DatosSuscripcion::getNickName() {
     return this->nickname;
 }
-
+int DatosSuscripcion::getId(){
+    return this->id;
+}
+void DatosSuscripcion::setId(int id){
+    this->id=id;
+}
 Suscripcion *DatosSuscripcion::getSuscripcion() {
     return suscripcion;
 }

@@ -1,7 +1,7 @@
 //
 // Created by esteban.rosano on 27/6/2022.
 //
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include "AltaUsuario.h"
 #include <iostream>
 #include <string>
@@ -10,7 +10,7 @@ using namespace std;
 void AltaUsuario(){
     Factory * factory;
     string email,password,nickname,descripcion,empresa;
-    int opcion;
+    int opcion, opcion2;
     int deseaReingresar=0;
 
     cout<<"|------------------------------------------------|"<<endl;
@@ -32,9 +32,9 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
         if(opcion !=1 && opcion !=2)
-            throw invalid_argument("Debe ingresar una opcion!");
+            cout<<"Debe ingresar una opcion!"<<endl;
     }while(opcion !=1 && opcion !=2);
-    if(opcion==1) {
+    if(opcion==2) {
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
@@ -61,7 +61,7 @@ void AltaUsuario(){
         factory->getInstance()->getInterfaceU()->registroJugador(email,password,nickname,descripcion);
 
     }
-    else if(opcion==2){
+    else if(opcion==1){
         cout << "|------------------------------------------------|" << endl;
         cout << "|        REGISTRO ADICIONAL DESARROLLADOR        |" << endl;
         cout << "|------------------------------------------------|" << endl<<endl;
@@ -77,15 +77,15 @@ void AltaUsuario(){
         cout << "| 1. Confirmar Registro                          |" << endl;
         cout << "| 2. Cancelar  registro                          |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
-        cin >> opcion;
-        if(opcion !=1 && opcion !=2)
-            throw invalid_argument("Debe ingresar una opcion!");
+        cin >> opcion2;
+        if(opcion2 !=1 && opcion2 !=2)
+            cout<<"Debe ingresar una opcion!"<<endl;
 
-    }while(opcion!=1 && opcion !=2);
-    if(opcion==1){
+    }while(opcion2!=1 && opcion2 !=2);
+    if(opcion2==1){
         factory->getInstance()->getInterfaceU()->confirmarRegistro();
     }
-    else if(opcion==2){
+    else if(opcion2==2){
         factory->getInstance()->getInterfaceU()->cancelarRegistro();
     }
 

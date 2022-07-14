@@ -2,7 +2,7 @@
 // Created by esteban.rosano on 27/6/2022.
 //
 #include "IniciarSesion.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include "AltaUsuario.h"
 #include <iostream>
 #include <string>
@@ -21,13 +21,13 @@ int IniciarSesion() {
     cout << "|------------------------------------------------|" << endl;
     cout << "|                INICIAR SESSION                 |" << endl;
     cout << "|------------------------------------------------|" << endl << endl;
-    cout << "Ingrese la contraseña:" << endl;
+    cout << "Ingrese la contrasenia:" << endl;
     cin >> password;
     retorno=factory->getInstance()->getInterfaceU()->iniciarSesion(email,password);
 
     if(retorno==0){
         cout<<"Session establecida!"<<endl;
-        cout<<"La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"<<endl;
+        cout<<"La sesion estara disponible hasta que otro usuario realice un nuevo inicio de sesion"<<endl;
     }
     else {
         switch (retorno) {
@@ -38,7 +38,7 @@ int IniciarSesion() {
                 cout << "El usuario con email ingresado no existe en el sistema" << endl;
                 return -1;
             case 3:
-                cout << "La contraseña no es valida";
+                cout << "La contraseniaa no es valida";
                 return -1;
         }
         do {
@@ -64,7 +64,7 @@ int IniciarSesion() {
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|                INICIAR SESSION                 |" << endl;
                 cout << "|------------------------------------------------|" << endl << endl;
-                cout << "Ingrese la contraseña:" << endl;
+                cout << "Ingrese la contrasenia:" << endl;
                 cin >> password;
                 retorno=factory->getInstance()->getInterfaceU()->iniciarSesion(email,password);
                 //switch
@@ -80,14 +80,19 @@ int IniciarSesion() {
                         cout << "El usuario con email ingresado no existe en el sistema" << endl;
                         return -1;
                     case 3:
-                        cout << "La contraseña no es valida";
+                        cout << "La contrasenia no es valida";
                         return -1;
                 }
             } while (retorno != 0);
         }
+        else{
+            return 3;
+        }
     }
 
-    Desarrollador* desarrollador= dynamic_cast<Desarrollador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    if(desarrollador) return 0;
-    return 1;
+    //Desarrollador* desarrollador= dynamic_cast<Desarrollador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
+   // if(desarrollador) return 0;
+   // return 1;
+   return factory->getInstance()->getInterfaceU()->tipoUsuario(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
+
 }

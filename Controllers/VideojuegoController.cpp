@@ -104,6 +104,10 @@ void VideojuegoController::seleccionarVideoJuego(int id){
         throw std::invalid_argument("El idenficador no corresponde a un videojuego en el sistema");
 }
 Videojuego* VideojuegoController::obtenerVideojuegoPorNombre(string nombre_videojuego){
+    if(!this->videojuegos){
+        cout<<"no hay videojuegos ingresados"<<endl;
+        return NULL;
+    }
     IIterator *it = this->videojuegos->getIteratorObj();
     Videojuego *videojuego = NULL;
 
@@ -115,7 +119,8 @@ Videojuego* VideojuegoController::obtenerVideojuegoPorNombre(string nombre_video
         it->next();
     }
     delete it;
-    throw std::invalid_argument("El nombre no corresponde a un videojuego en el sistema");
+    //throw std::invalid_argument("El nombre no corresponde a un videojuego en el sistema");
+    cout<<"El nombre no corresponde a un videojuego en el sistema"<<endl;
 }
 void VideojuegoController::listarNomDescVideoJuegos(){
     IIterator *it = this->videojuegos->getIteratorObj();
@@ -152,7 +157,7 @@ void VideojuegoController::verVideojuego(){
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(this->videojuegoSeleccionado->getNombre());
 
-        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(this->videojuegoSeleccionado->getNombre());
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(this->videojuegoSeleccionado->getNombre()));
 
         info->setSuscripciones(fabrica->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(this->videojuegoSeleccionado->getNombre()));
 
@@ -170,7 +175,7 @@ void VideojuegoController::verVideojuegoDesarrollador(){
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(this->videojuegoSeleccionado->getNombre());
 
-        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuegoSeleccionado->getNombre());
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuegoSeleccionado->getNombre()));
 
         info->setSuscripciones(fabrica->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(this->videojuegoSeleccionado->getNombre()));
 

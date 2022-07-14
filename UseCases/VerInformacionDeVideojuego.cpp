@@ -8,8 +8,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void VerInformacionDeVideojuego(int tipoUsuario){
-    Factory* factory;
+void VerInformacionDeVideojuego(int tipoUsuario) {
+    Factory *factory;
     string nombre;
     Videojuego* obtenido;
     cout<<"|------------------------------------------------|"<<endl;
@@ -21,12 +21,17 @@ void VerInformacionDeVideojuego(int tipoUsuario){
         cout<<"|  "<<nombreDescripcion->getNombre()<<endl;
     }
 
-    cout<<"|--------------------------------------------------|"<<endl;
-    cout<<"| Ingrese el nombre para seleccionar un videojuego |"<<endl;
-    cout<<"|--------------------------------------------------|"<<endl<<endl;
-    cin>>nombre;
-    obtenido=factory->getInstance()->getInterfaceV()->obtenerVideojuegoPorNombre(nombre);
+    cout << "|--------------------------------------------------|" << endl;
+    cout << "| Ingrese el nombre para seleccionar un videojuego |" << endl;
+    cout << "|--------------------------------------------------|" << endl << endl;
+    cin >> nombre;
+    obtenido = factory->getInstance()->getInterfaceV()->obtenerVideojuegoPorNombre(nombre);
+    if (obtenido){
     factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(obtenido->getId());
+    }
+    else{
+        return;
+    }
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;

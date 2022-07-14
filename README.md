@@ -5,7 +5,7 @@ Este repositorio equivale a la entrega del laboratorio 3 de la materia 'Programa
 ## Integrantes: 
 #### -> Esteban Rosano
 #### -> Joaquin Maidana
-#### -> Rafael Desia
+#### -> Rafael Dávila
 
 ### Para hacer: 
     * Implementar los casos de uso

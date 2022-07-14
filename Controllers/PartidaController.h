@@ -36,6 +36,7 @@ private:
 
     IDictionary* partidas;
     int idpartida;
+    int idComentario;
 
 public:
     static PartidaController * getInstance();
