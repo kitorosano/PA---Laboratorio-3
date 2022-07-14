@@ -4,6 +4,7 @@
 
 #include "Controllers/VideojuegoController.h"
 #include "ColeccionesG/ListaDicc.h"
+#include "ColeccionesG/Lista.h"
 #include "ColeccionesG/KeyInt.h"
 #include "ColeccionesG/IIterator.h"
 #include "Factory/Factory.h"
@@ -14,6 +15,7 @@ VideojuegoController* VideojuegoController::instance = NULL;
 
 VideojuegoController::VideojuegoController() {
     videojuegoSeleccionado = NULL;
+    suscripcionesEnMemoria = new Lista();
     videojuegos = new ListDicc();
     puntuaciones = new ListDicc();
     suscripciones = new ListDicc();
@@ -63,8 +65,6 @@ void VideojuegoController::datosNuevoVideojuego(string nombre, string descripcio
 
     Suscripcion* SVitalicia = new Suscripcion(videojuego, E_PeriodoValidez::VITALICIA, costoVitalicia);
     suscripcionesEnMemoria->add(SVitalicia);
-
-
 
     setVideojuegoSeleccionado(videojuego);
 }
@@ -151,7 +151,7 @@ void VideojuegoController::verVideojuego(int idVideojuego){
 
         info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuego->getNombre()));
 
-        info->setSuscripciones(this->getSuscripciones());
+        info->setSuscripciones(this->obtenerSuscripcionesVideojuego());
 
         info->setEmpresa(videojuego->getNombreEmpresa());
         info->setPuntaje(videojuego->getPuntaje());

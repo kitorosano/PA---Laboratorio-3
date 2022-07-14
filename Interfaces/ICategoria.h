@@ -13,12 +13,18 @@ using namespace std;
 class ICategoria {
 public:
     virtual void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo) = 0;
+    virtual void agregarVideojuegoACategoria() = 0;
     virtual void confirmarCategoria() = 0;
     virtual void cancelarCategoria() = 0;
-    virtual void agregarVideojuegoACategoria(Videojuego* videojuego) = 0;
+
     virtual void seleccionarCategoria(string nombre) = 0;
-    virtual IDictionary* listarCategorias() = 0;
+
     virtual ICollection* listarNombreCategorias() = 0;
+    virtual IDictionary* listarCategorias() = 0;
+    virtual IDictionary* listarCategoriasPlataforma() = 0;
+    virtual IDictionary* listarCategoriasGenero() = 0;
+    virtual IDictionary* listarCategoriasOtro() = 0;
+
     virtual IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego) = 0;
 };
 

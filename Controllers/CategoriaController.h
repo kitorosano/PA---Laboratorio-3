@@ -26,11 +26,14 @@ public:
     void confirmarCategoria();
     void cancelarCategoria();
 
-    void agregarVideojuegoACategoria(Videojuego* videojuego);
+    void agregarVideojuegoACategoria();
     void seleccionarCategoria(string nombre);
 
-    IDictionary* listarCategorias();
     ICollection* listarNombreCategorias();
+    IDictionary* listarCategorias();
+    IDictionary* listarCategoriasPlataforma();
+    IDictionary* listarCategoriasGenero();
+    IDictionary* listarCategoriasOtro();
 
     IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego);
 
