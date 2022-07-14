@@ -19,6 +19,7 @@ PartidaController::PartidaController() {
     comentarioAResponder = NULL;
     nuevoComentario = NULL;
     idpartida = 1;
+    idComentario = 1;
 }
 
 PartidaController::~PartidaController(){}
@@ -192,7 +193,7 @@ void PartidaController::confirmarComentario(){
     //aca se setea el id del comentario
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
     if(multijugador_recordada && this->nuevoComentario){
-        nuevoComentario->setIdComentario(1); //TODO: Utilizar contador en el controlador
+        nuevoComentario->setIdComentario(this->idComentario++); //TODO: Utilizar contador en el controlador
         multijugador_recordada->agregarComentario(this->nuevoComentario);
         this->nuevoComentario=NULL;
     }
