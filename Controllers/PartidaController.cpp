@@ -382,6 +382,8 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
                     if (jm->getHora_finalizacion() == NULL){ // Si el jugador aun no tiene hora de finalizacion se le setea porque el jugadorIniciador va a abandonar la partida
                         DT_Time *horaFinalJugador = new DT_Time();
                         jm->setHoraFinalizacion(horaFinalJugador);
+                        DT_Date* fechaFinal = new DT_Date();
+                        jm->setfecha_finalizacion(fechaFinal);
                     }
                 }
                 it2->next();
