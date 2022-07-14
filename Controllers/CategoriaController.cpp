@@ -7,6 +7,7 @@
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyString.h"
 #include "ColeccionesG/IIterator.h"
+#include "Factory/Factory.h"
 
 using namespace std;
 
@@ -48,19 +49,48 @@ void CategoriaController::seleccionarCategoria(string nombre){
     this->categoriaSeleccionada = dynamic_cast<Categoria*>(this->categorias->find(new KeyString(nombre)));
 }
 
-void CategoriaController::agregarVideojuegoACategoria(Videojuego* videojuego){
-    this->categoriaSeleccionada->agregarVideojuego(videojuego);
+void CategoriaController::agregarVideojuegoACategoria(){
+    Factory* factory;
+    this->categoriaSeleccionada->agregarVideojuego(factory->getInstance()->getInterfaceV()->getVideojuegoSeleccionado());
 }
 
-
-void CategoriaController::listarCategorias(){
-    IIterator* it = this->categorias->getIteratorObj();
-    while(it->hasNext()){
-        Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
-        cout<<categoria->toString()<<endl;
+IDictionary* CategoriaController::listarCategorias(){
+    return this->categorias;
+}
+IDictionary* CategoriaController::listarCategoriasPlataforma(){
+    IDictionary* categorias_plataforma = new ListDicc();
+    IIterator* iterator = this->categorias->getIteratorObj();
+    while (iterator->hasNext()) {
+        Categoria* categoria = dynamic_cast<Categoria*>(iterator->next());
+        if (categoria->getTipo() == E_TipoCategoria::PLATAFORMA) {
+            categorias_plataforma->add(categoria, new KeyString(categoria->getNombre()));
+        }
     }
-    delete it;
+    return categorias_plataforma;
 }
+IDictionary* CategoriaController::listarCategoriasGenero() {
+    IDictionary* categorias_genero = new ListDicc();
+    IIterator* iterator = this->categorias->getIteratorObj();
+    while (iterator->hasNext()) {
+        Categoria* categoria = dynamic_cast<Categoria*>(iterator->next());
+        if (categoria->getTipo() == E_TipoCategoria::GENERO) {
+            categorias_genero->add(categoria, new KeyString(categoria->getNombre()));
+        }
+    }
+    return categorias_genero;
+}
+IDictionary* CategoriaController::listarCategoriasOtro() {
+    IDictionary* categorias_otro = new ListDicc();
+    IIterator* iterator = this->categorias->getIteratorObj();
+    while (iterator->hasNext()) {
+        Categoria* categoria = dynamic_cast<Categoria*>(iterator->next());
+        if (categoria->getTipo() == E_TipoCategoria::OTRO) {
+            categorias_otro->add(categoria, new KeyString(categoria->getNombre()));
+        }
+    }
+    return categorias_otro;
+}
+
 void CategoriaController::listarNombreCategorias(){
     IIterator* it = this->categorias->getIteratorObj();
     while(it->hasNext()){
