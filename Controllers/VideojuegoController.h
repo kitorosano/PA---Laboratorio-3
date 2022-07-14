@@ -44,8 +44,8 @@ public:
     void listarNomDescVideoJuegos();
     void asignarPuntaje(string nombreVideojuego, int puntaje);
     void listarNombreVideojuegos();
-    void verVideojuego(int idVideojuego);
-    void verVideojuegoDesarrollador(int idVideojuego);
+    void verVideojuego();
+    void verVideojuegoDesarrollador();
     void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H
