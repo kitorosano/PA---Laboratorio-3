@@ -44,7 +44,7 @@ public:
     void listarNomDescVideoJuegos();
     void asignarPuntaje(string nombreVideojuego, int puntaje);
     void listarNombreVideojuegos();
-    void verVideojuego(int idVideojuego);
+    void verVideojuego();
     void verVideojuegoDesarrollador(int idVideojuego);
     void listaJuegosPublicadosFinalizados();
 };

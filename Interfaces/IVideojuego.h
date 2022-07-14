@@ -24,7 +24,7 @@ public:
     virtual void listarNomDescVideoJuegos() = 0;
     virtual void asignarPuntaje(string nombreVideojuego, int puntaje) = 0;
     virtual void listarNombreVideojuegos() = 0;
-    virtual void verVideojuego(int idVideojuego) = 0;
+    virtual void verVideojuego() = 0;
     virtual void verVideojuegoDesarrollador(int idVideojuego) = 0;
     virtual void listaJuegosPublicadosFinalizados() = 0;
     virtual Videojuego* getVideojuegoSeleccionado() = 0;
