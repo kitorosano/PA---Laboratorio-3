@@ -18,10 +18,11 @@ public:
     virtual bool verificarNickname(string nickname)=0;
     virtual void confirmarRegistro()=0;
     virtual void cancelarRegistro()=0;
-    virtual void iniciarSesion(string mail,string password)=0;
+    virtual int iniciarSesion(string mail,string password)=0;
     virtual Usuario* getUsuarioLogeado()=0;
     virtual void listarJugadores()=0;
     virtual void seguirJugador(string nickname)=0;
+    virtual Usuario* buscarUsuario(string email)=0;
 };
 
 #endif //PA_LABORATORIO_3_IUSUARIO_H

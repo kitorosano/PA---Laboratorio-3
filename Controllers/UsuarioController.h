@@ -33,7 +33,7 @@ public:
     void confirmarRegistro();
     void cancelarRegistro();
 
-    void iniciarSesion(string mail,string password);
+    int iniciarSesion(string mail,string password);
     void listarJugadores();
     void seguirJugador(string nickname);
 
