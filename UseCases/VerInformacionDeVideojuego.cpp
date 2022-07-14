@@ -3,7 +3,7 @@
 //
 
 #include "VerInformacionDeVideojuego.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include <iostream>
 #include <string>
 using namespace std;

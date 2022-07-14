@@ -46,6 +46,6 @@ public:
     void listarNombreVideojuegos();
     void verVideojuego();
     void verVideojuegoDesarrollador();
-    void listaJuegosPublicadosFinalizados();
+   // void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H

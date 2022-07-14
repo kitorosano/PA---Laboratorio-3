@@ -3,3 +3,6 @@
 //
 
 #include "EliminarVideojuego.h"
+void EliminarVideojuego(){
+    
+}

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(PA___Laboratorio_3
-        main.h
+        main.h main.cpp
 
         Interfaces/IUsuario.h
         Interfaces/IVideojuego.h
@@ -31,11 +31,32 @@ add_executable(PA___Laboratorio_3
         DataTypes/DT_InfoVideojuego.cpp DataTypes/DT_InfoVideojuego.h
         DataTypes/DT_MultijugadorVideojuego.cpp DataTypes/DT_MultijugadorVideojuego.h
         DataTypes/DT_PartidasIndividualesFinalizadas.cpp DataTypes/DT_PartidasIndividualesFinalizadas.h
+        DataTypes/DT_Comentario.cpp DataTypes/DT_Comentario.h
+        DataTypes/DT_NombreCategoria.cpp DataTypes/DT_NombreCategoria.h
 
         DataTypes/E_TipoCategoria.h
         DataTypes/E_MetodoPago.h main.h
         DataTypes/E_PeriodoValidez.h
 
+        ColeccionesG/ICollectible.cpp ColeccionesG/ICollectible.h
+        ColeccionesG/ICollection.h
+        ColeccionesG/IDictionary.cpp ColeccionesG/IDictionary.h
+        ColeccionesG/IIterator.h
+        ColeccionesG/IKey.cpp ColeccionesG/IKey.h
+        ColeccionesG/KeyInt.cpp ColeccionesG/KeyInt.h
+        ColeccionesG/KeyString.cpp ColeccionesG/KeyString.h
+        ColeccionesG/Lista.cpp ColeccionesG/Lista.h
+        ColeccionesG/ListaDicc.cpp ColeccionesG/ListaDicc.h
+        ColeccionesG/ListaIterator.cpp ColeccionesG/ListaIterator.h
+        ColeccionesG/ListDiccIterator.cpp ColeccionesG/ListDiccIterator.h
+        ColeccionesG/ListDiccIteratorKey.cpp ColeccionesG/ListDiccIteratorKey.h
+        ColeccionesG/ListDiccIteratorObj.cpp ColeccionesG/ListDiccIteratorObj.h
+        ColeccionesG/Nodo.cpp ColeccionesG/Nodo.h
+        ColeccionesG/NodoDicc.cpp ColeccionesG/NodoDicc.h
+        ColeccionesG/Par.cpp ColeccionesG/Par.h
+
+
+        Factory/Factory.cpp Factory/Factory.h
         UseCases/AltaUsuario.cpp UseCases/AltaUsuario.h
         UseCases/IniciarSesion.cpp UseCases/IniciarSesion.h
         UseCases/CargarDatosDePrueba.cpp UseCases/CargarDatosDePrueba.h

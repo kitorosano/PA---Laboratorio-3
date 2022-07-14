@@ -26,7 +26,7 @@ public:
     virtual void listarNombreVideojuegos() = 0;
     virtual void verVideojuego() = 0;
     virtual void verVideojuegoDesarrollador() = 0;
-    virtual void listaJuegosPublicadosFinalizados() = 0;
+    //virtual void listaJuegosPublicadosFinalizados() = 0;
     virtual Videojuego* getVideojuegoSeleccionado() = 0;
     virtual void setVideojuegoSeleccionado(Videojuego* videojuego) = 0;
 };
