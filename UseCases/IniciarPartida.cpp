@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
+#include "DataTypes/DT_NombreDescripcion.h"
 #include "ColeccionesG/IDictionary.h"
 using namespace std;
 
@@ -22,7 +23,11 @@ void IniciarPartida() {
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                 INICIAR PARTIDA                |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    factory->getInterfaceD()->listarNombreVideojuegosSuscritos(); // muestra los nombres de los videojuegos del jugador logeado
+    IIterator* iter = factory->getInterfaceD()->listarNombreVideojuegosSuscritos()->getIteratorObj();
+    while(iter->hasNext()) {
+        DT_NombreDescripcion* nombreVideojuego = dynamic_cast<DT_NombreDescripcion*>(iter->next());
+        cout << "| " << nombreVideojuego->getNombre() << " |" << endl;
+    }
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                 INICIAR PARTIDA                |"<<endl;

@@ -27,8 +27,9 @@ public:
     IDictionary* getDatosSuscripciones();
 
     IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego);
+    IDictionary* listarVideojuegoSuscripciones();
 
-    void listarNombreVideojuegosSuscritos();
+    IDictionary* listarNombreVideojuegosSuscritos();
     void cancelarSuscripcionActiva(int idSuscripcion);
 
     void crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago);

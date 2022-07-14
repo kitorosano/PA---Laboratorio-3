@@ -9,7 +9,7 @@
 #include "ColeccionesG/KeyString.h"
 #include "ColeccionesG/IIterator.h"
 #include "Factory/Factory.h"
-#include "DataTypes/DT_NombreCategoria.h"
+#include "DataTypes/DT_NombreDescripcion.h"
 
 using namespace std;
 
@@ -99,7 +99,7 @@ ICollection* CategoriaController::listarNombreCategorias(){
     IIterator* it = this->categorias->getIteratorObj();
     while(it->hasNext()){
         Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
-        DT_NombreCategoria* nombre = new DT_NombreCategoria(categoria->getNombre());
+        DT_NombreDescripcion* nombre = new DT_NombreDescripcion(categoria->getNombre());
         nombres->add(nombre);
 
         it->next();

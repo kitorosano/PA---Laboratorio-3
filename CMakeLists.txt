@@ -71,4 +71,4 @@ add_executable(PA___Laboratorio_3
         UseCases/FinalizarPartida.cpp UseCases/FinalizarPartida.h
         UseCases/RealizarComentario.cpp UseCases/RealizarComentario.h
         UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h
-        Classes/Suscripcion.cpp Classes/Suscripcion.h)
+        Classes/Suscripcion.cpp Classes/Suscripcion.h DataTypes/DT_VideojuegoSuscripciones.cpp DataTypes/DT_VideojuegoSuscripciones.h)

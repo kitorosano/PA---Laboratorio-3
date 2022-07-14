@@ -22,7 +22,6 @@ private:
     E_MetodoPago metodo_pago;
     DT_Date* fecha_suscripcion;
     DT_Time* hora_suscripcion;
-    bool activo = false;
 
 public:
     DatosSuscripcion();
