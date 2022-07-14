@@ -67,13 +67,13 @@ void VideojuegoController::datosNuevoVideojuego(string nombre, string descripcio
     Suscripcion* SVitalicia = new Suscripcion(videojuego, E_PeriodoValidez::VITALICIA, costoVitalicia);
     suscripcionesEnMemoria->add(SVitalicia);
 
-    setVideojuegoSeleccionado(videojuego);
+    videojuegoSeleccionado = videojuego;
 }
 void VideojuegoController::confirmarVideojuego(){
     //Iterar por cada suscripcion en memoria y almacenarla en coleccion de suscripciones con su key
     IIterator* iter = suscripcionesEnMemoria->iterator();
     while (iter->hasNext()) {
-        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->getCurrent());
+        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->next());
         suscripcion->setId(this->getNuevoIdSuscripcion());
         KeyInt* key = new KeyInt(suscripcion->getId());
         suscripciones->add(suscripcion, key);
@@ -88,7 +88,7 @@ void VideojuegoController::cancelarVideojuego(){
     // Iterar por cada suscripcion en memoria y eliminarlas
     IIterator* iter = suscripcionesEnMemoria->iterator();
     while (iter->hasNext()) {
-        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->getCurrent());
+        Suscripcion* suscripcion= dynamic_cast<Suscripcion *>(iter->next());
         suscripcionesEnMemoria->remove(suscripcion);
     }
     delete iter;

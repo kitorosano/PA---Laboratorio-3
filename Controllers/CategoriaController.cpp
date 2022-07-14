@@ -49,8 +49,10 @@ Categoria* CategoriaController::getCategoriaSeleccionada(){
 
 void CategoriaController::seleccionarCategoria(string nombre){
     ICollectible* categoria = this->categorias->find(new KeyString(nombre));
-    if(!categoria)
-      throw invalid_argument("Categoria no existe");
+    if(categoria == nullptr){
+      cout << "Categoria no existe";
+      return;
+    }
     this->categoriaSeleccionada = dynamic_cast<Categoria*>(categoria);
 }
 
@@ -116,7 +118,7 @@ IDictionary* CategoriaController::obtenerCategoriasVideojuego(string nombre_vide
     IDictionary* categorias_videojuego = new ListDicc();
     IIterator* it = this->categorias->getIteratorObj();
     while(it->hasNext()){
-        Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
+        Categoria* categoria = dynamic_cast<Categoria*>(it->next());
         if(categoria->tieneVideojuego(nombre_videojuego)){
             categorias_videojuego->add(categoria, new KeyString(categoria->getNombre()));
         }

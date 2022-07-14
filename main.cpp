@@ -76,7 +76,7 @@ int main() {
                     case 0: {
                       int opDesarrollador;
                         do {
-                          menuDesarrollador();
+                            menuDesarrollador();
                             cin >> opDesarrollador;
                             switch (opDesarrollador) {
                                 case 1:
@@ -145,13 +145,14 @@ int main() {
                         cout << "Login Fallido" << endl;
                         break;
                 }
+                break;
             }
             case 3:
               CargarDatosDePrueba();
                 break;
             default: break;
         }
-    }while (opPrincipal != 4);
+    }while (opPrincipal != 0);
 
     cout << "Gracias por usar el sistema! Hasta luego..." << endl;
     return 0;

@@ -76,7 +76,7 @@ IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string n
     IIterator* iter = factory->getInstance()->getInterfaceV()->getSuscripciones()->getIteratorObj();
     IDictionary* suscripcionesVideojuego = new ListDicc();
     while(iter->hasNext()){
-        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(iter->getCurrent());
+        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(iter->next());
         if(suscripcion->getVideojuego()->getId() == videojuego->getId()){
             suscripcionesVideojuego->add(suscripcion, new KeyInt(suscripcion->getId()));
         }
@@ -93,7 +93,7 @@ IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){
 
     IIterator* iter = this->datosSuscripciones->getIteratorObj();
     while(iter->hasNext()){
-        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->getCurrent());
+        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->next());
         if(datosSuscripcion->getNickName().compare(uNickname) == 0 && datosSuscripcion->isActivo()){
             string nombreVideojuego = datosSuscripcion->getSuscripcion()->getVideojuego()->getNombre();
             nombreVideojuegosSuscritos->add(new DT_NombreDescripcion(nombreVideojuego), new KeyString(nombreVideojuego));
@@ -107,7 +107,7 @@ void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){
     IIterator* iter = this->datosSuscripciones->getIteratorObj();
 
     while(iter->hasNext()){
-        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(iter->getCurrent());
+        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(iter->next());
         if(suscripcion->getId() == idSuscripcion){
             iter->remove();
         }
@@ -137,7 +137,7 @@ void DatosSuscripcionController::listarNicknameJugadoresSuscritos(){
     IIterator* iter = this->datosSuscripciones->getIteratorObj();
 
     while(iter->hasNext()){
-        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->getCurrent());
+        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->next());
         cout << datosSuscripcion->getNickName() << endl;
     }
 }

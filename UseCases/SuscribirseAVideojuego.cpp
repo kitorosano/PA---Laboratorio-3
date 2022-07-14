@@ -139,4 +139,5 @@ void SuscribirseAVideojuego() {
         }
     }while(opcion!=1 && opcion !=2);
 
+    cout << "se suscribio";
 };

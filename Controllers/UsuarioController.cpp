@@ -47,7 +47,7 @@ bool UsuarioController::verificarNickname(string nickname){
         return false;
     else if(this->usuarios){
         while (iter->hasNext()) {
-            Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
+            Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
             if(nickname==jugador->getNickname())
                 return true;
         }
@@ -108,7 +108,7 @@ void UsuarioController::listarJugadores(){
 
     while (iter->hasNext()) {
         //Usuario* usuario = (Usuario*) (iter->getCurrent());
-        Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
+        Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
         jugador->toString();
         cout<<"----------------------------------------------------";
     }
@@ -126,7 +126,7 @@ void UsuarioController::seguirJugador(string nickname) {
     IIterator *iter = this->usuarios->getIteratorObj();
 
     while(iter->hasNext()){
-        Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
+        Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
         if(jugador->getNickname()==nickname){
 
             Jugador* jug_l=dynamic_cast<Jugador*>(usuarioLogeado);

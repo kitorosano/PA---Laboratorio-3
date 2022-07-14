@@ -34,7 +34,7 @@ IDictionary* Categoria::getVideojuegos(){
 bool Categoria::tieneVideojuego(string nombreVideojuego){
     IIterator* iter = this->videojuegos->getIteratorObj();
     while(iter->hasNext()){
-        Videojuego* videojuego = dynamic_cast<Videojuego*>(iter->getCurrent());
+        Videojuego* videojuego = dynamic_cast<Videojuego*>(iter->next());
         if(videojuego->getNombre() == nombreVideojuego){
             return true;
         }
@@ -53,8 +53,13 @@ void Categoria::setTipo(E_TipoCategoria tipo){
     this->tipo=tipo;
 }
 void Categoria::agregarVideojuego(Videojuego* videojuego){
-    if(this->videojuegos->member(new KeyInt(videojuego->getId())))
-        throw invalid_argument("El videojuego ya cuenta con esta categoria");
+  IIterator* it = this->videojuegos->getIteratorObj();
+  while(it->hasNext()){
+    Videojuego* aux = dynamic_cast<Videojuego * >(it->next());
+    if(aux->getNombre() == videojuego->getNombre()){
+      cout << "No se agrego la categoria porque ya existe en el videojuego";
+    }
+  }
 
     this->videojuegos->add(videojuego, new KeyInt(videojuego->getId()));
 }
