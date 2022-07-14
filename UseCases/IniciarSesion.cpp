@@ -30,15 +30,17 @@ void IniciarSesion() {
         cout<<"La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"<<endl;
     }
     else {
-        if(retorno==1){
-            cout<<("No hay usuarios ingresados en el sistema")<<endl;
-            return;
-        }
-        else if(retorno==2){
-            throw invalid_argument("El usuario con email ingresado no existe en el sistema");
-        }
-        else if(retorno==3){
-            throw invalid_argument("La contraseña no es valida");
+        switch (retorno) {
+            case 1:
+                cout << "No hay usuarios ingresados en el sistema" << endl;
+                return;
+                break;
+            case 2:
+                cout << "El usuario con email ingresado no existe en el sistema" << endl;
+                break;
+            case 3:
+                cout << "La contraseña no es valida";
+                break;
         }
         do {
             cout << "|------------------------------------------------|" << endl;
@@ -49,7 +51,7 @@ void IniciarSesion() {
             cout << "|------------------------------------------------|" << endl << endl;
             cin >> opcion;
             if (opcion != 1 && opcion != 2)
-                throw invalid_argument("Debe ingresar una opcion!");
+                cout<<"Debe ingresar una opcion!"<<endl;
 
         } while (opcion != 1 && opcion != 2);
 
@@ -66,20 +68,23 @@ void IniciarSesion() {
                 cout << "Ingrese la contraseña:" << endl;
                 cin >> password;
                 retorno=factory->getInstance()->getInterfaceU()->iniciarSesion(email,password);
-
-                if(retorno==1){
-                    cout<<("No hay usuarios ingresados en el sistema")<<endl;
-                    return;
-                }
-                else if(retorno==2){
-                    throw invalid_argument("El usuario con email ingresado no existe en el sistema");
-                }
-                else if(retorno==3){
-                    throw invalid_argument("La contraseña no es valida");
-                }
-                if(retorno==0){
-                    cout<<"Session establecida!"<<endl;
-                    cout<<"La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"<<endl;
+                //switch
+                switch (retorno) {
+                    case 0:
+                        cout << "Session establecida!" << endl;
+                        cout << "La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"
+                             << endl;
+                        break;
+                    case 1:
+                        cout << "No hay usuarios ingresados en el sistema" << endl;
+                        return;
+                        break;
+                    case 2:
+                        cout << "El usuario con email ingresado no existe en el sistema" << endl;
+                        break;
+                    case 3:
+                        cout << "La contraseña no es valida";
+                        break;
                 }
             } while (retorno != 0);
         }
