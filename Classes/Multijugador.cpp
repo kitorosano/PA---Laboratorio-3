@@ -54,7 +54,8 @@ IDictionary* Multijugador::obtenerComentariosDePartida(){
     IDictionary* comentarios_multijugador = new ListDicc();
     while(it->hasNext()){
         Comentario* comentario= dynamic_cast<Comentario*>(it->getCurrent());
-                DT_Comentario *dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getHoraEnvio(),comentario->getEscritor()->getNickname(),comentario->getContenido());
+
+                DT_Comentario* dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getHoraEnvio(),comentario->getEscritor()->getNickname(),comentario->getContenido());
                 comentarios_multijugador->add(dt_comentario, new KeyInt(comentario->getIdComentario()));
         it->next();
     }

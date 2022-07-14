@@ -3,7 +3,7 @@
 //
 
 #include "RealizarComentario.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -65,8 +65,8 @@ void RealizarComentario(){
                     DT_Comentario* dt_comentario = (DT_Comentario*) (it3->getCurrent());
                     cout<< "-Id Comentario" <<dt_comentario->getIdComentario()<< endl;
                     cout<< "-Autor "<<dt_comentario->getEscritor()<<endl;
-                    cout<< "-Fecha de envio" <<dt_comentario->getFechaEnvio().getDate()<< endl;
-                    cout<< "-Hora de envio" <<dt_comentario->getHoraEnvio().getTime()<< endl;
+                    cout<< "-Fecha de envio" <<dt_comentario->getFechaEnvio()->getDate()<< endl;
+                    cout<< "-Hora de envio" <<dt_comentario->getHoraEnvio()->getTime()<< endl;
                     cout<< "-Contenido: "<<dt_comentario->getContenido()<<endl;
                     cout<<"----------------------------------------------------------------"<<endl;
                     it3->next();

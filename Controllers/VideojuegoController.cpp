@@ -148,7 +148,7 @@ void VideojuegoController::verVideojuego(){
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(this->videojuegoSeleccionado->getNombre());
 
-        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(this->videojuegoSeleccionado->getNombre());
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(this->videojuegoSeleccionado->getNombre()));
 
         info->setSuscripciones(fabrica->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(this->videojuegoSeleccionado->getNombre()));
 
@@ -166,7 +166,7 @@ void VideojuegoController::verVideojuegoDesarrollador(){
         DT_InfoVideojuego *info = new DT_InfoVideojuego();
         info->setNombre(this->videojuegoSeleccionado->getNombre());
 
-        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuegoSeleccionado->getNombre());
+        info->setCategorias(fabrica->getInstance()->getInterfaceC()->obtenerCategoriasVideojuego(videojuegoSeleccionado->getNombre()));
 
         info->setSuscripciones(fabrica->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(this->videojuegoSeleccionado->getNombre()));
 

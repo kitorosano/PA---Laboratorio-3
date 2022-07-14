@@ -174,15 +174,15 @@ void PartidaController::enviarComentario(string contenido){
     if(jugador){
         if(this->comentarioAResponder){
             //respuesta
-            DT_Date fechaRespuesta = DT_Date();
-            DT_Time horaRespuesta = DT_Time();
+            DT_Date* fechaRespuesta =new DT_Date();
+            DT_Time* horaRespuesta = new DT_Time();
             this->nuevoComentario= new Comentario(jugador,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
             this->comentarioAResponder=NULL;
         }
         else{
             //envio
-            DT_Date fechaEnvio = DT_Date();
-            DT_Time horaEnvio = DT_Time();
+            DT_Date* fechaEnvio = new DT_Date();
+            DT_Time* horaEnvio = new DT_Time();
             this->nuevoComentario= new Comentario(jugador,fechaEnvio,horaEnvio,contenido);
         }
     }
