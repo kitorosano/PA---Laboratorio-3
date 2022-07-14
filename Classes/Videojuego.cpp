@@ -65,3 +65,9 @@ void Videojuego::setCantidad_votos(int cantidad_votos){
 void Videojuego::setDesarrollador(Desarrollador* desarrollador){
     this->desarrollador=desarrollador;
 }
+
+string Videojuego::toString() {
+    stringstream ss;
+    ss << "Videojuego: " << this->nombre << " " << this->descripcion << " " << this->total_horas_jugadas << " " << this->puntaje << " " << this->cantidad_votos << " " << this->desarrollador->getNombreEmpresa();
+    return ss.str();
+}

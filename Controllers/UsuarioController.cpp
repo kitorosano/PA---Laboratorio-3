@@ -36,12 +36,12 @@ void UsuarioController::registroDesarrollador(string email,string password,strin
 bool UsuarioController::verificarNickname(string nickname){
     IIterator* iter = usuarios->getIteratorObj();
     if(!this->usuarios)
-        return true;
+        return false;
     else if(this->usuarios){
         while (iter->hasNext()) {
             Jugador* jugador=dynamic_cast<Jugador*>(iter->getCurrent());
             if(nickname==jugador->getNickname())
-                return false;
+                return true;
         }
     }
     return true;
@@ -73,22 +73,24 @@ Usuario* UsuarioController::buscarUsuario(string mail){
      }
 }
 
-void UsuarioController::iniciarSesion(string mail,string password){
+int UsuarioController::iniciarSesion(string mail,string password){
     KeyString* key_mail = new KeyString(mail);
     if(!this->usuarios) {
-        throw invalid_argument("No hay usuarios en el sistema");
-        return;
+        //No hay usuarios en el sistema
+        return 1;
     }
     Usuario * aux = (Usuario *) (this->usuarios->find(key_mail));
     if (!aux) {
-        throw invalid_argument("El usuario no existe en el sistema");
-        return;
+        //El usuario no existe en el sistema
+        return 2;
     }
     if(aux->verificarContraseña(password)){
-        this->usuarioLogeado=aux;
+        this->usuarioLogeado=aux;//inicio session
+        return 0;
     }
     else{
-        throw invalid_argument("La contraseña no es valida");
+        //La contraseña no es valida")
+        return 3;
     }
 }
 void UsuarioController::listarJugadores(){

@@ -5,7 +5,6 @@
 #include "ColeccionesG/ListaDicc.h"
 #include "ColeccionesG/KeyInt.h"
 #include "ColeccionesG/IIterator.h"
-#include <sstream>
 
 using namespace std;
 
@@ -54,13 +53,12 @@ void Categoria::setTipo(E_TipoCategoria tipo){
     this->tipo=tipo;
 }
 void Categoria::agregarVideojuego(Videojuego* videojuego){
+    if(this->videojuegos->member(new KeyInt(videojuego->getId())))
+        throw invalid_argument("El videojuego ya cuenta con esta categoria");
+
     this->videojuegos->add(videojuego, new KeyInt(videojuego->getId()));
 }
 
 string Categoria::toString(){
-    stringstream ss;
-    ss<<"Nombre: "<<this->getNombre()<<endl;
-    ss<<"Descripcion: "<<this->getDescription()<<endl;
-    ss << "Tipo: " << Str_TipoCategoria[this->tipo] << endl;
-    return ss.str();
+    return "|Nombre: " + this->getNombre() + "|Descripcion: " + this->getDescription() + "|Tipo: " + Str_TipoCategoria[this->tipo];
 };

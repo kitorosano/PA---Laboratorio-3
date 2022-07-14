@@ -12,11 +12,13 @@
 #include "DataTypes/DT_Time.h"
 #include <string>
 #include <iostream>
+#include "DataTypes/DT_Date.h"
 
 class JugadorMultijugador: public ICollectible {
 private:
     Jugador* jugador;
     DT_Time* hora_finalizacion;
+    DT_Date* fecha_finalizacion;
 
 public:
     JugadorMultijugador();
@@ -26,6 +28,7 @@ public:
     void setHoraFinalizacion(DT_Time* hora_finalizacion);
     Jugador* getJugador();
     DT_Time* getHora_finalizacion();
+    void setfecha_finalizacion(DT_Date* fecha_finalizacion);
 };
 
 

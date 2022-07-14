@@ -84,7 +84,7 @@ void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
 void PartidaController::ingresarNicknameALaPartida(string nickname){
     Factory* fabrica;
     // Busco al jugador que quiero agregar a la partida
-    Jugador *jugador = dyamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->BuscarUsuario(nickname));
+    Jugador *jugador = dynamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->buscarUsuario(nickname));
     if(jugador){
         // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
         JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
@@ -253,6 +253,8 @@ void PartidaController::confirmarAbandonoPartida(int idPartida){
                 if(jugadorlogeado->getNickname() == jugadorUnido->getJugador()->getNickname()){
                     DT_Time* horafinal = new DT_Time();
                     jugadorUnido->setHoraFinalizacion(horafinal);
+                    DT_Date* fechaFinal = new DT_Date();
+                    jugadorUnido->setfecha_finalizacion(fechaFinal);
                 }
                 it->next();
             }
@@ -380,6 +382,8 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
                     if (jm->getHora_finalizacion() == NULL){ // Si el jugador aun no tiene hora de finalizacion se le setea porque el jugadorIniciador va a abandonar la partida
                         DT_Time *horaFinalJugador = new DT_Time();
                         jm->setHoraFinalizacion(horaFinalJugador);
+                        DT_Date* fechaFinal = new DT_Date();
+                        jm->setfecha_finalizacion(fechaFinal);
                     }
                 }
                 it2->next();
@@ -415,6 +419,7 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
     this->partidaSeleccionada = NULL;
-    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego, ->probablemnte un metodo en la interface para setear eso en null o utilizar el cancelarVideojuego con otro nombre??
+    fabrica->getInterfaceV()->setVideojuegoSeleccionado(NULL);
+    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego
 }
 // lugar 1
