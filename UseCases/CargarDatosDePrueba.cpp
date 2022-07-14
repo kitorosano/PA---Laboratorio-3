@@ -56,6 +56,50 @@ void CargarDatosDePrueba() {
     factory->getInterfaceC()->agregarCategoria("PS5","descripción libre",PLATAFORMA);
     factory->getInterfaceC()->confirmarCategoria();
 
+    // Videojuegos
+    factory->getInstance()->getInterfaceV()->datosNuevoVideojuego("KingdomRush", "Un gran juego 1", 1, 2, 7, 14);
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PC");
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PS4");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Estrategia");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("E");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceV()->confirmarVideojuego();
+    factory->getInstance()->getInterfaceV()->datosNuevoVideojuego("Fortnite", "Un gran juego 2", 3, 8, 30, 60);
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PC");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PS4");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Xbox One");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Supervivencia");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Teen");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceV()->confirmarVideojuego();
+    factory->getInstance()->getInterfaceV()->datosNuevoVideojuego("Minecraft", "Un gran juego 3", 2, 5, 20, 40);
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PC");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Supervivencia");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("E");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceV()->confirmarVideojuego();
+    factory->getInstance()->getInterfaceV()->datosNuevoVideojuego("FIFA 21", "Un gran juego 4", 3, 8, 28, 50);
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PC");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("PS4");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Xbox One");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("Deporte");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceC()->seleccionarCategoria("E");
+    factory->getInstance()->getInterfaceC()->agregarVideojuegoACategoria();
+    factory->getInstance()->getInterfaceV()->confirmarVideojuego();
 
+    // Suscripciones
 
 }
