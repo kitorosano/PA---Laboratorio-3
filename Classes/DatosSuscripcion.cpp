@@ -13,7 +13,6 @@ DatosSuscripcion::DatosSuscripcion(string nickname, Suscripcion *suscripcion, E_
     this->metodo_pago = metodo_pago;
     this->fecha_suscripcion = new DT_Date();
     this->hora_suscripcion = new DT_Time();
-    this->activo = true;
 }
 
 DatosSuscripcion::~DatosSuscripcion() {
@@ -40,11 +39,20 @@ DT_Time* DatosSuscripcion::getHoraSuscripcion() {
 }
 
 bool DatosSuscripcion::isActivo() {
+    bool activo = false;
+    switch (this->getSuscripcion()->getPeriodoValidez()) {
+        case E_PeriodoValidez::VITALICIA:
+            return true;
+        case E_PeriodoValidez::MENSUAL: //TODO: Implementar logica para comparar con la fecha actual
+            return true;
+        case E_PeriodoValidez::TRIMESTRAL: //TODO: Implementar logica para comparar con la fecha actual
+            return true;
+        case E_PeriodoValidez::ANUAL: //TODO: Implementar logica para comparar con la fecha actual
+            return true;
+        default:
+            break;
+    }
     return activo;
-}
-
-void DatosSuscripcion::marcarExpirado() {
-    this->activo = false;
 }
 
 string DatosSuscripcion::toString() {
@@ -54,6 +62,6 @@ string DatosSuscripcion::toString() {
     ss << "Metodo de pago: " << Str_MetodoPago[this->getMetodoPago()] << endl;
     ss << "Fecha de suscripcion: " << this->getFechaSuscripcion()->getDate() << endl;
     ss << "Hora de suscripcion: " << this->getHoraSuscripcion()->getTime() << endl;
-    ss << "Suscripcion Activa: " << (activo ? "No" : "Si") << endl;
+    ss << "Suscripcion Activa: " << (isActivo() ? "No" : "Si") << endl;
     return ss.str();
 }

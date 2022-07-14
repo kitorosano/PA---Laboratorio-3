@@ -39,13 +39,17 @@ public:
     void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
     void confirmarVideojuego();
     void cancelarVideojuego();
+
     void seleccionarVideoJuego(int id);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
+
+    IDictionary* listarNombreVideojuegos();
     void listarNomDescVideoJuegos();
+    void listaJuegosPublicadosFinalizados();
+
     void asignarPuntaje(string nombreVideojuego, int puntaje);
-    void listarNombreVideojuegos();
+
     void verVideojuego();
     void verVideojuegoDesarrollador();
-    void listaJuegosPublicadosFinalizados();
 };
 #endif //LAB_3_PROYECTO_VIDEOJUEGOCONTROLLER_H

@@ -3,9 +3,12 @@
 //
 #include "DatosSuscripcionController.h"
 #include "ColeccionesG/ListaDicc.h"
+#include "ColeccionesG/Lista.h"
 #include "ColeccionesG/KeyInt.h"
 #include "ColeccionesG/IIterator.h"
 #include "Factory/Factory.h"
+#include "DataTypes/DT_NombreDescripcion.h"
+#include "DataTypes/DT_VideojuegoSuscripciones.h"
 
 using namespace std;
 
@@ -32,6 +35,41 @@ IDictionary* DatosSuscripcionController::getDatosSuscripciones(){
     return this->datosSuscripciones;
 }
 
+IDictionary* DatosSuscripcionController::listarVideojuegoSuscripciones() {
+    Factory* factory;
+    IDictionary* videojuegoSuscripciones = new ListDicc();
+    IIterator* iterVideojuegos = factory->getInstance()->getInterfaceV()->listarNombreVideojuegos()->getIteratorObj();
+    while(iterVideojuegos->hasNext()){
+        string nombreVideojuego = dynamic_cast<DT_NombreDescripcion*>(iterVideojuegos->next())->getNombre();
+        double costoMensual, costoTrimestral, costoAnual, costoVitalicio;
+        
+        IIterator* iterSuscripciones = factory->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(nombreVideojuego)->getIteratorObj();
+        while(iterSuscripciones->hasNext()){
+            Suscripcion * suscripcion = dynamic_cast<Suscripcion*>(iterSuscripciones->next());
+            switch (suscripcion->getPeriodoValidez()) {
+                case E_PeriodoValidez::MENSUAL:
+                    costoMensual = suscripcion->getCosto();
+                    break;
+                case E_PeriodoValidez::TRIMESTRAL:
+                    costoTrimestral = suscripcion->getCosto();
+                    break;
+                case E_PeriodoValidez::ANUAL:
+                    costoAnual = suscripcion->getCosto();
+                    break;
+                case E_PeriodoValidez::VITALICIA:
+                    costoVitalicio = suscripcion->getCosto();
+                    break;
+                default:
+                    break;
+            }
+        }
+        delete iterSuscripciones;
+        videojuegoSuscripciones->add(new DT_VideojuegoSuscripciones(nombreVideojuego, costoMensual, costoTrimestral, costoAnual, costoVitalicio), new KeyString(nombreVideojuego));
+    }
+    delete iterVideojuegos;
+    return videojuegoSuscripciones;
+}
+
 IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string nombre_videojuego){
     Factory* factory;
     Videojuego* videojuego = factory->getInstance()->getInterfaceV()->obtenerVideojuegoPorNombre(nombre_videojuego);
@@ -48,17 +86,21 @@ IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string n
     return suscripcionesVideojuego;
 }
 
-void DatosSuscripcionController::listarNombreVideojuegosSuscritos(){
+IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){
     Factory* factory;
     string uNickname = (dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado()))->getNickname();
+    IDictionary* nombreVideojuegosSuscritos = new ListDicc();
 
     IIterator* iter = this->datosSuscripciones->getIteratorObj();
     while(iter->hasNext()){
         DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->getCurrent());
-        if(datosSuscripcion->getNickName().compare(uNickname) == 0 && datosSuscripcion->isActivo() == true){
-            cout << datosSuscripcion->getSuscripcion()->getVideojuego()->getNombre() << endl;
+        if(datosSuscripcion->getNickName().compare(uNickname) == 0 && datosSuscripcion->isActivo()){
+            string nombreVideojuego = datosSuscripcion->getSuscripcion()->getVideojuego()->getNombre();
+            nombreVideojuegosSuscritos->add(new DT_NombreDescripcion(nombreVideojuego), new KeyString(nombreVideojuego));
         }
     }
+    delete iter;
+    return nombreVideojuegosSuscritos;
 }
 
 void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){

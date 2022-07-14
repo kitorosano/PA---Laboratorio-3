@@ -4,6 +4,7 @@
 
 #include "VerInformacionDeVideojuego.h"
 #include "/Factory/Factory.h"
+#include "DataTypes/DT_NombreDescripcion.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -14,7 +15,11 @@ void VerInformacionDeVideojuego(int tipoUsuario){
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    factory->getInstance()->getInterfaceV()->listarNombreVideojuegos();
+    IIterator* iterador = factory->getInstance()->getInterfaceV()->listarNombreVideojuegos()->getIteratorObj();
+    while(iterador->hasNext()){
+        DT_NombreDescripcion* nombreDescripcion = (DT_NombreDescripcion*)iterador->next();
+        cout<<"|  "<<nombreDescripcion->getNombre()<<endl;
+    }
 
     cout<<"|--------------------------------------------------|"<<endl;
     cout<<"| Ingrese el nombre para seleccionar un videojuego |"<<endl;

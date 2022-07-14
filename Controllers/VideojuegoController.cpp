@@ -8,6 +8,7 @@
 #include "ColeccionesG/KeyInt.h"
 #include "ColeccionesG/IIterator.h"
 #include "Factory/Factory.h"
+#include "DataTypes/DT_NombreDescripcion.h"
 
 using namespace std;
 
@@ -131,16 +132,19 @@ void VideojuegoController::asignarPuntaje(string nombreVideojuego, int puntaje){
     Videojuego* videojuego = this->obtenerVideojuegoPorNombre(nombreVideojuego);
     this->puntuaciones->add(videojuego, new KeyInt(videojuego->getId()));
 }
-void VideojuegoController::listarNombreVideojuegos(){
+IDictionary* VideojuegoController::listarNombreVideojuegos(){
     IIterator *it = this->videojuegos->getIteratorObj();
     Videojuego *videojuego = NULL;
+    IDictionary* nombres = new ListDicc();
 
     while(it->hasNext()){
         videojuego = dynamic_cast<Videojuego *>(it->getCurrent());
-        cout << videojuego->getNombre() << endl;
+        nombres->add(new DT_NombreDescripcion(videojuego->getNombre()), new KeyString(videojuego->getNombre()));
         it->next();
     }
     delete it;
+
+    return nombres;
 }
 void VideojuegoController::verVideojuego(){
     Factory* fabrica;
