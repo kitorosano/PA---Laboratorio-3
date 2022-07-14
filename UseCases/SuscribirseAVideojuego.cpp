@@ -3,3 +3,6 @@
 //
 
 #include "SuscribirseAVideojuego.h"
+void SuscribirseAVideojuego(){
+
+}

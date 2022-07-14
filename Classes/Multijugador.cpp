@@ -22,6 +22,9 @@ Multijugador::~Multijugador() {
 bool Multijugador::isTransmitidaEnVivo() {
     return this->transmitidaEnVivo;
 }
+IDictionary* Multijugador::getJugadoresEnLaPartida(){
+    return this->jugadoresEnLaPartida;
+}
 
 double Multijugador::getDuracionTotal() {
     return this->duracionTotal;
