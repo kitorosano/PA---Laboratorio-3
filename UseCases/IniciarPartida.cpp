@@ -3,7 +3,7 @@
 //
 
 #include "IniciarPartida.h"
-#include "/Factory/Factory.h"
+#include "Factory/Factory.h"
 #include <iostream>
 #include <string>
 #include "DataTypes/DT_PartidasIndividualesFinalizadas.h"
@@ -41,7 +41,7 @@ void IniciarPartida() {
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
         if(opcion !=1 && opcion !=2)
-            throw invalid_argument("Debe ingresar una opcion!");
+            cout<<"Debe ingresar una opcion!"<<endl;
     }while(opcion !=1 && opcion !=2);
 
 
@@ -124,7 +124,7 @@ void IniciarPartida() {
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
             if(opcion !=1 && opcion !=2)
-                throw invalid_argument("Debe ingresar una opcion!");
+                cout<<"Debe ingresar una opcion!"<<endl;
 
     }while(opcion!=1 && opcion !=2);
 
