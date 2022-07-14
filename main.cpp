@@ -59,7 +59,7 @@ void menuJugador() {
     cout<<"Ingrese una opcion:";
 }
 
-int mainPrincipal() {
+int main() {
     int opPrincipal;
     do {
         menuPrincipal();
@@ -68,10 +68,83 @@ int mainPrincipal() {
             case 1:
                 AltaUsuario();
                 break;
-            case 2:
-                IniciarSesion();
-                // MANEJAR LOS OTROS MENU
-                break;
+            case 2: {
+                int tipoUsuario = IniciarSesion(); // devuelve tipo usuario
+
+                switch (tipoUsuario) {
+                    case 0: {
+                        menuDesarrollador();
+                        int opDesarrollador;
+                        do {
+                            cin >> opDesarrollador;
+                            switch (opDesarrollador) {
+                                case 1:
+                                    AgregarCategoria();
+                                    break;
+                                case 2:
+                                    PublicarVideojuego();
+                                    break;
+                                case 3:
+                                    EliminarVideojuego();
+                                    break;
+                                case 4:
+                                    VerInformacionDeVideojuego(tipoUsuario);
+                                    break;
+                                case 0:
+                                    cout << "Sesion Cerrada" << endl;
+                                    break;
+                                default:
+                                    cout << "Opcion invalida" << endl;
+                                    break;
+                            }
+                        } while (opDesarrollador != 0);
+                        break;
+                    }
+                    case 1: {
+                        menuJugador();
+                        int opJugador;
+                        do {
+                            cin >> opJugador;
+                            switch (opJugador) {
+                                case 1:
+                                    SuscribirseAVideojuego();
+                                    break;
+                                case 2:
+                                    AsignarPuntajeAVideojuego();
+                                    break;
+                                case 3:
+                                    IniciarPartida();
+                                    break;
+                                case 4:
+                                    AbandonarPartidaMultijugador();
+                                    break;
+                                case 5:
+                                    FinalizarPartida();
+                                    break;
+                                case 6:
+                                    VerInformacionDeVideojuego(tipoUsuario);
+                                    break;
+                                case 7:
+                                    RealizarComentario();
+                                    break;
+                                case 8:
+                                    SeguirJugador();
+                                    break;
+                                case 0:
+                                    cout << "Sesion Cerrada" << endl;
+                                    break;
+                                default:
+                                    cout << "Opcion invalida" << endl;
+                                    break;
+                            }
+                        } while (opJugador != 0);
+                        break;
+                    }
+                    default:
+                        cout << "Login Fallido" << endl;
+                        break;
+                }
+            }
             case 3:
                 CargarDatosDePrueba();
                 break;
@@ -80,72 +153,5 @@ int mainPrincipal() {
     }while (opPrincipal != 4);
 
     cout << "Gracias por usar el sistema! Hasta luego..." << endl;
-    return 0;
-}
-
-int mainDesarrollador() {
-    int opDesarrollador;
-    do {
-        menuDesarrollador();
-        cin >> opDesarrollador;
-        switch (opDesarrollador) {
-            case 1:
-                AgregarCategoria();
-                break;
-            case 2:
-                PublicarVideojuego();
-                break;
-            case 3:
-                EliminarVideojuego();
-                break;
-            case 4:
-                VerInformacionDeVideojuego();
-                break;
-            default: break;
-        }
-    }while (opDesarrollador != 5);
-
-    return 0;
-}
-
-int mainJugador() {
-    int opJugador;
-    do {
-        menuJugador();
-        cin >> opJugador;
-        switch (opJugador) {
-            case 1:
-                SuscribirseAVideojuego();
-                break;
-            case 2:
-                AsignarPuntajeAVideojuego();
-                break;
-            case 3:
-                IniciarPartida();
-                break;
-            case 4:
-                AbandonarPartidaMultijugador();
-                break;
-            case 5:
-                FinalizarPartida();
-                break;
-            case 6:
-                VerInformacionDeVideojuego();
-                break;
-            case 7:
-                RealizarComentario();
-                break;
-            case 8:
-                SeguirJugador();
-                break;
-            default: break;
-        }
-    }while (opJugador != 9);
-
-    return 0;
-}
-
-int main() {
-    mainPrincipal();
     return 0;
 }

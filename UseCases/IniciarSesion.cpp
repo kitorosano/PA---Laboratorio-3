@@ -8,7 +8,7 @@
 #include <string>
 using namespace std;
 
-void IniciarSesion() {
+int IniciarSesion() {
     Factory *factory;
     string email, password, nickname, descripcion, empresa;
     int opcion,retorno;
@@ -33,14 +33,13 @@ void IniciarSesion() {
         switch (retorno) {
             case 1:
                 cout << "No hay usuarios ingresados en el sistema" << endl;
-                return;
-                break;
+                return -1;
             case 2:
                 cout << "El usuario con email ingresado no existe en el sistema" << endl;
-                break;
+                return -1;
             case 3:
                 cout << "La contraseña no es valida";
-                break;
+                return -1;
         }
         do {
             cout << "|------------------------------------------------|" << endl;
@@ -72,24 +71,23 @@ void IniciarSesion() {
                 switch (retorno) {
                     case 0:
                         cout << "Session establecida!" << endl;
-                        cout << "La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"
-                             << endl;
+                        cout << "La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion" << endl;
                         break;
                     case 1:
                         cout << "No hay usuarios ingresados en el sistema" << endl;
-                        return;
-                        break;
+                        return -1;
                     case 2:
                         cout << "El usuario con email ingresado no existe en el sistema" << endl;
-                        break;
+                        return -1;
                     case 3:
                         cout << "La contraseña no es valida";
-                        break;
+                        return -1;
                 }
             } while (retorno != 0);
         }
-        else{
-            return;
-        }
     }
+
+    Desarrollador* desarrollador= dynamic_cast<Desarrollador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
+    if(desarrollador) return 0;
+    return 1;
 }

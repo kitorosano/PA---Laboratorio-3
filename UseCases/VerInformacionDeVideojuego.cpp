@@ -25,8 +25,12 @@ void VerInformacionDeVideojuego(int tipoUsuario){
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    if(tipoUsuario == 1)
-        factory->getInstance()->getInterfaceV()->verVideojuego();
-    else
-        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
+
+    switch (tipoUsuario) {
+        case 0:
+            factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
+            break;
+        default:
+            factory->getInstance()->getInterfaceV()->verVideojuego();
+    }
 }

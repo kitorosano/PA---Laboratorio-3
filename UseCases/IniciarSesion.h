@@ -7,6 +7,6 @@
 
 using namespace std;
 
-void IniciarSesion();
+int IniciarSesion();
 
 #endif //PA___LABORATORIO_3_INICIARSESION_H
