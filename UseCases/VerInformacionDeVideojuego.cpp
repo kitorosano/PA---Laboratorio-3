@@ -28,5 +28,5 @@ void VerInformacionDeVideojuego(int tipoUsuario){
     if(tipoUsuario == 1)
         factory->getInstance()->getInterfaceV()->verVideojuego();
     else
-        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador(obtenido->getId());
+        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
 }
