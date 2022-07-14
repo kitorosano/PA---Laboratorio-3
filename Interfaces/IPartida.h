@@ -43,6 +43,8 @@ public:
 
     virtual void confirmarComentario() = 0;
 
+    virtual void cancelarComentario()= 0;
+
     virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
 
     virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;

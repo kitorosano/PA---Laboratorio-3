@@ -10,10 +10,12 @@ using namespace std;
 void RealizarComentario(){
     Factory * factory;
 
-    int opcion,id;
+    int opcion,id_partida,id_comentario;
+    string contenido;
+    char responder;
     IDictionary* aux=NULL;
     IDictionary* aux_jugadores_unidos=NULL;
-    IDictionary* aux_comentario=NULL;
+    IDictionary* aux_comentarios=NULL;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|              REALIZAR COMENTARIO               |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
@@ -31,7 +33,7 @@ void RealizarComentario(){
             if(aux_jugadores_unidos){
                 IIterator *it2 = aux_jugadores_unidos->getIteratorObj();
                 while (it2->hasNext()) {
-                    Jugador* aux_jug = (Jugador *) (it2);
+                    Jugador* aux_jug = (Jugador *) (it2->getCurrent());
                     cout<<"\t"<< "- " <<aux_jug->getNickname()<< endl;
                     it2->next();
                 }
@@ -41,30 +43,66 @@ void RealizarComentario(){
         cout<<"|------------------------------------------------|"<<endl;
         cout<<"|    -Seleccione la partida ingresando su id     |"<<endl;
         cout<<"|------------------------------------------------|"<<endl<<endl;
-        cin>>id;
-        factory->getInstance()->getInterfaceP()->seleccionarPartida(id);
+        cin>>id_partida;
+        factory->getInstance()->getInterfaceP()->seleccionarPartida(id_partida);
+
+            cout << "|------------------------------------------------|" << endl;
+            cout << "|              REALIZAR COMENTARIO               |" << endl;
+            cout << "|------------------------------------------------|" << endl;
+            cout << "|Responder uno ya existente? s/n                 |" << endl;
+            cout << "|------------------------------------------------|" << endl << endl;
+            cin>>responder;
+
+        if(responder=='s'||responder=='S'){
+
+            cout<<"|------------------------------------------------|"<<endl;
+            cout<<"|Listado de comentarios...                       |"<<endl;
+            cout<<"|------------------------------------------------|"<<endl<<endl;
+            aux_comentarios=factory->getInstance()->getInterfaceP()->listarComentariosDePartida();
+            if(aux_comentarios){
+                IIterator *it3 = aux_comentarios->getIteratorObj();
+                while (it3->hasNext()) {
+                    DT_Comentario* dt_comentario = (DT_Comentario*) (it3->getCurrent());
+                    cout<< "-Id Comentario" <<dt_comentario->getIdComentario()<< endl;
+                    cout<< "-Autor "<<dt_comentario->getEscritor()<<endl;
+                    cout<< "-Fecha de envio" <<dt_comentario->getFechaEnvio().getDate()<< endl;
+                    cout<< "-Hora de envio" <<dt_comentario->getHoraEnvio().getTime()<< endl;
+                    cout<< "-Contenido: "<<dt_comentario->getContenido()<<endl;
+                    cout<<"----------------------------------------------------------------"<<endl;
+                    it3->next();
+                }
+                cout<<"|------------------------------------------------|"<<endl;
+                cout<<"|Seleccione un comentario ingresando su id       |"<<endl;
+                cout<<"|------------------------------------------------|"<<endl;
+                cin>>id_comentario;
+                factory->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
+            }
+        }
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|              REALIZAR COMENTARIO               |" << endl;
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|Escribe el contenido del comentario             |" << endl;
+        cout << "|------------------------------------------------|" << endl;
+        cin>>contenido;
+        factory->getInstance()->getInterfaceP()->enviarComentario(contenido);
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|              REALIZAR COMENTARIO               |" << endl;
             cout << "|------------------------------------------------|" << endl;
-            cout << "|1)Realizar un nuevo comentario                  |" << endl;
-            cout << "|2)Responder uno ya existente                    |" << endl;
-            cout << "|------------------------------------------------|" << endl << endl;
-            cin>>opcion;
-            if(opcion!=1 && opcion!=2)
+            cout << "| 1. Confirmar Envío                             |" << endl;
+            cout << "| 2. Cancelar  Envío                             |" << endl;
+            cout << "|------------------------------------------------|" << endl;
+            cin >> opcion;
+            if(opcion !=1 && opcion !=2)
                 cout<<"Debe ingresar una opcion correcta!"<<endl;
-        }while(opcion!=1 && opcion!=2);
+
+        }while(opcion!=1 && opcion !=2);
         if(opcion==1){
-            cout<<"|------------------------------------------------|"<<endl;
-            cout<<"|Listado de comentarios...                       |"<<endl;
-            cout<<"|------------------------------------------------|"<<endl<<endl;
-            aux_comentario=factory->getInstance()->getInterfaceP()->listarComentariosDePartida();
-
+            factory->getInstance()->getInterfaceP()->confirmarComentario();
         }
-        else{
-
+        else if(opcion==2){
+            factory->getInstance()->getInterfaceP()->cancelarComentario();
         }
-
     }
     else{
         cout<<"No existen partidas multijugador no finalizadas y transmitidas en vivo en el sistema"<<endl;
