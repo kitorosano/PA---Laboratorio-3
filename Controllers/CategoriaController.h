@@ -29,8 +29,8 @@ public:
     void agregarVideojuegoACategoria(Videojuego* videojuego);
     void seleccionarCategoria(string nombre);
 
-    void listarCategorias();
-    void listarNombreCategorias();
+    IDictionary* listarCategorias();
+    ICollection* listarNombreCategorias();
 
     IDictionary* obtenerCategoriasVideojuego(string nombre_videojuego);
 
