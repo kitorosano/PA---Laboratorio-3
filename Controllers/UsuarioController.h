@@ -32,6 +32,7 @@ public:
     bool verificarNickname(string nickname);
     void confirmarRegistro();
     void cancelarRegistro();
+    int tipoUsuario(Usuario* user);
 
     int iniciarSesion(string mail,string password);
     void listarJugadores();

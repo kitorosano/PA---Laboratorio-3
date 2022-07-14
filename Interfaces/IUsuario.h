@@ -18,6 +18,7 @@ public:
     virtual bool verificarNickname(string nickname)=0;
     virtual void confirmarRegistro()=0;
     virtual void cancelarRegistro()=0;
+    virtual int tipoUsuario(Usuario* user)=0;
     virtual int iniciarSesion(string mail,string password)=0;
     virtual Usuario* getUsuarioLogeado()=0;
     virtual void listarJugadores()=0;
