@@ -12,7 +12,6 @@ void IniciarSesion() {
     Factory *factory;
     string email, password, nickname, descripcion, empresa;
     int opcion,retorno;
-    int deseaReingresar = 0;
 
     cout << "|------------------------------------------------|" << endl;
     cout << "|                INICIAR SESSION                 |" << endl;
@@ -59,7 +58,7 @@ void IniciarSesion() {
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|                INICIAR SESSION                 |" << endl;
                 cout << "|------------------------------------------------|" << endl << endl;
-                cout << "Ingrese el nickname:" << endl;
+                cout << "Ingrese el email:" << endl;
                 cin >> nickname;
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|                INICIAR SESSION                 |" << endl;
@@ -83,6 +82,9 @@ void IniciarSesion() {
                     cout<<"La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion"<<endl;
                 }
             } while (retorno != 0);
+        }
+        else{
+            return;
         }
     }
 }
