@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void VerInformacionDeVideojuego(){
+void VerInformacionDeVideojuego(int tipoUsuario){
     Factory* factory;
     string nombre;
     Videojuego* obtenido;
@@ -25,6 +25,8 @@ void VerInformacionDeVideojuego(){
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    factory->getInstance()->getInterfaceV()->verVideojuego();
-    system("pause");
+    if(tipoUsuario == 1)
+        factory->getInstance()->getInterfaceV()->verVideojuego();
+    else
+        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador(obtenido->getId());
 }
