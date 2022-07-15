@@ -10,7 +10,7 @@
 #include "ColeccionesG/IDictionary.h"
 #include "Classes/Jugador.h"
 #include "Classes/Videojuego.h"
-#include "DataTypes/DT_Date.h"
+#include "DataTypes/DT_Fecha.h"
 #include "DataTypes/DT_Time.h"
 #include "string"
 #include <iostream>
@@ -22,11 +22,9 @@ private:
     int idPartida;
     Jugador* jugador;
     Videojuego* videojuego;
-    DT_Date fecha;
-    DT_Time horaComienzo;
-    double horasPartida;
-    DT_Date fechaFin;
-    DT_Time horaFin;
+    DT_Fecha* fechaComienzo;
+    DT_Fecha* fechaFin;
+    int horasPartida;
     bool finalizada;
 
 public:
@@ -36,24 +34,19 @@ public:
 
     int getIdPartida();
     Videojuego* getVideojuego();
-    DT_Date getFecha();
-    DT_Time getHoraComienzo();
-    double getHorasPartida();
     Jugador* getJugador();
-    DT_Date getFechaFin();
-    DT_Time getHoraFin();
-    bool getFinalizada();
+    DT_Fecha* getFechaComienzo();
+    DT_Fecha* getFechaFin();
+    int getHorasPartida();
+    bool isFinalizada();
 
-
+    void setIdPartida(int idpartida);
     void setJugador(Jugador* jugador);
     void setVideojuego(Videojuego* videojuego);
-    void setFecha(DT_Date fecha);
-    void setHoraComienzo(DT_Time horaCominezo);
-    void setHorasPartida(double horasPartida);
-    void setIdPartida(int idpartida);
-    void setFechaFin(DT_Date fechaFin);
-    void setHoraFin(DT_Time horaFin);
-    void setFinalizada(bool finalizada);
+    void setFechaComienzo(DT_Fecha* fecha);
+    void setFechaFin(DT_Fecha* fechaFin);
+    void setHorasPartida(int horasPartida);
+    void finalizarPartida();
 
     string toString();
 };

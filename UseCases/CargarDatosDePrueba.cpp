@@ -145,30 +145,33 @@ void CargarDatosDePrueba() {
     Suscripcion *auxSuscripcion;
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V1->getId(), E_PeriodoValidez::TRIMESTRAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J1->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Paypal);
-//    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion();
-//    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setHoraSuscripcion();
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(1,6,21,9,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::TRIMESTRAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J1->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(2,6,21,11,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::MENSUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J2->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Paypal);
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(4,6,21,9,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V3->getId(), E_PeriodoValidez::ANUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J2->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(11,6,21,9,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::MENSUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J3->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(3,6,21,7,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V3->getId(), E_PeriodoValidez::VITALICIA);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J3->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
+    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(21,12,21,15,0,0));
     factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
-
     cout << " Agregadas correctamente!" << endl;
 
     // Puntajes a videojuegos

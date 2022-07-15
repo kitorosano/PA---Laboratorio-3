@@ -1,12 +1,12 @@
 //
 // Created by Admin on 23/06/2022.
 //
-#include "DT_Date.h"
+#include "DT_Fecha.h"
 #include <iomanip>
 
 using namespace std;
 
-DT_Date::DT_Date(){
+DT_Fecha::DT_Fecha(){
     stringstream ssDate;
     auto t = std::time(nullptr);
     auto tm = *localtime(&t);
@@ -15,8 +15,8 @@ DT_Date::DT_Date(){
     this->date = ssDate.str();
 }
 
-DT_Date::~DT_Date(){}
+DT_Fecha::~DT_Fecha(){}
 
-string DT_Date::getDate(){
+string DT_Fecha::getDate(){
     return this->date;
 }

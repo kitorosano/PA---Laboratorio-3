@@ -12,16 +12,14 @@ using namespace std;
 class DT_Comentario : public ICollectible {
 private:
     int idComentario;
-    DT_Date* fechaEnvio;
-    DT_Time* horaEnvio;
+    DT_Fecha* fechaEnvio;
     string escritor;
     string contenido;
 public:
-    DT_Comentario(int idComentario,DT_Date* fechaEnvio,DT_Time* horaEnvio,string escritor, string contenido);
+    DT_Comentario(int idComentario,DT_Fecha* fechaEnvio,string escritor, string contenido);
     ~DT_Comentario();
     int getIdComentario();
-    DT_Date* getFechaEnvio();
-    DT_Time* getHoraEnvio();
+    DT_Fecha* getFechaEnvio();
     string getEscritor();
     string getContenido();
 };

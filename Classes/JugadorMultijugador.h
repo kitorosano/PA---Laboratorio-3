@@ -9,26 +9,23 @@
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
 #include "Classes/Jugador.h"
-#include "DataTypes/DT_Time.h"
 #include <string>
 #include <iostream>
-#include "DataTypes/DT_Date.h"
+#include "DataTypes/DT_Fecha.h"
 
 class JugadorMultijugador: public ICollectible {
 private:
     Jugador* jugador;
-    DT_Time* hora_finalizacion;
-    DT_Date* fecha_finalizacion;
+    DT_Fecha* fecha_finalizacion;
 
 public:
     JugadorMultijugador();
     JugadorMultijugador(Jugador* jugador);
     ~JugadorMultijugador();
 
-    void setHoraFinalizacion(DT_Time* hora_finalizacion);
     Jugador* getJugador();
-    DT_Time* getHora_finalizacion();
-    void setfecha_finalizacion(DT_Date* fecha_finalizacion);
+    DT_Fecha* getFechaFinalizacion();
+    void setFechaFinalizacion(DT_Fecha* fecha_finalizacion);
 };
 
 

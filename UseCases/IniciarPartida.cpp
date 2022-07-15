@@ -68,8 +68,7 @@ void IniciarPartida() {
             while(it->hasNext()){
                 dt_partida = dynamic_cast<DT_PartidasIndividualesFinalizadas *>(it->getCurrent());
                 cout<<"ID: "<<dt_partida->getIdPartida()<<endl;
-                cout<<"Fecha Comienzo: "<<dt_partida->getFecha()<<endl;
-                cout<<"Hora Comienzo: "<<dt_partida->getHoraComienzo()<<endl;
+                cout << "Fecha Comienzo: " << dt_partida->getFechaComienzo() << endl;
                 cout<<"Duracion: "<<dt_partida->getHorasPartida()<<endl;
                 cout << "|------------------------------------------------|" << endl << endl;
 

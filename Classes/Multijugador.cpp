@@ -39,16 +39,14 @@ void Multijugador::setDuracionTotal(double duracionTotal) {
 }
 
 Comentario* Multijugador::obtenerComentario(int idComentario){
-    if(this->comentarios){
-        KeyInt* key_id = new KeyInt(idComentario);
-        Comentario* comentario = (Comentario*) (this->comentarios->find(key_id));
-        if(!comentario){
-            throw invalid_argument("El comentario no existe en la partida");
-            return NULL;
-        }
-        else{
-            return comentario;
-        }
+    KeyInt* key_id = new KeyInt(idComentario);
+    Comentario* comentario = (Comentario*) (this->comentarios->find(key_id));
+    if(!comentario){
+        cout << "El comentario no existe en la partida";
+        return NULL;
+    }
+    else{
+        return comentario;
     }
 }
 
@@ -58,7 +56,7 @@ IDictionary* Multijugador::obtenerComentariosDePartida(){
     while(it->hasNext()){
         Comentario* comentario= dynamic_cast<Comentario*>(it->getCurrent());
 
-                DT_Comentario* dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getHoraEnvio(),comentario->getEscritor()->getNickname(),comentario->getContenido());
+                DT_Comentario* dt_comentario = new DT_Comentario(comentario->getIdComentario(),comentario->getFechaEnvio(),comentario->getEscritor()->getNickname(),comentario->getContenido());
                 comentarios_multijugador->add(dt_comentario, new KeyInt(comentario->getIdComentario()));
         it->next();
     }

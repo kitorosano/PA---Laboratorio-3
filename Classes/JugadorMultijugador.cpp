@@ -11,24 +11,19 @@ JugadorMultijugador::JugadorMultijugador() {
 
 JugadorMultijugador::JugadorMultijugador(Jugador *jugador) {
     this->jugador = jugador;
-    this->hora_finalizacion = NULL;
 }
 
 JugadorMultijugador::~JugadorMultijugador() {
-}
-
-void JugadorMultijugador::setHoraFinalizacion(DT_Time* hora_finalizacion) {
-    this->hora_finalizacion = hora_finalizacion;
 }
 
 Jugador *JugadorMultijugador::getJugador() {
     return this->jugador;
 }
 
-DT_Time *JugadorMultijugador::getHora_finalizacion() {
-    return this->hora_finalizacion;
+DT_Fecha *JugadorMultijugador::getFechaFinalizacion() {
+    return this->fecha_finalizacion;
 }
 
-void JugadorMultijugador::setfecha_finalizacion(DT_Date* fecha_finalizacion) {
+void JugadorMultijugador::setFechaFinalizacion(DT_Fecha* fecha_finalizacion) {
     this->fecha_finalizacion = fecha_finalizacion;
 }

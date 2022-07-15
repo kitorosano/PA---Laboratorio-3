@@ -26,7 +26,7 @@ add_executable(PA___Laboratorio_3
         Classes/JugadorMultijugador.cpp Classes/JugadorMultijugador.h
         Classes/VideojuegoJugador.cpp Classes/VideojuegoJugador.h
 
-        DataTypes/DT_Date.cpp DataTypes/DT_Date.h
+        DataTypes/DT_Fecha.cpp DataTypes/DT_Fecha.h
         DataTypes/DT_Time.cpp DataTypes/DT_Time.h
         DataTypes/DT_InfoVideojuego.cpp DataTypes/DT_InfoVideojuego.h
         DataTypes/DT_MultijugadorVideojuego.cpp DataTypes/DT_MultijugadorVideojuego.h
@@ -71,4 +71,4 @@ add_executable(PA___Laboratorio_3
         UseCases/AbandonarPartidaMultijugador.cpp UseCases/AbandonarPartidaMultijugador.h
         UseCases/FinalizarPartida.cpp UseCases/FinalizarPartida.h
         UseCases/RealizarComentario.cpp UseCases/RealizarComentario.h
-        UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h Utils/Utils.cpp Utils/Utils.h)
+        UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h Utils/Utils.cpp Utils/Utils.h DataTypes/DT_Fecha.cpp DataTypes/DT_Fecha.h)

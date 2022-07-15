@@ -2,8 +2,8 @@
 // Created by Admin on 23/06/2022.
 //
 
-#ifndef PA___LABORATORIO_3_DT_DATE_H
-#define PA___LABORATORIO_3_DT_DATE_H
+#ifndef PA___LABORATORIO_3_DT_Fecha_H
+#define PA___LABORATORIO_3_DT_Fecha_H
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
@@ -13,14 +13,14 @@
 
 using namespace std;
 
-class DT_Date: public ICollectible {
+class DT_Fecha: public ICollectible {
 private:
     string date;
 public:
-    DT_Date();
-    ~DT_Date();
+    DT_Fecha();
+    ~DT_Fecha();
 
     string getDate();
 
 };
-#endif //PA___LABORATORIO_3_DT_DATE_H
+#endif //PA___LABORATORIO_3_DT_Fecha_H

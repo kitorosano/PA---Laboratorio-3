@@ -3,12 +3,11 @@
 //
 
 #include "DT_PartidasIndividualesFinalizadas.h"
+#include <sstream>
 
-DT_PartidasIndividualesFinalizadas::DT_PartidasIndividualesFinalizadas(int idPartida, string fecha,
-                                                                       string horaComienzo, double horasPartida) {
+DT_PartidasIndividualesFinalizadas::DT_PartidasIndividualesFinalizadas(int idPartida, DT_Fecha* fecha, double horasPartida) {
     this->idPartida = idPartida;
-    this->fecha = fecha;
-    this->horaComienzo = horaComienzo;
+    this->fechaComienzo = fecha;
     this->horasPartida = horasPartida;
 }
 
@@ -16,14 +15,18 @@ int DT_PartidasIndividualesFinalizadas::getIdPartida() {
     return this->idPartida;
 }
 
-string DT_PartidasIndividualesFinalizadas::getFecha() {
-    return this->fecha;
-}
-
-string DT_PartidasIndividualesFinalizadas::getHoraComienzo() {
-    return this->horaComienzo;
+DT_Fecha* DT_PartidasIndividualesFinalizadas::getFechaComienzo() {
+    return this->fechaComienzo;
 }
 
 double DT_PartidasIndividualesFinalizadas::getHorasPartida() {
     return this->horasPartida;
+}
+
+string DT_PartidasIndividualesFinalizadas::toString() {
+    stringstream ss;
+    ss << "Id Partida: " << this->idPartida << endl;
+    ss << "Fecha de comienzo: " << this->fechaComienzo->toString() << endl;
+    ss << "Horas de partida: " << this->horasPartida << endl;
+    return ss.str();
 }

@@ -26,8 +26,7 @@ void AbandonarPartidaMultijugador() {
     while(it->hasNext()){
         multi = dynamic_cast<Multijugador *>(it->getCurrent());
         cout<<"ID: "<<multi->getIdPartida();
-        cout<<"Fecha Comienzo: "<<multi->getFecha().getDate()<<endl;
-        cout<<"Hora Comienzo: "<<multi->getHoraComienzo().getTime()<<endl;
+        cout << "Fecha Comienzo: " << multi->getFechaComienzo()->toString() << endl;
         cout<<"Nombre Videojuego: "<<multi->getVideojuego()->getNombre()<<endl;
         trans = multi->isTransmitidaEnVivo();
         if(trans){

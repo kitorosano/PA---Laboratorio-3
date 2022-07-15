@@ -23,15 +23,11 @@ int Partida::getIdPartida() {
     return this->idPartida;
 }
 
-DT_Date Partida::getFecha() {
-    return this->fecha;
+DT_Fecha* Partida::getFechaComienzo() {
+    return this->fechaComienzo;
 }
 
-DT_Time Partida::getHoraComienzo() {
-    return this->horaComienzo;
-}
-
-double Partida::getHorasPartida() {
+int Partida::getHorasPartida() {
     return this->horasPartida;
 }
 
@@ -43,28 +39,16 @@ Videojuego *Partida::getVideojuego() {
     return this->videojuego;
 }
 
-DT_Date Partida::getFechaFin() {
+DT_Fecha* Partida::getFechaFin() {
     return this->fechaFin;
 }
 
-DT_Time Partida::getHoraFin() {
-    return this->horaFin;
-}
-
-bool Partida::getFinalizada() {
+bool Partida::isFinalizada() {
     return this->finalizada;
 }
 
-void Partida::setFecha(DT_Date fecha) {
-    this->fecha = fecha;
-}
-
-void Partida::setHoraComienzo(DT_Time horaCominezo) {
-    this->horaComienzo = horaCominezo;
-}
-
-void Partida::setHorasPartida(double horasPartida) {
-    this->horasPartida = horasPartida;
+void Partida::setIdPartida(int idpartida) {
+    this->idPartida = idpartida;
 }
 
 void Partida::setJugador(Jugador *jugador) {
@@ -75,31 +59,33 @@ void Partida::setVideojuego(Videojuego *videojuego) {
     this->videojuego = videojuego;
 }
 
+void Partida::setFechaComienzo(DT_Fecha* fecha) {
+    this->fechaComienzo = fecha;
+}
+
+void Partida::setFechaFin(DT_Fecha* fechaFin) {
+    this->fechaFin = fechaFin;
+}
+
+void Partida::setHorasPartida(int horasPartida) {
+    this->horasPartida = horasPartida;
+}
+
+void Partida::finalizarPartida() {
+    DT_Fecha* fechaActual = new DT_Fecha();
+    setFechaFin(fechaActual);
+    setHorasPartida(getFechaComienzo()->getDiferenciaEnHoras(fechaActual));
+    this->finalizada = true;
+}
+
 string Partida::toString() {
     stringstream ss;
     ss << "Partida: " << this->getIdPartida() << endl;
     ss << "Jugador: " << this->getJugador()->toString() << endl;
     ss << "Videojuego: " << this->getVideojuego()->toString() << endl;
-    ss << "Fecha: " << this->getFecha().getDate() << endl;
-    ss << "Hora de comienzo: " << this->getHoraComienzo().getTime() << endl;
-    ss << "Horas de partida: " << this->getHorasPartida() << endl;
+    ss << "Fecha de Comienzo: " << this->getFechaComienzo()->toString()<< endl;
+    ss << "Finalizada: " << this->isFinalizada() << endl;
+    this->isFinalizada() ? ss << "Horas de partida: " << this->getHorasPartida() << endl : ss << "";
+    this->isFinalizada() ? ss << "Fecha de Fin: " << this->getFechaFin()->toString() << endl : ss << "";
     return ss.str();
 }
-
-void Partida::setIdPartida(int idpartida) {
-    this->idPartida = idpartida;
-}
-
-void Partida::setFechaFin(DT_Date fechaFin) {
-    this->fechaFin = fechaFin;
-}
-
-void Partida::setHoraFin(DT_Time horaFin) {
-    this->horaFin = horaFin;
-}
-
-void Partida::setFinalizada(bool finalizada) {
-    this->finalizada = finalizada;
-}
-
-

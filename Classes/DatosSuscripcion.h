@@ -10,8 +10,7 @@
 #include "ColeccionesG/IDictionary.h"
 #include "Suscripcion.h"
 #include "Jugador.h"
-#include "DataTypes/DT_Date.h"
-#include "DataTypes/DT_Time.h"
+#include "DataTypes/DT_Fecha.h"
 #include "DataTypes/E_MetodoPago.h"
 
 class DatosSuscripcion: public ICollectible {
@@ -20,27 +19,24 @@ private:
     string nickname;
     Suscripcion *suscripcion;
     E_MetodoPago metodo_pago;
-    DT_Date* fecha_suscripcion;
-    DT_Time* hora_suscripcion;
+    DT_Fecha* fecha_suscripcion;
 
 public:
     DatosSuscripcion();
     DatosSuscripcion(string nickname, Suscripcion *suscripcion, E_MetodoPago metodo_pago);
-    DatosSuscripcion(string nickname, Suscripcion *suscripcion, DT_Date* fecha_suscripcion, DT_Time* hora_suscripcion, E_MetodoPago metodo_pago);
+    DatosSuscripcion(string nickname, Suscripcion *suscripcion, DT_Fecha* fecha_suscripcion, E_MetodoPago metodo_pago);
     virtual ~DatosSuscripcion();
 
     int getId();
     string getNickName();
     Suscripcion *getSuscripcion();
     E_MetodoPago getMetodoPago();
-    DT_Date* getFechaSuscripcion();
-    DT_Time* getHoraSuscripcion();
+    DT_Fecha* getFechaSuscripcion();
     bool isActivo();
 
 
     void setId(int id);
-    void setFechaSuscripcion();
-    void setHoraSuscripcion();
+    void setFechaSuscripcion(DT_Fecha* fechaSuscripcion);
 
     void marcarExpirado();
 

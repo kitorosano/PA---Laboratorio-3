@@ -32,7 +32,7 @@ void FinalizarPartida() {
         individual = dynamic_cast<Individual *>(it->getCurrent());
         multijugador = dynamic_cast<Multijugador *>(it->getCurrent());
         cout<<"ID: "<<partida->getIdPartida();
-        cout<<"Fecha Comienzo: "<<partida->getFecha().getDate()<<endl;
+        cout << "Fecha Comienzo: " << partida->getFechaComienzo()->toString() << endl;
         cout<<"Nombre Videojuego: "<<partida->getVideojuego()->getNombre()<<endl;
 
         if (individual){

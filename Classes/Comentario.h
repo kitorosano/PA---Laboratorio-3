@@ -8,7 +8,7 @@
 #include "ColeccionesG/ICollectible.h"
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
-#include "DataTypes/DT_Date.h"
+#include "DataTypes/DT_Fecha.h"
 #include "DataTypes/DT_Time.h"
 #include "Classes/Jugador.h"
 #include "string"
@@ -19,27 +19,24 @@ class Comentario : public ICollectible {
 private:
     int idComentario;
     Jugador* escritor;
-    DT_Date* fechaEnvio;
-    DT_Time* horaEnvio;
+    DT_Fecha* fechaEnvio;
     string contenido;
     Comentario* comentarioAResponder;
 
 public:
     Comentario();
-    Comentario(Jugador* escritor, DT_Date* fechaEnvio, DT_Time* horaEnvio, string contenido);
-    Comentario(Jugador* escritor, DT_Date* fechaEnvio, DT_Time* horaEnvio, string contenido, Comentario* comentarioAResponder);
+    Comentario(Jugador* escritor, DT_Fecha* fechaEnvio, string contenido);
+    Comentario(Jugador* escritor, DT_Fecha* fechaEnvio, string contenido, Comentario* comentarioAResponder);
     ~Comentario();
 
     int getIdComentario();
-    DT_Date* getFechaEnvio();
-    DT_Time* getHoraEnvio();
+    DT_Fecha* getFechaEnvio();
     string getContenido();
     Comentario* getComentarioAResponder();
     Jugador* getEscritor();
 
     void setIdComentario(int idComentario);
-    void setFechaEnvio(DT_Date* fechaEnvio);
-    void sethoraEnvio(DT_Time* horaEnvio);
+    void setFechaEnvio(DT_Fecha* fechaEnvio);
     void setContenido(string contenido);
     void setComentarioAResponder(Comentario* comentarioAResponder);
     void setEscritor(Jugador* escritor);

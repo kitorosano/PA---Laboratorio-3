@@ -106,12 +106,8 @@ void PartidaController::confirmarPartida(){
     this->partidaSeleccionada->setIdPartida(idPartida);
 
     // Asignar la Fecha para la partida
-    DT_Date *fecha = new DT_Date();
-    this->partidaSeleccionada->setFecha(*fecha);
-
-    // Asignar la hora de comienzo de la partida
-    DT_Time *horaComienzo = new DT_Time();
-    this->partidaSeleccionada->setHoraComienzo(*horaComienzo);
+    DT_Fecha *fecha = new DT_Fecha();
+    this->partidaSeleccionada->setFechaComienzo(fecha);
 
     // Agregar a la colección la nueva partida;
     partidas->add(partidaSeleccionada, new KeyInt(idPartida));
@@ -128,7 +124,7 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     while(it->hasNext()){
         partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
-            if((partida->getFinalizada()==false && partida->isTransmitidaEnVivo()==true)){
+            if((partida->isFinalizada() == false && partida->isTransmitidaEnVivo() == true)){
                 // Guardar todo en una coleccion y retorna esa coleccion
                 //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
                 DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
@@ -175,16 +171,14 @@ void PartidaController::enviarComentario(string contenido){
     if(jugador){
         if(this->comentarioAResponder){
             //respuesta
-            DT_Date* fechaRespuesta =new DT_Date();
-            DT_Time* horaRespuesta = new DT_Time();
-            this->nuevoComentario= new Comentario(jugador,fechaRespuesta,horaRespuesta,contenido,this->comentarioAResponder);
+            DT_Fecha* fechaRespuesta =new DT_Fecha();
+            this->nuevoComentario= new Comentario(jugador,fechaRespuesta,contenido,this->comentarioAResponder);
             this->comentarioAResponder=NULL;
         }
         else{
             //envio
-            DT_Date* fechaEnvio = new DT_Date();
-            DT_Time* horaEnvio = new DT_Time();
-            this->nuevoComentario= new Comentario(jugador,fechaEnvio,horaEnvio,contenido);
+            DT_Fecha* fechaEnvio = new DT_Fecha();
+            this->nuevoComentario= new Comentario(jugador,fechaEnvio,contenido);
         }
     }
 }
@@ -220,12 +214,12 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
                 // verificar que no este finalizado
                 // obtener la lista de jugadores de esa partida multijugador y verificar si el nickanme del jugador logeado esta alli
                 KeyString *nickName = new KeyString(jugadorlogeado->getNickname());
-                if ((multijugador->getFinalizada() == false) &&
+                if ((multijugador->isFinalizada() == false) &&
                     (multijugador->getJugadoresEnLaPartida()->member(nickName))) {
                     // verificar si ese usuario ya abandono esa partida mirando el atributo hora finalizacion si tiene un horario o esta ne NULL
                     JugadorMultijugador* jugadorMultijugador = dynamic_cast<JugadorMultijugador *>(multijugador->getJugadoresEnLaPartida()->find(
                             nickName));
-                    if (jugadorMultijugador->getHora_finalizacion() == NULL){
+                    if (jugadorMultijugador->getFechaFinalizacion() == NULL){
                         // agrego la partida multijugador a la coleccion para que despues se muestre
                         listadepartidasMulti->add(multijugador, new KeyInt(idpartida));
                     }
@@ -252,10 +246,8 @@ void PartidaController::confirmarAbandonoPartida(int idPartida){
             while(it->hasNext()){
                 jugadorUnido = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
                 if(jugadorlogeado->getNickname() == jugadorUnido->getJugador()->getNickname()){
-                    DT_Time* horafinal = new DT_Time();
-                    jugadorUnido->setHoraFinalizacion(horafinal);
-                    DT_Date* fechaFinal = new DT_Date();
-                    jugadorUnido->setfecha_finalizacion(fechaFinal);
+                    DT_Fecha* fechaFinal = new DT_Fecha();
+                    jugadorUnido->setFechaFinalizacion(fechaFinal);
                 }
                 it->next();
             }
@@ -276,7 +268,7 @@ IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
             partida = dynamic_cast<Partida *>(it->getCurrent());
             if (partida) {
                 if ((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) &&
-                    (!partida->getFinalizada())) {
+                    (!partida->isFinalizada())) {
                     listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
                 }
             }
@@ -298,80 +290,7 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
         partida = dynamic_cast<Partida *>(this->partidas->find(idpartida));
         Multijugador* multijugador = NULL;
         if(partida){
-           //VER SI ES POSIBLE MOVER ESTO COMO UN METODO DE UTILIDAD PARA NO SOBRECARGAR ESTE METODO DEL CONTROLADOR??
-        
-            DT_Date *fechaFin = new DT_Date();
-            partida->setFechaFin(*fechaFin);
-            DT_Time *horaFin = new DT_Time();
-            partida->setHoraFin(*horaFin);
-            partida->setFinalizada(true);
-
-            // calcular la hora de duración de la partida:
-            string valor;
-
-            // Separar en partes la Fecha y hora de Comienzo
-            string fechacom = partida->getFecha().getDate();
-            int valoresFechacom[3];
-            stringstream input_stringstream(fechacom);
-            for(int i = 0; getline(input_stringstream, valor, '-'); i++){
-                // convertir a int cada parte
-                valoresFechacom[i] = stoi(valor);
-            }
-
-            string horacom = partida->getHoraComienzo().getTime();
-            int valoresHoracom[3];
-            stringstream input_stringstream2(horacom);
-            for(int i = 0; getline(input_stringstream2, valor, ':'); i++){
-                // convertir a int cada parte
-                valoresHoracom[i] = stoi(valor);
-            }
-
-
-            // Separar en partes la Fecha y hora de Finalización
-            cout<<"----------------------------- FIN"<<endl;
-            string fechafin = partida->getFechaFin().getDate();
-            int valoresFechafin[3];
-            stringstream input_stringstream3(fechafin);
-            for(int i = 0; getline(input_stringstream3, valor, '-'); i++){
-                // convertir a int cada parte
-                valoresFechafin[i] = stoi(valor);
-            }
-
-
-            string horafin = partida->getHoraFin().getTime();
-            int valoresHorafin[3];
-            stringstream input_stringstream4(horafin);
-            for(int i = 0; getline(input_stringstream4, valor, ':'); i++){
-                // convertir a int cada parte
-                valoresHorafin[i] = stoi(valor);
-            }
-
-            // Restar el tiempo de comienzo con el tiempo de Finalizacion con la funcion difftime()
-            time_t now;
-            struct tm comienzo;
-            struct tm fin;
-            double seconds;
-            time(&now);  // get current time; same as: now = time(NULL)
-            comienzo = *localtime(&now);
-            fin = *localtime(&now);
-            // fechaComienzo de la partida
-            comienzo.tm_hour = valoresHoracom[0];
-            comienzo.tm_min = valoresHoracom[1];
-            comienzo.tm_sec = valoresHoracom[2];
-            comienzo.tm_mday = valoresFechacom[0]; // itn - day of the month	1-31
-            comienzo.tm_mon = valoresFechacom[1]-1;  // int - months since January	0-11
-
-            // fechafinal de la partida
-            fin.tm_hour = valoresHorafin[0];
-            fin.tm_min = valoresHorafin[1];
-            fin.tm_sec = valoresHorafin[2];
-            fin.tm_mday = valoresFechafin[0]; // itn - day of the month	1-31
-            fin.tm_mon = valoresFechafin[1]-1;  // int - months since January	0-11
-
-            seconds = difftime(mktime(&fin),mktime(&comienzo));
-            double totalhorasJugadas = seconds/3600;
-            //cout<<"Horas jugadas: "<<totalhorasJugadas<<endl;
-            partida->setHorasPartida(totalhorasJugadas);
+            partida->finalizarPartida();
 
             multijugador = dynamic_cast<Multijugador *>(partida);
         }
@@ -380,11 +299,9 @@ void PartidaController::confirmarFinalizarPartida(int idPartida){
             while(it2->hasNext()) {
                 JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
                 if (jm) {
-                    if (jm->getHora_finalizacion() == NULL){ // Si el jugador aun no tiene hora de finalizacion se le setea porque el jugadorIniciador va a abandonar la partida
-                        DT_Time *horaFinalJugador = new DT_Time();
-                        jm->setHoraFinalizacion(horaFinalJugador);
-                        DT_Date* fechaFinal = new DT_Date();
-                        jm->setfecha_finalizacion(fechaFinal);
+                    if (jm->getFechaFinalizacion() == NULL){ // Si el jugador aun no tiene fechaComienzo de finalizacion se le setea porque el jugadorIniciador va a abandonar la partida
+                        DT_Fecha* fechaFinal = new DT_Fecha();
+                        jm->setFechaFinalizacion(fechaFinal);
                     }
                 }
                 it2->next();
@@ -406,9 +323,9 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
     while(it->hasNext()){
         partida = dynamic_cast<Individual *>(it->getCurrent());
         if(partida){
-            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->getFinalizada())){
+            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->isFinalizada())){
                 // Guardar todo en una coleccion y retorna esa coleccion
-                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFecha().getDate(), partida->getHoraComienzo().getTime(), partida->getHorasPartida());
+                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFechaComienzo(), partida->getHorasPartida());
                 listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
             }
         }
@@ -420,7 +337,6 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
 void PartidaController::cancelarIniciarPartida() {
     Factory* fabrica;
     this->partidaSeleccionada = NULL;
-    fabrica->getInterfaceV()->setVideojuegoSeleccionado(NULL);
-    // setear a NULL tambien el videoJuegoSeleccionado que es la variable que esta en el controladorVideoJuego
+    fabrica->getInstance()->getInterfaceV()->setVideojuegoSeleccionado(NULL);
 }
 // lugar 1
