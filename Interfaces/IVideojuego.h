@@ -15,14 +15,20 @@ using namespace std;
 
 class IVideojuego{
 public:
+    virtual IDictionary* getVideojuegos()=0;
     virtual IDictionary* getSuscripciones()=0;
-    virtual void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia) = 0;
-    virtual void confirmarVideojuego() = 0;
+
+    virtual IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego)=0;
+    virtual Suscripcion* obtenerSuscripcionVideojuego(int id_videojuego, E_PeriodoValidez periodoValidez)=0;
+
+    virtual void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia, Desarrollador* desarrollador) = 0;
+    virtual Videojuego* confirmarVideojuego() = 0;
     virtual void cancelarVideojuego() = 0;
 
     virtual void seleccionarVideoJuego(int id) = 0;
     virtual Videojuego* getVideojuegoSeleccionado() = 0;
     virtual void setVideojuegoSeleccionado(Videojuego* videojuego) = 0;
+    virtual Videojuego* obtenerVideojuegoPorId(int id_videojuego) = 0;
     virtual Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego) = 0;
 
     virtual IDictionary* listarNombreVideojuegos() = 0;

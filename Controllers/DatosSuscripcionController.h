@@ -16,23 +16,24 @@ private:
     DatosSuscripcionController();
 
     int contadorIdDatosSuscripcion = 1;
-    DatosSuscripcion* controller_memory;
+    DatosSuscripcion* datoSuscripcionSeleccionado;
     IDictionary* datosSuscripciones;
 
 public:
     static DatosSuscripcionController* getInstance();
     virtual ~DatosSuscripcionController();
 
+    DatosSuscripcion* getDatoSuscripcionSeleccionado();
+
     int getNuevoIdDatosSuscripcion();
     IDictionary* getDatosSuscripciones();
 
-    IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego);
     IDictionary* listarVideojuegoSuscripciones();
 
     IDictionary* listarNombreVideojuegosSuscritos();
     void cancelarSuscripcionActiva(int idSuscripcion);
 
-    void crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago);
+    void crearDatosSuscripcion(string nickname, int idSuscripcion, E_MetodoPago metodo_pago);
     void confirmarDatosSuscripcion();
     void cancelarDatosSuscripcion();
 

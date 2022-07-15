@@ -26,17 +26,21 @@ private:
 public:
     DatosSuscripcion();
     DatosSuscripcion(string nickname, Suscripcion *suscripcion, E_MetodoPago metodo_pago);
+    DatosSuscripcion(string nickname, Suscripcion *suscripcion, DT_Date* fecha_suscripcion, DT_Time* hora_suscripcion, E_MetodoPago metodo_pago);
     virtual ~DatosSuscripcion();
 
     int getId();
-    void setId(int id);
-
     string getNickName();
     Suscripcion *getSuscripcion();
     E_MetodoPago getMetodoPago();
     DT_Date* getFechaSuscripcion();
     DT_Time* getHoraSuscripcion();
     bool isActivo();
+
+
+    void setId(int id);
+    void setFechaSuscripcion();
+    void setHoraSuscripcion();
 
     void marcarExpirado();
 

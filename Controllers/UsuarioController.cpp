@@ -54,12 +54,15 @@ bool UsuarioController::verificarNickname(string nickname){
     }
     return true;
 }
-void UsuarioController::confirmarRegistro(){
+Usuario* UsuarioController::confirmarRegistro(){
+    Usuario *user = NULL;
     if(this->controller_memory) {
         KeyString* key = new KeyString(controller_memory->getEmail());
         this->usuarios->add(this->controller_memory,key);
-        this->controller_memory=NULL;
+        user = this->controller_memory;
     }
+    this->controller_memory=NULL;
+    return user;
 }
 void UsuarioController::cancelarRegistro(){
     if(this->controller_memory) {

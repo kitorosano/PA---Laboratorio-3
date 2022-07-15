@@ -49,8 +49,9 @@ void PublicarVideojuego() {
     cout<<"Ingrese el costo vitalicia del videojuego: ";
     cin>>costoVitalicia;
 
-    // CREO EL VIDEOJUEGO CON LOS DATOS INGRESADOS Y LAS SUSCRIPCIONES, Y GUARDO TANTO EL VIDEOJUEGO COMO SUSCRIPCIONES EN MEMORIA
-    fabrica->getInstance()->getInterfaceV()->datosNuevoVideojuego(nombre, descripcion, costoMensual, costoTrimestral, costoAnual, costoVitalicia);
+    // CREO EL VIDEOJUEGO CON LOS DATOS INGRESADOS Y LAS SUSCRIPCIONES, Y GUARDO TANTO EL VIDEOJUEGO COMO SUSCRIPCIONES EN MEMORIA}
+    Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+    fabrica->getInstance()->getInterfaceV()->datosNuevoVideojuego(nombre, descripcion, costoMensual, costoTrimestral, costoAnual, costoVitalicia, desarrollador);
 
     cout << "|------------------------------------------------|" << endl<<endl<<endl;
     // AGREGAR VIDEOJUEGO A CATEGORIAS DE PLATAFORMA

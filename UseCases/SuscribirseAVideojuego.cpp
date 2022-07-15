@@ -108,7 +108,8 @@ void SuscribirseAVideojuego() {
     while (iterSuscripciones->hasNext()) {
         Suscripcion *suscripcion = dynamic_cast<Suscripcion *>(iterSuscripciones->next());
         if(suscripcion->getVideojuego()->getNombre() == nombreVideojuego && suscripcion->getPeriodoValidez()==periodoValidez) {
-            fabrica->getInstance()->getInterfaceD()->crearDatosSuscripcion(suscripcion->getId(), metodoPago);
+            Jugador* jugador = dynamic_cast<Jugador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+            fabrica->getInstance()->getInterfaceD()->crearDatosSuscripcion(jugador->getNickname(), suscripcion->getId(), metodoPago);
             break;
         }
     }

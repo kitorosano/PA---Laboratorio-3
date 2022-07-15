@@ -30,7 +30,7 @@ public:
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);
     bool verificarNickname(string nickname);
-    void confirmarRegistro();
+    Usuario* confirmarRegistro();
     void cancelarRegistro();
     int tipoUsuario(Usuario* user);
 

@@ -23,7 +23,7 @@ public:
     Categoria* getCategoriaSeleccionada();
 
     void agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo);
-    void confirmarCategoria();
+    Categoria* confirmarCategoria();
     void cancelarCategoria();
 
     void agregarVideojuegoACategoria();

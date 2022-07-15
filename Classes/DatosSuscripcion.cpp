@@ -15,6 +15,15 @@ DatosSuscripcion::DatosSuscripcion(string nickname, Suscripcion *suscripcion, E_
     this->hora_suscripcion = new DT_Time();
 }
 
+DatosSuscripcion::DatosSuscripcion(string nickname, Suscripcion *suscripcion, DT_Date *fecha_suscripcion,
+                                   DT_Time *hora_suscripcion, E_MetodoPago metodo_pago) {
+    this->nickname = nickname;
+    this->suscripcion = suscripcion;
+    this->metodo_pago = metodo_pago;
+    this->fecha_suscripcion = fecha_suscripcion;
+    this->hora_suscripcion = hora_suscripcion;
+}
+
 DatosSuscripcion::~DatosSuscripcion() {
 }
 

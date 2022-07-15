@@ -35,6 +35,10 @@ IDictionary* DatosSuscripcionController::getDatosSuscripciones(){
     return this->datosSuscripciones;
 }
 
+DatosSuscripcion* DatosSuscripcionController::getDatoSuscripcionSeleccionado() {
+    return this->datoSuscripcionSeleccionado;
+}
+
 IDictionary* DatosSuscripcionController::listarVideojuegoSuscripciones() {
     Factory* factory;
     IDictionary* videojuegoSuscripciones = new ListDicc();
@@ -43,7 +47,7 @@ IDictionary* DatosSuscripcionController::listarVideojuegoSuscripciones() {
         string nombreVideojuego = dynamic_cast<DT_NombreDescripcion*>(iterVideojuegos->next())->getNombre();
         double costoMensual, costoTrimestral, costoAnual, costoVitalicio;
         
-        IIterator* iterSuscripciones = factory->getInstance()->getInterfaceD()->obtenerSuscripcionesVideojuego(nombreVideojuego)->getIteratorObj();
+        IIterator* iterSuscripciones = factory->getInstance()->getInterfaceV()->obtenerSuscripcionesVideojuego(nombreVideojuego)->getIteratorObj();
         while(iterSuscripciones->hasNext()){
             Suscripcion * suscripcion = dynamic_cast<Suscripcion*>(iterSuscripciones->next());
             switch (suscripcion->getPeriodoValidez()) {
@@ -68,22 +72,6 @@ IDictionary* DatosSuscripcionController::listarVideojuegoSuscripciones() {
     }
     delete iterVideojuegos;
     return videojuegoSuscripciones;
-}
-
-IDictionary* DatosSuscripcionController::obtenerSuscripcionesVideojuego(string nombre_videojuego){
-    Factory* factory;
-    Videojuego* videojuego = factory->getInstance()->getInterfaceV()->obtenerVideojuegoPorNombre(nombre_videojuego);
-    IIterator* iter = factory->getInstance()->getInterfaceV()->getSuscripciones()->getIteratorObj();
-    IDictionary* suscripcionesVideojuego = new ListDicc();
-    while(iter->hasNext()){
-        Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(iter->next());
-        if(suscripcion->getVideojuego()->getId() == videojuego->getId()){
-            suscripcionesVideojuego->add(suscripcion, new KeyInt(suscripcion->getId()));
-        }
-    }
-    delete iter;
-
-    return suscripcionesVideojuego;
 }
 
 IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){
@@ -114,23 +102,21 @@ void DatosSuscripcionController::cancelarSuscripcionActiva(int idSuscripcion){
     }
 }
 
-void DatosSuscripcionController::crearDatosSuscripcion(int idSuscripcion, E_MetodoPago metodo_pago){
+void DatosSuscripcionController::crearDatosSuscripcion(string nickname, int idSuscripcion, E_MetodoPago metodo_pago){
     Factory* factory;
-    Jugador* jugadorLogueado = dynamic_cast<Jugador *>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
     Suscripcion* suscripcion = dynamic_cast<Suscripcion *>(factory->getInstance()->getInterfaceV()->getSuscripciones()->find(new KeyInt(idSuscripcion)));
-
-    this->controller_memory = new DatosSuscripcion(jugadorLogueado->getNickname(), suscripcion, metodo_pago);
+    this->datoSuscripcionSeleccionado = new DatosSuscripcion(nickname, suscripcion, metodo_pago);
 }
 
 void DatosSuscripcionController::confirmarDatosSuscripcion(){
-    this->controller_memory->setId(this->getNuevoIdDatosSuscripcion());
-    this->datosSuscripciones->add( this->controller_memory, new KeyInt( this->controller_memory->getId()));
-    this->controller_memory = NULL;
+    this->datoSuscripcionSeleccionado->setId(this->getNuevoIdDatosSuscripcion());
+    this->datosSuscripciones->add(this->datoSuscripcionSeleccionado, new KeyInt(this->datoSuscripcionSeleccionado->getId()));
+    this->datoSuscripcionSeleccionado = NULL;
 }
 
 void DatosSuscripcionController::cancelarDatosSuscripcion() {
-    delete this->controller_memory;
-    this->controller_memory = NULL;
+    delete this->datoSuscripcionSeleccionado;
+    this->datoSuscripcionSeleccionado = NULL;
 }
 
 void DatosSuscripcionController::listarNicknameJugadoresSuscritos(){

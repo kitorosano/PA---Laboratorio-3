@@ -33,13 +33,18 @@ void CategoriaController::agregarCategoria(string nombre, string descripcion, E_
     this->categoriaSeleccionada = new Categoria(nombre, descripcion, tipo);
 }
 
-void CategoriaController::confirmarCategoria(){
-this->categorias->add(this->categoriaSeleccionada, new KeyString(this->categoriaSeleccionada->getNombre()));
+Categoria* CategoriaController::confirmarCategoria(){
+    Categoria *categoria = NULL;
+    if(this->categoriaSeleccionada) {
+        this->categorias->add(this->categoriaSeleccionada, new KeyString(this->categoriaSeleccionada->getNombre()));
+        categoria=this->categoriaSeleccionada;
+    }
     this->categoriaSeleccionada = NULL;
+    return categoria;
 }
 
 void CategoriaController::cancelarCategoria(){
-delete this->categoriaSeleccionada;
+    delete this->categoriaSeleccionada;
     this->categoriaSeleccionada = NULL;
 }
 

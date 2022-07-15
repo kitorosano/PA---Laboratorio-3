@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(PA___Laboratorio_3
-        main.h main.cpp
+        main.cpp
 
         Interfaces/IUsuario.h
         Interfaces/IVideojuego.h
@@ -21,7 +21,7 @@ add_executable(PA___Laboratorio_3
 
         Classes/Usuario.cpp Classes/Usuario.h Classes/Jugador.cpp Classes/Jugador.h Classes/Desarrollador.cpp Classes/Desarrollador.h
         Classes/Categoria.h Classes/Categoria.cpp Classes/Videojuego.h Classes/Videojuego.cpp
-        Classes/DatosSuscripcion.cpp Classes/DatosSuscripcion.h
+        Classes/Suscripcion.cpp Classes/Suscripcion.h Classes/DatosSuscripcion.cpp Classes/DatosSuscripcion.h
         Classes/Partida.cpp Classes/Partida.h Classes/Individual.cpp Classes/Individual.h Classes/Multijugador.cpp Classes/Multijugador.h Classes/Comentario.cpp Classes/Comentario.h 
         Classes/JugadorMultijugador.cpp Classes/JugadorMultijugador.h
         Classes/VideojuegoJugador.cpp Classes/VideojuegoJugador.h
@@ -33,9 +33,10 @@ add_executable(PA___Laboratorio_3
         DataTypes/DT_PartidasIndividualesFinalizadas.cpp DataTypes/DT_PartidasIndividualesFinalizadas.h
         DataTypes/DT_Comentario.cpp DataTypes/DT_Comentario.h
         DataTypes/DT_NombreDescripcion.cpp DataTypes/DT_NombreDescripcion.h
+        DataTypes/DT_VideojuegoSuscripciones.cpp DataTypes/DT_VideojuegoSuscripciones.h
 
         DataTypes/E_TipoCategoria.h
-        DataTypes/E_MetodoPago.h main.h
+        DataTypes/E_MetodoPago.h
         DataTypes/E_PeriodoValidez.h
 
         ColeccionesG/ICollectible.cpp ColeccionesG/ICollectible.h
@@ -55,8 +56,8 @@ add_executable(PA___Laboratorio_3
         ColeccionesG/NodoDicc.cpp ColeccionesG/NodoDicc.h
         ColeccionesG/Par.cpp ColeccionesG/Par.h
 
-
         Factory/Factory.cpp Factory/Factory.h
+
         UseCases/AltaUsuario.cpp UseCases/AltaUsuario.h
         UseCases/IniciarSesion.cpp UseCases/IniciarSesion.h
         UseCases/CargarDatosDePrueba.cpp UseCases/CargarDatosDePrueba.h
@@ -70,5 +71,4 @@ add_executable(PA___Laboratorio_3
         UseCases/AbandonarPartidaMultijugador.cpp UseCases/AbandonarPartidaMultijugador.h
         UseCases/FinalizarPartida.cpp UseCases/FinalizarPartida.h
         UseCases/RealizarComentario.cpp UseCases/RealizarComentario.h
-        UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h
-        Classes/Suscripcion.cpp Classes/Suscripcion.h DataTypes/DT_VideojuegoSuscripciones.cpp DataTypes/DT_VideojuegoSuscripciones.h)
+        UseCases/SeguirJugador.cpp UseCases/SeguirJugador.h Utils/Utils.cpp Utils/Utils.h)

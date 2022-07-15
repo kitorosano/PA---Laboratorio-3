@@ -1,7 +1,6 @@
 //
 // Created by esteban.rosano on 20/6/2022.
 //
-#include "main.h"
 #include "UseCases/AltaUsuario.h"
 #include "UseCases/IniciarSesion.h"
 #include "UseCases/CargarDatosDePrueba.h"
@@ -20,6 +19,7 @@
 using namespace std;
 
 void menuPrincipal() {
+    cout<<endl;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                 MENU PRINCIPAL                 |"<<endl;
     cout<<"|------------------------------------------------|"<<endl;
@@ -27,10 +27,11 @@ void menuPrincipal() {
     cout<<"| 2. Iniciar sesion                              |"<<endl;
     cout<<"| 3. Cargar datos de prueba                      |"<<endl;
     cout<<"| 0. Salir                                       |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese una opcion:";
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"| > Ingrese una opcion: ";
 }
 void menuDesarrollador() {
+    cout<<endl;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|              MENU DE DESARROLLADOR             |"<<endl;
     cout<<"|------------------------------------------------|"<<endl;
@@ -39,10 +40,11 @@ void menuDesarrollador() {
     cout<<"| 3. Eliminar videojuego                         |"<<endl;
     cout<<"| 4. Ver informacion de videojuego               |"<<endl;
     cout<<"| 0. Salir                                       |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese una opcion:";
+    cout<<"|------------------------------------------------|"<<endl;
+    cout<<"| > Ingrese una opcion: ";
 }
 void menuJugador() {
+    cout<<endl;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                 MENU DE JUGADOR                |"<<endl;
     cout<<"|------------------------------------------------|"<<endl;
@@ -51,15 +53,33 @@ void menuJugador() {
     cout<<"| 3. Iniciar partida                             |"<<endl;
     cout<<"| 4. Abandonar partida multijugador              |"<<endl;
     cout<<"| 5. Finalizar partida                           |"<<endl;
-    cout<<"| 6. Ver informacion de videojuego               |"<<endl;
+    cout<<"| 6. Ver información de videojuego               |"<<endl;
     cout<<"| 7. Realizar comentario                         |"<<endl;
     cout<<"| 8. Seguir jugador                              |"<<endl;
     cout<<"| 0. Salir                                       |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese una opcion:";
+    cout<<"| > Ingrese una opcion: ";
 }
 
+void welcomeMsg() {
+    cout<<"  //==========================================\\\\"<<endl;
+    cout<<"///--------------------------------------------\\\\\\"<<endl;
+    cout<<"|||                BIENVENIDO!                 |||"<<endl;
+    cout<<"\\\\\\--------------------------------------------///"<< endl;
+    cout<<"  \\\\==========================================//"<< endl<<endl;
+}
+void goodbyeMsg() {
+    cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+    cout<<"  //==========================================\\\\"<<endl;
+    cout<<"///--------------------------------------------\\\\\\"<<endl;
+    cout<<"|||  MUCHAS GRACIAS POR USAR NUESTRO SISTEMA!  |||"<<endl;
+    cout<<"\\\\\\--------------------------------------------///"<< endl;
+    cout<<"  \\\\==========================================//"<< endl<<endl;
+}
+
+
 int main() {
+    welcomeMsg();
 
     int opPrincipal;
     do {
@@ -70,8 +90,7 @@ int main() {
                 AltaUsuario();
                 break;
             case 2: {
-                int tipoUsuario = IniciarSesion(); // devuelve tipo usuario
-
+                int tipoUsuario = IniciarSesion(); // 0: Desarrollador | 1: Jugador | -1: Inicio sesion fallido
                 switch (tipoUsuario) {
                     case 0: {
                       int opDesarrollador;
@@ -141,9 +160,10 @@ int main() {
                         } while (opJugador != 0);
                         break;
                     }
-                    default:
+                    default: {
                         cout << "Login Fallido" << endl;
                         break;
+                    }
                 }
                 break;
             }
@@ -154,6 +174,6 @@ int main() {
         }
     }while (opPrincipal != 0);
 
-    cout << "Gracias por usar el sistema! Hasta luego..." << endl;
+    goodbyeMsg();
     return 0;
 }

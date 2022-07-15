@@ -34,13 +34,18 @@ public:
     Videojuego* getVideojuegoSeleccionado();
     void setVideojuegoSeleccionado(Videojuego* videojuego);
 
+    IDictionary* getVideojuegos();
     IDictionary* getSuscripciones();
 
-    void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia);
-    void confirmarVideojuego();
+    IDictionary* obtenerSuscripcionesVideojuego(string nombre_videojuego);
+    Suscripcion* obtenerSuscripcionVideojuego(int id_videojuego, E_PeriodoValidez periodoValidez);
+
+    void datosNuevoVideojuego(string nombre, string descripcion, double costoMensual, double costoTrimestral, double costoAnual, double costoVitalicia, Desarrollador* desarrollador);
+    Videojuego* confirmarVideojuego();
     void cancelarVideojuego();
 
     void seleccionarVideoJuego(int id);
+    Videojuego* obtenerVideojuegoPorId(int id_videojuego);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
 
     IDictionary* listarNombreVideojuegos();
