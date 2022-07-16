@@ -25,7 +25,7 @@ public:
     virtual Videojuego* confirmarVideojuego() = 0;
     virtual void cancelarVideojuego() = 0;
 
-    virtual void seleccionarVideoJuego(int id) = 0;
+    virtual void seleccionarVideoJuego(string nombre_videojuego) = 0;
     virtual Videojuego* getVideojuegoSeleccionado() = 0;
     virtual void setVideojuegoSeleccionado(Videojuego* videojuego) = 0;
     virtual Videojuego* obtenerVideojuegoPorId(int id_videojuego) = 0;

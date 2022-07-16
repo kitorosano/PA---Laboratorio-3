@@ -11,7 +11,6 @@
 #include "Classes/Jugador.h"
 #include "Classes/Videojuego.h"
 #include "DataTypes/DT_Fecha.h"
-#include "DataTypes/DT_Time.h"
 #include "string"
 #include <iostream>
 
@@ -44,9 +43,7 @@ public:
     void setJugador(Jugador* jugador);
     void setVideojuego(Videojuego* videojuego);
     void setFechaComienzo(DT_Fecha* fecha);
-    void setFechaFin(DT_Fecha* fechaFin);
-    void setHorasPartida(int horasPartida);
-    void finalizarPartida();
+    void finalizarPartida(DT_Fecha* fechaFin);
 
     string toString();
 };

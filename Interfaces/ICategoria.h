@@ -12,7 +12,7 @@ using namespace std;
 
 class ICategoria {
 public:
-    virtual void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo) = 0;
+    virtual void agregarCategoria(string nombre, string descripcinon, E_TipoCategoria tipo, Desarrollador* desarrollador) = 0;
     virtual void agregarVideojuegoACategoria() = 0;
     virtual Categoria* confirmarCategoria() = 0;
     virtual void cancelarCategoria() = 0;

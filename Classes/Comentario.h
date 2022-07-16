@@ -9,7 +9,6 @@
 #include "ColeccionesG/ICollection.h"
 #include "ColeccionesG/IDictionary.h"
 #include "DataTypes/DT_Fecha.h"
-#include "DataTypes/DT_Time.h"
 #include "Classes/Jugador.h"
 #include "string"
 #include <iostream>

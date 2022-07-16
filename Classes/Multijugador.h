@@ -18,7 +18,7 @@ class Multijugador : public Partida {
 private:
     bool transmitidaEnVivo;
     double duracionTotal; // Creo que es lo mismo que el atributo de horasPartida en Partida.h
-    IDictionary* jugadoresEnLaPartida;
+    IDictionary* jugadoresEnLaPartida; // Lista de JugadorMultijugador
     IDictionary* comentarios;
 
 public:
@@ -31,8 +31,6 @@ public:
     IDictionary* getJugadoresEnLaPartida();
     IDictionary* obtenerComentariosDePartida();
     Comentario* obtenerComentario(int idComentario);
-
-
 
     void setIsTransmitidaEnVivo(bool transmitidaEnVivo);
     void setDuracionTotal(double duracionTotal);

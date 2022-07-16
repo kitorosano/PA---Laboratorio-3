@@ -21,10 +21,11 @@ private:
     E_TipoCategoria tipo;
 
     IDictionary* videojuegos;
+    Desarrollador* desarrollador;
 
 public:
     Categoria();
-    Categoria(string nombre,string descripcion, E_TipoCategoria tipo);
+    Categoria(string nombre,string descripcion, E_TipoCategoria tipo, Desarrollador* desarrollador);
     virtual ~Categoria();
 
     string getNombre();
@@ -32,11 +33,13 @@ public:
     E_TipoCategoria getTipo();
     IDictionary* getVideojuegos();
     bool tieneVideojuego(string nombreVideojuego);
+    Desarrollador* getDesarrollador();
 
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
     void setTipo(E_TipoCategoria tipo);
     void agregarVideojuego(Videojuego* videojuego);
+    void setDesarrollador(Desarrollador* desarrollador);
 
     string toString();
 

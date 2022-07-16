@@ -29,8 +29,8 @@ CategoriaController* CategoriaController::getInstance() {
     return instance;
 }
 
-void CategoriaController::agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo){
-    this->categoriaSeleccionada = new Categoria(nombre, descripcion, tipo);
+void CategoriaController::agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo, Desarrollador* desarrollador){
+    this->categoriaSeleccionada = new Categoria(nombre, descripcion, tipo, desarrollador);
 }
 
 Categoria* CategoriaController::confirmarCategoria(){

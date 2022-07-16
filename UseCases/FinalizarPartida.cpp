@@ -16,11 +16,12 @@ void FinalizarPartida() {
     Factory * factory;
     bool trans;
     int idpartida;
+    Jugador *jugadorLogueado = dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          FINALIZAR PARTIDA                     |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    IDictionary* lista = factory->getInterfaceP()->listarPartidasIniciadasNoFinalizadas();
+    IDictionary* lista = factory->getInstance()->getInterfaceP()->listarPartidasIniciadasNoFinalizadas();
     Partida* partida = NULL;
     Individual* individual = NULL;
     Multijugador* multijugador = NULL;
@@ -66,5 +67,5 @@ void FinalizarPartida() {
     cout<<"|------------------------------------------------|"<<endl<<endl;
     cout<<"Ingrese ID de la partida:"<<endl;
     cin>>idpartida;
-    factory->getInterfaceP()->confirmarFinalizarPartida(idpartida);
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(idpartida, jugadorLogueado, new DT_Fecha());
 }

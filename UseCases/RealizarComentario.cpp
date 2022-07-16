@@ -9,6 +9,7 @@
 using namespace std;
 void RealizarComentario(){
     Factory * factory;
+//    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
 
     int opcion,id_partida,id_comentario;
     string contenido;
@@ -74,7 +75,7 @@ void RealizarComentario(){
                 cout<<"|Seleccione un comentario ingresando su id       |"<<endl;
                 cout<<"|------------------------------------------------|"<<endl;
                 cin>>id_comentario;
-                factory->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
+                factory->getInstance()->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
             }
         }
         cout << "|------------------------------------------------|" << endl;

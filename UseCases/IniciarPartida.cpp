@@ -16,6 +16,7 @@ void IniciarPartida() {
     Factory * factory;
     string nombreVideojuego,nickname,descripcion,empresa;
     Videojuego* videojuego;
+    Jugador *jugadorLogueado = dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
     int opcion, opcion2, idpartida;
     int deseaReingresar=0;
     bool trans;
@@ -23,19 +24,16 @@ void IniciarPartida() {
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                 INICIAR PARTIDA                |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    IIterator* iter = factory->getInterfaceD()->listarNombreVideojuegosSuscritos()->getIteratorObj();
+    IIterator* iter = factory->getInstance()->getInterfaceD()->listarNombreVideojuegosSuscritos()->getIteratorObj();
     while(iter->hasNext()) {
         DT_NombreDescripcion* nombreVideojuego = dynamic_cast<DT_NombreDescripcion*>(iter->next());
         cout << "| " << nombreVideojuego->getNombre() << " |" << endl;
     }
 
     cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                 INICIAR PARTIDA                |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese nombre videoJuego:"<<endl;
+    cout<<"Ingrese nombre videojuego al que desea jugar:"<<endl;
     cin>>nombreVideojuego;
-    videojuego = factory->getInterfaceV()->obtenerVideojuegoPorNombre(nombreVideojuego);
-    factory->getInterfaceV()->seleccionarVideoJuego(videojuego->getId());
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombreVideojuego);
 
     do {
         cout << "|------------------------------------------------|" << endl;
@@ -49,7 +47,7 @@ void IniciarPartida() {
             cout<<"Debe ingresar una opcion!"<<endl;
     }while(opcion !=1 && opcion !=2);
 
-
+//INDIVIDUAL
     if(opcion==1) {
         do {
             cout << "|------------------------------------------------|" << endl;
@@ -61,8 +59,9 @@ void IniciarPartida() {
             cin >> opcion2;
         }while(opcion2 !=1 && opcion2 !=2);
 
+//        CONTINUACION
         if(opcion2==1){
-            IDictionary* partidasFinalizadas = factory->getInterfaceP()->listarHistorialPartidasFinalizadasCronologicamente();
+            IDictionary* partidasFinalizadas = factory->getInstance()->getInterfaceP()->listarHistorialPartidasFinalizadasCronologicamente();
             DT_PartidasIndividualesFinalizadas * dt_partida = NULL;
             IIterator *it = partidasFinalizadas->getIteratorObj();
             while(it->hasNext()){
@@ -79,12 +78,16 @@ void IniciarPartida() {
             cout<<"|------------------------------------------------|"<<endl<<endl;
             cout<<"Ingrese ID de la partida a continuar:"<<endl;
             cin>>idpartida;
-            factory->getInterfaceP()->continuarPartidaIndividual(idpartida);
 
-        }else if (opcion2==2){
-            cout<<"Se creara una nueva partida individual"<<endl<<endl;
+            factory->getInstance()->getInterfaceP()->continuarPartidaIndividual(idpartida, jugadorLogueado);
+
+        }
+//        NUEVA PARTIDA INDIVIDUAL
+        else if (opcion2==2){
+            factory->getInstance()->getInterfaceP()->nuevaPartidaIndividual(jugadorLogueado);
         }
     }
+//    MULTIJUGADOR
     else if(opcion==2){
         do {
             cout << "|------------------------------------------------|" << endl;
@@ -101,14 +104,17 @@ void IniciarPartida() {
         }else if(opcion2==2){
             trans = false;
         }
-        factory->getInterfaceD()->listarNicknameJugadoresSuscritos();
+        factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(jugadorLogueado, trans);
 
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|  AGREGAR JUGADOR A LA PARTIDA MULTIJUGADOR     |" << endl;
             cout << "|------------------------------------------------|" << endl;
-            cout<<"Ingrese el nickname del jugador:"<<endl;
+            factory->getInstance()->getInterfaceD()->listarNicknameJugadoresSuscritos();
+            cout << "|------------------------------------------------|" << endl;
+            cout << "| Ingrese el nickname del jugador:"<<endl;
             cin >> nickname;
+            factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(nickname);
             cout << "|------------------------------------------------|" << endl;
             cout << "| AGREGAR OTRO JUGADOR A LA PARTIDA MULTIJUGADOR |" << endl;
             cout << "|------------------------------------------------|" << endl;
@@ -127,16 +133,14 @@ void IniciarPartida() {
         cout << "| 2. Cancelar                                    |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
-            if(opcion !=1 && opcion !=2)
-                cout<<"Debe ingresar una opcion!"<<endl;
+        if(opcion !=1 && opcion !=2)
+            cout<<"Debe ingresar una opcion!"<<endl;
 
     }while(opcion!=1 && opcion !=2);
 
-    if(opcion==1){
-        factory->getInstance()->getInterfaceP()->confirmarPartida();
-    }
-    else if(opcion==2){
+    if(opcion==1)
+        factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha());
+    else if(opcion==2)
         factory->getInstance()->getInterfaceP()->cancelarIniciarPartida();
-    }
 
 }

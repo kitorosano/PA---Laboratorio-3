@@ -10,6 +10,7 @@
 
 void SuscribirseAVideojuego() {
     Factory *fabrica;
+//    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
 
     IDictionary *videojuegosSuscripciones = fabrica->getInstance()->getInterfaceD()->listarVideojuegoSuscripciones();
     IIterator *iterVideojuegos = videojuegosSuscripciones->getIteratorObj();

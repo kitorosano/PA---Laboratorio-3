@@ -11,11 +11,12 @@ using namespace std;
 Categoria::Categoria() {
 }
 
-Categoria::Categoria(string nombre,string descripcion, E_TipoCategoria tipo){
+Categoria::Categoria(string nombre,string descripcion, E_TipoCategoria tipo, Desarrollador* desarrollador) {
     this->nombre = nombre;
     this->descripcion = descripcion;
     this->tipo = tipo;
     this->videojuegos = new ListDicc();
+    this->desarrollador = desarrollador;
 }
 Categoria::~Categoria(){
 }
@@ -42,6 +43,9 @@ bool Categoria::tieneVideojuego(string nombreVideojuego){
     delete iter;
     return false;
 }
+Desarrollador* Categoria::getDesarrollador(){
+    return this->desarrollador;
+}
 
 void Categoria::setNombre(string nombre){
     this->nombre=nombre;
@@ -62,6 +66,10 @@ void Categoria::agregarVideojuego(Videojuego* videojuego){
   }
 
     this->videojuegos->add(videojuego, new KeyInt(videojuego->getId()));
+}
+
+void Categoria::setDesarrollador(Desarrollador* desarrollador){
+    this->desarrollador=desarrollador;
 }
 
 string Categoria::toString(){

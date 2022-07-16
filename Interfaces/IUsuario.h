@@ -21,6 +21,7 @@ public:
     virtual int tipoUsuario(Usuario* user)=0;
     virtual int iniciarSesion(string mail,string password)=0;
     virtual Usuario* getUsuarioLogeado()=0;
+    virtual IDictionary* getUsuarios()=0;
     virtual void listarJugadores()=0;
     virtual void seguirJugador(string nickname)=0;
     virtual Usuario* buscarUsuario(string email)=0;

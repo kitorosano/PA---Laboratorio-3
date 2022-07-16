@@ -63,18 +63,9 @@ void Partida::setFechaComienzo(DT_Fecha* fecha) {
     this->fechaComienzo = fecha;
 }
 
-void Partida::setFechaFin(DT_Fecha* fechaFin) {
+void Partida::finalizarPartida(DT_Fecha* fecha) {
     this->fechaFin = fechaFin;
-}
-
-void Partida::setHorasPartida(int horasPartida) {
-    this->horasPartida = horasPartida;
-}
-
-void Partida::finalizarPartida() {
-    DT_Fecha* fechaActual = new DT_Fecha();
-    setFechaFin(fechaActual);
-    setHorasPartida(getFechaComienzo()->getDiferenciaEnHoras(fechaActual));
+    this->horasPartida = getFechaComienzo()->getDiferenciaEnHoras(fecha);
     this->finalizada = true;
 }
 

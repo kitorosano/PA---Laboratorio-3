@@ -9,6 +9,7 @@
 
 void PublicarVideojuego() {
     Factory *fabrica;
+    Desarrollador* desarrolladorLogueado = dynamic_cast<Desarrollador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     string nombre, descripcion;
     double costoMensual, costoTrimestral, costoAnual, costoVitalicia;
@@ -50,8 +51,7 @@ void PublicarVideojuego() {
     cin>>costoVitalicia;
 
     // CREO EL VIDEOJUEGO CON LOS DATOS INGRESADOS Y LAS SUSCRIPCIONES, Y GUARDO TANTO EL VIDEOJUEGO COMO SUSCRIPCIONES EN MEMORIA}
-    Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    fabrica->getInstance()->getInterfaceV()->datosNuevoVideojuego(nombre, descripcion, costoMensual, costoTrimestral, costoAnual, costoVitalicia, desarrollador);
+    fabrica->getInstance()->getInterfaceV()->datosNuevoVideojuego(nombre, descripcion, costoMensual, costoTrimestral, costoAnual, costoVitalicia, desarrolladorLogueado);
 
     cout << "|------------------------------------------------|" << endl<<endl<<endl;
     // AGREGAR VIDEOJUEGO A CATEGORIAS DE PLATAFORMA

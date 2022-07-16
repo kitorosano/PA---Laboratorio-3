@@ -69,5 +69,8 @@ void Multijugador::agregarComentario(Comentario* comentario){
 
 void Multijugador::unirNicknameAPartida(JugadorMultijugador* jugadorMultijugador) {
     this->jugadoresEnLaPartida->add(jugadorMultijugador, new KeyString(jugadorMultijugador->getJugador()->getNickname()));
-    // reinterpret_cast<ICollectible *>(jugadorMultijugador)
+}
+
+void Multijugador::nicknameAbandonaPartida(string nickname) {
+    this->jugadoresEnLaPartida->removeKey(new KeyString(nickname));
 }

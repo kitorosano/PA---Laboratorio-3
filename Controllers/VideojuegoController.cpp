@@ -108,12 +108,12 @@ void VideojuegoController::cancelarVideojuego(){
     delete this->videojuegoSeleccionado;
     this->videojuegoSeleccionado = NULL;
 }
-void VideojuegoController::seleccionarVideoJuego(int id){
-    Videojuego* videojuego = dynamic_cast<Videojuego *>(this->videojuegos->find(new KeyInt(id)));
+void VideojuegoController::seleccionarVideoJuego(string nombre_videojuego){
+    Videojuego* videojuego = this->obtenerVideojuegoPorNombre(nombre_videojuego);
     if(videojuego != NULL)
         this->videojuegoSeleccionado = videojuego;
     else
-        throw std::invalid_argument("El idenficador no corresponde a un videojuego en el sistema");
+        throw std::invalid_argument("El nombre no corresponde a un videojuego en el sistema");
 }
 Videojuego* VideojuegoController::obtenerVideojuegoPorId(int id_videojuego){
     if(!this->videojuegos){

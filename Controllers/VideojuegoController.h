@@ -32,6 +32,7 @@ public:
     int getNuevoIdVideojuego();
     int getNuevoIdSuscripcion();
     Videojuego* getVideojuegoSeleccionado();
+    void seleccionarVideoJuego(string nombre_videojuego);
     void setVideojuegoSeleccionado(Videojuego* videojuego);
 
     IDictionary* getVideojuegos();
@@ -44,7 +45,6 @@ public:
     Videojuego* confirmarVideojuego();
     void cancelarVideojuego();
 
-    void seleccionarVideoJuego(int id);
     Videojuego* obtenerVideojuegoPorId(int id_videojuego);
     Videojuego* obtenerVideojuegoPorNombre(string nombre_videojuego);
 

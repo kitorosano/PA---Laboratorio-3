@@ -27,3 +27,7 @@ DT_Fecha *JugadorMultijugador::getFechaFinalizacion() {
 void JugadorMultijugador::setFechaFinalizacion(DT_Fecha* fecha_finalizacion) {
     this->fecha_finalizacion = fecha_finalizacion;
 }
+
+string JugadorMultijugador::toString() {
+    return this->jugador->toString() + " " + this->fecha_finalizacion->toString();
+}

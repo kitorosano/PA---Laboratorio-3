@@ -22,7 +22,7 @@ public:
 
     Categoria* getCategoriaSeleccionada();
 
-    void agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo);
+    void agregarCategoria(string nombre, string descripcion, E_TipoCategoria tipo, Desarrollador* desarrollador);
     Categoria* confirmarCategoria();
     void cancelarCategoria();
 

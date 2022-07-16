@@ -16,7 +16,7 @@
 class JugadorMultijugador: public ICollectible {
 private:
     Jugador* jugador;
-    DT_Fecha* fecha_finalizacion;
+    DT_Fecha* fecha_finalizacion = NULL;
 
 public:
     JugadorMultijugador();
@@ -26,6 +26,8 @@ public:
     Jugador* getJugador();
     DT_Fecha* getFechaFinalizacion();
     void setFechaFinalizacion(DT_Fecha* fecha_finalizacion);
+
+    string toString();
 };
 
 

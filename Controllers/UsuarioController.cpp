@@ -35,6 +35,10 @@ Usuario* UsuarioController::getUsuarioLogeado(){
     return this->usuarioLogeado;
 }
 
+IDictionary* UsuarioController::getUsuarios(){
+    return this->usuarios;
+}
+
 void UsuarioController::registroJugador(string email,string password,string nickname,string descripcion){
     this->controller_memory= new Jugador(email,password,nickname,descripcion);
 }

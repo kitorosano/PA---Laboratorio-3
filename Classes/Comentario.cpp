@@ -66,8 +66,5 @@ void Comentario::setEscritor(Jugador *escritor) {
 }
 
 string Comentario::toString() {
-    stringstream ss;
-    ss << "Comentario: " << this->idComentario << " Escrito por: " << this->escritor->getNickname() << " Fecha: "
-       << this->fechaEnvio->toString() << " Contenido: " << this->contenido;
-    return ss.str();
+    return "Comentario: " + to_string(this->idComentario) + " Escrito por: " + this->escritor->getNickname() + " Fecha: " + this->fechaEnvio->toString() + " Contenido: " + this->contenido;
 }

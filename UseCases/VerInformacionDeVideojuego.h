@@ -7,6 +7,6 @@
 
 using namespace std;
 
-void VerInformacionDeVideojuego(int tipoUsuario);
+void VerInformacionDeVideojuego();
 
 #endif //PA___LABORATORIO_3_VERINFORMACIONDEVIDEOJUEGO_H

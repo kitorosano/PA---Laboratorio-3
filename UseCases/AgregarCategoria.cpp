@@ -11,6 +11,7 @@ using namespace std;
 
 void AgregarCategoria() {
     Factory * factory;
+    Desarrollador* desarrolladorLogueado = dynamic_cast<Desarrollador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     ICollection *nombresCategoria = factory->getInstance()->getInterfaceC()->listarNombreCategorias();
 
@@ -61,13 +62,13 @@ void AgregarCategoria() {
 
         switch (opcion) {
             case 1:
-                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::PLATAFORMA);
+                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::PLATAFORMA, desarrolladorLogueado);
                 break;
             case 2:
-                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::GENERO);
+                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::GENERO, desarrolladorLogueado);
                 break;
             case 3:
-                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::OTRO);
+                factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::OTRO, desarrolladorLogueado);
                 break;
             default:
                 cout << "Opción inválida!" << endl;

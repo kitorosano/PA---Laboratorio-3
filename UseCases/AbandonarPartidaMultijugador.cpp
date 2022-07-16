@@ -14,11 +14,12 @@ void AbandonarPartidaMultijugador() {
     Factory * factory;
     bool trans;
     int idpartida;
+    Jugador* jugadorLogueado = dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|        ABANDONAR PARTIDA MULTIJUGADOR          |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    IDictionary* lista = factory->getInterfaceP()->listarPartidasMultijugadorUnidasNoFinalizadas();
+    IDictionary* lista = factory->getInstance()->getInterfaceP()->listarPartidasMultijugadorUnidasNoFinalizadas();
     Multijugador* multi = NULL;
     JugadorMultijugador* jugadorMulti = NULL;
     IIterator *it = lista->getIteratorObj();
@@ -51,5 +52,6 @@ void AbandonarPartidaMultijugador() {
     cout<<"|------------------------------------------------|"<<endl<<endl;
     cout<<"Ingrese ID de la partida:"<<endl;
     cin>>idpartida;
-    factory->getInterfaceP()->confirmarAbandonoPartida(idpartida);
+    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
+    cout<<"Partida abandonada"<<endl;
 }

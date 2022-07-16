@@ -108,7 +108,7 @@ int main() {
                                     EliminarVideojuego();
                                     break;
                                 case 4:
-                                    VerInformacionDeVideojuego(tipoUsuario);
+                                    VerInformacionDeVideojuego();
                                     break;
                                 case 0:
                                     cout << "Sesion Cerrada" << endl;
@@ -142,7 +142,7 @@ int main() {
                                     FinalizarPartida();
                                     break;
                                 case 6:
-                                    VerInformacionDeVideojuego(tipoUsuario);
+                                    VerInformacionDeVideojuego();
                                     break;
                                 case 7:
                                     RealizarComentario();

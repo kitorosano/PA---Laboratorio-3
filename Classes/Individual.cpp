@@ -26,9 +26,7 @@ void Individual::setContPartAnterior(Individual* partidaAContinuar) {
 }
 
 string Individual::toString() {
-    stringstream ss;
-    ss << "Partida: " << Partida::toString() << " - " << "Partida a Continuar: " << this->getContPartAnterior()->toString();
-    return ss.str();
+    return "Partida: " + Partida::toString() + " - " + "Partida a Continuar: " + this->getContPartAnterior()->toString();
 }
 
 

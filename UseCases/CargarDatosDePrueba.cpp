@@ -49,43 +49,43 @@ void CargarDatosDePrueba() {
 
     // Categorias
     cout << "| Agregando categorias...";
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripción libre",PLATAFORMA, NULL);
     auto C1 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripción libre",PLATAFORMA, NULL);
     auto C2 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripción libre",PLATAFORMA, NULL);
     auto C3 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripción libre",GENERO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripción libre",GENERO, NULL);
     auto C4 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripción libre",GENERO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripción libre",GENERO, NULL);
     auto C5 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripción libre",GENERO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripción libre",GENERO, NULL);
     auto C6 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido está dirigido a jóvenes de 13 años en adelante",OTRO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido está dirigido a jóvenes de 13 años en adelante",OTRO, NULL);
     auto C7 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido está dirigido para todo público",OTRO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido está dirigido para todo público",OTRO, NULL);
     auto C8 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Acción","descripción libre",GENERO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Acción","descripción libre",GENERO, NULL);
     auto C9 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripción libre",GENERO);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripción libre",GENERO, NULL);
     auto C10 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripción libre",PLATAFORMA, NULL);
     auto C11 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripción libre",PLATAFORMA, NULL);
     auto C12 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripción libre",PLATAFORMA);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripción libre",PLATAFORMA, NULL);
     auto C13 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
     cout << " Agregadas correctamente!" << endl;
 
@@ -180,19 +180,53 @@ void CargarDatosDePrueba() {
 //    cout << " Agregados correctamente!" << endl;
 
     // Partidas Individuales
-//    cout << "| Agregando partidas Individuales...";
-    // TODO: Implementar carga de datos
-//    cout << " Agregadas correctamente!" << endl;
+    cout << "| Agregando partidas Individuales...";
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V1->getNombre());
+    factory->getInstance()->getInterfaceP()->nuevaPartidaIndividual(J1);
+    auto P1 = dynamic_cast<Individual *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(2,6,21,9,0,0)));
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P1->getIdPartida(), J1, new DT_Fecha(2,6,21,10,0,0));
+
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V1->getNombre());
+    factory->getInstance()->getInterfaceP()->continuarPartidaIndividual(P1->getIdPartida(), J1);
+    auto P2 = dynamic_cast<Individual *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(3,6,21,15,0,0)));
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P1->getIdPartida(), J1, new DT_Fecha(2,6,21,16,0,0));
+
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V3->getNombre());
+    factory->getInstance()->getInterfaceP()->nuevaPartidaIndividual(J2);
+    auto P3 = dynamic_cast<Individual *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,21,16,0,0)));
+    cout << " Agregadas correctamente!" << endl;
 
     // Partidas multijugador
-//    cout << "| Agregando partidas multijugador...";
-    // TODO: Implementar carga de datos
-//    cout << " Agregadas correctamente!" << endl;
+    cout << "| Agregando partidas multijugador...";
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V2->getNombre());
+    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J1, true);
+    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J2->getNickname());
+    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
+    auto P4 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(5,6,21,17,0,0)));
+
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V2->getNombre());
+    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J1, true);
+    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J2->getNickname());
+    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
+    auto P5 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(6,6,21,17,0,0)));
+
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V3->getNombre());
+    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J2, false);
+    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
+    auto P6 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,21,20,0,0)));
+    cout << " Agregadas correctamente!" << endl;
 
     // Abandonar partida multijugador
-//    cout << "| Agregando abandonos de partida multijugador...";
-    // TODO: Implementar carga de datos
-//    cout << " Agregados correctamente!" << endl;
+    cout << "| Agregando abandonos de partida multijugador...";
+    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P4->getIdPartida(), J2, new DT_Fecha(5,6,21,18,0,0));
+    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P5->getIdPartida(), J2, new DT_Fecha(6,6,21,17,30,0));
+    cout << " Agregados correctamente!" << endl;
+
+    // Finalizar partida multijugador
+    cout << "| Finalizando partidas multijugador...";
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,21,19,0,0));
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,21,19,0,0));
+    cout << " Finalizadas correctamente!" << endl;
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|       CARGAR DATOS DE PRUEBA COMPLETADA!!      |"<<endl;

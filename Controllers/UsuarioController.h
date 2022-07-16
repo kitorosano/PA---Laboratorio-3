@@ -26,6 +26,7 @@ public:
 
     Usuario* getUsuarioLogeado();
     Usuario* buscarUsuario(string email);
+    IDictionary* getUsuarios();
 
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);

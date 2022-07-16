@@ -30,7 +30,8 @@ PartidaController *PartidaController::getInstance() {
     return instance;
 }
 
-void PartidaController::continuarPartidaIndividual(int idPartida){
+void PartidaController::continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador) {
+//    TODO: verificar que la partida pertenece al jugadorIniciador
     IIterator *it = this->partidas->getIteratorObj();
     Individual *partidaAContinuar = NULL;
 
@@ -49,93 +50,130 @@ void PartidaController::continuarPartidaIndividual(int idPartida){
     throw std::invalid_argument("La partida no existe");
 }
 
-void PartidaController::nuevaPartidaIndividual(){
-    Factory* fabrica;
+void PartidaController::nuevaPartidaIndividual(Jugador *jugadorIniciador){
+    if(jugadorIniciador == NULL)
+        throw std::invalid_argument("No se ha logeado ningun jugador");
+
     // Obtener el videojuego seleccionado!!
+    Factory* fabrica;
     Videojuego* videojuegoSeleccionado = fabrica->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
+    if(videojuegoSeleccionado == NULL)
+        throw std::invalid_argument("No se ha seleccionado ningun videojuego");
 
-     // Obtener el usuario logeado!!
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    if(jugadorlogeado){
-        Individual* nuevaPartidaIndividual = new Individual(jugadorlogeado, videojuegoSeleccionado);
-        this->partidaSeleccionada = nuevaPartidaIndividual; // el controlador recuerda la partida
-    }else{
-        throw std::invalid_argument("Usted no es un Jugador");
-    }
-
-
+    Individual* nuevaPartida = new Individual(jugadorIniciador,videojuegoSeleccionado);
+    this->partidaSeleccionada = nuevaPartida;
 }
 
-void PartidaController::nuevaPartidaMultijugador(bool transmitidaEnVivo){
+void PartidaController::nuevaPartidaMultijugador(Jugador *jugadorIniciador, bool transmitidaEnVivo){
+    if(jugadorIniciador == NULL)
+        throw std::invalid_argument("No se ha logeado ningun jugador");
+
+    // Obtener el videojuego seleccionado!!
     Factory* fabrica;
-    // Obtener videojuego seleccionado
     Videojuego* videojuegoSeleccionado = fabrica->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
+    if(videojuegoSeleccionado == NULL)
+        throw std::invalid_argument("No se ha seleccionado ningun videojuego");
 
-    // Obtener el usuario logeado!!
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    if(jugadorlogeado){
-        Multijugador* nuevaPartidaMultijugador = new Multijugador(jugadorlogeado, videojuegoSeleccionado, transmitidaEnVivo);
-        this->partidaSeleccionada = nuevaPartidaMultijugador; // el controlador recuerda la partida
-    }else{
-        throw std::invalid_argument("Usted no es un Jugador");
-    }
-
+    Multijugador* nuevaPartidaMultijugador = new Multijugador(jugadorIniciador, videojuegoSeleccionado, transmitidaEnVivo);
+    this->partidaSeleccionada = nuevaPartidaMultijugador; // el controlador recuerda la partida
 }
 
 void PartidaController::ingresarNicknameALaPartida(string nickname){
     Factory* fabrica;
     // Busco al jugador que quiero agregar a la partida
-    Jugador *jugador = dynamic_cast<Jugador *> (fabrica->getInstance()->getInterfaceU()->buscarUsuario(nickname));
-    if(jugador){
-        // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
-        JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
+    IIterator *it = fabrica->getInstance()->getInterfaceU()->getUsuarios()->getIteratorObj();
+    while (it->hasNext()){
+        Jugador* jugador = dynamic_cast<Jugador*>(it->next());
+        if(jugador && jugador->getNickname().compare(nickname) == 0){
+//            TODO: verificar que el jugador no esta en la partida
 
-        // Agregar el puntero del jugadorMultijugador a la lista de jugadores que tiene esta partida multijugador
-        Multijugador *multi = dynamic_cast<Multijugador *>(partidaSeleccionada);
-        multi->unirNicknameAPartida(jugadorDeLaPartida);
-        this->partidaSeleccionada = multi; // El controlador recurda la partida
-    }else{
-        throw std::invalid_argument("No es un Jugador");
+            // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
+            JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
+
+//            TODO: ERRROR EN ESTA PARTE
+            cout << jugadorDeLaPartida->toString(); // imprime el jugador que se agregara a la partida
+
+
+            // Agregar el puntero del jugadorMultijugador a la lista de jugadores que tiene esta partida multijugador
+            Multijugador *multi = dynamic_cast<Multijugador *>(this->partidaSeleccionada);
+            multi->unirNicknameAPartida(jugadorDeLaPartida);
+            return;
+        }
     }
 
+    throw std::invalid_argument("El jugador no existe");
 }
 
-void PartidaController::confirmarPartida(){
+Partida* PartidaController::confirmarPartida(DT_Fecha* fecha_comienzo){
     // Indicar el ID a la partida
     int idPartida = this->idpartida++;
     this->partidaSeleccionada->setIdPartida(idPartida);
 
-    // Asignar la Fecha para la partida
-    DT_Fecha *fecha = new DT_Fecha();
-    this->partidaSeleccionada->setFechaComienzo(fecha);
+    this->partidaSeleccionada->setFechaComienzo(fecha_comienzo);
 
     // Agregar a la colección la nueva partida;
     partidas->add(partidaSeleccionada, new KeyInt(idPartida));
 
-    // Borrar los datos que el controlador guardo
+    // Borrar los datos que el controlador guardo y retornar la partida
+    Partida *partida = this->partidaSeleccionada;
     this->partidaSeleccionada = NULL;
-
+    return partida;
 }
 
-IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){
-    IIterator *it = this->partidas->getIteratorObj();
-    Multijugador *partida = NULL;
-    IDictionary* listadepartidas_multijugador = new ListDicc();
+void PartidaController::cancelarIniciarPartida() {
+    Factory* fabrica;
+    this->partidaSeleccionada = NULL;
+    fabrica->getInstance()->getInterfaceV()->setVideojuegoSeleccionado(NULL);
+}
+
+void PartidaController::confirmarAbandonoPartida(int idPartida, Jugador* jugadorAbandona, DT_Fecha* fechaFinalizacion){
+    KeyInt* idpartida = new KeyInt(idPartida);
+    Multijugador* partidaAAbandonar = dynamic_cast<Multijugador *>(this->partidas->find(idpartida));
+
+    if(!partidaAAbandonar)
+        throw std::invalid_argument("La partida no existe");
+
+    IIterator *it = partidaAAbandonar->getJugadoresEnLaPartida()->getIteratorObj();
     while(it->hasNext()){
-        partida = dynamic_cast<Multijugador *>(it->getCurrent());
-        if(partida){
-            if((partida->isFinalizada() == false && partida->isTransmitidaEnVivo() == true)){
-                // Guardar todo en una coleccion y retorna esa coleccion
-                //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
-                DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
-                listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
-            }
+        JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+        if(jm->getJugador() == jugadorAbandona){
+            partidaAAbandonar->nicknameAbandonaPartida(jugadorAbandona->getNickname());
+            jm->setFechaFinalizacion(fechaFinalizacion);
+            break;
         }
         it->next();
     }
-    return listadepartidas_multijugador;
-} // lugar 1
+    delete it;
 
+//    TODO: verificar que si todos los jugadores abandonaron se finalice la partida
+}
+
+void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugadorIniciador, DT_Fecha* fechaFinalizacion){
+    // buscar la partida
+    Factory* fabrica;
+    IIterator *it = this->partidas->getIteratorObj();
+    Partida *partida = NULL;
+    Multijugador* multijugador = NULL;
+
+    KeyInt* idpartida = new KeyInt(idPartida);
+    partida = dynamic_cast<Partida *>(this->partidas->find(idpartida));
+
+    if(!partida)
+        throw std::invalid_argument("No se encontro la partida");
+
+    partida->finalizarPartida(fechaFinalizacion);
+
+    multijugador = dynamic_cast<Multijugador *>(partida);
+    if (multijugador){
+        IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
+        JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+        while(it->hasNext()) {
+            this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+            it->next();
+        }
+        delete it;
+    }
+}
 
 void PartidaController::seleccionarPartida(int idPartida){
     KeyInt* key_idPartida = new KeyInt(idPartida);
@@ -201,6 +239,50 @@ void PartidaController::cancelarComentario(){
     }
 }
 
+IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
+    // Obtener el usuario logeado!!
+    Factory* fabrica;
+    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+
+    // Comparar si el usuario jugador le pertenece la partida y si es finalizada
+    IIterator *it = this->partidas->getIteratorObj();
+    Individual *partida = NULL;
+    IDictionary* listadepartidas = new ListDicc();
+    while(it->hasNext()){
+        partida = dynamic_cast<Individual *>(it->getCurrent());
+        if(partida){
+            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->isFinalizada())){
+                // Guardar todo en una coleccion y retorna esa coleccion
+                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFechaComienzo(), partida->getHorasPartida());
+                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
+            }
+        }
+        it->next();
+    }
+    return listadepartidas;
+}
+IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
+
+    Factory* fabrica;
+    IIterator *it = this->partidas->getIteratorObj();
+    Partida *partida = NULL;
+    IDictionary* listadepartidasSinFinalizar = new ListDicc();
+    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+    if(jugadorlogeado){
+        while(it->hasNext()) {
+            partida = dynamic_cast<Partida *>(it->getCurrent());
+            if (partida) {
+                if ((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) &&
+                    (!partida->isFinalizada())) {
+                    listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
+                }
+            }
+            it->next();
+        }
+    }
+    return listadepartidasSinFinalizar; // retorno una coleccion de partidas
+}
+
 IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
     Factory* fabrica;
     IIterator *it = this->partidas->getIteratorObj();
@@ -234,109 +316,22 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
     return listadepartidasMulti; // retorno una coleccion de partidas Multijugador
 }
 
-void PartidaController::confirmarAbandonoPartida(int idPartida){
-    KeyInt* idpartida = new KeyInt(idPartida);
-    Multijugador* partidaAAbandonar = dynamic_cast<Multijugador *>(this->partidas->find(idpartida));
-    JugadorMultijugador *jugadorUnido = NULL;
-    if(partidaAAbandonar){
-        Factory* fabrica;
-        Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-        if(jugadorlogeado){
-            IIterator *it = partidaAAbandonar->getJugadoresEnLaPartida()->getIteratorObj();
-            while(it->hasNext()){
-                jugadorUnido = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
-                if(jugadorlogeado->getNickname() == jugadorUnido->getJugador()->getNickname()){
-                    DT_Fecha* fechaFinal = new DT_Fecha();
-                    jugadorUnido->setFechaFinalizacion(fechaFinal);
-                }
-                it->next();
-            }
-        }else{
-            throw std::invalid_argument("Usted no es un Jugador");
-        }
-    }
-}
-IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
-
-    Factory* fabrica;
+IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(){
     IIterator *it = this->partidas->getIteratorObj();
-    Partida *partida = NULL;
-    IDictionary* listadepartidasSinFinalizar = new ListDicc();
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    if(jugadorlogeado){
-        while(it->hasNext()) {
-            partida = dynamic_cast<Partida *>(it->getCurrent());
-            if (partida) {
-                if ((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) &&
-                    (!partida->isFinalizada())) {
-                    listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
-                }
-            }
-            it->next();
-        }
-    }
-    return listadepartidasSinFinalizar; // retorno una coleccion de partidas
-}
-
-void PartidaController::confirmarFinalizarPartida(int idPartida){
-    // buscar la partida
-    Factory* fabrica;
-    IIterator *it = this->partidas->getIteratorObj();
-    Partida *partida = NULL;
-
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-    if(jugadorlogeado){
-        KeyInt* idpartida = new KeyInt(idPartida);
-        partida = dynamic_cast<Partida *>(this->partidas->find(idpartida));
-        Multijugador* multijugador = NULL;
-        if(partida){
-            partida->finalizarPartida();
-
-            multijugador = dynamic_cast<Multijugador *>(partida);
-        }
-        if (multijugador){
-            IIterator *it2 = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
-            while(it2->hasNext()) {
-                JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
-                if (jm) {
-                    if (jm->getFechaFinalizacion() == NULL){ // Si el jugador aun no tiene fechaComienzo de finalizacion se le setea porque el jugadorIniciador va a abandonar la partida
-                        DT_Fecha* fechaFinal = new DT_Fecha();
-                        jm->setFechaFinalizacion(fechaFinal);
-                    }
-                }
-                it2->next();
-            }
-        }
-
-    }
-}
-
-IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
-    // Obtener el usuario logeado!!
-    Factory* fabrica;
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-
-    // Comparar si el usuario jugador le pertenece la partida y si es finalizada
-    IIterator *it = this->partidas->getIteratorObj();
-    Individual *partida = NULL;
-    IDictionary* listadepartidas = new ListDicc();
+    Multijugador *partida = NULL;
+    IDictionary* listadepartidas_multijugador = new ListDicc();
     while(it->hasNext()){
-        partida = dynamic_cast<Individual *>(it->getCurrent());
+        partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
-            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->isFinalizada())){
+            if((partida->isFinalizada() == false && partida->isTransmitidaEnVivo() == true)){
                 // Guardar todo en una coleccion y retorna esa coleccion
-                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFechaComienzo(), partida->getHorasPartida());
-                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
+                //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
+                DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
+                listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
             }
         }
         it->next();
     }
-    return listadepartidas;
-}
-
-void PartidaController::cancelarIniciarPartida() {
-    Factory* fabrica;
-    this->partidaSeleccionada = NULL;
-    fabrica->getInstance()->getInterfaceV()->setVideojuegoSeleccionado(NULL);
-}
+    return listadepartidas_multijugador;
+} // lugar 1
 // lugar 1

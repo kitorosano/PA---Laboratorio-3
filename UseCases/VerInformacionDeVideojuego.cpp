@@ -8,8 +8,10 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void VerInformacionDeVideojuego(int tipoUsuario) {
+void VerInformacionDeVideojuego() {
     Factory *factory;
+    Usuario* usuarioLogueado = factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+
     string nombre;
     Videojuego* obtenido;
     cout<<"|------------------------------------------------|"<<endl;
@@ -25,22 +27,16 @@ void VerInformacionDeVideojuego(int tipoUsuario) {
     cout << "| Ingrese el nombre para seleccionar un videojuego |" << endl;
     cout << "|--------------------------------------------------|" << endl << endl;
     cin >> nombre;
-    obtenido = factory->getInstance()->getInterfaceV()->obtenerVideojuegoPorNombre(nombre);
-    if (obtenido){
-    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(obtenido->getId());
-    }
-    else{
-        return;
-    }
+    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombre);
+    
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
 
-    switch (tipoUsuario) {
-        case 0:
-            factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
-            break;
-        default:
-            factory->getInstance()->getInterfaceV()->verVideojuego();
+    Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(usuarioLogueado);
+    if(desarrollador) {
+        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
+    } else {
+        factory->getInstance()->getInterfaceV()->verVideojuego();
     }
 }
