@@ -31,7 +31,7 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl;
         cout << "|                 ALTA DE USUARIO                |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
-        cout << "Ingrese la contraseña:" << endl;
+        cout << "Ingrese la contrasenia:" << endl;
         cin >> password;
 
 
