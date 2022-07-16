@@ -195,7 +195,7 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceP()->nuevaPartidaIndividual(J2);
     auto P3 = dynamic_cast<Individual *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,21,16,0,0)));
     cout << " Agregadas correctamente!" << endl;
-
+/*
     // Partidas multijugador
     cout << "| Agregando partidas multijugador...";
     factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V2->getNombre());
@@ -227,7 +227,7 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,21,19,0,0));
     factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,21,19,0,0));
     cout << " Finalizadas correctamente!" << endl;
-
+*/
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|       CARGAR DATOS DE PRUEBA COMPLETADA!!      |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;

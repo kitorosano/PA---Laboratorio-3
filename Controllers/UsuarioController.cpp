@@ -52,7 +52,7 @@ bool UsuarioController::verificarNickname(string nickname){
     else if(this->usuarios){
         while (iter->hasNext()) {
             Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
-            if(nickname==jugador->getNickname())
+            if(jugador && nickname==jugador->getNickname())
                 return true;
         }
     }
