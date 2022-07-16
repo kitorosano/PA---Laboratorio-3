@@ -9,20 +9,32 @@ using namespace std;
 
 void AltaUsuario(){
     Factory * factory;
+    Usuario* user=NULL;
     string email,password,nickname,descripcion,empresa;
     int opcion, opcion2;
+    bool ret=true;
     int deseaReingresar=0;
+    do {
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|                 ALTA DE USUARIO                |" << endl;
+        cout << "|------------------------------------------------|" << endl << endl;
+        cout << "Ingrese el email:" << endl;
+        cin >> email;
+        ret =true;
+        user=factory->getInstance()->getInterfaceU()->buscarUsuario(email);
 
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                 ALTA DE USUARIO                |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese el email:"<<endl;
-    cin>>email;
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|                 ALTA DE USUARIO                |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese la contraseña:"<<endl;
-    cin>>password;
+        if((factory->getInstance()->getInterfaceU()->getUsuarios()) && user && (email==user->getEmail())){
+            cout<<"Ya existe un usuario con el email ingresado!"<<endl;
+            ret=false;
+        }
+    }while(!ret);
+        cout << "|------------------------------------------------|" << endl;
+        cout << "|                 ALTA DE USUARIO                |" << endl;
+        cout << "|------------------------------------------------|" << endl << endl;
+        cout << "Ingrese la contraseña:" << endl;
+        cin >> password;
+
+
     do {
         cout << "|------------------------------------------------|" << endl;
         cout << "|                 ALTA DE USUARIO                |" << endl;
@@ -84,6 +96,7 @@ void AltaUsuario(){
     }while(opcion2!=1 && opcion2 !=2);
     if(opcion2==1){
         factory->getInstance()->getInterfaceU()->confirmarRegistro();
+        cout<<"Se ha registrado con exito!!";
     }
     else if(opcion2==2){
         factory->getInstance()->getInterfaceU()->cancelarRegistro();
