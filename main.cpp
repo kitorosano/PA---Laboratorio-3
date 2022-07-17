@@ -15,6 +15,7 @@
 #include "UseCases/FinalizarPartida.h"
 #include "UseCases/RealizarComentario.h"
 #include "UseCases/SeguirJugador.h"
+#include "Utils/Utils.h"
 #include <iostream>
 using namespace std;
 
@@ -85,10 +86,12 @@ int main() {
     do {
         menuPrincipal();
         cin >> opPrincipal;
+        cout<<endl;
         switch (opPrincipal) {
-            case 1:
+            case 1: {
                 AltaUsuario();
                 break;
+            }
             case 2: {
                 int tipoUsuario = IniciarSesion(); // 0: Desarrollador | 1: Jugador | -1: Inicio sesion fallido
                 switch (tipoUsuario) {
@@ -97,6 +100,7 @@ int main() {
                         do {
                             menuDesarrollador();
                             cin >> opDesarrollador;
+                            cout<<endl;
                             switch (opDesarrollador) {
                                 case 1:
                                     AgregarCategoria();
@@ -117,14 +121,16 @@ int main() {
                                     cout << "Opcion invalida" << endl;
                                     break;
                             }
+                            presionaParaContinuar();
                         } while (opDesarrollador != 0);
                         break;
                     }
                     case 1: {
                         int opJugador;
                         do {
-                          menuJugador();
+                            menuJugador();
                             cin >> opJugador;
+                            cout<<endl;
                             switch (opJugador) {
                                 case 1:
                                     SuscribirseAVideojuego();
@@ -157,6 +163,7 @@ int main() {
                                     cout << "Opcion invalida" << endl;
                                     break;
                             }
+                            presionaParaContinuar();
                         } while (opJugador != 0);
                         break;
                     }
@@ -167,11 +174,13 @@ int main() {
                 }
                 break;
             }
-            case 3:
-              CargarDatosDePrueba();
+            case 3: {
+                CargarDatosDePrueba();
                 break;
+            }
             default: break;
         }
+        presionaParaContinuar();
     }while (opPrincipal != 0);
 
     goodbyeMsg();

@@ -44,14 +44,16 @@ void UsuarioController::registroJugador(string email,string password,string nick
     if(this->usuarios){
         if(buscarUsuario(email) && buscarUsuario(email)->getEmail()==email){
             cout<<"Error ya existe un usuario en el sistema con el email ingresado!";
+            return;
         }
     }
-        this->controller_memory= new Jugador(email,password,nickname,descripcion);
+    this->controller_memory= new Jugador(email,password,nickname,descripcion);
 }
 void UsuarioController::registroDesarrollador(string email,string password,string empresa){
     if(this->usuarios){
         if(buscarUsuario(email) && buscarUsuario(email)->getEmail()==email){
             cout<<"Error ya existe un usuario en el sistema con el email ingresado!";
+            return;
         }
     }
     this->controller_memory= new Desarrollador(email,password,empresa);
