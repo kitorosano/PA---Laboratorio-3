@@ -21,6 +21,7 @@ int UsuarioController::tipoUsuario(Usuario* user){
     Desarrollador* desarrollador=dynamic_cast<Desarrollador*>(user);
     if(desarrollador)
         return 0;
+    return -1;
 }
 
 UsuarioController::~UsuarioController(){}
