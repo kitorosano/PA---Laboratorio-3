@@ -143,4 +143,5 @@ void IniciarPartida() {
     else if(opcion==2)
         factory->getInstance()->getInterfaceP()->cancelarIniciarPartida();
 
+
 }
