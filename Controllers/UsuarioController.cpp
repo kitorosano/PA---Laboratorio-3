@@ -61,13 +61,14 @@ void UsuarioController::registroDesarrollador(string email,string password,strin
 bool UsuarioController::verificarNickname(string nickname){
     IIterator* iter = usuarios->getIteratorObj();
     if(!this->usuarios)
-        return false;
+        return true;
     else if(this->usuarios){
         while (iter->hasNext()) {
             Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
             if(jugador && nickname==jugador->getNickname())
-                return true;
+                return false;
         }
+
     }
     return true;
 }

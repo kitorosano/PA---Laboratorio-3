@@ -16,6 +16,7 @@ void AltaUsuario(){
     int deseaReingresar=0;
 
     do {
+        cout<<endl;
         cout << "|------------------------------------------------|" << endl;
         cout << "|                 ALTA DE USUARIO                |" << endl;
         cout << "|------------------------------------------------|" << endl;
@@ -25,13 +26,15 @@ void AltaUsuario(){
         user=factory->getInstance()->getInterfaceU()->buscarUsuario(email);
 
         if((factory->getInstance()->getInterfaceU()->getUsuarios()) && user && (email==user->getEmail())){
+            cout<<endl;
             cout << "|------------------------------------------------|" << endl;
             cout << "|   Ya existe un usuario con el email ingresado  |" << endl;
-            cout << "|------------------------------------------------|" << endl<<endl;
+            cout << "|------------------------------------------------|" << endl;
             ret=false;
         }
     }while(!ret);
 
+    cout<<endl;
     cout << "|------------------------------------------------|" << endl;
     cout << "|                 ALTA DE USUARIO                |" << endl;
     cout << "|------------------------------------------------|" << endl;
@@ -39,6 +42,7 @@ void AltaUsuario(){
     cin >> password;
 
     do {
+        cout<<endl;
         cout << "|------------------------------------------------|" << endl;
         cout << "|                 ALTA DE USUARIO                |" << endl;
         cout << "|------------------------------------------------|" << endl;
@@ -55,6 +59,7 @@ void AltaUsuario(){
 
     switch(tipoRegistro) {
         case 1: {
+            cout<<endl;
             cout << "|------------------------------------------------|" << endl;
             cout << "|        REGISTRO ADICIONAL DESARROLLADOR        |" << endl;
             cout << "|------------------------------------------------|" << endl;
@@ -65,6 +70,7 @@ void AltaUsuario(){
         }
         case 2: {
             do {
+                cout<<endl;
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
                 cout << "|------------------------------------------------|" << endl;
@@ -72,14 +78,16 @@ void AltaUsuario(){
                 cin >> nickname;
 
                 if (!factory->getInstance()->getInterfaceU()->verificarNickname(nickname)) {
+                    cout<<endl;
                     cout << "|------------------------------------------------|" << endl;
-                    cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
+                    cout << "| Ya existe un jugador con el nickname ingresado |" << endl;
                     cout << "|------------------------------------------------|" << endl;
                     cout << "| 1. Reingresar Nickname                         |" << endl;
                     cout << "| 2. Cancelar registro                           |" << endl;
                     cout << "|------------------------------------------------|" << endl;
                     cin >> deseaReingresar;
                     if (deseaReingresar == 2) {
+                        cout<<endl;
                         cout << "|------------------------------------------------|" << endl;
                         cout << "|               REGISTRO CANCELADO               |" << endl;
                         cout << "|------------------------------------------------|" << endl;
@@ -88,6 +96,7 @@ void AltaUsuario(){
                 }
             } while (deseaReingresar == 1);
 
+            cout<<endl;
             cout << "|------------------------------------------------|" << endl;
             cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
             cout << "|------------------------------------------------|" << endl;
@@ -102,6 +111,7 @@ void AltaUsuario(){
     }
 
     do {
+        cout<<endl;
         cout << "|------------------------------------------------|" << endl;
         cout << "|                 ALTA DE USUARIO                |" << endl;
         cout << "|------------------------------------------------|" << endl;
@@ -110,6 +120,7 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl;
         cin >> opcion2;
         if(opcion2 !=1 && opcion2 !=2) {
+            cout<<endl;
             cout << "|------------------------------------------------|" << endl;
             cout << "|          Debe ingresar una tipoRegistro!       |" << endl;
             cout << "|------------------------------------------------|" << endl;
@@ -119,12 +130,14 @@ void AltaUsuario(){
 
     if(opcion2==1){
         factory->getInstance()->getInterfaceU()->confirmarRegistro();
+        cout<<endl;
         cout << "|------------------------------------------------|" << endl;
         cout << "|               REGISTRO EXITOSO!!               |" << endl;
         cout << "|------------------------------------------------|" << endl<< endl;
     }
     else if(opcion2==2){
         factory->getInstance()->getInterfaceU()->cancelarRegistro();
+        cout<<endl;
         cout << "|------------------------------------------------|" << endl;
         cout << "|               REGISTRO CANCELADO               |" << endl;
         cout << "|------------------------------------------------|" << endl<< endl;

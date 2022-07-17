@@ -86,7 +86,6 @@ int main() {
     do {
         menuPrincipal();
         cin >> opPrincipal;
-        cout<<endl;
         switch (opPrincipal) {
             case 1: {
                 AltaUsuario();
@@ -100,7 +99,6 @@ int main() {
                         do {
                             menuDesarrollador();
                             cin >> opDesarrollador;
-                            cout<<endl;
                             switch (opDesarrollador) {
                                 case 1:
                                     AgregarCategoria();
@@ -130,7 +128,6 @@ int main() {
                         do {
                             menuJugador();
                             cin >> opJugador;
-                            cout<<endl;
                             switch (opJugador) {
                                 case 1:
                                     SuscribirseAVideojuego();
