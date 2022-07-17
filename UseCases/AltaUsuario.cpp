@@ -59,6 +59,7 @@ void AltaUsuario(){
             cout << "Ingrese una descripcion:" << endl;
             cin >> descripcion;
             if (!factory->getInstance()->getInterfaceU()->verificarNickname(nickname)) {
+                cout<<"El nickname ingresado ya está en uso!!"<<endl;
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
                 cout << "|------------------------------------------------|" << endl;
