@@ -52,6 +52,10 @@ void AbandonarPartidaMultijugador() {
     cout<<"|------------------------------------------------|"<<endl<<endl;
     cout<<"Ingrese ID de la partida:"<<endl;
     cin>>idpartida;
-    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
-    cout<<"Partida abandonada"<<endl;
+    try {
+        factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
+        cout<<"Partida abandonada"<<endl;
+    } catch (exception &e) {
+        cout<<e.what()<<endl;
+    }
 }

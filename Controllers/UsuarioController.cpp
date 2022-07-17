@@ -21,6 +21,7 @@ int UsuarioController::tipoUsuario(Usuario* user){
     Desarrollador* desarrollador=dynamic_cast<Desarrollador*>(user);
     if(desarrollador)
         return 0;
+    return -1;
 }
 
 UsuarioController::~UsuarioController(){}
@@ -40,21 +41,34 @@ IDictionary* UsuarioController::getUsuarios(){
 }
 
 void UsuarioController::registroJugador(string email,string password,string nickname,string descripcion){
+    if(this->usuarios){
+        if(buscarUsuario(email) && buscarUsuario(email)->getEmail()==email){
+            cout<<"Error ya existe un usuario en el sistema con el email ingresado!";
+            return;
+        }
+    }
     this->controller_memory= new Jugador(email,password,nickname,descripcion);
 }
 void UsuarioController::registroDesarrollador(string email,string password,string empresa){
+    if(this->usuarios){
+        if(buscarUsuario(email) && buscarUsuario(email)->getEmail()==email){
+            cout<<"Error ya existe un usuario en el sistema con el email ingresado!";
+            return;
+        }
+    }
     this->controller_memory= new Desarrollador(email,password,empresa);
 }
 bool UsuarioController::verificarNickname(string nickname){
     IIterator* iter = usuarios->getIteratorObj();
     if(!this->usuarios)
-        return false;
+        return true;
     else if(this->usuarios){
         while (iter->hasNext()) {
             Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
-            if(nickname==jugador->getNickname())
-                return true;
+            if(jugador && nickname==jugador->getNickname())
+                return false;
         }
+
     }
     return true;
 }

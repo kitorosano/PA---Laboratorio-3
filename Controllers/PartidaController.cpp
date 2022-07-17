@@ -90,10 +90,6 @@ void PartidaController::ingresarNicknameALaPartida(string nickname){
             // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
             JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
 
-//            TODO: ERRROR EN ESTA PARTE
-            cout << jugadorDeLaPartida->toString(); // imprime el jugador que se agregara a la partida
-
-
             // Agregar el puntero del jugadorMultijugador a la lista de jugadores que tiene esta partida multijugador
             Multijugador *multi = dynamic_cast<Multijugador *>(this->partidaSeleccionada);
             multi->unirNicknameAPartida(jugadorDeLaPartida);
@@ -166,10 +162,9 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
-        JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
         while(it->hasNext()) {
+            JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->next());
             this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
-            it->next();
         }
         delete it;
     }

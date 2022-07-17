@@ -4,8 +4,6 @@
 
 #include "CargarDatosDePrueba.h"
 #include "Factory/Factory.h"
-#include "Utils/Utils.h"
-#include "ColeccionesG/KeyInt.h"
 
 void CargarDatosDePrueba() {
     Factory* factory;
@@ -231,6 +229,4 @@ void CargarDatosDePrueba() {
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|       CARGAR DATOS DE PRUEBA COMPLETADA!!      |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-
-    presionaParaContinuar();
 }

@@ -14,6 +14,7 @@ Multijugador::Multijugador() {
 Multijugador::Multijugador(Jugador *jugador, Videojuego *videojuego, bool transmitidaEnvivo): Partida(jugador, videojuego) {
     this->transmitidaEnVivo = transmitidaEnVivo;
     this->comentarios = new ListDicc();
+    this->jugadoresEnLaPartida=new ListDicc();
 }
 
 Multijugador::~Multijugador() {
