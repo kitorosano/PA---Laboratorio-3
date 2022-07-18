@@ -80,3 +80,7 @@ string Partida::toString() {
     this->isFinalizada() ? ss << "Fecha de Fin: " << this->getFechaFin()->toString() << endl : ss << "";
     return ss.str();
 }
+
+void Partida::setHorasPartida(int horasPartida) {
+    this->horasPartida = horasPartida;
+}

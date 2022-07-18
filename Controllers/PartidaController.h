@@ -64,6 +64,7 @@ public:
     IDictionary* listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado);
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    int calcularHorasPartida(DT_Fecha* comienzo, DT_Fecha* final);
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H

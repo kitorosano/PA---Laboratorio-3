@@ -163,7 +163,7 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
         throw std::invalid_argument("No se encontro la partida");
 
     partida->finalizarPartida(fechaFinalizacion);
-
+    partida->setHorasPartida(this->calcularHorasPartida(partida->getFechaComienzo(), partida->getFechaFin()));
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
@@ -336,3 +336,35 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     return listadepartidas_multijugador;
 } // lugar 1
 // lugar 1
+
+int PartidaController::calcularHorasPartida(DT_Fecha *fcomienzo, DT_Fecha *final) {
+
+    // Restar el tiempo de comienzo con el tiempo de Finalizacion con la funcion difftime()
+    //time_t now;
+    struct tm comienzo;
+    struct tm fin;
+    int seconds;
+    //time(&now);  // get current time; same as: now = time(NULL)
+    //comienzo = *localtime(&now);
+    //fin = *localtime(&now);
+    // fechaComienzo de la partida
+    comienzo.tm_hour = fcomienzo->getHora();
+    comienzo.tm_min = fcomienzo->getMinuto();
+    comienzo.tm_sec = fcomienzo->getSegundo();
+    comienzo.tm_mday = fcomienzo->getDia(); // itn - day of the month	1-31
+    comienzo.tm_mon = (fcomienzo->getMes())-1;  // int - months since January	0-11
+    comienzo.tm_year = (fcomienzo->getAnio())-1900;
+
+    // fechafinal de la partida
+    fin.tm_hour = final->getHora();
+    fin.tm_min = final->getMinuto();
+    fin.tm_sec = final->getSegundo();
+    fin.tm_mday = final->getDia(); // itn - day of the month	1-31
+    fin.tm_mon = (final->getMes())-1;  // int - months since January	0-11
+    fin.tm_year = (final->getAnio())-1900;
+
+    seconds = difftime(mktime(&fin),mktime(&comienzo));
+    int totalhorasJugadas = seconds/3600;
+    //cout<<"Horas jugadas: "<<totalhorasJugadas<<endl;
+    return totalhorasJugadas;
+}
