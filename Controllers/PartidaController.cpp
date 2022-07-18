@@ -305,9 +305,8 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
                             nickName));
                     if (jugadorMultijugador->getFechaFinalizacion() == NULL){
                         // agrego la partida multijugador a la coleccion para que despues se muestre
-                        listadepartidasMulti->add(multijugador, new KeyInt(idpartida));
+                        listadepartidasMulti->add(multijugador, new KeyInt(multijugador->getIdPartida()));
                     }
-
                 }
             }
             it->next();

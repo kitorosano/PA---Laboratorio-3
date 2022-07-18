@@ -8,11 +8,12 @@
 #include "ColeccionesG/IDictionary.h"
 #include "Classes/JugadorMultijugador.h"
 #include "AbandonarPartidaMultijugador.h"
+#include "ColeccionesG/KeyInt.h"
 using namespace std;
 
 void AbandonarPartidaMultijugador() {
     Factory * factory;
-    bool trans;
+    bool trans, repetir;
     int idpartida;
     Jugador* jugadorLogueado = dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
@@ -50,12 +51,17 @@ void AbandonarPartidaMultijugador() {
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|        ABANDONAR PARTIDA MULTIJUGADOR          |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese ID de la partida:"<<endl;
-    cin>>idpartida;
-    try {
-        factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
-        cout<<"Partida abandonada"<<endl;
-    } catch (exception &e) {
-        cout<<e.what()<<endl;
-    }
+
+    do {
+        cout << "Ingrese ID de la partida:" << endl;
+        cin >> idpartida;
+        repetir = false;
+        KeyInt *keyidpartida = new KeyInt(idpartida);
+        if (lista->member(keyidpartida)) {
+            factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
+        } else {
+            cout << idpartida << " NO ES VALIDO (no esta en la lista proporcionada anteriormente)"<< endl << endl;
+            repetir = true;
+        }
+    } while (repetir == true);
 }
