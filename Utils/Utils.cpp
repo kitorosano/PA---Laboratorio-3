@@ -32,3 +32,9 @@ bool isIntegerWM(string a) {
     }
     return true;
 }
+
+string printDouble(double var)
+{
+    double value = (int)(var * 100 + .5);
+    return to_string((double)value / 100);
+}

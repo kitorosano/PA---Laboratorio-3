@@ -9,5 +9,6 @@ using namespace std;
 void presionaParaContinuar();
 bool isInteger(string a);
 bool isIntegerWM(string a);
+string printDouble(double var);
 
 #endif //MAIN_CPP_UTILS_H
