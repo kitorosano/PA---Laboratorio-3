@@ -61,27 +61,32 @@ void RealizarComentario(){
             cin>>responder;
 
         if(responder=='s'||responder=='S'){
-
-            cout<<"|------------------------------------------------|"<<endl;
-            cout<<"|Listado de comentarios...                       |"<<endl;
-            cout<<"|------------------------------------------------|"<<endl<<endl;
             aux_comentarios=factory->getInstance()->getInterfaceP()->listarComentariosDePartida();
+
             if(aux_comentarios){
-                IIterator *it3 = aux_comentarios->getIteratorObj();
-                while (it3->hasNext()) {
-                    DT_Comentario* dt_comentario = (DT_Comentario*) (it3->getCurrent());
-                    cout<< "-Id Comentario" <<dt_comentario->getIdComentario()<< endl;
-                    cout<< "-Autor "<<dt_comentario->getEscritor()<<endl;
-                    cout<< "-Fecha de envio" <<dt_comentario->getFechaEnvio()->toString()<< endl;
-                    cout<< "-Contenido: "<<dt_comentario->getContenido()<<endl;
-                    cout<<"----------------------------------------------------------------"<<endl;
-                    it3->next();
+                    IIterator *it3 = aux_comentarios->getIteratorObj();
+                if(it3->hasNext()) {
+                    while (it3->hasNext()) {
+                        DT_Comentario *dt_comentario = (DT_Comentario *) (it3->getCurrent());
+                        cout << "|------------------------------------------------|" << endl;
+                        cout << "|Listado de comentarios...                       |" << endl;
+                        cout << "|------------------------------------------------|" << endl << endl;
+                        cout << "-Id Comentario" << dt_comentario->getIdComentario() << endl;
+                        cout << "-Autor " << dt_comentario->getEscritor() << endl;
+                        cout << "-Fecha de envio" << dt_comentario->getFechaEnvio()->toString() << endl;
+                        cout << "-Contenido: " << dt_comentario->getContenido() << endl;
+                        cout << "----------------------------------------------------------------" << endl;
+                        it3->next();
+                    }
+                    cout << "|------------------------------------------------|" << endl;
+                    cout << "|Seleccione un comentario ingresando su id       |" << endl;
+                    cout << "|------------------------------------------------|" << endl;
+                    cin >> id_comentario;
+                    factory->getInstance()->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
                 }
-                cout<<"|------------------------------------------------|"<<endl;
-                cout<<"|Seleccione un comentario ingresando su id       |"<<endl;
-                cout<<"|------------------------------------------------|"<<endl;
-                cin>>id_comentario;
-                factory->getInstance()->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
+                else{
+                    cout<<"No hay comentarios en esta partida!!"<<endl;
+                }
             }
         }
         cout << "|------------------------------------------------|" << endl;
