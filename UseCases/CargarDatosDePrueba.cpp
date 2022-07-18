@@ -219,13 +219,13 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P4->getIdPartida(), J2, new DT_Fecha(5,6,21,18,0,0));
     factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P5->getIdPartida(), J2, new DT_Fecha(6,6,21,17,30,0));
     cout << " Agregados correctamente!" << endl;*/
-/*
+
     // Finalizar partida multijugador
     cout << "| Finalizando partidas multijugador...";
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,21,19,0,0));
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,21,19,0,0));
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,2021,19,0,0));
+    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,2021,19,0,0));
     cout << " Finalizadas correctamente!" << endl;
-*/
+
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|       CARGAR DATOS DE PRUEBA COMPLETADA!!      |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;

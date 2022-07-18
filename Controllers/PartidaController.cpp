@@ -164,6 +164,7 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
 
     partida->finalizarPartida(fechaFinalizacion);
     partida->setHorasPartida(this->calcularHorasPartida(partida->getFechaComienzo(), partida->getFechaFin()));
+    partida->getVideojuego()->setTotalHorasJugadas(partida->getHorasPartida() + partida->getVideojuego()->getTotalHorasJugadas());
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
