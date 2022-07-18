@@ -64,7 +64,7 @@ void Partida::setFechaComienzo(DT_Fecha* fecha) {
 }
 
 void Partida::finalizarPartida(DT_Fecha* fecha) {
-    this->fechaFin = fechaFin;
+    this->fechaFin = fecha;
     this->horasPartida = getFechaComienzo()->getDiferenciaEnHoras(fecha);
     this->finalizada = true;
 }

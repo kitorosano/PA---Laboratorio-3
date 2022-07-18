@@ -26,7 +26,7 @@ void AbandonarPartidaMultijugador() {
 
     while(it->hasNext()){
         multi = dynamic_cast<Multijugador *>(it->getCurrent());
-        cout<<"ID: "<<multi->getIdPartida();
+        cout<<"ID: "<<multi->getIdPartida()<<endl;
         cout << "Fecha Comienzo: " << multi->getFechaComienzo()->toString() << endl;
         cout<<"Nombre Videojuego: "<<multi->getVideojuego()->getNombre()<<endl;
         trans = multi->isTransmitidaEnVivo();
@@ -38,10 +38,10 @@ void AbandonarPartidaMultijugador() {
         cout<<"Jugador Iniciador: "<<multi->getJugador()->getNickname()<<endl;
         IIterator *it2 = multi->getJugadoresEnLaPartida()->getIteratorObj();
         cout<<"Jugadores en la partida: "<<endl;
-        while(it->hasNext()) {
-            jugadorMulti = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
-            cout << jugadorMulti->getJugador()->getNickname() << endl;
-            it->next();
+        while(it2->hasNext()) {
+            jugadorMulti = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
+            cout << "      " << jugadorMulti->getJugador()->getNickname() << endl;
+            it2->next();
         }
         cout << "|------------------------------------------------|" << endl << endl;
         it->next();

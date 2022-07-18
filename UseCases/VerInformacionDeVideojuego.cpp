@@ -11,6 +11,7 @@ using namespace std;
 void VerInformacionDeVideojuego() {
     Factory *factory;
     Usuario* usuarioLogueado = factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+    bool validar = true;
 
     string nombre;
     Videojuego* obtenido;
@@ -23,20 +24,28 @@ void VerInformacionDeVideojuego() {
         cout<<"|  "<<nombreDescripcion->getNombre()<<endl;
     }
 
-    cout << "|--------------------------------------------------|" << endl;
-    cout << "| Ingrese el nombre para seleccionar un videojuego |" << endl;
-    cout << "|--------------------------------------------------|" << endl << endl;
-    cin >> nombre;
-    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombre);
-    
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
 
-    Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(usuarioLogueado);
-    if(desarrollador) {
-        factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
-    } else {
-        factory->getInstance()->getInterfaceV()->verVideojuego();
+    cout << endl << "Ingrese el nombre para seleccionar un videojuego: " << endl;
+    cin >> nombre;
+    try {
+        factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombre);
+        //cout<<"Partida abandonada"<<endl;
+    } catch (exception &e) {
+        cout<<e.what()<<endl;
+        validar = false;
     }
+
+    if (validar){
+        cout<<"|------------------------------------------------|"<<endl;
+        cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
+        cout<<"|------------------------------------------------|"<<endl<<endl;
+
+        Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(usuarioLogueado);
+        if(desarrollador) {
+            factory->getInstance()->getInterfaceV()->verVideojuegoDesarrollador();
+        } else {
+            factory->getInstance()->getInterfaceV()->verVideojuego();
+        }
+    }
+
 }

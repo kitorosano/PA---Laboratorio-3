@@ -5,7 +5,7 @@
 #include "DT_PartidasIndividualesFinalizadas.h"
 #include <sstream>
 
-DT_PartidasIndividualesFinalizadas::DT_PartidasIndividualesFinalizadas(int idPartida, DT_Fecha* fecha, double horasPartida) {
+DT_PartidasIndividualesFinalizadas::DT_PartidasIndividualesFinalizadas(int idPartida, DT_Fecha* fecha, int horasPartida) {
     this->idPartida = idPartida;
     this->fechaComienzo = fecha;
     this->horasPartida = horasPartida;
@@ -19,7 +19,7 @@ DT_Fecha* DT_PartidasIndividualesFinalizadas::getFechaComienzo() {
     return this->fechaComienzo;
 }
 
-double DT_PartidasIndividualesFinalizadas::getHorasPartida() {
+int DT_PartidasIndividualesFinalizadas::getHorasPartida() {
     return this->horasPartida;
 }
 

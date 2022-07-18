@@ -38,5 +38,6 @@ public:
     void cancelarDatosSuscripcion();
 
     void listarNicknameJugadoresSuscritos();
+    IDictionary* listarNicknameJugadoresSuscritosConRetorno();
 };
 #endif //PA___LABORATORIO_3_DATOSSUSCRIPCIONCONTROLLER_H

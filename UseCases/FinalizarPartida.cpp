@@ -10,62 +10,76 @@
 #include "Classes/Multijugador.h"
 #include "Classes/JugadorMultijugador.h"
 #include "FinalizarPartida.h"
+#include "ColeccionesG/KeyInt.h"
 using namespace std;
 
 void FinalizarPartida() {
-    Factory * factory;
-    bool trans;
+    Factory *factory;
+    bool trans, repetir;
     int idpartida;
-    Jugador *jugadorLogueado = dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
+    Jugador *jugadorLogueado = dynamic_cast<Jugador *>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|          FINALIZAR PARTIDA                     |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    IDictionary* lista = factory->getInstance()->getInterfaceP()->listarPartidasIniciadasNoFinalizadas();
-    Partida* partida = NULL;
-    Individual* individual = NULL;
-    Multijugador* multijugador = NULL;
-    JugadorMultijugador* jugadorMulti = NULL;
+    cout << "|------------------------------------------------|" << endl;
+    cout << "|          FINALIZAR PARTIDA                     |" << endl;
+    cout << "|------------------------------------------------|" << endl << endl;
+    IDictionary *lista = factory->getInstance()->getInterfaceP()->listarPartidasIniciadasNoFinalizadas(jugadorLogueado);
+    Partida *partida = NULL;
+    Individual *individual = NULL;
+    Multijugador *multijugador = NULL;
+    JugadorMultijugador *jugadorMulti = NULL;
     IIterator *it = lista->getIteratorObj();
 
-    while(it->hasNext()){
+    while (it->hasNext()) {
         partida = dynamic_cast<Partida *>(it->getCurrent());
+        cout << "ID: " << partida->getIdPartida() << endl;
+        cout << "Fecha Comienzo: " << partida->getFechaComienzo()->toString() << endl;
+        cout << "Nombre Videojuego: " << partida->getVideojuego()->getNombre() << endl;
+
         individual = dynamic_cast<Individual *>(it->getCurrent());
         multijugador = dynamic_cast<Multijugador *>(it->getCurrent());
-        cout<<"ID: "<<partida->getIdPartida();
-        cout << "Fecha Comienzo: " << partida->getFechaComienzo()->toString() << endl;
-        cout<<"Nombre Videojuego: "<<partida->getVideojuego()->getNombre()<<endl;
-
-        if (individual){
-            if (individual->getContPartAnterior() == NULL){
-                cout<<"Continuacion de otra partida: No"<<endl;
-            }else {
-                cout<<"Continuacion de otra partida: Si"<<endl;
+        if (individual) {
+            if (individual->getContPartAnterior() == NULL) {
+                cout << "Continuacion de otra partida: No" << endl;
+            } else {
+                cout << "Continuacion de otra partida: Si" << endl;
             }
         }
-        if (multijugador){
+        if (multijugador) {
             trans = multijugador->isTransmitidaEnVivo();
-            if(trans){
-                cout<<"Transmitida en vivo: Si"<<endl;
-            }else{
-                cout<<"Transmitida en vivo: No"<<endl;
+            if ((trans) || (trans == 240)) {
+                cout << "Transmitida en vivo: Si" << endl;
+            } else {
+                cout << "Transmitida en vivo: No" << endl;
             }
-            IIterator *it2 = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
-            cout<<"Jugadores en la partida: "<<endl;
-            while(it->hasNext()) {
-                jugadorMulti = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
-                cout << jugadorMulti->getJugador()->getNickname() << endl;
-                it->next();
+            IDictionary *jugadoresDeLaPartida = multijugador->getJugadoresEnLaPartida();
+            IIterator *it2 = jugadoresDeLaPartida->getIteratorObj();
+            // IIterator *it = lista->             getIteratorObj()
+            cout << "Jugadores en la partida: " << endl;
+            while (it2->hasNext()) {
+                jugadorMulti = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
+                cout << "      " << jugadorMulti->getJugador()->getNickname() << endl;
+                it2->next();
             }
         }
         cout << "|------------------------------------------------|" << endl << endl;
         it->next();
     }
 
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|          FINALIZAR PARTIDA                     |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese ID de la partida:"<<endl;
-    cin>>idpartida;
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(idpartida, jugadorLogueado, new DT_Fecha());
+    cout << "|------------------------------------------------|" << endl;
+    cout << "|          FINALIZAR PARTIDA                     |" << endl;
+    cout << "|------------------------------------------------|" << endl << endl;
+
+    do {
+        cout << "Ingrese ID de la partida:" << endl;
+        cin >> idpartida;
+        repetir = false;
+        KeyInt *keyidpartida = new KeyInt(idpartida);
+        if (lista->member(keyidpartida)) {
+            factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(idpartida, jugadorLogueado, new DT_Fecha());
+        } else {
+            cout << idpartida << " NO ES VALIDO (no esta en la lista proporcionada anteriormente)"<< endl << endl;
+            repetir = true;
+        }
+    } while (repetir == true);
+
 }
