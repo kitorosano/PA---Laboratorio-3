@@ -30,14 +30,14 @@ public:
 
     void registroJugador(string email,string password,string nickname,string descripcion);
     void registroDesarrollador(string email,string password,string empresa);
-    bool verificarNickname(string nickname);
+    bool verificarNicknamesIngresados(string nickname);
     Usuario* confirmarRegistro();
     void cancelarRegistro();
     int tipoUsuario(Usuario* user);
 
     int iniciarSesion(string mail,string password);
-    void listarJugadores();
-    void seguirJugador(string nickname);
+    void listarJugadores(Usuario* usuario_logueado);
+    void seguirJugador(string nickname,Usuario* usuarioLogeado);
 
 };
 
