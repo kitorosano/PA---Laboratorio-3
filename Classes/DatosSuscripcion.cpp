@@ -42,6 +42,8 @@ DT_Fecha* DatosSuscripcion::getFechaSuscripcion() {
     return fecha_suscripcion;
 }
 
+
+
 bool DatosSuscripcion::isActivo() {
     bool activo = false;
     switch (this->getSuscripcion()->getPeriodoValidez()) {

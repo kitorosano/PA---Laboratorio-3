@@ -112,7 +112,7 @@ Partida* PartidaController::confirmarPartida(DT_Fecha* fecha_comienzo){
 
     this->partidaSeleccionada->setFechaComienzo(fecha_comienzo);
 
-    // Agregar a la colección la nueva partida;
+    // Agregar a la coleccion la nueva partida;
     partidas->add(partidaSeleccionada, new KeyInt(idPartida));
 
     // Borrar los datos que el controlador guardo y retornar la partida

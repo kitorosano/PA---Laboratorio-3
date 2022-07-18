@@ -34,10 +34,8 @@ void AgregarCategoria() {
       cout<<"|                AGREGAR CATEGORIA               |"<<endl;
       cout<<"|------------------------------------------------|"<<endl<<endl;
       cout<<"Ingrese el nombre de la nueva categoria:"<<endl;
-      //cin>>nombreCategoria;
       cin.ignore();
       getline(cin, nombreCategoria);
-
 
       repetir = false;
       KeyString *keyNombreCategoria = new KeyString(nombreCategoria);

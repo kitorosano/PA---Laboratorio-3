@@ -15,15 +15,15 @@ class IUsuario {
 public:
     virtual void registroJugador(string mail,string password,string nickname,string descripcion)=0;
     virtual void registroDesarrollador(string mail,string password,string empresa)=0;
-    virtual bool verificarNickname(string nickname)=0;
+    virtual bool verificarNicknamesIngresados(string nickname)=0;
     virtual Usuario* confirmarRegistro()=0;
     virtual void cancelarRegistro()=0;
     virtual int tipoUsuario(Usuario* user)=0;
     virtual int iniciarSesion(string mail,string password)=0;
     virtual Usuario* getUsuarioLogeado()=0;
     virtual IDictionary* getUsuarios()=0;
-    virtual void listarJugadores()=0;
-    virtual void seguirJugador(string nickname)=0;
+    virtual void listarJugadores(Usuario* usuario_logueado)=0;
+    virtual void seguirJugador(string nickname,Usuario* usuarioLogeado)=0;
     virtual Usuario* buscarUsuario(string email)=0;
 };
 

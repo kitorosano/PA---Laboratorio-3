@@ -47,43 +47,43 @@ void CargarDatosDePrueba() {
 
     // Categorias
     cout << "| Agregando categorias...";
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripcion libre",PLATAFORMA, NULL);
     auto C1 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripcion libre",PLATAFORMA, NULL);
     auto C2 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripcion libre",PLATAFORMA, NULL);
     auto C3 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripcion libre",GENERO, NULL);
     auto C4 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripcion libre",GENERO, NULL);
     auto C5 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripcion libre",GENERO, NULL);
     auto C6 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido está dirigido a jóvenes de 13 años en adelante",OTRO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido esta dirigido a jovenes de 13 años en adelante",OTRO, NULL);
     auto C7 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido está dirigido para todo público",OTRO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido esta dirigido para todo publico",OTRO, NULL);
     auto C8 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Acción","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Accion","descripcion libre",GENERO, NULL);
     auto C9 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripcion libre",GENERO, NULL);
     auto C10 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripcion libre",PLATAFORMA, NULL);
     auto C11 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripcion libre",PLATAFORMA, NULL);
     auto C12 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripcion libre",PLATAFORMA, NULL);
     auto C13 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
     cout << " Agregadas correctamente!" << endl;
 
@@ -143,33 +143,27 @@ void CargarDatosDePrueba() {
     Suscripcion *auxSuscripcion;
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V1->getId(), E_PeriodoValidez::TRIMESTRAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J1->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Paypal);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(1,6,21,9,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(1,6,21,9,0,0));
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::TRIMESTRAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J1->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(2,6,21,11,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(2,6,21,11,0,0));
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::MENSUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J2->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Paypal);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(4,6,21,9,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(4,6,21,9,0,0));
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V3->getId(), E_PeriodoValidez::ANUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J2->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(11,6,21,9,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(11,6,21,9,0,0));
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V2->getId(), E_PeriodoValidez::MENSUAL);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J3->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(3,6,21,7,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(3,6,21,7,0,0));
 
     auxSuscripcion = factory->getInstance()->getInterfaceV()->obtenerSuscripcionVideojuego(V3->getId(), E_PeriodoValidez::VITALICIA);
     factory->getInstance()->getInterfaceD()->crearDatosSuscripcion(J3->getNickname(), auxSuscripcion->getId(), E_MetodoPago::Tarjeta);
-    factory->getInstance()->getInterfaceD()->getDatoSuscripcionSeleccionado()->setFechaSuscripcion(new DT_Fecha(21,12,21,15,0,0));
-    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion();
+    factory->getInstance()->getInterfaceD()->confirmarDatosSuscripcion(new DT_Fecha(21,12,21,15,0,0));
     cout << " Agregadas correctamente!" << endl;
 
     // Puntajes a videojuegos

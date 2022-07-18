@@ -9,6 +9,7 @@
 using namespace std;
 void SeguirJugador(){
     Factory* factory;
+    Usuario* usuario_logueado=factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
 //    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
 
     string nickname;
@@ -18,13 +19,14 @@ void SeguirJugador(){
         cout << "|                 SEGUIR JUGADOR                 |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
         cout << "Listado de jugadores en el sistema:" << endl;
-        factory->getInstance()->getInterfaceU()->listarJugadores();
+        factory->getInstance()->getInterfaceU()->listarJugadores(usuario_logueado);
 
         cout << "Seleccione un jugador ingresando su nickname" << endl;
         cin >> nickname;
-        retorno=factory->getInstance()->getInterfaceU()->verificarNickname(nickname);
+        retorno=factory->getInstance()->getInterfaceU()->verificarNicknamesIngresados(nickname);
         if(!retorno)
             cout<<"El nickname ingresado es incorrecto"<<endl;
     }while(!retorno);
             cout<<"Usteded sigue al jugador "<<nickname<<"!"<<endl;
+            factory->getInstance()->getInterfaceU()->seguirJugador(nickname,usuario_logueado);
 }
