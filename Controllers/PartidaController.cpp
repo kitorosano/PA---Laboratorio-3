@@ -208,10 +208,10 @@ void PartidaController::seleccionarComentarioAResponder(int idComentario){
     }
 }
 
-void PartidaController::enviarComentario(string contenido){
-    Factory* factory;
+void PartidaController::enviarComentario(string contenido, Usuario* usuario_logueado){
+   // Factory* factory;
     string autor;
-    Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+    //Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
     Jugador* jugador = dynamic_cast<Jugador*>(usuario_logueado);
     if(jugador){
         if(this->comentarioAResponder){
@@ -259,7 +259,7 @@ IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamen
         partida = dynamic_cast<Individual *>(it->getCurrent());
         if(partida){
             if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->isFinalizada())){
-                // Guardar todo en una coleccion y retorna esa coleccion
+
                 DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFechaComienzo(), partida->getHorasPartida());
                 listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
             }
@@ -331,7 +331,7 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
         partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
             if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
-                // Guardar todo en una coleccion y retorna esa coleccion
+
                 //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
                 DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
                 listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));

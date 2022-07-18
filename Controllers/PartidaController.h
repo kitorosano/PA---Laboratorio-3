@@ -56,7 +56,7 @@ public:
     
     IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
-    void enviarComentario(string comentario);
+    void enviarComentario(string comentario, Usuario* usuario_logueado);
     void confirmarComentario();
     void cancelarComentario();
     

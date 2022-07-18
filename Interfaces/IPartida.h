@@ -31,7 +31,7 @@ public:
 
     virtual  IDictionary* listarComentariosDePartida() = 0;
     virtual void seleccionarComentarioAResponder(int idComentario) = 0;
-    virtual void enviarComentario(string comentario) = 0;
+    virtual void enviarComentario(string comentario, Usuario* usuario_logueado) = 0;
     virtual void confirmarComentario() = 0;
     virtual void cancelarComentario()= 0;
 

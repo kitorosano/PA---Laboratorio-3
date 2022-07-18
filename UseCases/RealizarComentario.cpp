@@ -10,10 +10,11 @@
 using namespace std;
 void RealizarComentario(){
     Factory * factory;
-//    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
+
 
     int opcion;
     Multijugador* multijugador=NULL;
+    Usuario* usuario_logueado=factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
     Individual* individual=NULL;
     string contenido,id_partida,id_comentario;
     int id_p,id_c;
@@ -57,13 +58,9 @@ void RealizarComentario(){
             cout << "|    -Seleccione la partida ingresando su id     |" << endl;
             cout << "|------------------------------------------------|" << endl << endl;
             cin >> id_partida;
-            individual=dynamic_cast<Individual*>(factory->getInstance()->getInterfaceP()->getPartidaSelecionada());
-            if(individual){
-                cout<<"el id ingresado corresponde a una partida individual!!"<<endl;
-                _individual=true;
-            }
 
-        }while(!isInteger(id_partida) || _individual || !factory->getInstance()->getInterfaceP()->existePartida(stoi(id_partida)) );
+
+        }while(!isInteger(id_partida) || !factory->getInstance()->getInterfaceP()->existePartida(stoi(id_partida)) );
         id_p = stoi(id_partida);
         factory->getInstance()->getInterfaceP()->seleccionarPartida(id_p);
 
@@ -85,7 +82,7 @@ void RealizarComentario(){
                         cout << "|------------------------------------------------|" << endl;
                         cout << "|Listado de comentarios...                       |" << endl;
                         cout << "|------------------------------------------------|" << endl << endl;
-                        cout << "-Id Comentario" << dt_comentario->getIdComentario() << endl;
+                        cout << "-Id Comentario " << dt_comentario->getIdComentario() << endl;
                         cout << "-Autor " << dt_comentario->getEscritor() << endl;
                         cout << "-Fecha de envio" << dt_comentario->getFechaEnvio()->toString() << endl;
                         cout << "-Contenido: " << dt_comentario->getContenido() << endl;
@@ -114,7 +111,7 @@ void RealizarComentario(){
         cout << "|Escribe el contenido del comentario             |" << endl;
         cout << "|------------------------------------------------|" << endl;
         cin>>contenido;
-        factory->getInstance()->getInterfaceP()->enviarComentario(contenido);
+        factory->getInstance()->getInterfaceP()->enviarComentario(contenido,usuario_logueado);
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|              REALIZAR COMENTARIO               |" << endl;
