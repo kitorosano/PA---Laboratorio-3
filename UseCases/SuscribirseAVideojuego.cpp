@@ -10,7 +10,6 @@
 
 void SuscribirseAVideojuego() {
     Factory *fabrica;
-//    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
     Jugador *jugadorLogueado = dynamic_cast<Jugador*>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
     IDictionary *videojuegosSuscripciones = fabrica->getInstance()->getInterfaceD()->listarVideojuegoSuscripciones();
@@ -150,7 +149,7 @@ void SuscribirseAVideojuego() {
                     cout << "|------------------------------------------------|" << endl<< endl;
                     break;
                 default:
-                    cout << "Opción inválida!";
+                    cout << "Opcion invalida!";
                     break;
             }
         }while(opcion!=1 && opcion !=2);

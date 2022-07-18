@@ -61,7 +61,7 @@ void Categoria::agregarVideojuego(Videojuego* videojuego){
   while(it->hasNext()){
     Videojuego* aux = dynamic_cast<Videojuego * >(it->next());
     if(aux->getNombre() == videojuego->getNombre()){
-      cout << "No se agrego la categoria porque ya existe en el videojuego";
+      throw invalid_argument("No se agrego la categoria porque ya existe en el videojuego");
     }
   }
 
