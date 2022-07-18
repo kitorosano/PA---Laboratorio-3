@@ -25,22 +25,25 @@ void RealizarComentario(){
         IIterator *it = aux->getIteratorObj();
         while (it->hasNext()) {
             DT_MultijugadorVideojuego* dt_multijugador_videojuego = (DT_MultijugadorVideojuego*) (it->getCurrent());
-            cout<<"----------------------------------------------------";
+            cout<<"----------------------------------------------------"<<endl;
             cout<<"Id partida:"<<dt_multijugador_videojuego->getIdPartida()<<endl;
             cout<<"Nombre del videojuego "<<dt_multijugador_videojuego->getNombreVideojuego()<<endl;
-            cout<<"Jugador Iniciador "<<dt_multijugador_videojuego->getJugadorIniciador()<<endl;
+            cout<<"Jugador Iniciador "<<dt_multijugador_videojuego->getJugadorIniciador()->getNickname()<<endl;
             cout<<"Jugadores Unidos: "<<endl;
             aux_jugadores_unidos=dt_multijugador_videojuego->getJugadoresUnidos();
             if(aux_jugadores_unidos){
                 IIterator *it2 = aux_jugadores_unidos->getIteratorObj();
                 while (it2->hasNext()) {
-                    Jugador* aux_jug = (Jugador *) (it2->getCurrent());
-                    cout<<"\t"<< "- " <<aux_jug->getNickname()<< endl;
+                    JugadorMultijugador* aux_jug = (JugadorMultijugador *) (it2->getCurrent());
+                    //Jugador* aux_jug=dynamic_cast<Jugador*>(user);
+                    if(aux_jug)
+                        cout<<"\t"<< "- " <<aux_jug->getJugador()->getNickname()<< endl;
                     it2->next();
                 }
             }
             it->next();
         }
+
         cout<<"|------------------------------------------------|"<<endl;
         cout<<"|    -Seleccione la partida ingresando su id     |"<<endl;
         cout<<"|------------------------------------------------|"<<endl<<endl;

@@ -222,8 +222,8 @@ void CargarDatosDePrueba() {
 
     // Finalizar partida multijugador
     cout << "| Finalizando partidas multijugador...";
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,21,19,0,0));
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,21,19,0,0));
+//    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,21,19,0,0));
+//    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,21,19,0,0));
     cout << " Finalizadas correctamente!" << endl;
 
     cout<<"|------------------------------------------------|"<<endl;

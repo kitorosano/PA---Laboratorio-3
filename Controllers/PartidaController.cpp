@@ -318,7 +318,7 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     while(it->hasNext()){
         partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
-            if((partida->isFinalizada() == false && partida->isTransmitidaEnVivo() == true)){
+            if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
                 // Guardar todo en una coleccion y retorna esa coleccion
                 //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
                 DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
