@@ -16,6 +16,8 @@ using namespace std;
 
 class IPartida {
 public:
+    virtual Partida* getPartidaSelecionada()=0;
+    virtual bool existePartida(int idPartida)=0;
     virtual void continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador) = 0;
     virtual void nuevaPartidaIndividual(Jugador* jugadorIniciador) = 0;
     virtual void nuevaPartidaMultijugador(Jugador* jugadorIniciador, bool transmitidaEnVivo) = 0;

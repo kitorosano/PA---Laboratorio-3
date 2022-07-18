@@ -176,7 +176,19 @@ void PartidaController::seleccionarPartida(int idPartida){
     Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
     this->partidaSeleccionada=aux;
 }
-
+Partida* PartidaController::getPartidaSelecionada(){
+    return this->partidaSeleccionada;
+}
+bool PartidaController::existePartida(int idPartida){
+    KeyInt* key_idPartida = new KeyInt(idPartida);
+    Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
+    if(aux)
+        return true;
+    else {
+        cout<<"la partida con el id "<<idPartida<<" no existe!!"<<endl;
+        return false;
+    }
+}
 IDictionary* PartidaController::listarComentariosDePartida(){
     IDictionary* comentarios_multijugador = NULL;
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);

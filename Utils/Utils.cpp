@@ -12,3 +12,23 @@ void presionaParaContinuar(){
     cin >> input;
     cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
 }
+
+bool isInteger(string a) {
+    for(char const &c : a) {
+        if (isdigit(c) == 0){
+            cout<<endl<<"Error: Debe ingresar un numero entero positivo."<<endl;
+            system("pause");
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isIntegerWM(string a) {
+    for(char const &c : a) {
+        if (isdigit(c) == 0){
+            return false;
+        }
+    }
+    return true;
+}

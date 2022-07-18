@@ -4,6 +4,7 @@
 
 #include "RealizarComentario.h"
 #include "Factory/Factory.h"
+#include "Utils/Utils.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -11,9 +12,13 @@ void RealizarComentario(){
     Factory * factory;
 //    TODO: Extraer de todos los metodos de utliza este caso de uso cuando utilicen al usuarioLogueado, y pasarlo desde aca como parametro. Desde el controlador no se tiene que confirmar nada.
 
-    int opcion,id_partida,id_comentario;
-    string contenido;
+    int opcion;
+    Multijugador* multijugador=NULL;
+    Individual* individual=NULL;
+    string contenido,id_partida,id_comentario;
+    int id_p,id_c;
     char responder;
+    bool _individual;
     IDictionary* aux=NULL;
     IDictionary* aux_jugadores_unidos=NULL;
     IDictionary* aux_comentarios=NULL;
@@ -47,11 +52,20 @@ void RealizarComentario(){
             it->next();
         }
         */
-        cout<<"|------------------------------------------------|"<<endl;
-        cout<<"|    -Seleccione la partida ingresando su id     |"<<endl;
-        cout<<"|------------------------------------------------|"<<endl<<endl;
-        cin>>id_partida;
-        factory->getInstance()->getInterfaceP()->seleccionarPartida(id_partida);
+        do {
+            cout << "|------------------------------------------------|" << endl;
+            cout << "|    -Seleccione la partida ingresando su id     |" << endl;
+            cout << "|------------------------------------------------|" << endl << endl;
+            cin >> id_partida;
+            individual=dynamic_cast<Individual*>(factory->getInstance()->getInterfaceP()->getPartidaSelecionada());
+            if(individual){
+                cout<<"el id ingresado corresponde a una partida individual!!"<<endl;
+                _individual=true;
+            }
+
+        }while(!isInteger(id_partida) || _individual || !factory->getInstance()->getInterfaceP()->existePartida(stoi(id_partida)) );
+        id_p = stoi(id_partida);
+        factory->getInstance()->getInterfaceP()->seleccionarPartida(id_p);
 
             cout << "|------------------------------------------------|" << endl;
             cout << "|              REALIZAR COMENTARIO               |" << endl;
@@ -78,11 +92,16 @@ void RealizarComentario(){
                         cout << "----------------------------------------------------------------" << endl;
                         it3->next();
                     }
-                    cout << "|------------------------------------------------|" << endl;
-                    cout << "|Seleccione un comentario ingresando su id       |" << endl;
-                    cout << "|------------------------------------------------|" << endl;
-                    cin >> id_comentario;
-                    factory->getInstance()->getInterfaceP()->seleccionarComentarioAResponder(id_comentario);
+                    do {
+                        cout << "|------------------------------------------------|" << endl;
+                        cout << "|Seleccione un comentario ingresando su id       |" << endl;
+                        cout << "|------------------------------------------------|" << endl;
+                        cin >> id_comentario;
+                        multijugador=dynamic_cast<Multijugador*>(factory->getInstance()->getInterfaceP()->getPartidaSelecionada());
+
+                    }while(!isInteger(id_comentario)|| !multijugador->obtenerComentario(stoi(id_comentario) ));
+                    id_c=stoi(id_comentario);
+                    factory->getInstance()->getInterfaceP()->seleccionarComentarioAResponder(id_c);
                 }
                 else{
                     cout<<"No hay comentarios en esta partida!!"<<endl;

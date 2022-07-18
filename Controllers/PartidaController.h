@@ -41,7 +41,8 @@ private:
 public:
     static PartidaController * getInstance();
     virtual ~PartidaController();
-
+    Partida* getPartidaSelecionada();
+    bool existePartida(int idPartida);
     void continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador);
     void nuevaPartidaIndividual(Jugador* jugadorIniciador);
     void nuevaPartidaMultijugador(Jugador* jugadorIniciador, bool transmitidaEnVivo);
