@@ -175,6 +175,8 @@ int main() {
                 CargarDatosDePrueba();
                 break;
             }
+            case 0:
+                break;
             default: break;
         }
         presionaParaContinuar();

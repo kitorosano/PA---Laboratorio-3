@@ -30,11 +30,11 @@ public:
 
     IDictionary* listarVideojuegoSuscripciones();
 
-    IDictionary* listarNombreVideojuegosSuscritos();
+    IDictionary* listarNombreVideojuegosSuscritos(Jugador * jugadorLogueado);
     void cancelarSuscripcionActiva(int idSuscripcion);
 
     void crearDatosSuscripcion(string nickname, int idSuscripcion, E_MetodoPago metodo_pago);
-    void confirmarDatosSuscripcion();
+    void confirmarDatosSuscripcion(DT_Fecha* fecha_suscripcion);
     void cancelarDatosSuscripcion();
 
     void listarNicknameJugadoresSuscritos();

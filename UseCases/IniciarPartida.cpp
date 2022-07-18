@@ -29,7 +29,7 @@ void IniciarPartida() {
     cout << "|                 INICIAR PARTIDA                |" << endl;
     cout << "|------------------------------------------------|" << endl << endl;
     cout << "| Videojuegos: " << endl;
-    IDictionary *listaDeNombresDeVideojuegos = factory->getInstance()->getInterfaceD()->listarNombreVideojuegosSuscritos();
+    IDictionary *listaDeNombresDeVideojuegos = factory->getInstance()->getInterfaceD()->listarNombreVideojuegosSuscritos(jugadorLogueado);
     IIterator *iter = listaDeNombresDeVideojuegos->getIteratorObj();
     while (iter->hasNext()) {
         DT_NombreDescripcion *nombreVideojuego = dynamic_cast<DT_NombreDescripcion *>(iter->next());

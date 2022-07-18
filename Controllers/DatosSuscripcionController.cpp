@@ -74,15 +74,15 @@ IDictionary* DatosSuscripcionController::listarVideojuegoSuscripciones() {
     return videojuegoSuscripciones;
 }
 
-IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(){
+IDictionary* DatosSuscripcionController::listarNombreVideojuegosSuscritos(Jugador * jugadorLogueado) {
     Factory* factory;
-    string uNickname = (dynamic_cast<Jugador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado()))->getNickname();
+
     IDictionary* nombreVideojuegosSuscritos = new ListDicc();
 
     IIterator* iter = this->datosSuscripciones->getIteratorObj();
     while(iter->hasNext()){
         DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->next());
-        if(datosSuscripcion->getNickName().compare(uNickname) == 0 && datosSuscripcion->isActivo()){
+        if(datosSuscripcion->getNickName().compare(jugadorLogueado->getNickname()) == 0 && datosSuscripcion->isActivo()){
             string nombreVideojuego = datosSuscripcion->getSuscripcion()->getVideojuego()->getNombre();
             nombreVideojuegosSuscritos->add(new DT_NombreDescripcion(nombreVideojuego), new KeyString(nombreVideojuego));
         }
@@ -108,8 +108,9 @@ void DatosSuscripcionController::crearDatosSuscripcion(string nickname, int idSu
     this->datoSuscripcionSeleccionado = new DatosSuscripcion(nickname, suscripcion, metodo_pago);
 }
 
-void DatosSuscripcionController::confirmarDatosSuscripcion(){
+void DatosSuscripcionController::confirmarDatosSuscripcion(DT_Fecha* fecha_suscripcion){
     this->datoSuscripcionSeleccionado->setId(this->getNuevoIdDatosSuscripcion());
+    this->datoSuscripcionSeleccionado->setFechaSuscripcion(fecha_suscripcion);
     this->datosSuscripciones->add(this->datoSuscripcionSeleccionado, new KeyInt(this->datoSuscripcionSeleccionado->getId()));
     this->datoSuscripcionSeleccionado = NULL;
 }

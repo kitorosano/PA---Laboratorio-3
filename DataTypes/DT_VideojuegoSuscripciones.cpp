@@ -3,6 +3,7 @@
 //
 
 #include "DT_VideojuegoSuscripciones.h"
+#include "Utils/Utils.h"
 
 DT_VideojuegoSuscripciones::DT_VideojuegoSuscripciones() {
 
@@ -46,5 +47,5 @@ void DT_VideojuegoSuscripciones::setCostoAnual(double costoAnual) {
 }
 
 string DT_VideojuegoSuscripciones::toString() {
-    return "Videojuego: " + nombre + "\t| Costo Mensual: $" + to_string(costoMensual) + " | Costo Trimestral: $" + to_string(costoTrimestral) + " | Costo Anual: $" + to_string(costoAnual) + " | Costo Vitalicia: $" + to_string(costoVitalicia);
+    return nombre + "\n\tCosto Mensual: $" + printDouble(costoMensual) + "\n\tCosto Trimestral: $" + printDouble(costoTrimestral) + "\n\tCosto Anual: $" + printDouble(costoAnual) + "\n\tCosto Vitalicia: $" + printDouble(costoVitalicia);
 }
