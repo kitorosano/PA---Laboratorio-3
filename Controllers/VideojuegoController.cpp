@@ -190,7 +190,11 @@ void VideojuegoController::verVideojuego(){
 
         info->setPuntaje(this->videojuegoSeleccionado->getPuntaje());
 
-        cout << info->toString();
+        cout << "Nombre: " << info->getNombre() << endl;
+        cout << "Categorias: " << info->categoriasToString() << endl;
+        cout << "Suscripciones: " << info->suscripcionesToString() << endl;
+        cout << "Empresa: " << info->getEmpresa() << endl;
+        cout << "Puntaje: " << info->getPuntaje() << endl;
         delete info;
 
 }

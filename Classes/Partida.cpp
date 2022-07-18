@@ -64,7 +64,7 @@ void Partida::setFechaComienzo(DT_Fecha* fecha) {
 }
 
 void Partida::finalizarPartida(DT_Fecha* fecha) {
-    this->fechaFin = fechaFin;
+    this->fechaFin = fecha;
     this->horasPartida = getFechaComienzo()->getDiferenciaEnHoras(fecha);
     this->finalizada = true;
 }
@@ -79,4 +79,8 @@ string Partida::toString() {
     this->isFinalizada() ? ss << "Horas de partida: " << this->getHorasPartida() << endl : ss << "";
     this->isFinalizada() ? ss << "Fecha de Fin: " << this->getFechaFin()->toString() << endl : ss << "";
     return ss.str();
+}
+
+void Partida::setHorasPartida(int horasPartida) {
+    this->horasPartida = horasPartida;
 }

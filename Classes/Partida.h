@@ -44,6 +44,7 @@ public:
     void setVideojuego(Videojuego* videojuego);
     void setFechaComienzo(DT_Fecha* fecha);
     void finalizarPartida(DT_Fecha* fechaFin);
+    void setHorasPartida(int horasPartida);
 
     string toString();
 };

@@ -60,12 +60,13 @@ public:
     void confirmarComentario();
     void cancelarComentario();
     
-    IDictionary* listarHistorialPartidasFinalizadasCronologicamente(); // lugar 9
+    IDictionary* listarHistorialPartidasFinalizadasCronologicamente(Jugador* jugadorlogeado); // lugar 9
     
-    IDictionary* listarPartidasIniciadasNoFinalizadas();
+    IDictionary* listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado);
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
     void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
+    int calcularHorasPartida(DT_Fecha* comienzo, DT_Fecha* final);
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H
