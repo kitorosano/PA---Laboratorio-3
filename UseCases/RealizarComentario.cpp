@@ -21,7 +21,10 @@ void RealizarComentario(){
     cout<<"|              REALIZAR COMENTARIO               |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
     aux=factory->getInstance()->getInterfaceP()->listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo();
+
     if(aux){
+        factory->getInstance()->getInterfaceP()->listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
+        /*
         IIterator *it = aux->getIteratorObj();
         while (it->hasNext()) {
             DT_MultijugadorVideojuego* dt_multijugador_videojuego = (DT_MultijugadorVideojuego*) (it->getCurrent());
@@ -43,7 +46,7 @@ void RealizarComentario(){
             }
             it->next();
         }
-
+        */
         cout<<"|------------------------------------------------|"<<endl;
         cout<<"|    -Seleccione la partida ingresando su id     |"<<endl;
         cout<<"|------------------------------------------------|"<<endl<<endl;

@@ -64,6 +64,7 @@ public:
     IDictionary* listarPartidasIniciadasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
 };
 
 #endif //PA___LABORATORIO_3_PARTIDACONTROLLER_H

@@ -202,22 +202,22 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
     auto P4 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(5,6,21,17,0,0)));
 
-    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V2->getNombre());
-    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J1, true);
-    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J2->getNickname());
-    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
-    auto P5 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(6,6,21,17,0,0)));
+//    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V2->getNombre());
+//    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J1, true);
+//    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J2->getNickname());
+//    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
+//    auto P5 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(6,6,21,17,0,0)));
 
-    factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V3->getNombre());
-    factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J2, false);
-    factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
-    auto P6 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,21,20,0,0)));
+   // factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(V3->getNombre());
+  //  factory->getInstance()->getInterfaceP()->nuevaPartidaMultijugador(J2, false);
+ //   factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
+//    auto P6 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,21,20,0,0)));
     cout << " Agregadas correctamente!" << endl;
 
     // Abandonar partida multijugador
     cout << "| Agregando abandonos de partida multijugador...";
-    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P4->getIdPartida(), J2, new DT_Fecha(5,6,21,18,0,0));
-    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P5->getIdPartida(), J2, new DT_Fecha(6,6,21,17,30,0));
+//    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P4->getIdPartida(), J2, new DT_Fecha(5,6,21,18,0,0));
+//    factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P5->getIdPartida(), J2, new DT_Fecha(6,6,21,17,30,0));
     cout << " Agregados correctamente!" << endl;
 
     // Finalizar partida multijugador

@@ -38,6 +38,7 @@ public:
     virtual IDictionary *  listarPartidasIniciadasNoFinalizadas() = 0;
     virtual IDictionary *  listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
     virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
+    virtual void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2()=0;
 
 };
 #endif //PA___LABORATORIO_3_IPARTIDA_H
