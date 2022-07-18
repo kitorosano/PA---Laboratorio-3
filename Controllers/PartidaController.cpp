@@ -162,9 +162,18 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
-        while(it->hasNext()) {
-            JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->next());
+        JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+        //un solo valor en la coleccion
+        if(multijugador->getJugadoresEnLaPartida()->size()==1){
             this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+        }
+        else {
+            //2 o mas
+            while (it->hasNext()) {
+                // JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+                this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                it->next();
+            }
         }
         delete it;
     }

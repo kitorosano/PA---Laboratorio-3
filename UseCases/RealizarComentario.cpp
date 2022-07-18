@@ -4,6 +4,7 @@
 
 #include "RealizarComentario.h"
 #include "Factory/Factory.h"
+#include "ColeccionesG/KeyInt.h"
 #include "Utils/Utils.h"
 #include <iostream>
 #include <string>
@@ -19,7 +20,7 @@ void RealizarComentario(){
     string contenido,id_partida,id_comentario;
     int id_p,id_c;
     char responder;
-    bool _individual;
+    bool _individual,repetir;
     IDictionary* aux=NULL;
     IDictionary* aux_jugadores_unidos=NULL;
     IDictionary* aux_comentarios=NULL;
@@ -59,8 +60,16 @@ void RealizarComentario(){
             cout << "|------------------------------------------------|" << endl << endl;
             cin >> id_partida;
 
-
-        }while(!isInteger(id_partida) || !factory->getInstance()->getInterfaceP()->existePartida(stoi(id_partida)) );
+            repetir = false;
+            if(isIntegerWM(id_partida)) {
+                KeyInt *keyidpartida = new KeyInt(stoi(id_partida));
+                if (!aux->member(keyidpartida)) {
+                    cout << id_partida << " NO ES VALIDO (no esta en la lista proporcionada anteriormente)" << endl
+                         << endl;
+                    repetir = true;
+                }
+            }
+        }while(!isInteger(id_partida) || repetir);
         id_p = stoi(id_partida);
         factory->getInstance()->getInterfaceP()->seleccionarPartida(id_p);
 

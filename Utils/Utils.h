@@ -8,5 +8,6 @@
 using namespace std;
 void presionaParaContinuar();
 bool isInteger(string a);
+bool isIntegerWM(string a);
 
 #endif //MAIN_CPP_UTILS_H
