@@ -41,7 +41,8 @@ private:
 public:
     static PartidaController * getInstance();
     virtual ~PartidaController();
-
+    Partida* getPartidaSelecionada();
+    bool existePartida(int idPartida);
     void continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador);
     void nuevaPartidaIndividual(Jugador* jugadorIniciador);
     void nuevaPartidaMultijugador(Jugador* jugadorIniciador, bool transmitidaEnVivo);
@@ -55,7 +56,7 @@ public:
     
     IDictionary* listarComentariosDePartida();
     void seleccionarComentarioAResponder(int idComentario);
-    void enviarComentario(string comentario);
+    void enviarComentario(string comentario, Usuario* usuario_logueado);
     void confirmarComentario();
     void cancelarComentario();
     
@@ -64,6 +65,7 @@ public:
     IDictionary* listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado);
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
+    void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
     int calcularHorasPartida(DT_Fecha* comienzo, DT_Fecha* final);
 };
 

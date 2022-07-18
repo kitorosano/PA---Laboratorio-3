@@ -168,9 +168,18 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
-        while(it->hasNext()) {
-            JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->next());
+        JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+        //un solo valor en la coleccion
+        if(multijugador->getJugadoresEnLaPartida()->size()==1){
             this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+        }
+        else {
+            //2 o mas
+            while (it->hasNext()) {
+                // JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+                this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                it->next();
+            }
         }
         delete it;
     }
@@ -182,7 +191,19 @@ void PartidaController::seleccionarPartida(int idPartida){
     Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
     this->partidaSeleccionada=aux;
 }
-
+Partida* PartidaController::getPartidaSelecionada(){
+    return this->partidaSeleccionada;
+}
+bool PartidaController::existePartida(int idPartida){
+    KeyInt* key_idPartida = new KeyInt(idPartida);
+    Partida* aux = (Partida *) (this->partidas->find(key_idPartida));
+    if(aux)
+        return true;
+    else {
+        cout<<"la partida con el id "<<idPartida<<" no existe!!"<<endl;
+        return false;
+    }
+}
 IDictionary* PartidaController::listarComentariosDePartida(){
     IDictionary* comentarios_multijugador = NULL;
     Multijugador* multijugador_recordada = dynamic_cast<Multijugador*>(this->partidaSeleccionada);
@@ -202,10 +223,10 @@ void PartidaController::seleccionarComentarioAResponder(int idComentario){
     }
 }
 
-void PartidaController::enviarComentario(string contenido){
-    Factory* factory;
+void PartidaController::enviarComentario(string contenido, Usuario* usuario_logueado){
+   // Factory* factory;
     string autor;
-    Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
+    //Usuario* usuario_logueado= factory->getInstance()->getInterfaceU()->getUsuarioLogeado();
     Jugador* jugador = dynamic_cast<Jugador*>(usuario_logueado);
     if(jugador){
         if(this->comentarioAResponder){
@@ -325,8 +346,8 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     while(it->hasNext()){
         partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
-            if((partida->isFinalizada() == false && partida->isTransmitidaEnVivo() == true)){
-                // Guardar todo en una coleccion y retorna esa coleccion
+            if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
+
                 //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
                 DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
                 listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
@@ -335,7 +356,37 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
         it->next();
     }
     return listadepartidas_multijugador;
-} // lugar 1
+}
+void PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2(){
+    IDictionary* aux_jugadores_unidos=NULL;
+    IIterator *it = this->partidas->getIteratorObj();
+    Multijugador *partida = NULL;
+    while(it->hasNext()){
+        partida = dynamic_cast<Multijugador *>(it->next());
+            if(partida){
+                if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
+                        cout<<"----------------------------------------------------"<<endl;
+                        cout<<"Id partida:"<<partida->getIdPartida()<<endl;
+                        cout<<"Nombre del videojuego "<<partida->getVideojuego()->getNombre()<<endl;
+                        cout<<"Jugador Iniciador "<<partida->getJugador()->getNickname()<<endl;
+                        cout<<"Jugadores Unidos: "<<endl;
+                        aux_jugadores_unidos=partida->getJugadoresEnLaPartida();
+                        if(aux_jugadores_unidos){
+                            IIterator *it2 = aux_jugadores_unidos->getIteratorObj();
+                            while (it2->hasNext()) {
+                                JugadorMultijugador* aux_jug = (JugadorMultijugador *) (it2->getCurrent());
+                                if(aux_jug)
+                                    cout<<"\t"<< "- " <<aux_jug->getJugador()->getNickname()<< endl;
+                                it2->next();
+                            }
+                         }
+                }
+            }
+        }
+
+    }
+
+
 // lugar 1
 
 int PartidaController::calcularHorasPartida(DT_Fecha *fcomienzo, DT_Fecha *final) {

@@ -17,6 +17,8 @@ using namespace std;
 
 class IPartida {
 public:
+    virtual Partida* getPartidaSelecionada()=0;
+    virtual bool existePartida(int idPartida)=0;
     virtual void continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador) = 0;
     virtual void nuevaPartidaIndividual(Jugador* jugadorIniciador) = 0;
     virtual void nuevaPartidaMultijugador(Jugador* jugadorIniciador, bool transmitidaEnVivo) = 0;
@@ -30,7 +32,7 @@ public:
 
     virtual  IDictionary* listarComentariosDePartida() = 0;
     virtual void seleccionarComentarioAResponder(int idComentario) = 0;
-    virtual void enviarComentario(string comentario) = 0;
+    virtual void enviarComentario(string comentario, Usuario* usuario_logueado) = 0;
     virtual void confirmarComentario() = 0;
     virtual void cancelarComentario()= 0;
 
@@ -39,6 +41,7 @@ public:
     virtual IDictionary *  listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado) = 0;
     virtual IDictionary *  listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
     virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
+    virtual void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2()=0;
 
 };
 #endif //PA___LABORATORIO_3_IPARTIDA_H
