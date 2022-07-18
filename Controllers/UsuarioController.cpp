@@ -58,19 +58,19 @@ void UsuarioController::registroDesarrollador(string email,string password,strin
     }
     this->controller_memory= new Desarrollador(email,password,empresa);
 }
-bool UsuarioController::verificarNickname(string nickname){
+bool UsuarioController::verificarNicknamesIngresados(string nickname){
     IIterator* iter = usuarios->getIteratorObj();
     if(!this->usuarios)
-        return true;
+        return false;
     else if(this->usuarios){
         while (iter->hasNext()) {
             Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
             if(jugador && nickname==jugador->getNickname())
-                return false;
+                return true;
         }
 
     }
-    return true;
+    return false;
 }
 Usuario* UsuarioController::confirmarRegistro(){
     Usuario *user = NULL;
@@ -122,7 +122,7 @@ int UsuarioController::iniciarSesion(string mail,string password){
         return 3;
     }
 }
-void UsuarioController::listarJugadores(){
+void UsuarioController::listarJugadores(Usuario* usuario_logueado){
     IIterator* iter = usuarios->getIteratorObj();
     if(!usuarios)
         return;
@@ -130,12 +130,16 @@ void UsuarioController::listarJugadores(){
     while (iter->hasNext()) {
         //Usuario* usuario = (Usuario*) (iter->getCurrent());
         Jugador* jugador=dynamic_cast<Jugador*>(iter->next());
-        jugador->toString();
-        cout<<"----------------------------------------------------";
+        if(jugador && jugador->getEmail()!=usuario_logueado->getEmail()) {
+            cout <<"Jugador: "<<endl;
+            cout <<"Nickname: "<<jugador->getNickname()<<endl;
+            cout <<"Descripcion: "<<jugador->getDescripcion()<<endl;
+            cout << "----------------------------------------------------"<<endl;
+        }
     }
     delete iter;
 }
-void UsuarioController::seguirJugador(string nickname) {
+void UsuarioController::seguirJugador(string nickname,Usuario* usuarioLogeado) {
     if (!this->usuarios){
         throw invalid_argument("No hay usuarios ingresados en el sistema");
         return;
@@ -159,7 +163,7 @@ void UsuarioController::seguirJugador(string nickname) {
     delete iter;
 
 
-    throw invalid_argument("El juegador con el nickname ingresado no existe en el sistema");
+    //throw invalid_argument("El juegador con el nickname ingresado no existe en el sistema");
 
 
 }

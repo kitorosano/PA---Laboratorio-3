@@ -77,7 +77,7 @@ void AltaUsuario(){
                 cout << "| Ingrese el nickname: ";
                 cin >> nickname;
 
-                if (!factory->getInstance()->getInterfaceU()->verificarNickname(nickname)) {
+                if (factory->getInstance()->getInterfaceU()->verificarNicknamesIngresados(nickname)) {
                     cout<<endl;
                     cout << "|------------------------------------------------|" << endl;
                     cout << "| Ya existe un jugador con el nickname ingresado |" << endl;
@@ -94,7 +94,7 @@ void AltaUsuario(){
                         return;
                     }
                 }
-            } while (deseaReingresar == 1);
+            } while (factory->getInstance()->getInterfaceU()->verificarNicknamesIngresados(nickname));
 
             cout<<endl;
             cout << "|------------------------------------------------|" << endl;
