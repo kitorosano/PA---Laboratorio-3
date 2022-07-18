@@ -19,6 +19,7 @@ public:
     virtual void confirmarDatosSuscripcion()=0;
     virtual void cancelarDatosSuscripcion()=0;
     virtual void listarNicknameJugadoresSuscritos()=0;
+    virtual IDictionary* listarNicknameJugadoresSuscritosConRetorno()=0;
 };
 #endif //PA___LABORATORIO_3_IDATOSSUSCRIPCION_H
 

@@ -127,3 +127,33 @@ void DatosSuscripcionController::listarNicknameJugadoresSuscritos(){
         cout << datosSuscripcion->getNickName() << endl;
     }
 }
+
+IDictionary* DatosSuscripcionController::listarNicknameJugadoresSuscritosConRetorno(){
+    //Factory* fabrica;
+    IIterator* iter = this->datosSuscripciones->getIteratorObj();
+    IDictionary * listadeJugadores = new ListDicc();
+    /*
+    while(iter->hasNext()){
+        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->getCurrent());
+        Videojuego * videojuego = datosSuscripcion->getSuscripcion()->getVideojuego();
+        Videojuego* videojuegoSeleccionado = fabrica->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
+        if(videojuegoSeleccionado == videojuego){
+            KeyString* nickname = new KeyString(datosSuscripcion->getNickName());
+            DT_NombreDescripcion* nicknameJugador = new DT_NombreDescripcion(datosSuscripcion->getNickName());
+            listadeJugadores->add(nicknameJugador, nickname);
+            //cout << datosSuscripcion->getNickName() << endl;
+        }
+        iter->next();
+    }
+    */
+    while(iter->hasNext()){
+        DatosSuscripcion* datosSuscripcion = dynamic_cast<DatosSuscripcion*>(iter->getCurrent());
+        KeyString* nickname = new KeyString(datosSuscripcion->getNickName());
+        DT_NombreDescripcion* nicknameJugador = new DT_NombreDescripcion(datosSuscripcion->getNickName());
+        if(!listadeJugadores->member(nickname)) {
+            listadeJugadores->add(nicknameJugador, nickname);
+        }
+        iter->next();
+    }
+    return listadeJugadores;
+}

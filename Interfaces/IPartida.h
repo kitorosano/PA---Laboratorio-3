@@ -10,6 +10,7 @@
 #include "DataTypes/DT_MultijugadorVideojuego.h"
 #include "Classes/Individual.h"
 #include <string>
+#include "Classes/Jugador.h"
 
 
 using namespace std;
@@ -33,9 +34,9 @@ public:
     virtual void confirmarComentario() = 0;
     virtual void cancelarComentario()= 0;
 
-    virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente() = 0;
+    virtual IDictionary * listarHistorialPartidasFinalizadasCronologicamente(Jugador *jugadorlogeado) = 0;
 
-    virtual IDictionary *  listarPartidasIniciadasNoFinalizadas() = 0;
+    virtual IDictionary *  listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado) = 0;
     virtual IDictionary *  listarPartidasMultijugadorUnidasNoFinalizadas() = 0;
     virtual IDictionary *  listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo() = 0;
 

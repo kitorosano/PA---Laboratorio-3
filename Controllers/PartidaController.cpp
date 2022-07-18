@@ -31,21 +31,20 @@ PartidaController *PartidaController::getInstance() {
 }
 
 void PartidaController::continuarPartidaIndividual(int idPartida, Jugador* jugadorIniciador) {
-//    TODO: verificar que la partida pertenece al jugadorIniciador
-    IIterator *it = this->partidas->getIteratorObj();
-    Individual *partidaAContinuar = NULL;
 
-    while(it->hasNext()){
-        partidaAContinuar = dynamic_cast<Individual *>(it->getCurrent());
-        if(partidaAContinuar){
-            if(partidaAContinuar->getIdPartida() == idPartida){
-                Individual* nuevaPartida = new Individual(partidaAContinuar->getJugador(),partidaAContinuar->getVideojuego());
-                nuevaPartida->setContPartAnterior(partidaAContinuar); // Se establece de quien continuara la partida nueva
-                this->partidaSeleccionada = nuevaPartida; // El controlador recuerda la partida nueva que sera una continuacion de la anterior
-                return;
-            }
+    KeyInt* idpartida = new KeyInt(idPartida);
+    Individual *partidaAContinuar = dynamic_cast<Individual *>(this->partidas->find(idpartida));
+
+    if(partidaAContinuar){
+        // Verificar que el jugadorlogeado sea el jugador iniciador de la partida
+        if(partidaAContinuar->getJugador()->getNickname() == jugadorIniciador->getNickname()){
+            Individual* nuevaPartida = new Individual(partidaAContinuar->getJugador(),partidaAContinuar->getVideojuego());
+            nuevaPartida->setContPartAnterior(partidaAContinuar); // Se establece de quien continuara la partida nueva
+            this->partidaSeleccionada = nuevaPartida; // El controlador recuerda la partida nueva que sera una continuacion de la anterior
+            return;
+        }else{
+            throw std::invalid_argument("El jugador iniciador no coincide con el su usuario");
         }
-        it->next();
     }
     throw std::invalid_argument("La partida no existe");
 }
@@ -85,14 +84,20 @@ void PartidaController::ingresarNicknameALaPartida(string nickname){
     while (it->hasNext()){
         Jugador* jugador = dynamic_cast<Jugador*>(it->next());
         if(jugador && jugador->getNickname().compare(nickname) == 0){
-//            TODO: verificar que el jugador no esta en la partida
-
-            // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
-            JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
-
-            // Agregar el puntero del jugadorMultijugador a la lista de jugadores que tiene esta partida multijugador
             Multijugador *multi = dynamic_cast<Multijugador *>(this->partidaSeleccionada);
-            multi->unirNicknameAPartida(jugadorDeLaPartida);
+
+            // verificar que el jugador no este en la partida
+            KeyString* nick = new KeyString(jugador->getNickname());
+            if(!multi->getJugadoresEnLaPartida()->member(nick)){
+                // creo un tipo de dato JugadorMultijugador y asocio a ese jugador buscado antes
+                JugadorMultijugador* jugadorDeLaPartida = new JugadorMultijugador(jugador);
+
+                // Agregar el puntero del jugadorMultijugador a la lista de jugadores que tiene esta partida multijugador
+                multi->unirNicknameAPartida(jugadorDeLaPartida);
+            }else{
+                throw std::invalid_argument("El jugador con ese nickname ya esta en la lista de jugadores de la partida");
+            }
+
             return;
         }
     }
@@ -158,7 +163,8 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
         throw std::invalid_argument("No se encontro la partida");
 
     partida->finalizarPartida(fechaFinalizacion);
-
+    partida->setHorasPartida(this->calcularHorasPartida(partida->getFechaComienzo(), partida->getFechaFin()));
+    partida->getVideojuego()->setTotalHorasJugadas(partida->getHorasPartida() + partida->getVideojuego()->getTotalHorasJugadas());
     multijugador = dynamic_cast<Multijugador *>(partida);
     if (multijugador){
         IIterator *it = multijugador->getJugadoresEnLaPartida()->getIteratorObj();
@@ -234,42 +240,44 @@ void PartidaController::cancelarComentario(){
     }
 }
 
-IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(){
-    // Obtener el usuario logeado!!
-    Factory* fabrica;
-    Jugador *jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
-
+IDictionary* PartidaController::listarHistorialPartidasFinalizadasCronologicamente(Jugador *jugadorlogeado){
+    Factory* factory;
+    Videojuego* videojuegoseleccionado = factory->getInstance()->getInterfaceV()->getVideojuegoSeleccionado();
     // Comparar si el usuario jugador le pertenece la partida y si es finalizada
     IIterator *it = this->partidas->getIteratorObj();
-    Individual *partida = NULL;
+    //Partida *partida = NULL;
+    Individual *partidaIndividual = NULL;
     IDictionary* listadepartidas = new ListDicc();
     while(it->hasNext()){
-        partida = dynamic_cast<Individual *>(it->getCurrent());
-        if(partida){
-            if((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partida->isFinalizada())){
-                // Guardar todo en una coleccion y retorna esa coleccion
-                DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partida->getIdPartida(), partida->getFechaComienzo(), partida->getHorasPartida());
-                listadepartidas->add(reinterpret_cast<ICollectible *>(dt_partida), new KeyInt(dt_partida->getIdPartida()));
+        partidaIndividual = dynamic_cast<Individual *>(it->getCurrent());
+        if(partidaIndividual){
+            if(partidaIndividual->getVideojuego() == videojuegoseleccionado){
+                if((partidaIndividual->getJugador()->getNickname() == jugadorlogeado->getNickname()) && (partidaIndividual->isFinalizada())){
+                    // Guardar todo en una coleccion y retorna esa coleccion
+                    DT_PartidasIndividualesFinalizadas *dt_partida = new DT_PartidasIndividualesFinalizadas(partidaIndividual->getIdPartida(), partidaIndividual->getFechaComienzo(), partidaIndividual->getHorasPartida());
+                    listadepartidas->add(dt_partida, new KeyInt(dt_partida->getIdPartida()));
+                }
             }
         }
         it->next();
     }
     return listadepartidas;
 }
-IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(){
+IDictionary* PartidaController::listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado){
 
     Factory* fabrica;
     IIterator *it = this->partidas->getIteratorObj();
     Partida *partida = NULL;
     IDictionary* listadepartidasSinFinalizar = new ListDicc();
-    Jugador* jugadorlogeado = dynamic_cast<Jugador *>(fabrica->getInstance()->getInterfaceU()->getUsuarioLogeado());
+
     if(jugadorlogeado){
         while(it->hasNext()) {
             partida = dynamic_cast<Partida *>(it->getCurrent());
             if (partida) {
-                if ((partida->getJugador()->getNickname() == jugadorlogeado->getNickname()) &&
-                    (!partida->isFinalizada())) {
-                    listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
+                if (partida->getJugador()->getNickname() == jugadorlogeado->getNickname()){
+                    if ((!partida->isFinalizada()) || (partida->isFinalizada() == 240)){
+                        listadepartidasSinFinalizar->add(partida, new KeyInt(partida->getIdPartida()));
+                    }
                 }
             }
             it->next();
@@ -298,9 +306,8 @@ IDictionary* PartidaController::listarPartidasMultijugadorUnidasNoFinalizadas(){
                             nickName));
                     if (jugadorMultijugador->getFechaFinalizacion() == NULL){
                         // agrego la partida multijugador a la coleccion para que despues se muestre
-                        listadepartidasMulti->add(multijugador, new KeyInt(idpartida));
+                        listadepartidasMulti->add(multijugador, new KeyInt(multijugador->getIdPartida()));
                     }
-
                 }
             }
             it->next();
@@ -330,3 +337,35 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     return listadepartidas_multijugador;
 } // lugar 1
 // lugar 1
+
+int PartidaController::calcularHorasPartida(DT_Fecha *fcomienzo, DT_Fecha *final) {
+
+    // Restar el tiempo de comienzo con el tiempo de Finalizacion con la funcion difftime()
+    //time_t now;
+    struct tm comienzo;
+    struct tm fin;
+    int seconds;
+    //time(&now);  // get current time; same as: now = time(NULL)
+    //comienzo = *localtime(&now);
+    //fin = *localtime(&now);
+    // fechaComienzo de la partida
+    comienzo.tm_hour = fcomienzo->getHora();
+    comienzo.tm_min = fcomienzo->getMinuto();
+    comienzo.tm_sec = fcomienzo->getSegundo();
+    comienzo.tm_mday = fcomienzo->getDia(); // itn - day of the month	1-31
+    comienzo.tm_mon = (fcomienzo->getMes())-1;  // int - months since January	0-11
+    comienzo.tm_year = (fcomienzo->getAnio())-1900;
+
+    // fechafinal de la partida
+    fin.tm_hour = final->getHora();
+    fin.tm_min = final->getMinuto();
+    fin.tm_sec = final->getSegundo();
+    fin.tm_mday = final->getDia(); // itn - day of the month	1-31
+    fin.tm_mon = (final->getMes())-1;  // int - months since January	0-11
+    fin.tm_year = (final->getAnio())-1900;
+
+    seconds = difftime(mktime(&fin),mktime(&comienzo));
+    int totalhorasJugadas = seconds/3600;
+    //cout<<"Horas jugadas: "<<totalhorasJugadas<<endl;
+    return totalhorasJugadas;
+}

@@ -7,20 +7,21 @@
 #include "DataTypes/DT_Fecha.h"
 #include "string"
 #include <iostream>
+#include "ColeccionesG/ICollectible.h"
 
 using namespace std;
 
-class DT_PartidasIndividualesFinalizadas {
+class DT_PartidasIndividualesFinalizadas : public ICollectible {
 private:
     int idPartida;
     DT_Fecha* fechaComienzo;
-    double horasPartida;
+    int horasPartida;
 public:
-    DT_PartidasIndividualesFinalizadas(int idPartida, DT_Fecha* fecha, double horasPartida);
+    DT_PartidasIndividualesFinalizadas(int idPartida, DT_Fecha* fecha, int horasPartida);
 
     int getIdPartida();
     DT_Fecha* getFechaComienzo();
-    double getHorasPartida();
+    int getHorasPartida();
 
     string toString();
 };
