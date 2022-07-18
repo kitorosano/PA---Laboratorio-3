@@ -176,8 +176,10 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
         else {
             //2 o mas
             while (it->hasNext()) {
-                // JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
-                this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+                if(jm->getFechaFinalizacion() == NULL){
+                    this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                }
                 it->next();
             }
         }

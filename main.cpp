@@ -80,6 +80,7 @@ void goodbyeMsg() {
 
 
 int main() {
+    bool cargado = false;
     welcomeMsg();
 
     int opPrincipal;
@@ -175,7 +176,12 @@ int main() {
                 break;
             }
             case 3: {
-                CargarDatosDePrueba();
+                if(cargado == false){
+                    CargarDatosDePrueba();
+                    cargado = true;
+                }else {
+                    cout<<"Los datos de prueba ya estan cargados!!"<<endl;
+                }
                 break;
             }
             case 0:
