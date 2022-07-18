@@ -103,14 +103,14 @@ IDictionary* CategoriaController::listarCategoriasOtro() {
     return categorias_otro;
 }
 
-ICollection* CategoriaController::listarNombreCategorias(){
-    ICollection* nombres = new Lista();
+IDictionary* CategoriaController::listarNombreCategorias(){
+    IDictionary* nombres = new ListDicc();
 
     IIterator* it = this->categorias->getIteratorObj();
     while(it->hasNext()){
         Categoria* categoria = dynamic_cast<Categoria*>(it->getCurrent());
         DT_NombreDescripcion* nombre = new DT_NombreDescripcion(categoria->getNombre());
-        nombres->add(nombre);
+        nombres->add(nombre, new KeyString(categoria->getNombre()));
 
         it->next();
     }

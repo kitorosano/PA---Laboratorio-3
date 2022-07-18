@@ -39,7 +39,9 @@ void IniciarPartida() {
     cout << "|------------------------------------------------|" << endl;
     do{
         cout << "Ingrese nombre videojuego al que desea jugar:";
-        cin >> nombreVideojuego;
+        //cin >> nombreVideojuego;
+        cin.ignore();
+        getline(cin, nombreVideojuego);
         repetir = false;
         KeyString *nombrevideojuego = new KeyString(nombreVideojuego);
         if (listaDeNombresDeVideojuegos->member(nombrevideojuego)) {
