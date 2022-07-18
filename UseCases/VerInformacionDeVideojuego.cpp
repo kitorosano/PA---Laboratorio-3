@@ -15,17 +15,18 @@ void VerInformacionDeVideojuego() {
 
     string nombre;
     Videojuego* obtenido;
+    cout << endl;
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
+    cout<<"|------------------------------------------------|"<<endl;
     IIterator* iterador = factory->getInstance()->getInterfaceV()->listarNombreVideojuegos()->getIteratorObj();
     while(iterador->hasNext()){
         DT_NombreDescripcion* nombreDescripcion = (DT_NombreDescripcion*)iterador->next();
-        cout<<"|  "<<nombreDescripcion->getNombre()<<endl;
+        cout<<"| > "<<nombreDescripcion->getNombre();
     }
 
 
-    cout << endl << "Ingrese el nombre para seleccionar un videojuego: " << endl;
+    cout << endl << "| Ingrese el nombre para seleccionar un videojuego: " << endl;
     cin >> nombre;
     try {
         factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombre);
@@ -36,9 +37,10 @@ void VerInformacionDeVideojuego() {
     }
 
     if (validar){
+        cout << endl;
         cout<<"|------------------------------------------------|"<<endl;
         cout<<"|          VER INFORMACION DE VIDEOJUEGO         |"<<endl;
-        cout<<"|------------------------------------------------|"<<endl<<endl;
+        cout<<"|------------------------------------------------|"<<endl;
 
         Desarrollador* desarrollador = dynamic_cast<Desarrollador*>(usuarioLogueado);
         if(desarrollador) {

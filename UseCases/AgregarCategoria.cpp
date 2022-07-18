@@ -16,7 +16,7 @@ void AgregarCategoria() {
     ICollection *nombresCategoria = factory->getInstance()->getInterfaceC()->listarNombreCategorias();
 
     cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|              CATEGORÍAS EXISTENTES             |"<<endl;
+    cout<<"|              CATEGORIAS EXISTENTES             |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
 
     IIterator *iterador = nombresCategoria->iterator();
@@ -33,7 +33,7 @@ void AgregarCategoria() {
       cout<<"|------------------------------------------------|"<<endl;
       cout<<"|                AGREGAR CATEGORÍA               |"<<endl;
       cout<<"|------------------------------------------------|"<<endl<<endl;
-      cout<<"Ingrese el nombre de la nueva categoría:"<<endl;
+      cout<<"Ingrese el nombre de la nueva categoria:"<<endl;
       cin>>nombreCategoria;
   
       duplicado = factory->getInstance()->getInterfaceC()->listarNombreCategorias()->iterator();
@@ -45,7 +45,7 @@ void AgregarCategoria() {
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|                AGREGAR CATEGORÍA               |"<<endl;
     cout<<"|------------------------------------------------|"<<endl<<endl;
-    cout<<"Ingrese la descripción de la nueva categoría:"<<endl;
+    cout<<"Ingrese la descripcion de la nueva categoria:"<<endl;
     string descripcionCategoria;
     cin>>descripcionCategoria;
 
@@ -54,9 +54,9 @@ void AgregarCategoria() {
         cout << "|------------------------------------------------|" << endl;
         cout << "|                AGREGAR CATEGORÍA               |" << endl;
         cout << "|------------------------------------------------|" << endl;
-        cout << "| 1. Agregar categoría de plataforma             |" << endl;
-        cout << "| 2. Agregar categoría de género                 |" << endl;
-        cout << "| 2. Agregar categoría de otro tipo              |" << endl;
+        cout << "| 1. Agregar categoria de plataforma             |" << endl;
+        cout << "| 2. Agregar categoria de genero                 |" << endl;
+        cout << "| 2. Agregar categoria de otro tipo              |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
 
@@ -71,7 +71,7 @@ void AgregarCategoria() {
                 factory->getInstance()->getInterfaceC()->agregarCategoria(nombreCategoria, descripcionCategoria, E_TipoCategoria::OTRO, desarrolladorLogueado);
                 break;
             default:
-                cout << "Opción inválida!" << endl;
+                cout << "Opcion invalida!" << endl;
                 break;
         }
     } while(opcion !=1 && opcion !=2 && opcion !=3);
@@ -84,8 +84,8 @@ void AgregarCategoria() {
         cout << "|------------------------------------------------|" << endl;
         cout << "|                AGREGAR CATEGORÍA               |" << endl;
         cout << "|------------------------------------------------|" << endl;
-        cout << "| 1. Confirmar categoría                         |" << endl;
-        cout << "| 2. Cancelar categoría                          |" << endl;
+        cout << "| 1. Confirmar categoria                         |" << endl;
+        cout << "| 2. Cancelar categoria                          |" << endl;
         cout << "|------------------------------------------------|" << endl << endl;
         cin >> opcion;
 
@@ -97,7 +97,7 @@ void AgregarCategoria() {
                 factory->getInstance()->getInterfaceC()->cancelarCategoria();
                 break;
             default:
-                cout << "Opción inválida!" << endl;
+                cout << "Opcion invalida!" << endl;
                 break;
         }
     }while(opcion!=1 && opcion !=2);

@@ -24,10 +24,37 @@ bool isInteger(string a) {
     return true;
 }
 
+bool onlyContainsNumbers(string str){
+    for(char const &c : str) {
+        if (isdigit(c) == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
 bool isIntegerWM(string a) {
     for(char const &c : a) {
         if (isdigit(c) == 0){
             return false;
+        }
+    }
+    return true;
+}
+
+
+bool isDoubleWM(string a) {
+    bool usedComma = false;
+    if(a[0] == '.' && a.length() == 1){
+        return false;
+    }
+
+    for(char const &c : a) {
+        if (isdigit(c) == 0){
+            if(c == '.' && !usedComma)
+                usedComma = true;
+            else
+                return false;
         }
     }
     return true;

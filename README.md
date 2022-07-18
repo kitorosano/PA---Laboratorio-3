@@ -1,6 +1,6 @@
 ﻿# PA---Laboratorio-3
 
-Este repositorio equivale a la entrega del laboratorio 3 de la materia 'Programación Avanzada' de la carrera del Tecnólogo Informático.
+Este repositorio equivale a la entrega del laboratorio 3 de la materia 'Programación Avanzada' de la carrera del Tecnólogo Informatico.
 
 ## Integrantes: 
 #### -> Esteban Rosano

@@ -125,8 +125,8 @@ void RealizarComentario(){
             cout << "|------------------------------------------------|" << endl;
             cout << "|              REALIZAR COMENTARIO               |" << endl;
             cout << "|------------------------------------------------|" << endl;
-            cout << "| 1. Confirmar Envío                             |" << endl;
-            cout << "| 2. Cancelar  Envío                             |" << endl;
+            cout << "| 1. Confirmar Envio                             |" << endl;
+            cout << "| 2. Cancelar  Envio                             |" << endl;
             cout << "|------------------------------------------------|" << endl;
             cin >> opcion;
             if(opcion !=1 && opcion !=2)

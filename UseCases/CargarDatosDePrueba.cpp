@@ -47,43 +47,43 @@ void CargarDatosDePrueba() {
 
     // Categorias
     cout << "| Agregando categorias...";
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PC","descripcion libre",PLATAFORMA, NULL);
     auto C1 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS4","descripcion libre",PLATAFORMA, NULL);
     auto C2 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox One","descripcion libre",PLATAFORMA, NULL);
     auto C3 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Deporte","descripcion libre",GENERO, NULL);
     auto C4 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Supervivencia","descripcion libre",GENERO, NULL);
     auto C5 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Estrategia","descripcion libre",GENERO, NULL);
     auto C6 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido está dirigido a jóvenes de 13 años en adelante",OTRO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Teen","Su contenido esta dirigido a jovenes de 13 años en adelante",OTRO, NULL);
     auto C7 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido está dirigido para todo público",OTRO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("E","Su contenido esta dirigido para todo publico",OTRO, NULL);
     auto C8 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Acción","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Accion","descripcion libre",GENERO, NULL);
     auto C9 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripción libre",GENERO, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Aventura","descripcion libre",GENERO, NULL);
     auto C10 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Switch","descripcion libre",PLATAFORMA, NULL);
     auto C11 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("Xbox X","descripcion libre",PLATAFORMA, NULL);
     auto C12 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
 
-    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripción libre",PLATAFORMA, NULL);
+    factory->getInstance()->getInterfaceC()->agregarCategoria("PS5","descripcion libre",PLATAFORMA, NULL);
     auto C13 = dynamic_cast<Categoria *>(factory->getInstance()->getInterfaceC()->confirmarCategoria());
     cout << " Agregadas correctamente!" << endl;
 
