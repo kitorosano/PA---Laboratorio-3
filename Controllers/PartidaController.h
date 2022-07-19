@@ -65,7 +65,6 @@ public:
     IDictionary* listarPartidasIniciadasNoFinalizadas(Jugador *jugadorlogeado);
     IDictionary* listarPartidasMultijugadorUnidasNoFinalizadas();
     IDictionary* listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo(); // lugar 1
-    void listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
     int calcularHorasPartida(DT_Fecha* comienzo, DT_Fecha* final);
 };
 

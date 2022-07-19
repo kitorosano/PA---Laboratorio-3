@@ -37,7 +37,7 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceU()->registroJugador("ari@mail.com","123","ari","algo");
     auto J2 = dynamic_cast<Jugador *>(factory->getInstance()->getInterfaceU()->confirmarRegistro());
 
-    factory->getInstance()->getInterfaceU()->registroJugador("ibai@mail.com","123","ibai","algo");
+    factory->getInstance()->getInterfaceU()->registroJugador("ibai@mail.com","123","ibai","un buen jugador");
     auto J3 = dynamic_cast<Jugador *>(factory->getInstance()->getInterfaceU()->confirmarRegistro());
 
     factory->getInstance()->getInterfaceU()->registroJugador("camila@mail.com","123","camila","algo");
@@ -207,18 +207,18 @@ void CargarDatosDePrueba() {
     factory->getInstance()->getInterfaceP()->ingresarNicknameALaPartida(J3->getNickname());
     auto P6 = dynamic_cast<Multijugador *>(factory->getInstance()->getInterfaceP()->confirmarPartida(new DT_Fecha(12,6,2021,20,0,0)));
     cout << " Agregadas correctamente!" << endl;
-/*
+
     // Abandonar partida multijugador
     cout << "| Agregando abandonos de partida multijugador...";
     factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P4->getIdPartida(), J2, new DT_Fecha(5,6,21,18,0,0));
     factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(P5->getIdPartida(), J2, new DT_Fecha(6,6,21,17,30,0));
-    cout << " Agregados correctamente!" << endl;*/
+    cout << " Agregados correctamente!" << endl;
 
     // Finalizar partida multijugador
-    cout << "| Finalizando partidas multijugador...";
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,2021,19,0,0));
-    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,2021,19,0,0));
-    cout << " Finalizadas correctamente!" << endl;
+//    cout << "| Finalizando partidas multijugador...";
+//    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P4->getIdPartida(), J1, new DT_Fecha(5,6,2021,19,0,0));
+//    factory->getInstance()->getInterfaceP()->confirmarFinalizarPartida(P5->getIdPartida(), J1, new DT_Fecha(6,6,2021,19,0,0));
+//    cout << " Finalizadas correctamente!" << endl;
 
     cout<<"|------------------------------------------------|"<<endl;
     cout<<"|       CARGAR DATOS DE PRUEBA COMPLETADA!!      |"<<endl;

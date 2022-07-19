@@ -5,15 +5,17 @@
 #include "AltaUsuario.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 void AltaUsuario(){
     Factory * factory;
     Usuario* user=NULL;
-    string email,password,nickname,descripcion,empresa;
+    string email,_email,password,nickname,descripcion,empresa;
     int tipoRegistro, opcion2;
     bool ret=true;
     int deseaReingresar=0;
+    char _descripcion[255];
 
     do {
         cout<<endl;
@@ -22,8 +24,10 @@ void AltaUsuario(){
         cout << "|------------------------------------------------|" << endl;
         cout << "| Ingrese el email: ";
         cin >> email;
+        fflush(stdin);
+
         ret = true;
-        user=factory->getInstance()->getInterfaceU()->buscarUsuario(email);
+        user=factory->getInstance()->getInterfaceU()->buscarUsuario(_email);
 
         if((factory->getInstance()->getInterfaceU()->getUsuarios()) && user && (email==user->getEmail())){
             cout<<endl;
@@ -40,6 +44,7 @@ void AltaUsuario(){
     cout << "|------------------------------------------------|" << endl;
     cout << "| Ingrese la contrasenia: ";
     cin >> password;
+    fflush(stdin);
 
     do {
         cout<<endl;
@@ -65,6 +70,7 @@ void AltaUsuario(){
             cout << "|------------------------------------------------|" << endl;
             cout << "| Ingrese el nombre de la empresa: ";
             cin >> empresa;
+            fflush(stdin);
             factory->getInstance()->getInterfaceU()->registroDesarrollador(email, password, empresa);
             break;
         }
@@ -76,6 +82,7 @@ void AltaUsuario(){
                 cout << "|------------------------------------------------|" << endl;
                 cout << "| Ingrese el nickname: ";
                 cin >> nickname;
+                fflush(stdin);
 
                 if (factory->getInstance()->getInterfaceU()->verificarNicknamesIngresados(nickname)) {
                     cout<<endl;
@@ -86,6 +93,7 @@ void AltaUsuario(){
                     cout << "| 2. Cancelar registro                           |" << endl;
                     cout << "|------------------------------------------------|" << endl;
                     cin >> deseaReingresar;
+                    fflush(stdin);
                     if (deseaReingresar == 2) {
                         cout<<endl;
                         cout << "|------------------------------------------------|" << endl;
@@ -101,7 +109,9 @@ void AltaUsuario(){
             cout << "|          REGISTRO ADICIONAL JUGADOR            |" << endl;
             cout << "|------------------------------------------------|" << endl;
             cout << "| Ingrese una descripcion: ";
-            cin >> descripcion;
+            gets(_descripcion);
+            descripcion=_descripcion;
+            fflush(stdin);
 
             factory->getInstance()->getInterfaceU()->registroJugador(email, password, nickname, descripcion);
             break;
@@ -119,10 +129,11 @@ void AltaUsuario(){
         cout << "| 2. Cancelar  registro                          |" << endl;
         cout << "|------------------------------------------------|" << endl;
         cin >> opcion2;
+        fflush(stdin);
         if(opcion2 !=1 && opcion2 !=2) {
             cout<<endl;
             cout << "|------------------------------------------------|" << endl;
-            cout << "|          Debe ingresar una tipoRegistro!       |" << endl;
+            cout << "|          Debe ingresar una opcion!              |" << endl;
             cout << "|------------------------------------------------|" << endl;
         }
 
