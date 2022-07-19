@@ -27,7 +27,9 @@ void VerInformacionDeVideojuego() {
 
 
     cout << endl << "| Ingrese el nombre para seleccionar un videojuego: " << endl;
-    cin >> nombre;
+    //cin >> nombre;
+    cin.ignore();
+    getline(cin, nombre);
     try {
         factory->getInstance()->getInterfaceV()->seleccionarVideoJuego(nombre);
         //cout<<"Partida abandonada"<<endl;
