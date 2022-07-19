@@ -346,9 +346,7 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     while(it->hasNext()){
         partida = dynamic_cast<Multijugador *>(it->getCurrent());
         if(partida){
-            if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
-
-                //DT_MultijugadorVideojuego(int idPartida,string nombreVideojuego, Jugador* jugadorIniciador, IDictionary* jugadoresUnidos, Multijugador* multijugador);
+            if(!partida->isFinalizada() && partida->isTransmitidaEnVivo()){
                 DT_MultijugadorVideojuego *dt_partida = new DT_MultijugadorVideojuego(partida->getIdPartida(),partida->getVideojuego()->getNombre(),partida->getJugador(),partida->getJugadoresEnLaPartida(),partida);
                 listadepartidas_multijugador->add(dt_partida, new KeyInt(partida->getIdPartida()));
             }
@@ -357,37 +355,6 @@ IDictionary* PartidaController::listarPartidasMultijugadorNoFinalizadasTransmiti
     }
     return listadepartidas_multijugador;
 }
-void PartidaController::listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2(){
-    IDictionary* aux_jugadores_unidos=NULL;
-    IIterator *it = this->partidas->getIteratorObj();
-    Multijugador *partida = NULL;
-    while(it->hasNext()){
-        partida = dynamic_cast<Multijugador *>(it->next());
-            if(partida){
-                if((partida->isFinalizada() == false && ( (partida->isTransmitidaEnVivo() == true)||(partida->isTransmitidaEnVivo() == 240)))){
-                        cout<<"----------------------------------------------------"<<endl;
-                        cout<<"Id partida:"<<partida->getIdPartida()<<endl;
-                        cout<<"Nombre del videojuego "<<partida->getVideojuego()->getNombre()<<endl;
-                        cout<<"Jugador Iniciador "<<partida->getJugador()->getNickname()<<endl;
-                        cout<<"Jugadores Unidos: "<<endl;
-                        aux_jugadores_unidos=partida->getJugadoresEnLaPartida();
-                        if(aux_jugadores_unidos){
-                            IIterator *it2 = aux_jugadores_unidos->getIteratorObj();
-                            while (it2->hasNext()) {
-                                JugadorMultijugador* aux_jug = (JugadorMultijugador *) (it2->getCurrent());
-                                if(aux_jug)
-                                    cout<<"\t"<< "- " <<aux_jug->getJugador()->getNickname()<< endl;
-                                it2->next();
-                            }
-                         }
-                }
-            }
-        }
-
-    }
-
-
-// lugar 1
 
 int PartidaController::calcularHorasPartida(DT_Fecha *fcomienzo, DT_Fecha *final) {
 
