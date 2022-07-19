@@ -24,44 +24,48 @@ void AbandonarPartidaMultijugador() {
     Multijugador* multi = NULL;
     JugadorMultijugador* jugadorMulti = NULL;
     IIterator *it = lista->getIteratorObj();
+    
+    if(lista->size() > 0) {
+        while(it->hasNext()){
+            multi = dynamic_cast<Multijugador *>(it->getCurrent());
+            cout<<"ID: "<<multi->getIdPartida()<<endl;
+            cout << "Fecha Comienzo: " << multi->getFechaComienzo()->toString() << endl;
+            cout<<"Nombre Videojuego: "<<multi->getVideojuego()->getNombre()<<endl;
+            trans = multi->isTransmitidaEnVivo();
+            if(trans){
+                cout<<"Transmitida en vivo: Si"<<endl;
+            }else{
+                cout<<"Transmitida en vivo: No"<<endl;
+            }
+            cout<<"Jugador Iniciador: "<<multi->getJugador()->getNickname()<<endl;
+            IIterator *it2 = multi->getJugadoresEnLaPartida()->getIteratorObj();
+            cout<<"Jugadores en la partida: "<<endl;
+            while(it2->hasNext()) {
+                jugadorMulti = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
+                cout << "      " << jugadorMulti->getJugador()->getNickname() << endl;
+                it2->next();
+            }
+            cout << "|------------------------------------------------|" << endl << endl;
+            it->next();
+        }
 
-    while(it->hasNext()){
-        multi = dynamic_cast<Multijugador *>(it->getCurrent());
-        cout<<"ID: "<<multi->getIdPartida()<<endl;
-        cout << "Fecha Comienzo: " << multi->getFechaComienzo()->toString() << endl;
-        cout<<"Nombre Videojuego: "<<multi->getVideojuego()->getNombre()<<endl;
-        trans = multi->isTransmitidaEnVivo();
-        if(trans){
-            cout<<"Transmitida en vivo: Si"<<endl;
-        }else{
-            cout<<"Transmitida en vivo: No"<<endl;
-        }
-        cout<<"Jugador Iniciador: "<<multi->getJugador()->getNickname()<<endl;
-        IIterator *it2 = multi->getJugadoresEnLaPartida()->getIteratorObj();
-        cout<<"Jugadores en la partida: "<<endl;
-        while(it2->hasNext()) {
-            jugadorMulti = dynamic_cast<JugadorMultijugador *>(it2->getCurrent());
-            cout << "      " << jugadorMulti->getJugador()->getNickname() << endl;
-            it2->next();
-        }
-        cout << "|------------------------------------------------|" << endl << endl;
-        it->next();
+        cout<<"|------------------------------------------------|"<<endl;
+        cout<<"|        ABANDONAR PARTIDA MULTIJUGADOR          |"<<endl;
+        cout<<"|------------------------------------------------|"<<endl<<endl;
+
+        do {
+            cout << "Ingrese ID de la partida:" << endl;
+            cin >> idpartida;
+            repetir = false;
+            KeyInt *keyidpartida = new KeyInt(idpartida);
+            if (lista->member(keyidpartida)) {
+                factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
+            } else {
+                cout << idpartida << " NO ES VALIDO (no esta en la lista proporcionada anteriormente)"<< endl << endl;
+                repetir = true;
+            }
+        } while (repetir == true);
+    }else{
+        cout << "No esta unido a una partida que no este finalizada" <<endl;
     }
-
-    cout<<"|------------------------------------------------|"<<endl;
-    cout<<"|        ABANDONAR PARTIDA MULTIJUGADOR          |"<<endl;
-    cout<<"|------------------------------------------------|"<<endl<<endl;
-
-    do {
-        cout << "Ingrese ID de la partida:" << endl;
-        cin >> idpartida;
-        repetir = false;
-        KeyInt *keyidpartida = new KeyInt(idpartida);
-        if (lista->member(keyidpartida)) {
-            factory->getInstance()->getInterfaceP()->confirmarAbandonoPartida(idpartida,jugadorLogueado,new DT_Fecha());
-        } else {
-            cout << idpartida << " NO ES VALIDO (no esta en la lista proporcionada anteriormente)"<< endl << endl;
-            repetir = true;
-        }
-    } while (repetir == true);
 }
