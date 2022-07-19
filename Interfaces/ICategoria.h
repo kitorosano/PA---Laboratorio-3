@@ -19,7 +19,7 @@ public:
 
     virtual void seleccionarCategoria(string nombre) = 0;
 
-    virtual ICollection* listarNombreCategorias() = 0;
+    virtual IDictionary* listarNombreCategorias() = 0;
     virtual IDictionary* listarCategorias() = 0;
     virtual IDictionary* listarCategoriasPlataforma() = 0;
     virtual IDictionary* listarCategoriasGenero() = 0;

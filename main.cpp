@@ -54,7 +54,7 @@ void menuJugador() {
     cout<<"| 3. Iniciar partida                             |"<<endl;
     cout<<"| 4. Abandonar partida multijugador              |"<<endl;
     cout<<"| 5. Finalizar partida                           |"<<endl;
-    cout<<"| 6. Ver información de videojuego               |"<<endl;
+    cout<<"| 6. Ver informacion de videojuego               |"<<endl;
     cout<<"| 7. Realizar comentario                         |"<<endl;
     cout<<"| 8. Seguir jugador                              |"<<endl;
     cout<<"| 0. Salir                                       |"<<endl;
@@ -80,12 +80,14 @@ void goodbyeMsg() {
 
 
 int main() {
+    bool cargado = false;
     welcomeMsg();
 
     int opPrincipal;
     do {
         menuPrincipal();
         cin >> opPrincipal;
+        cout << "------------------------------------------------|" << endl;
         switch (opPrincipal) {
             case 1: {
                 AltaUsuario();
@@ -99,6 +101,7 @@ int main() {
                         do {
                             menuDesarrollador();
                             cin >> opDesarrollador;
+                            cout << "------------------------------------------------|" << endl;
                             switch (opDesarrollador) {
                                 case 1:
                                     AgregarCategoria();
@@ -128,6 +131,7 @@ int main() {
                         do {
                             menuJugador();
                             cin >> opJugador;
+                            cout << "------------------------------------------------|" << endl;
                             switch (opJugador) {
                                 case 1:
                                     SuscribirseAVideojuego();
@@ -172,7 +176,12 @@ int main() {
                 break;
             }
             case 3: {
-                CargarDatosDePrueba();
+                if(cargado == false){
+                    CargarDatosDePrueba();
+                    cargado = true;
+                }else {
+                    cout<<"Los datos de prueba ya estan cargados!!"<<endl;
+                }
                 break;
             }
             case 0:

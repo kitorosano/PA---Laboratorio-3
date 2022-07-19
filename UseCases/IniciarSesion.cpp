@@ -76,7 +76,7 @@ int IniciarSesion() {
                 switch (retorno) {
                     case 0:
                         cout << "Session establecida!" << endl;
-                        cout << "La sesion estará disponible hasta que otro usuario realice un nuevo inicio de sesion" << endl;
+                        cout << "La sesion estara disponible hasta que otro usuario realice un nuevo inicio de sesion" << endl;
                         break;
                     case 1:
                         cout << "No hay usuarios ingresados en el sistema" << endl;

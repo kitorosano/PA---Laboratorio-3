@@ -29,7 +29,7 @@ public:
     void agregarVideojuegoACategoria();
     void seleccionarCategoria(string nombre);
 
-    ICollection* listarNombreCategorias();
+    IDictionary* listarNombreCategorias();
     IDictionary* listarCategorias();
     IDictionary* listarCategoriasPlataforma();
     IDictionary* listarCategoriasGenero();

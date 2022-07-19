@@ -112,7 +112,7 @@ Partida* PartidaController::confirmarPartida(DT_Fecha* fecha_comienzo){
 
     this->partidaSeleccionada->setFechaComienzo(fecha_comienzo);
 
-    // Agregar a la colección la nueva partida;
+    // Agregar a la coleccion la nueva partida;
     partidas->add(partidaSeleccionada, new KeyInt(idPartida));
 
     // Borrar los datos que el controlador guardo y retornar la partida
@@ -176,8 +176,10 @@ void PartidaController::confirmarFinalizarPartida(int idPartida, Jugador* jugado
         else {
             //2 o mas
             while (it->hasNext()) {
-                // JugadorMultijugador *jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
-                this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                jm = dynamic_cast<JugadorMultijugador *>(it->getCurrent());
+                if(jm->getFechaFinalizacion() == NULL){
+                    this->confirmarAbandonoPartida(idPartida, jm->getJugador(), fechaFinalizacion);
+                }
                 it->next();
             }
         }
