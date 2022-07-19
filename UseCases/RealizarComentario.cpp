@@ -8,6 +8,7 @@
 #include "Utils/Utils.h"
 #include <iostream>
 #include <string>
+#include <stdio.h>
 using namespace std;
 void RealizarComentario(){
     Factory * factory;
@@ -20,6 +21,7 @@ void RealizarComentario(){
     string contenido,id_partida,id_comentario;
     int id_p,id_c;
     char responder;
+    char _contenido[255];
     bool _individual,repetir;
     IDictionary* aux=NULL;
     IDictionary* aux_jugadores_unidos=NULL;
@@ -31,35 +33,13 @@ void RealizarComentario(){
 
     if(aux){
         factory->getInstance()->getInterfaceP()->listarPartidasMultijugadorNoFinalizadasTransmitidasEnVivo2();
-        /*
-        IIterator *it = aux->getIteratorObj();
-        while (it->hasNext()) {
-            DT_MultijugadorVideojuego* dt_multijugador_videojuego = (DT_MultijugadorVideojuego*) (it->getCurrent());
-            cout<<"----------------------------------------------------"<<endl;
-            cout<<"Id partida:"<<dt_multijugador_videojuego->getIdPartida()<<endl;
-            cout<<"Nombre del videojuego "<<dt_multijugador_videojuego->getNombreVideojuego()<<endl;
-            cout<<"Jugador Iniciador "<<dt_multijugador_videojuego->getJugadorIniciador()->getNickname()<<endl;
-            cout<<"Jugadores Unidos: "<<endl;
-            aux_jugadores_unidos=dt_multijugador_videojuego->getJugadoresUnidos();
-            if(aux_jugadores_unidos){
-                IIterator *it2 = aux_jugadores_unidos->getIteratorObj();
-                while (it2->hasNext()) {
-                    JugadorMultijugador* aux_jug = (JugadorMultijugador *) (it2->getCurrent());
-                    //Jugador* aux_jug=dynamic_cast<Jugador*>(user);
-                    if(aux_jug)
-                        cout<<"\t"<< "- " <<aux_jug->getJugador()->getNickname()<< endl;
-                    it2->next();
-                }
-            }
-            it->next();
-        }
-        */
+
         do {
             cout << "|------------------------------------------------|" << endl;
             cout << "|    -Seleccione la partida ingresando su id     |" << endl;
             cout << "|------------------------------------------------|" << endl << endl;
             cin >> id_partida;
-
+            fflush(stdin);
             repetir = false;
             if(isIntegerWM(id_partida)) {
                 KeyInt *keyidpartida = new KeyInt(stoi(id_partida));
@@ -79,7 +59,7 @@ void RealizarComentario(){
             cout << "|Responder uno ya existente? s/n                 |" << endl;
             cout << "|------------------------------------------------|" << endl << endl;
             cin>>responder;
-
+            fflush(stdin);
         if(responder=='s'||responder=='S'){
             aux_comentarios=factory->getInstance()->getInterfaceP()->listarComentariosDePartida();
 
@@ -93,7 +73,7 @@ void RealizarComentario(){
                         cout << "|------------------------------------------------|" << endl << endl;
                         cout << "-Id Comentario " << dt_comentario->getIdComentario() << endl;
                         cout << "-Autor " << dt_comentario->getEscritor() << endl;
-                        cout << "-Fecha de envio" << dt_comentario->getFechaEnvio()->toString() << endl;
+                        cout << "-Fecha y hora de envio " << dt_comentario->getFechaEnvio()->toString() << endl;
                         cout << "-Contenido: " << dt_comentario->getContenido() << endl;
                         cout << "----------------------------------------------------------------" << endl;
                         it3->next();
@@ -119,7 +99,9 @@ void RealizarComentario(){
         cout << "|------------------------------------------------|" << endl;
         cout << "|Escribe el contenido del comentario             |" << endl;
         cout << "|------------------------------------------------|" << endl;
-        cin>>contenido;
+        gets(_contenido);
+        contenido=_contenido;
+        fflush(stdin);
         factory->getInstance()->getInterfaceP()->enviarComentario(contenido,usuario_logueado);
         do {
             cout << "|------------------------------------------------|" << endl;

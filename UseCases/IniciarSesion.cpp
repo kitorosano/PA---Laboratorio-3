@@ -18,11 +18,13 @@ int IniciarSesion() {
     cout << "|------------------------------------------------|" << endl << endl;
     cout << "Ingrese el email:" << endl;
     cin >> email;
+    fflush(stdin);
     cout << "|------------------------------------------------|" << endl;
     cout << "|                INICIAR SESSION                 |" << endl;
     cout << "|------------------------------------------------|" << endl << endl;
     cout << "Ingrese la contrasenia:" << endl;
     cin >> password;
+    fflush(stdin);
     retorno=factory->getInstance()->getInterfaceU()->iniciarSesion(email,password);
 
     if(retorno==0){
@@ -49,6 +51,7 @@ int IniciarSesion() {
             cout << "| 2. Cancelar                                    |" << endl;
             cout << "|------------------------------------------------|" << endl << endl;
             cin >> opcion;
+            fflush(stdin);
             if (opcion != 1 && opcion != 2)
                 cout<<"Debe ingresar una opcion!"<<endl;
 
@@ -61,11 +64,13 @@ int IniciarSesion() {
                 cout << "|------------------------------------------------|" << endl << endl;
                 cout << "Ingrese el email:" << endl;
                 cin >> nickname;
+                fflush(stdin);
                 cout << "|------------------------------------------------|" << endl;
                 cout << "|                INICIAR SESSION                 |" << endl;
                 cout << "|------------------------------------------------|" << endl << endl;
                 cout << "Ingrese la contrasenia:" << endl;
                 cin >> password;
+                fflush(stdin);
                 retorno=factory->getInstance()->getInterfaceU()->iniciarSesion(email,password);
                 //switch
                 switch (retorno) {
@@ -90,9 +95,6 @@ int IniciarSesion() {
         }
     }
 
-    //Desarrollador* desarrollador= dynamic_cast<Desarrollador*>(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
-   // if(desarrollador) return 0;
-   // return 1;
    return factory->getInstance()->getInterfaceU()->tipoUsuario(factory->getInstance()->getInterfaceU()->getUsuarioLogeado());
 
 }
